@@ -1,0 +1,187 @@
+:root {
+
+    --background-color: rgb(250, 245, 240);
+    --heading-font: 'Cinzel', serif;
+    --text-font: 'Roboto';
+    --text-color: rgba(0, 0, 0, 0.7);
+    --highligted-text-color: rgb(168, 110, 59);
+
+}
+
+.navbar {
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.navbar-brand {
+    font-family: var(--heading-font);
+    /* Use Google Font similar to Trajan Pro */
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+    font-family: var(--text-font);
+    font-weight: 300;
+
+}
+
+.navbar-nav {
+    flex-grow: 1;
+    gap: 20px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+
+.navbar .search-icon,
+.navbar .cart-icon {
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+
+.navbar .cart-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+@media (min-width: 992px) {
+    .drawer-icons {
+        display: none;
+    }
+}
+
+.brand-subtitle {
+    font-family: var(--text-font);
+    font-size: 0.8rem;
+    color: gray;
+    font-weight: 400;
+    display: block;
+}
+
+.icons {
+    display: flex;
+
+}
+
+@media (max-width:767px) {
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .icons {
+        display: none;
+    }
+
+    .drawer-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
+
+.navbar-nav li a {
+    color: var(--text-color) !important;
+}
+
+
+
+.footer {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    max-width: 100%;
+}
+
+.footer .container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.footer .footer-section {
+    flex: 1;
+    padding: 10px;
+    
+}
+
+.footer .footer-section h5 {
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+
+
+}
+
+.footer .footer-section ul li {
+    margin-bottom: 10px;
+
+}
+
+.footer .footer-section ul li a {
+    text-decoration: none;
+    font-weight: 200;
+    color: var(--text-color);
+}
+
+
+
+.footer .footer-section address,
+.footer .footer-section p {
+    margin: 0;
+    font-family: var(--text-font);
+    font-weight: 300;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.footer .footer-section address a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.footer .footer-section p {
+    margin-top: 5px;
+}
+
+.footer .footer-section span {
+    font-family: var(--text-font);
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.footer .copyright {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px 0;
+    font-family: var(--text-font);
+    background-color: var(--background-color);
+    margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+    .footer .container {
+        flex-direction: column;
+        /* Stack the footer sections vertically on mobile */
+    }
+
+    .footer .footer-section {
+        padding: 5px 0;
+        /* Reduce padding for mobile */
+    }
+}
