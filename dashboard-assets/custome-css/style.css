@@ -1,0 +1,11 @@
+.page-item.active .page-link{
+
+    background-color: rgb(168, 110, 59) !important;
+}
+.form-control:focus{
+border-color: rgb(168, 110, 59) ;
+
+}
+.form-select:focus{
+    border-color: rgb(168, 110, 59) ;  
+}
