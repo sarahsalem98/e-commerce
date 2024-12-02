@@ -1,11 +1,56 @@
-.page-item.active .page-link{
+.page-item.active .page-link {
 
     background-color: rgb(168, 110, 59) !important;
 }
-.form-control:focus{
-border-color: rgb(168, 110, 59) ;
+
+.form-control:focus {
+    border-color: rgb(168, 110, 59);
 
 }
-.form-select:focus{
-    border-color: rgb(168, 110, 59) ;  
+
+.form-select:focus {
+    border-color: rgb(168, 110, 59);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgb(168, 110, 59);
+}
+
+.dropdown-menu-dark .dropdown-item.active,
+.dropdown-menu-dark .dropdown-item:active {
+    color: #fff;
+    background-color: rgb(168, 110, 59);
+}
+
+.btn-check:checked+.btn-outline-primary,
+.btn-check:active+.btn-outline-primary,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.dropdown-toggle.show {
+    color: #fff;
+    background-color: rgb(168, 110, 59);
+    border-color: rgb(168, 110, 59);
+}
+
+.btn-link {
+    font-weight: 400;
+    color: rgb(168, 110, 59);
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: rgb(168, 110, 59);
+}
+
+.nav-pills.dropdown.show .dropdown-item.active:hover {
+    color: rgb(168, 110, 59);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: rgb(168, 110, 59);;
+    background-color: rgba(215, 160, 40, 0.12);
 }
