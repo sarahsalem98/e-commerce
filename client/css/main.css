@@ -1,3 +1,4 @@
+
 :root {
 
     --background-color: rgb(250, 245, 240);
@@ -5,6 +6,10 @@
     --text-font: 'Roboto';
     --text-color: rgba(0, 0, 0, 0.7);
     --highligted-text-color: rgb(168, 110, 59);
+    --button-color:black;
+    --button-hover:#ffc20e;
+    --button-carousel:#990033;
+
 
 }
 
@@ -91,6 +96,222 @@
 .navbar-nav li a {
     color: var(--text-color) !important;
 }
+/*main button*/
+.main-btn{
+    background-color: var(--background-color);
+    color:var(--button-color); 
+    width: 8rem;
+     font-family: var(--heading-font);
+     transition: 0.3s ease;
+    }
+    .main-btn:hover{
+        background-color:var(--button-color);
+        color: white;
+      
+        }
+/* start landing */
+.landing {
+    background-image: url(../images/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);
+    background-size: cover;
+    background-position:center center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 24px);
+    min-width: calc(100vh - 24px);
+   color: black;
+}
+.landing .text h1{
+    font-family: var(--heading-font);
+    font-size: 4rem;
+}
+.landing .text h6{
+    font-family: var(--heading-font); 
+    font-size: 1.2rem;
+}
+.landing .heading{
+    font-weight:600;
+    font-family: var(--heading-font);
+}
+
+
+
+.landing p{
+    max-width: 350px;
+    font-family: var(--text-font);
+}
+
+
+/* end landing */
+/* 
+******************************* */
+/* start brands */
+
+.brands{
+    background-color: white;
+}
+.border {
+    border: 2px solid var(--text-color);
+    padding: 15px; 
+    border-radius: 10px; 
+}
+.carousel-indicators  {
+    bottom: -50px; 
+    background-color: white;
+}
+
+
+.carousel-indicators button:focus {
+    background-color:var(--button-carousel);
+}
+/* End brands */
+
+   /* start products */
+   .main-title::after{
+    content: '';
+    width: 50px;
+    height: 0.1rem;
+    background-color: var(--button-carousel); 
+    position: absolute;
+    bottom: -10px;  
+     left:50%;
+    transform:translateX(-50%);
+     
+}
+.products .text {
+    font-family: var(--heading-font); 
+    font-size: 2.8rem;
+}
+.product .text{
+    font-family: var(--heading-font); 
+    font-size: 2.8rem;
+}
+
+
+/* start Unique */
+ 
+.Unique h1{
+    max-width: 80px;
+}
+.Unique p{
+    max-width: 400px;
+    font-family: var(--heading-font); 
+}
+.Unique .text {
+    font-family: var(--heading-font); 
+    font-size: 3rem;
+}
+
+/* End Unique */
+  */
+ 
+.box {
+    background-color: white;
+    position: relative; 
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+.products .box img {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease;
+
+}
+
+.products .box .img1:hover {
+    cursor: pointer;
+    content: url("../images/ring20.jpg");
+    transition: transform 1s ease; 
+}
+
+.products .box .img2:hover {
+    cursor: pointer;
+    content: url("../images/ring26.jpg");
+
+  
+}
+
+.products .box .img3:hover {
+    cursor: pointer;
+    content: url("../images/ring31.jpg");
+   
+}
+
+.products .box .img4:hover {
+    cursor: pointer;
+    content: url("../images/ring36.jpg");
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ********************* */
+.box {
+    position: relative;
+    overflow: hidden; /
+}
+
+
+.product .box img {
+    transition: transform 0.8s ease; 
+}
+
+
+.product .box img:hover {
+    transform: scale(1.1); 
+}
+
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    text-align: center;
+    padding: 10px;
+    z-index: 1; 
+    font-family: var(--heading-font); 
+
+}
+
+   /* End Products */
+
+/* start business */
+.business{
+    margin-top: 6rem;
+    height:44rem;
+}
+   .business .decription {
+    max-width: 500px; 
+    font-family: var(--heading-font);
+    font-size: 1.2rem; 
+      
+}
+.business .text{
+    font-family: var(--heading-font); 
+    font-size: 3rem;
+}
+.business .text1{
+    font-family: var(--heading-font); 
+    font-size: 1.8rem;
+}
+
+/* End business */
 
 
 
@@ -177,11 +398,22 @@
 @media (max-width: 767px) {
     .footer .container {
         flex-direction: column;
-        /* Stack the footer sections vertically on mobile */
     }
 
     .footer .footer-section {
         padding: 5px 0;
-        /* Reduce padding for mobile */
     }
-}
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
