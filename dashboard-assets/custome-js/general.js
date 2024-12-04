@@ -1,4 +1,4 @@
-var general = {
+export var general = {
     convertImgTo64: async function (fileInput) {
         try{
        const base64=await this.getBase64(fileInput);

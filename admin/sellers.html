@@ -30,8 +30,6 @@
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/colors.css">
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/components.css">
 
-
-
     <!-- BEGIN: Custom CSS-->
 
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
@@ -218,11 +216,12 @@
                         data-feather="more-horizontal"></i>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="users.html"><i
+                <li class=" nav-item "><a class="d-flex align-items-center" href=" users.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">users</span></a>
                 </li>
-                <li class=" nav-item "><a class="d-flex align-items-center" href="sellers.html"><i
+
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="sellers.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">sellers</span></a>
                 </li>
@@ -250,8 +249,8 @@
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
 
-                                        <h3 class="fw-bolder mb-75" id="total-users-count">21,459</h3>
-                                        <span>Total Users</span>
+                                        <h3 class="fw-bolder mb-75" id="total-sellers-count">21,459</h3>
+                                        <span>Total sellers</span>
                                     </div>
                                     <div class="avatar bg-light-primary p-50">
                                         <span class="avatar-content">
@@ -266,8 +265,8 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="active-users-count">19,860</h3>
-                                        <span>Active Users</span>
+                                        <h3 class="fw-bolder mb-75" id="active-sellers-count">19,860</h3>
+                                        <span>Active sellers</span>
                                     </div>
                                     <div class="avatar bg-light-success p-50">
                                         <span class="avatar-content">
@@ -281,8 +280,8 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="inactive-users-count">237</h3>
-                                        <span>Inactive Users</span>
+                                        <h3 class="fw-bolder mb-75" id="inactive-sellers-count">237</h3>
+                                        <span>Inactive sellers</span>
 
 
                                     </div>
@@ -306,14 +305,14 @@
                             </div>
                         </div>
                         <div class="card-datatable table-responsive pt-0">
-                            <table class="user-list-table table">
+                            <table class="seller-list-table table">
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
                                         <th>Name</th>
-                                        <th>Address</th>
+                                        <th>National ID</th>
+                                        <th>Commercial Regeteration</th>
                                         <th>Phone</th>
-                                        <th>gender</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -326,20 +325,20 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New User</h4>
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New Seller</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
                                     <div class="modal-body">
-                                        <form id="add-update-user-form">
-                                            <input type="hidden" id="user-id">
+                                        <form id="add-update-seller-form">
+                                            <input type="hidden" id="seller-id">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-1">
                                                         <label class="form-label" for="user-name">
                                                             Name</label>
-                                                        <input type="text" id="user-name" name="user-name"
+                                                        <input type="text" id="seller-name" name="seller-name"
                                                             class="form-control" placeholder="First Name" />
                                                     </div>
                                                 </div>
@@ -347,96 +346,48 @@
                                                     <div class="mb-1">
                                                         <label class="form-label" for="user-phone">
                                                             phone</label>
-                                                        <input type="text" id="user-phone" name="user-phone"
+                                                        <input type="text" id="seller-phone" name="seller-phone"
                                                             class="form-control" placeholder="Phone Number" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="mb-1">
                                                         <label class="form-label" for="user-email">Email</label>
-                                                        <input type="email" id="user-email" name="user-email"
+                                                        <input type="email" id="seller-email" name="seller-email"
                                                             class="form-control" placeholder="Email" />
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-Gender">Gender</label>
-                                                        <select id="user-gender" name="user-gender"
-                                                            class="select2 form-select">
-                                                            <option value=""> select gender</option>
-                                                            <option value="1"> female</option>
-                                                            <option value="2">male</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label for="user-profile-pic" class="form-label">Profile
-                                                            pic</label>
-                                                        <input class="form-control" type="file" id="user-profile-pic"
-                                                            name="user-profile-pic" />
-                                                    </div>
-                                                </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="user-country">Governorate</label>
-                                                        <select id="user-country" name="user-country"
-                                                            class="select2 form-select">
-                                                            <option value="">please select governate</option>
-                                                            <option value="Alexandria">Alexandria</option>
-                                                            <option value="Aswan">Aswan</option>
-                                                            <option value="Asyut">Asyut</option>
-                                                            <option value="Beheira">Beheira</option>
-                                                            <option value="Beni Suef">Beni Suef</option>
-                                                            <option value="Cairo">Cairo</option>
-                                                            <option value="Dakahlia">Dakahlia</option>
-                                                            <option value="Damietta">Damietta</option>
-                                                            <option value="Faiyum">Faiyum</option>
-                                                            <option value="Gharbia">Gharbia</option>
-                                                            <option value="Giza">Giza</option>
-                                                            <option value="Ismailia">Ismailia</option>
-                                                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-                                                            <option value="Luxor">Luxor</option>
-                                                            <option value="Matrouh">Matrouh</option>
-                                                            <option value="Minya">Minya</option>
-                                                            <option value="Monufia">Monufia</option>
-                                                            <option value="New Valley">New Valley</option>
-                                                            <option value="North Sinai">North Sinai</option>
-                                                            <option value="Port Said">Port Said</option>
-                                                            <option value="Qalyubia">Qalyubia</option>
-                                                            <option value="Qena">Qena</option>
-                                                            <option value="Red Sea">Red Sea</option>
-                                                            <option value="Sharqia">Sharqia</option>
-                                                            <option value="Sohag">Sohag</option>
-                                                            <option value="South Sinai">South Sinai</option>
-                                                            <option value="Suez">Suez</option>
-                                                        </select>
-
+                                                        <label for="user-profile-pic" class="form-label">National
+                                                            ID</label>
+                                                        <input type="text" id="seller-nationalId"
+                                                            name="seller-nationalId" class="form-control"
+                                                            placeholder="National Id" />
                                                     </div>
                                                 </div>
-
-
-
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="user-address">Address</label>
-                                                        <input type="text" id="user-address" name="user-address"
-                                                            class="form-control" placeholder="address" />
+                                                        <label for="user-profile-pic" class="form-label">Commertial
+                                                            Registeration</label>
+                                                        <input type="text" id="seller-CommertialReg"
+                                                            name="seller-CommertialReg" class="form-control"
+                                                            placeholder="Commertial Registeration" />
                                                     </div>
                                                 </div>
                                             </div>
+
+
 
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary me-1 add-update-btn"
-                                                    onclick="users.addUpdate(event);">Add</button>
+                                                    onclick="sellers.addUpdate(event);">Add</button>
                                                 <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                             </div>
                                     </div>
@@ -455,7 +406,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel120">Delete Seller</h5>
+                                        <h5 class="modal-title" id="myModalLabel120">Delete User</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -467,7 +418,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" onclick="users.delete();"
+                                        <button type="button" class="btn btn-danger" onclick="sellers.delete();"
                                             data-bs-dismiss="modal">Yes</button>
                                     </div>
                                 </div>
@@ -498,7 +449,6 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="../dashboard-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
@@ -534,17 +484,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Page JS-->
     <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
-
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
-        import { users } from '../../dashboard-assets/custome-js/users.js';
-        console.log(typeof $);
+        import { sellers } from '../../dashboard-assets/custome-js/sellers.js';
         $(window).on('load', function () {
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
             } else {
                 console.log('User is logged in, loading products');
-                dbController.openDataBase().then(() => { users.viewUsers(); });
+
+                dbController.openDataBase().then(() => { sellers.viewUsers(); });
                 if (feather) {
                     feather.replace({
                         width: 14,

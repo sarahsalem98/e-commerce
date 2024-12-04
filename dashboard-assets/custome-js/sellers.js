@@ -1,15 +1,17 @@
 import { dbController } from "./indexedDb.js";
-import { general } from "./general.js"; 
-export var users = {
+
+export var sellers = {
     fetchData: async function () {
-        let data = await users.getDataFromStorage();
+        console.log("ssd");
+        let data = await this.getDataFromStorage();
         let allusers = [];
         if (data.length!=0) {
             allusers = data;
 
         } else {
             console.log("hell");
-            let res = await fetch('../../dashboard-assets/data/user-list.json');
+            let res = await fetch('../../dashboard-assets/data/seller-list.json');
+            console.log(res);
             allusers = await res.json();
             this.saveDataToStorage(allusers);
         }
@@ -17,7 +19,7 @@ export var users = {
         return allusers;
     },
     getUserData: async function (id) {
-        const data = await users.fetchData();
+        const data = await this.fetchData();
         var userdata = data.find(function (user) {
             //  console.log(user);
             return user.id == id;
@@ -25,35 +27,33 @@ export var users = {
         return userdata;
     },
     saveDataToStorage: function (data) {
-        dbController.saveDataArray('users', data);
+        dbController.saveDataArray('sellers', data);
 
     },
     getDataFromStorage: async function () {
-        const data = await dbController.getDataArray('users');
+        const data = await dbController.getDataArray('sellers');
         return data;
     },
     viewUsers: async function () {
+        console.log("tt");
 
-        var dtUserTable = $('.user-list-table');
+        var dtUserTable = $('.seller-list-table');
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
-        const userData = await users.fetchData();
+        const userData = await sellers.fetchData();
   
-        document.getElementById("active-users-count").innerText=userData.filter(user=>user.status_user==1).length;
-        document.getElementById("inactive-users-count").innerText=userData.filter(user=>user.status_user==2).length;
-        document.getElementById("total-users-count").innerText=userData.length;
+        document.getElementById("active-sellers-count").innerText=userData.filter(user=>user.status_user==1).length;
+        document.getElementById("inactive-sellers-count").innerText=userData.filter(user=>user.status_user==2).length;
+        document.getElementById("total-sellers-count").innerText=userData.length;
 
         var statusObj = {
             1: { title: 'Active', class: 'badge-light-success' },
             2: { title: 'Inactive', class: 'badge-light-danger' }
         };
-        var genderObj = {
-            1: { title: 'female', class: 'badge-light-secondary' },
-            2: { title: 'male', class: 'badge-light-primary' }
-        };
+ 
 
-        if ($.fn.dataTable.isDataTable('.user-list-table')) {
-            $('.user-list-table').DataTable().clear().destroy(); // Destroy the existing DataTable
+        if ($.fn.dataTable.isDataTable('.seller-list-table')) {
+            $('.seller-list-table').DataTable().clear().destroy(); // Destroy the existing DataTable
         }
         $('.user_status select').remove();
         $('.user_status label').remove();
@@ -64,9 +64,9 @@ export var users = {
                 columns: [
                     { data: null },
                     { data: 'full_name' },
-                    { data: 'address' },
+                    { data: 'national_id' },
+                    { data: 'commercial_registration' },
                     { data: 'phone' },
-                     {data:'gender'},
                     { data: 'status_user' },
                     { data: null }
                 ],
@@ -87,25 +87,16 @@ export var users = {
                         responsivePriority: 4,
                         render: function (data, type, full, meta) {
                             var $name = full['full_name'],
-                                $email = full['email'],
-                                $image = full['avatar'];
-                               // console.log("dtaimg"+$image);
-                            if ($image) {
-
-                                var $output =
-                                    '<img src="' +$image+ '" alt="Avatar" height="32" width="32">';
-                            } else {
-
+                                $email = full['email'];
                                 var stateNum = Math.floor(Math.random() * 6) + 1;
                                 var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
                                 var $state = states[stateNum],
                                     $name = full['full_name'],
                                     $initials = $name.match(/\b\w/g) || [];
                                 $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-                                $output = '<span class="avatar-content">' + $initials + '</span>';
-                            }
-                            var colorClass = $image === '' ? ' bg-light-' + $state + ' ' : '';
-
+                               var $output = '<span class="avatar-content">' + $initials + '</span>';
+                            
+                            var colorClass =' bg-light-' + $state + ' ' ;
                             var $row_output =
                                 '<div class="d-flex justify-content-left align-items-center">' +
                                 '<div class="avatar-wrapper">' +
@@ -127,22 +118,6 @@ export var users = {
                                 '</div>' +
                                 '</div>';
                             return $row_output;
-                        }
-                    },
-
-                    {
-                        // User Status
-                        targets: 4,
-                        width: '10%',
-                        render: function (data, type, full, meta) {
-                            var $gender = full['gender'];
-                            return (
-                                '<span class="badge rounded-pill ' +
-                                genderObj[$gender].class +
-                                '" text-capitalized>' +
-                                genderObj[$gender].title +
-                                '</span>'
-                            );
                         }
                     },
 
@@ -176,13 +151,13 @@ export var users = {
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-end">' +
-                                '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create-updateUser" onclick="users.openUpdateModal(' + full['id'] + ')">' +
+                                '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create-updateUser" onclick="sellers.openUpdateModal(' + full['id'] + ')">' +
                                 feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Update</a>' +
-                                '<a href="javascript:;" class="dropdown-item delete-record"  data-bs-toggle="modal" data-bs-target="#danger-Modal" onclick="users.openDeleteModal(' + full["id"] + ', \'' + full["full_name"].replace(/'/g, "\\'") + '\')">' +
+                                '<a href="javascript:;" class="dropdown-item delete-record"  data-bs-toggle="modal" data-bs-target="#danger-Modal" onclick="sellers.openDeleteModal(' + full["id"] + ', \'' + full["full_name"].replace(/'/g, "\\'") + '\')">' +
                                 feather.icons['trash-2'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Delete</a>' +
-                                '<a href="javascript:;" class="dropdown-item delete-record" onclick="users.changeStatus(' + full['id'] + ')"> ' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" onclick="sellers.changeStatus(' + full['id'] + ')"> ' +
                                 (full['status_user'] == 1 ? feather.icons['x'].toSvg({ class: 'font-small-4 me-50' }) : feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' })) +
                                 (full['status_user'] == 1 ? 'deactivate' : 'activate') + '</a>'
                                 + '</div>' +
@@ -211,7 +186,7 @@ export var users = {
                 // Buttons with Dropdown
                 buttons: [
                     {
-                        text: 'Add New User',
+                        text: 'Add New Seller',
                         className: 'add-new btn btn-primary',
                         attr: {
                             'data-bs-toggle': 'modal',
@@ -220,10 +195,9 @@ export var users = {
                         init: function (api, node, config) {
                             $(node).removeClass('btn-secondary');
                             $(node).on('click',function(){
-                                console.log("heellll");
-                                document.getElementsByClassName("updateTitle")[0].innerText = "Add New User";
+                                document.getElementsByClassName("updateTitle")[0].innerText = "Add New Seller";
                                 document.getElementsByClassName("add-update-btn")[0].innerText = "Add";
-                                 users.resetFormFields(); 
+                                 sellers.resetFormFields(); 
 
                             })
                         }
@@ -303,123 +277,118 @@ export var users = {
     },
 
     openUpdateModal: async function (id) {
-        var userdata = await users.getUserData(id);
-        document.getElementsByClassName("updateTitle")[0].innerText = "Update User";
+        var userdata = await this.getUserData(id);
+        document.getElementsByClassName("updateTitle")[0].innerText = "Update Seller";
         document.getElementsByClassName("add-update-btn")[0].innerText = "update";
-        document.getElementById("user-id").value = id;
-        document.getElementById("user-name").value = userdata.full_name;
-        document.getElementById("user-email").value = userdata.email;
-        document.getElementById("user-phone").value = userdata.phone;
-        document.getElementById("user-address").value = userdata.address;
+        document.getElementById("seller-id").value = id;
+        document.getElementById("seller-name").value = userdata.full_name;
+        document.getElementById("seller-email").value = userdata.email;
+        document.getElementById("seller-phone").value = userdata.phone;
+        document.getElementById("seller-nationalId").value = userdata.national_id;
+        document.getElementById("seller-CommertialReg").value = userdata.commercial_registration;
     },
     addUpdate: async function (e) {
-        let id = document.getElementById("user-id").value.toString();
+        let id = document.getElementById("seller-id").value.toString();
         //update
         if (!this.validateForm()) {
             e.preventDefault();
             return;
         }
-        if (id != '') {  
-            var user = await dbController.getItem('users', parseInt(id));
-            if(user!=null){
-                let file=(document.getElementById("user-profile-pic")).files[0];
-                user.full_name = document.getElementById("user-name").value;
-                user.email = document.getElementById("user-email").value;
-                user.phone = document.getElementById("user-phone").value;
-                user.address = document.getElementById("user-address").value;
-                user.gender=document.getElementById("user-gender").value;
-                user.gov=document.getElementById("user-country").value;
-                user.avatar=await general.convertImgTo64(file);
+        let enterdEmail=document.getElementById("seller-email").value;
+        let enterdNationalId=document.getElementById("seller-nationalId").value;
+        var isvalidform=await sellers.validEmailAndNationalId(enterdEmail,enterdNationalId);
+        if(isvalidform){
+            if (id != '') {  
+                var user = await dbController.getItem('sellers', parseInt(id));
+                if(user!=null){
+               
+                    
+                     user.full_name = document.getElementById("seller-name").value;
+                    user.email = document.getElementById("seller-email").value;
+                    user.phone = document.getElementById("seller-phone").value;
+                    user.national_id = document.getElementById("seller-nationalId").value;
+                    user.commercial_registration=document.getElementById("seller-CommertialReg").value;
+                    
+                }
                 
-            }
-            
-            dbController.updateItem('users',id,user);
-            toastr.success("user update successfully");
-            this.viewUsers();
-            $('#create-updateUser').modal('hide');
-        }else{
-
-            //add
-
-            let filenew=(document.getElementById("user-profile-pic")).files[0];
-            const newuser = {
-                full_name: document.getElementById("user-name").value,
-                username: document.getElementById("user-name").value,
-                email: document.getElementById("user-email").value,
-                address:document.getElementById("user-address").value,
-                phone:document.getElementById("user-phone").value,
-                gov:document.getElementById("user-country").value,
-                gender:document.getElementById("user-gender").value,
-                status_user: 1,
-                avatar: await general.convertImgTo64(filenew)
-            }
-              var ok=  await dbController.addItem('users',newuser);
-               if(ok){
-                toastr.success("user added successfully");
-               }
-                this.viewUsers("user");
+                dbController.updateItem('sellers',id,user);
+                toastr.success("seller update successfully");
+                this.viewUsers();
                 $('#create-updateUser').modal('hide');
-
-
+            }else{
+    
+                //add
+                const newuser = {
+                    full_name: document.getElementById("seller-name").value,
+                    email: document.getElementById("seller-email").value,
+                    phone:document.getElementById("seller-phone").value,
+                    national_id:document.getElementById("seller-nationalId").value,
+                    commercial_registration:document.getElementById("seller-CommertialReg").value,
+                    status_user: 1,
+                }
+                  var ok=  await dbController.addItem('sellers',newuser);
+                   if(ok){
+                    toastr.success("seller added successfully");
+                   }
+                    this.viewUsers();
+                    $('#create-updateUser').modal('hide');
+    
+            }
+        }else{
+            toastr.error("enter valid email or national id");
+            return;
 
         }
+      
 
     },
     changeStatus: async function (id) {
-        var data = await dbController.getItem('users', id);
-        console.log("sataus" + data);
+        var data = await dbController.getItem('sellers', id);
         var changedstatus = data.status_user == 1 ? 2 : 1;
         data.status_user = changedstatus;
-        dbController.updateItem('users', id, data);
+        dbController.updateItem('sellers', id, data);
         toastr.success("status changed successfully");
         this.viewUsers();
     },
     openDeleteModal: function (id, name) {
-        // console.log("id" + id);
-        // console.log("name" + name);
         document.getElementsByClassName("deleted-record-id")[0].value = id;
         var text = document.getElementsByClassName("danger-modal-text")[0];
-        text.innerText = `are you sure you wante to delete this user ${name}?`;
+        text.innerText = `are you sure you wante to delete this seller ${name}?`;
 
 
     },
     delete: async function () {
         let id = document.getElementsByClassName("deleted-record-id")[0].value;
-        let isDeletedSuccessfully = await dbController.deleteItem('users', id);
-        console.log(isDeletedSuccessfully);
+        let isDeletedSuccessfully = await dbController.deleteItem('sellers', id);
         if (isDeletedSuccessfully) {
-           toastr.success("user deleted successfully");
+           toastr.success("seller deleted successfully");
             this.viewUsers();
         }
 
     },
     validateForm: function () {
         $('.select2').select2();
-        var form = $('#add-update-user-form');
-        if (form.length) {
-
-
+        var form = $('#add-update-seller-form');
+        if (form.length) {    
             form.validate({
                 rules: {
-                    'user-name': { required: true },
-                    'user-email': { required: true, email: true },
-                    'user-phone': { required: true },
-                    'user-address': { required: true },
-                    'user-country': { required: true },
-                    'user-gender': { required: true }
+                    'seller-name': { required: true },
+                    'seller-email': { required: true, email: true },
+                    'seller-phone': { required: true },
+                    'seller-nationalId': { required: true },
+                    'seller-CommertialReg': { required: true },
                 
                 },
                 messages: {
-                    'user-name': "Please enter your name",
-                    'user-email': "Please enter a valid email address",
-                    'user-phone': "Please enter your phone number",
-                    'user-address': "Please enter your address",
-                    'user-country': "Please select a country",
-                    'user-gender': "Please select a gender",
+                    'seller-name': "Please enter your name",
+                    'seller-email': "Please enter a valid email address",
+                    'seller-phone': "Please enter your phone number",
+                    'seller-nationalId': "Please enter your National Id",
+                    'seller-CommertialReg': "Please select a Commertial Registeration",
+
                   
                 }
             });
-
 
             var isValide = form.valid();
             return isValide;
@@ -427,16 +396,20 @@ export var users = {
         return false;
     },
      resetFormFields:function() {
-        document.getElementById("user-name").value = '';
-        document.getElementById("user-email").value = '';
-        document.getElementById("user-phone").value = '';
-        document.getElementById("user-address").value = '';
-        document.getElementById("user-gender").value='';
-        document.getElementById("user-country").value='';
-        document.getElementById("user-profile-pic").value = ''; // Reset the file input
+        document.getElementById("seller-name").value = '';
+        document.getElementById("seller-email").value = '';
+        document.getElementById("seller-phone").value = '';
+        document.getElementById("seller-nationalId").value = '';
+        document.getElementById("seller-CommertialReg").value='';
+
+    },
+    validEmailAndNationalId:async function(email, nationalId){
+        let data= await sellers.fetchData();
+        let isvalidEmail= !data.some(user=>user.email===email);
+        let isvalidNationalId=!data.some(user=>user.national_id===nationalId);
+        return isvalidEmail&&isvalidNationalId;
     }
 
 }
-window.users = users;
-
+window.sellers=sellers;
 

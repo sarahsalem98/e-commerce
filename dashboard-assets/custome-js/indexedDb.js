@@ -1,5 +1,5 @@
 let db;
-var dbController = {
+export var dbController = {
 
 
     openDataBase: function () {
@@ -9,7 +9,23 @@ var dbController = {
             request.onupgradeneeded = function (event) {
                 const db = event.target.result;
                 if (!db.objectStoreNames.contains('users')) {
-                    db.createObjectStore('users', { keyPath: 'id', autoIncrement: true });
+                   const usersStore=  db.createObjectStore('users', { keyPath: 'id', autoIncrement: true });
+                   usersStore.createIndex('email', 'email', { unique: false }); 
+                }
+                if (!db.objectStoreNames.contains('sellers')) {
+                   const sellersStore= db.createObjectStore('sellers', { keyPath: 'id', autoIncrement: true });
+                   sellersStore.createIndex('email', 'email', { unique: false }); 
+                }
+                if (!db.objectStoreNames.contains('products')) {
+                    const productsStore = db.createObjectStore('products', { keyPath: 'id', autoIncrement: true });
+                    productsStore.createIndex('seller_id', 'seller_id', { unique: false }); 
+
+                }
+                if (!db.objectStoreNames.contains('reviews')) {
+                    const reviewsStore = db.createObjectStore('reviews', { keyPath: 'id', autoIncrement: true });
+                    reviewsStore.createIndex('user_id', 'user_id', { unique: false }); 
+                    reviewsStore.createIndex('product_id', 'product_id', { unique: false }); 
+
                 }
             };
 
@@ -25,6 +41,7 @@ var dbController = {
             };
         });
     },
+
 
     saveDataArray: function (table, data) {
         if (!db) {
@@ -82,6 +99,7 @@ var dbController = {
         });
 
     },
+
     getDataArray: function (table) {
         return new Promise((resolve, reject) => {
             if (!db) {
@@ -105,6 +123,7 @@ var dbController = {
             };
         });
     },
+
     updateItem: function (table, id, updatedData) {
         let idParsed=parseInt(id);
         if (!db) {
@@ -200,7 +219,31 @@ var dbController = {
                 reject(false); 
             };
         });
+    },
+    getItemsByUniqueKey: function (table, key, value) {
+        return new Promise((resolve, reject) => {
+            if (!db) {
+                console.error('Database not initialized');
+                return reject('Database not initialized');
+            }
+    
+            const transaction = db.transaction([table], 'readonly');
+            const objectStore = transaction.objectStore(table);
+            const index = objectStore.index(key);
+            const request = index.getAll(value); 
+            request.onsuccess = function (event) {
+                const data = event.target.result;
+                console.log('Data from ' + table + ' table based on foreign key ' + key + ':', data);
+                resolve(data);  
+            };
+    
+            request.onerror = function (event) {
+                console.error('Error retrieving data from ' + table + ' table based on foreign key:', event.target.errorCode);
+                reject(event.target.errorCode);  
+            };
+        });
     }
+    
     
 
 }

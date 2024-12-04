@@ -30,14 +30,39 @@
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/colors.css">
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/components.css">
 
-
-
     <!-- BEGIN: Custom CSS-->
 
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <!-- END: Custom CSS-->
+
+    <style>
+        #image-preview-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .image-wrapper .btn {
+            font-size: 12px;
+            padding: 2px 5px;
+        }
+    </style>
 
 </head>
 <!-- END: Head-->
@@ -69,7 +94,7 @@
             </div>
             <ul class="nav navbar-nav align-items-center ms-auto">
 
-                <!-- <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#"
+                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#"
                         data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span
                             class="badge rounded-pill bg-danger badge-up">5</span></a>
                     <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
@@ -171,7 +196,7 @@
                         <li class="dropdown-menu-footer"><a class="btn btn-primary w-100" href="#">Read all
                                 notifications</a></li>
                     </ul>
-                </li> -->
+                </li>
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -200,7 +225,7 @@
                 <li class="nav-item me-auto"><a class="navbar-brand" href="../admin/dashboard.html"><span
                             class="brand-logo">
                         </span>
-                        <h2 class="brand-text">Admin Dashboard</h2>
+                        <h2 class="brand-text">Seller Dashboard</h2>
                     </a></li>
 
             </ul>
@@ -218,13 +243,14 @@
                         data-feather="more-horizontal"></i>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="users.html"><i
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="products.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
-                            data-i18n="Email">users</span></a>
+                            data-i18n="Email">Products</span></a>
                 </li>
+
                 <li class=" nav-item "><a class="d-flex align-items-center" href="sellers.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
-                            data-i18n="Email">sellers</span></a>
+                            data-i18n="Email">orders</span></a>
                 </li>
 
 
@@ -250,12 +276,12 @@
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
 
-                                        <h3 class="fw-bolder mb-75" id="total-users-count">21,459</h3>
-                                        <span>Total Users</span>
+                                        <h3 class="fw-bolder mb-75" id="total-products-count">21,459</h3>
+                                        <span>Total Products</span>
                                     </div>
                                     <div class="avatar bg-light-primary p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -266,12 +292,12 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="active-users-count">19,860</h3>
-                                        <span>Active Users</span>
+                                        <h3 class="fw-bolder mb-75" id="active-products-count">19,860</h3>
+                                        <span>Active Products</span>
                                     </div>
                                     <div class="avatar bg-light-success p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user-check" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -281,14 +307,14 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="inactive-users-count">237</h3>
-                                        <span>Inactive Users</span>
+                                        <h3 class="fw-bolder mb-75" id="inactive-products-count">237</h3>
+                                        <span>Inactive Products</span>
 
 
                                     </div>
                                     <div class="avatar bg-light-warning p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user-x" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -306,14 +332,14 @@
                             </div>
                         </div>
                         <div class="card-datatable table-responsive pt-0">
-                            <table class="user-list-table table">
+                            <table class="product-list-table table">
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
                                         <th>Name</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>gender</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
@@ -326,136 +352,122 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New User</h4>
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New Product</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
                                     <div class="modal-body">
-                                        <form id="add-update-user-form">
-                                            <input type="hidden" id="user-id">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-name">
-                                                            Name</label>
-                                                        <input type="text" id="user-name" name="user-name"
-                                                            class="form-control" placeholder="First Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-phone">
-                                                            phone</label>
-                                                        <input type="text" id="user-phone" name="user-phone"
-                                                            class="form-control" placeholder="Phone Number" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-email">Email</label>
-                                                        <input type="email" id="user-email" name="user-email"
-                                                            class="form-control" placeholder="Email" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-Gender">Gender</label>
-                                                        <select id="user-gender" name="user-gender"
-                                                            class="select2 form-select">
-                                                            <option value=""> select gender</option>
-                                                            <option value="1"> female</option>
-                                                            <option value="2">male</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <form id="add-update-product-form" enctype="multipart/form-data">
+                                            <input type="hidden" id="product-id">
 
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label for="user-profile-pic" class="form-label">Profile
-                                                            pic</label>
-                                                        <input class="form-control" type="file" id="user-profile-pic"
-                                                            name="user-profile-pic" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
+                                            <!-- Product Info Section -->
+                                            <div class="row mb-2">
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="user-country">Governorate</label>
-                                                        <select id="user-country" name="user-country"
+                                                        <label class="form-label" for="product-name">Name</label>
+                                                        <input type="text" id="product-name" name="product-name"
+                                                            class="form-control" placeholder="Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label"
+                                                            for="product-category">Category</label>
+                                                        <select id="product-category" name="product-category"
                                                             class="select2 form-select">
-                                                            <option value="">please select governate</option>
-                                                            <option value="Alexandria">Alexandria</option>
-                                                            <option value="Aswan">Aswan</option>
-                                                            <option value="Asyut">Asyut</option>
-                                                            <option value="Beheira">Beheira</option>
-                                                            <option value="Beni Suef">Beni Suef</option>
-                                                            <option value="Cairo">Cairo</option>
-                                                            <option value="Dakahlia">Dakahlia</option>
-                                                            <option value="Damietta">Damietta</option>
-                                                            <option value="Faiyum">Faiyum</option>
-                                                            <option value="Gharbia">Gharbia</option>
-                                                            <option value="Giza">Giza</option>
-                                                            <option value="Ismailia">Ismailia</option>
-                                                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-                                                            <option value="Luxor">Luxor</option>
-                                                            <option value="Matrouh">Matrouh</option>
-                                                            <option value="Minya">Minya</option>
-                                                            <option value="Monufia">Monufia</option>
-                                                            <option value="New Valley">New Valley</option>
-                                                            <option value="North Sinai">North Sinai</option>
-                                                            <option value="Port Said">Port Said</option>
-                                                            <option value="Qalyubia">Qalyubia</option>
-                                                            <option value="Qena">Qena</option>
-                                                            <option value="Red Sea">Red Sea</option>
-                                                            <option value="Sharqia">Sharqia</option>
-                                                            <option value="Sohag">Sohag</option>
-                                                            <option value="South Sinai">South Sinai</option>
-                                                            <option value="Suez">Suez</option>
+                                                            <option value=""> select category</option>
+                                                            <option value="1"> Necklaces</option>
+                                                            <option value="2">Rings</option>
+                                                            <option value="3">Bracelets</option>
+                                                            <option value="4">Earrings</option>
                                                         </select>
 
                                                     </div>
                                                 </div>
+                                            </div>
 
-
-
+                                            <div class="row mb-2">
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="user-address">Address</label>
-                                                        <input type="text" id="user-address" name="user-address"
-                                                            class="form-control" placeholder="address" />
+                                                        <label for="product-price" class="form-label">Price</label>
+                                                        <input type="number" min="1" id="product-price"
+                                                            name="product-price" class="form-control"
+                                                            placeholder="Price" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label for="product-qty" class="form-label">Quantity</label>
+                                                        <input type="number" min="1" id="product-qty" name="product-qty"
+                                                            class="form-control" placeholder="Quantity" />
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <!-- Image Preview Row -->
+                                            <div id="image-preview-row" class="d-flex flex-wrap gap-2 mb-2"></div>
+
+                                            <!-- Add Image Button -->
+                                            <div class="mb-2">
+                                                <button type="button" id="add-image-btn" class="btn btn-outline-primary"
+                                                    onclick="products.addPerviewImgs()">Add Image</button>
+                                            </div>
+
+                                            <!-- Form Submission Buttons -->
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary me-1 add-update-btn"
-                                                    onclick="users.addUpdate(event);">Add</button>
+                                                    onclick="products.addUpdate(event);">Add</button>
                                                 <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                             </div>
+                                        </form>
                                     </div>
-
-
-
-                                    </form>
                                 </div>
-
-
                             </div>
                         </div>
+
+
+
+
+                        <div class="modal fade text-start" id="review-modal" tabindex="-1"
+                            aria-labelledby="myModalLabel33" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Product reviews</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table class="review-list-table table">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>user</th>
+                                                        <th>rate</th>
+                                                        <th>description</th>
+
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
                         <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
                             aria-labelledby="myModalLabel120" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel120">Delete Seller</h5>
+                                        <h5 class="modal-title" id="myModalLabel120">Delete Product</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
@@ -467,7 +479,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" onclick="users.delete();"
+                                        <button type="button" class="btn btn-danger" onclick="products.delete();"
                                             data-bs-dismiss="modal">Yes</button>
                                     </div>
                                 </div>
@@ -498,7 +510,6 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="../dashboard-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
@@ -532,25 +543,22 @@
     <!-- BEGIN: Page JS-->
     <!-- <script src="../dashboard-assets/js/scripts/pages/app-user-list.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
     <!-- END: Page JS-->
-    <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
 
     <script type="module">
-        import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
-        import { users } from '../../dashboard-assets/custome-js/users.js';
-        console.log(typeof $);
+        import{dbController} from '../dashboard-assets/custome-js/./indexedDb.js'
+        import{products} from '../dashboard-assets/custome-js/products.js';
+
         $(window).on('load', function () {
-            if (!adminAuth.checkSession()) {
-                window.location.href = 'login.html';
-            } else {
-                console.log('User is logged in, loading products');
-                dbController.openDataBase().then(() => { users.viewUsers(); });
-                if (feather) {
-                    feather.replace({
-                        width: 14,
-                        height: 14
-                    });
-                }
+
+            dbController.openDataBase().then(() => { products.viewProducts(); });
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
             }
 
         })
