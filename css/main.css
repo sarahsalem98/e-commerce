@@ -1,0 +1,491 @@
+<<<<<<< HEAD
+
+=======
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
+>>>>>>> 1d11fc0142fe7c36319a79dc68c022426bfe5810
+:root {
+
+    --background-color: rgb(250, 245, 240);
+    --heading-font: 'Cinzel', serif;
+    --text-font: 'Roboto', sans-serif;
+    --text-color: rgba(0, 0, 0, 0.7);
+    --highligted-text-color: rgb(168, 110, 59);
+    --button-color:black;
+    --button-hover:#ffc20e;
+    --button-carousel:#990033;
+
+
+}
+body{
+    font-family:var(--text-font);
+    font-weight: 100;
+}
+h1,h2,h3{
+    font-family:var(--heading-font);
+}
+h1{
+    font-size: 4.3333333333333rem;
+    font-weight: 400;
+}
+p{
+    color:  rgb(84, 84, 84);
+}
+
+.navbar {
+    margin: 0;
+    max-width: 100;
+    background-color: var(--background-color)!important;
+}
+
+.navbar-brand {
+    font-family: var(--heading-font);
+    /* Use Google Font similar to Trajan Pro */
+    font-size: 1.5rem;
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+    font-family: var(--text-font);
+    font-weight: 300;
+
+}
+
+.navbar-nav {
+    flex-grow: 1;
+    gap: 20px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+
+.navbar .search-icon,
+.navbar .cart-icon {
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+
+.navbar .cart-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+@media (min-width: 992px) {
+    .drawer-icons {
+        display: none;
+    }
+}
+
+.brand-subtitle {
+    font-family: var(--text-font);
+    font-size: 0.8rem;
+    color: gray;
+    font-weight: 400;
+    display: block;
+}
+
+.icons {
+    display: flex;
+
+}
+
+@media (max-width:767px) {
+    .navbar {
+        padding: 0 2rem;
+    }
+
+    .icons {
+        display: none;
+    }
+
+    .drawer-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
+
+.navbar-nav li a {
+    color: var(--text-color) !important;
+}
+/*main button*/
+.main-btn{
+    background-color: var(--background-color);
+    color:var(--button-color); 
+    width: 8rem;
+     font-family: var(--heading-font);
+     transition: 0.3s ease;
+    }
+    .main-btn:hover{
+        background-color:var(--button-color);
+        color: white;
+      
+        }
+/* start landing */
+.landing {
+    background-image: url(../utilities/imgs/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);
+    background-size: cover;
+    background-position:center center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 24px);
+    min-width: calc(100vh - 24px);
+   color: black;
+}
+.landing .text h1{
+    font-family: var(--heading-font);
+    font-size: 4rem;
+}
+.landing .text h6{
+    font-family: var(--heading-font); 
+    font-size: 1.2rem;
+}
+.landing .heading{
+    font-weight:600;
+    font-family: var(--heading-font);
+}
+
+
+
+.landing p{
+    max-width: 350px;
+    font-family: var(--text-font);
+}
+
+
+/* end landing */
+/* 
+******************************* */
+/* start brands */
+
+.brands{
+    background-color: white;
+}
+.border {
+    border: 2px solid var(--text-color);
+    padding: 15px; 
+    border-radius: 10px; 
+}
+.carousel-indicators  {
+    bottom: -50px; 
+    background-color: white;
+}
+
+
+.carousel-indicators button:focus {
+    background-color:var(--button-carousel);
+}
+/* End brands */
+
+   /* start products */
+   .main-title::after{
+    content: '';
+    width: 50px;
+    height: 0.1rem;
+    background-color: var(--button-carousel); 
+    position: absolute;
+    bottom: -10px;  
+     left:50%;
+    transform:translateX(-50%);
+     
+}
+.products .text {
+    font-family: var(--heading-font); 
+    font-size: 2.8rem;
+}
+.product .text{
+    font-family: var(--heading-font); 
+    font-size: 2.8rem;
+}
+
+
+/* start Unique */
+ 
+.Unique h1{
+    max-width: 80px;
+}
+.Unique p{
+    max-width: 400px;
+    font-family: var(--heading-font); 
+}
+.Unique .text {
+    font-family: var(--heading-font); 
+    font-size: 3rem;
+}
+
+/* End Unique */
+  */
+ 
+.box {
+    background-color: white;
+    position: relative; 
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+.products .box img {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease;
+
+}
+
+.products .box .img1:hover {
+    cursor: pointer;
+    content: url("../utilities/imgs/ring20.jpg");
+    transition: transform 1s ease; 
+}
+
+.products .box .img2:hover {
+    cursor: pointer;
+    content: url("../utilities/imgs/ring26.jpg");
+
+  
+}
+
+.products .box .img3:hover {
+    cursor: pointer;
+    content: url("../utilities/imgs/ring31.jpg");
+   
+}
+
+.products .box .img4:hover {
+    cursor: pointer;
+    content: url("../utilities/imgs/ring36.jpg");
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ********************* */
+.box {
+    position: relative;
+    overflow: hidden; /
+}
+
+
+.product .box img {
+    transition: transform 0.8s ease; 
+}
+
+
+.product .box img:hover {
+    transform: scale(1.1); 
+}
+
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    text-align: center;
+    padding: 10px;
+    z-index: 1; 
+    font-family: var(--heading-font); 
+
+}
+
+   /* End Products */
+
+/* start business */
+.business{
+    margin-top: 6rem;
+    height:44rem;
+}
+   .business .decription {
+    max-width: 500px; 
+    font-family: var(--heading-font);
+    font-size: 1.2rem; 
+      
+}
+.business .text{
+    font-family: var(--heading-font); 
+    font-size: 3rem;
+}
+.business .text1{
+    font-family: var(--heading-font); 
+    font-size: 1.8rem;
+}
+
+/* End business */
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.footer {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    max-width: 100%;
+}
+
+.footer .container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.footer .footer-section {
+    flex: 1;
+    padding: 10px;
+    
+}
+
+.footer .footer-section h5 {
+    font-family: var(--text-font);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.footer .footer-section ul {
+    list-style: none;
+    padding: 0;
+
+
+}
+
+.footer .footer-section ul li {
+    margin-bottom: 10px;
+
+}
+
+.footer .footer-section ul li a {
+    text-decoration: none;
+    font-weight: 200;
+    color: var(--text-color);
+}
+
+
+
+.footer .footer-section address,
+.footer .footer-section p {
+    margin: 0;
+    font-family: var(--text-font);
+    font-weight: 300;
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.footer .footer-section address a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.footer .footer-section p {
+    margin-top: 5px;
+}
+
+.footer .footer-section span {
+    font-family: var(--text-font);
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+.footer .copyright {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px 0;
+    font-family: var(--text-font);
+    background-color: var(--background-color);
+    margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+    .footer .container {
+        flex-direction: column;
+    }
+
+    .footer .footer-section {
+        padding: 5px 0;
+    }
+<<<<<<< HEAD
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+}
+section div a .hover1:hover{
+    content:url(/client/utilities/imgs/ring-01-b-400x500.jpg)
+}
+section div a .hover2:hover{
+    content:url(/client/utilities/imgs/ring-02-c-400x500.jpg)
+}
+section div a .hover3:hover{
+    content:url(/client/utilities/imgs/ring-03-b-400x500.jpg)
+}
+section div a .hover4:hover{
+    content:url(/client/utilities/imgs/ring-04-b-400x500.jpg)
+}
+section div a .hover5:hover{
+    content:url(/client/utilities/imgs/necklace-01-b-400x500.jpg)
+}
+section div a .hover6:hover{
+    content:url(/client/utilities/imgs/necklace-02-b-400x500.jpg)
+}
+section div a .hover7:hover{
+    content:url(/client/utilities/imgs/necklace-03-b-400x500.jpg)
+}
+section div a .hover8:hover{
+    content:url(/client/utilities/imgs/necklace-04-b-400x500.jpg)
+}
+section div a .hover9:hover{
+    content:url(/client/utilities/imgs/earrings-01-c-400x500.jpg)
+}
+section div a .hover10:hover{
+    content:url(/client/utilities/imgs/earrings-02-b-400x500.jpg)
+}
+section div a .hover11:hover{
+    content:url(/client/utilities/imgs/earrings-03-b-400x500.jpg)
+}
+section div a .hover12:hover{
+    content:url(/client/utilities/imgs/earrings-04-b-400x500.jpg)
+}
+section div a .hover13:hover{
+    content:url(/client/utilities/imgs/necklace-06-b-400x500.jpg)
+}
+.color{
+    background-color: var(--background-color);
+}
+.contact-img{
+    background-image: url(/client/utilities/imgs/hero.jpg);
+    background-size: cover; 
+    background-position: center;
+    height: 500px;
+    filter: brightness(75%);
+}
+>>>>>>> 1d11fc0142fe7c36319a79dc68c022426bfe5810
