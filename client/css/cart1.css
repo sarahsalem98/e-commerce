@@ -1,0 +1,238 @@
+label{
+    color: var(--text-color);
+}
+
+.wrapper label { 
+    font-size: .8em;
+    transition: all .3s linear ;
+ }
+
+.wrapper label * {
+    margin-left: -15px;
+}
+ 
+.rwrapper>label , .loacations_wrapper>label {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    font-size: .8em;
+    top:-1px;
+    margin-left:10px ;
+    
+}
+
+
+ /*********************************/
+.apperance-status-label_toggle{
+    /* opacity: 1 !important; */
+    opacity: 0;
+}
+
+.apperance-status-input{  
+    bottom: 0 !important;
+}
+/*********************************/
+ 
+.required{
+    text-decoration: none !important; 
+}
+
+
+.wrapper , .rwrapper,.loacations_wrapper {
+    border: 1px solid var(--non-active-cart-color);
+    border-radius: 5px;
+    min-height: 50px;
+    max-height: 50px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;   
+}
+
+
+.filed{
+    display: inline-block;
+    position: relative;
+    bottom: 25%;
+    transition: all .3s linear ;
+}
+
+.wrapper * {
+   padding:0 0 0 15px;
+   border-radius: 2px;
+}
+ 
+.filed , .rfiled {
+    outline:none;
+    border: none;
+}
+/* region one */
+.rfiled{
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    z-index: 0;
+}
+
+/* for aligining label starting with select */
+.loacations_wrapper >label{
+    margin-left:13px ;
+}
+/************************************/
+
+.billing_customer_info{
+    width: 55%;
+}
+.order-summary-section{
+    width: 40%;
+} 
+
+/***********************************/
+
+.loacations_wrapper{
+    overflow:visible;
+    position: relative;
+}
+ 
+.loacations_wrapper>div ,  .loacations_wrapper>label{
+    position: absolute;
+}
+
+/* for bropbox ---- for filling whole div */
+.search_select_box *{
+    width: 100% !important;   
+}
+/* to be at the end of the div */
+.search_select_box {
+    bottom: 0 ;
+    width: 100%;
+}
+
+
+/******************************************/
+/*comment area*/
+
+textarea{
+    border: 1px solid var(--non-active-cart-color);
+    border-radius: 5px;
+    outline: none;
+}
+ 
+/******************************************/
+
+.payment_section>ul>li .choices_wrapper, .payment_section>ul>li p {
+    border: 1px solid var(--non-active-cart-color);
+    padding: 15px;
+    border-radius: 2px;
+}
+
+.payment_section>ul>li p {
+    background-color: var(--background-color);
+}
+
+.payment_details_toggle{
+    display: none;
+}
+
+/****************************************************/
+
+.checout_btn{
+    display: block;
+    outline: none;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid;
+}
+
+.checout_btn:hover{
+    background-color: black;
+    color: white;
+}
+ 
+
+/*************************************/
+
+/* summary table  */
+
+
+.order-summary-section th:nth-child(2),.order-summary-section td:nth-child(2){
+    text-align: right;
+}
+.order-summary-section td,.order-summary-section th{
+    padding: 20px!important;
+}
+
+
+/* moved it to globale */
+/* .total th{
+    font-weight: 1000;
+} */
+
+/* ********************************************** */
+
+/*for dropdown ovrride */
+
+input:-webkit-autofill {
+        background-color: #e8f0fe !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
+
+
+
+/* for drop down */
+.bootstrap-select .dropdown-toggle:focus, .bootstrap-select>select.mobile-device:focus+.dropdown-toggle {
+    outline: none !important;
+}
+.btn-light:focus , .form-control:focus {
+    box-shadow: none !important;
+    border-radius:0 ;
+    border-color:  var(--non-active-cart-color) !important;
+}
+.btn-check:focus + .btn-light, .btn-light:focus , .btn-light {
+    
+background-color: white !important;
+border-color: white !important;
+box-shadow: none !important;
+}
+
+.btn{
+    transition: none !important;
+}
+
+
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #0073aa !important;
+}
+
+
+.show > .btn-light.dropdown-toggle {
+    background-color: white !important;
+    border: 0 !important;
+    outline: none !important;
+}
+/**************************************************************/
+
+
+
+    
+@media (max-width: 1000px){
+    
+    .main-section{
+        flex-wrap: wrap;
+    }
+    .main-section .order-summary-section{
+        position: relative;
+        order: 0;
+        width: 100% ;
+    }
+    .main-section .billing_customer_info{
+        order: 1;
+        width: 100% ;
+         
+    }    
+}

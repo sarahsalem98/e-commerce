@@ -1,0 +1,142 @@
+:root{
+    --non-active-cart-color:lightgray;
+    --active-cart-color:rgb(168, 110, 59);
+    --danger-color:red;
+    --updating-cart-bars-bg-color:#f7f6f7;;
+    --heading-text-color:black;
+     
+}
+
+
+.title{
+    font-family: var(--heading-font) !important;
+    color: var(--heading-text-color) !important;
+    text-transform:uppercase; 
+    line-height: 2em;
+    margin-bottom: 5px;
+    width:100%;
+}
+.title-form{
+    margin-bottom: 20px;
+}
+
+ /*for boot strap table */
+.table-bordered > :not(caption) > * > * {
+    border-width: 0 !important;
+}
+
+ table{
+    color: var(--text-color) !important;
+}
+/* for page two and three */
+.total th{
+    font-weight: 800;
+}
+
+
+/**********************************************/
+
+.prgressive-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+ 
+/* grogressive bar preparation */
+.prgressive-bar{
+    font-size: 1.1em;
+    font-family: var(--text-font);
+}
+
+.page{
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    display:flex;
+    
+    line-height: 2em;
+
+    color: var( --non-active-cart-color);
+}
+
+.page>span , .prgressive-bar span{
+ 
+    display: inline-block;
+    text-align: center;
+
+    line-height: 1.7em; /* to be aligned with p neibour level*/
+     
+    margin-right: .5em;
+    width:1.8em;
+    height: 1.8em;
+
+    
+
+    border-radius: 50%;
+    
+    background-color: var( --non-active-cart-color);
+    color: white;
+
+}
+
+/*for each direct child span that represent arrow for next in progreessive bar*/
+.prgressive-bar>span{
+
+    color:  var( --non-active-cart-color);
+    font-size: 2.2em;
+    background-color: white;
+    
+    line-height: 1.3em; /* to be aligned with neightbor */
+
+    width:40px; /* to be small for flex purpose */
+    
+}
+
+ 
+
+/*************************************************/
+/*second look for activation page*/
+
+.active-page{
+    color:  var(--active-cart-color) !important;
+}
+.active-page-step-num{
+    background-color: var(--active-cart-color) !important;
+    color: white !important;
+}
+/*************************************************/
+/* for prgressive bar */
+.success-fill-info{
+    cursor: pointer;
+}
+
+/*this the default cuz the user not fill all requried information.*/
+.prgressive-bar a:last-child{
+    cursor:default ;
+}
+
+
+/*this the default for thiprogressivebar */
+/*this one will be active , when the user fill all requred informantion*/
+.prgressive-bar a{
+    color:var(--non-active-cart-color) ;
+}
+
+.table-bordered > :not(caption) > * > * {
+    border-width: 0 !important;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 769px) {
+    .prgressive-bar{
+        display: none;
+    }   
+    
+}

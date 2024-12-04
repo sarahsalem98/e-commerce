@@ -17,20 +17,21 @@
 
 </head>
 
-<body>
+<body class="container-fluid">
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <!-- <a class="navbar-brand" href="#">
                 BLINGG
                 <span class="brand-subtitle">JEWELRY STORE</span>
-            </a>
+            </a> -->
+            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto text-center">
                     <div class="drawer-icons">
                         <li class="nav-item">
                             <a class="nav-link" href="#">LOGIN</a>
@@ -43,17 +44,26 @@
                         <a class="nav-link" href="#">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
+                        <a class="nav-link" href="products.html">PRODUCTS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link2" href="#">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
                     <div class="icons">
                         <li class="nav-item">
-                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <!-- <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a> -->
+                            <a class="nav-link text-danger" href="login.html">LOGIN</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SIGNUP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="register_customer.html" class="dropdown-item">customer</a></li>
+                                <li><a href="register_seller.html" class="dropdown-item">seller</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
@@ -66,16 +76,16 @@
         </div>
     </nav>
     <!-- logln-->
-    <main class="container">
+    <main>
         <section class="container mt-5">
             <a class="text-decoration-none text-secondary" href="home.html">Home </a>/
             <a class="text-decoration-none text-secondary" href="login.html">LogIn</a>
         </section>
         <section class="row d-flex align-items-center">
             <div class="col d-none d-lg-flex">
-                <img class="img-fluid" src="utilities/imgs/register.jpg" alt="register">
+                <img class="img-fluid" style="background-color:rgb(250, 245, 240);" src="utilities/imgs/register-removebg-preview.png" alt="register">
             </div>
-            <div class="col m-5 p-5">
+            <div class="col m-5 p-5 offset-10">
                 <h3>Log in</h3>
                 <p>Enter your details bellow</p>
                 <form class="form">
@@ -85,20 +95,21 @@
                     <div class="mb-3">
                         <input class="form-control border-0 border-bottom" type="password" placeholder="Password">
                     </div>
-                    <div class="mb-3 row">
-                        <input class="col form-control bg-danger text-white me-5" type="button" value="Log in">
-                        <a class="col text-danger text-decoration-none ms-5" href="">Forget password?</a>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <input class="w-25 form-control btn-outline-dark rounded-0 me-5" type="button" value="Log in">
+                        <a class="text-dark text-decoration-none ms-5" href="">Forget password?</a>
                     </div>
                 </form>
             </div>
         </section>
     </main>
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer text-center text-md-start">
         <div class="container">
             <div class="footer-section">
-                <h4>BLINGG</h4>
-                <span class="brand-subtitle">JEWELRY STORE</span>
+                <!-- <h4>BLINGG</h4>
+                <span class="brand-subtitle">JEWELRY STORE</span> -->
+                <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
             </div>
             <div class="footer-section">
                 <h5>About Us</h5>
