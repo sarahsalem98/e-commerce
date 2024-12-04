@@ -21,7 +21,7 @@ $(function () {
       3: { title: 'Inactive', class: 'badge-light-secondary' }
     };
 
-  var assetPath = '../../../app-assets/',
+  var assetPath = '../../dashboard-assets/',
     userView = 'app-user-view-account.html';
 
   if ($('body').attr('data-framework') === 'laravel') {
