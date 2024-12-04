@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <title>Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/forms/select/select2.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/tables/datatable/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
+    <!-- END: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/plugins/forms/form-validation.css">
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/components.css">
+
+
+   
+    <!-- BEGIN: Custom CSS-->
+
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- END: Custom CSS-->
+
+</head>
+<!-- END: Head-->
+
+<!-- BEGIN: Body-->
+
+<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
+
+    <!-- BEGIN: Header-->
+    <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
+        <div class="navbar-container d-flex content">
+            <div class="bookmark-wrapper d-flex align-items-center">
+                <ul class="nav navbar-nav d-xl-none">
+                    <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon" data-feather="menu"></i></a></li>
+                </ul>
+              
+                <ul class="nav navbar-nav">
+                        <div class="bookmark-input search-input">
+                            <div class="bookmark-input-icon"><i data-feather="search"></i></div>
+                            <input class="form-control input" type="text" placeholder="Bookmark" tabindex="0" data-search="search">
+                            <ul class="search-list search-list-bookmark"></ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav align-items-center ms-auto">
+             
+                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge rounded-pill bg-danger badge-up">5</span></a>
+                    <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
+                        <li class="dropdown-menu-header">
+                            <div class="dropdown-header d-flex">
+                                <h4 class="notification-title mb-0 me-auto">Notifications</h4>
+                                <div class="badge rounded-pill badge-light-primary">6 New</div>
+                            </div>
+                        </li>
+                        <li class="scrollable-container media-list"><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar"><img src="../dashboard-assets/images/portrait/small/avatar-s-15.jpg" alt="avatar" width="32" height="32"></div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">Congratulation Sam 🎉</span>winner!</p><small class="notification-text"> Won the monthly best seller badge.</small>
+                                    </div>
+                                </div>
+                            </a><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar"><img src="../dashboard-assets/images/portrait/small/avatar-s-3.jpg" alt="avatar" width="32" height="32"></div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">New message</span>&nbsp;received</p><small class="notification-text"> You have 10 unread messages</small>
+                                    </div>
+                                </div>
+                            </a><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar bg-light-danger">
+                                            <div class="avatar-content">MD</div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">Revised Order 👋</span>&nbsp;checkout</p><small class="notification-text"> MD Inc. order updated</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="list-item d-flex align-items-center">
+                                <h6 class="fw-bolder me-auto mb-0">System Notifications</h6>
+                                <div class="form-check form-check-primary form-switch">
+                                    <input class="form-check-input" id="systemNotification" type="checkbox" checked="">
+                                    <label class="form-check-label" for="systemNotification"></label>
+                                </div>
+                            </div><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar bg-light-danger">
+                                            <div class="avatar-content"><i class="avatar-icon" data-feather="x"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">Server down</span>&nbsp;registered</p><small class="notification-text"> USA Server is down due to high CPU usage</small>
+                                    </div>
+                                </div>
+                            </a><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar bg-light-success">
+                                            <div class="avatar-content"><i class="avatar-icon" data-feather="check"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">Sales report</span>&nbsp;generated</p><small class="notification-text"> Last month sales report generated</small>
+                                    </div>
+                                </div>
+                            </a><a class="d-flex" href="#">
+                                <div class="list-item d-flex align-items-start">
+                                    <div class="me-1">
+                                        <div class="avatar bg-light-warning">
+                                            <div class="avatar-content"><i class="avatar-icon" data-feather="alert-triangle"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="list-item-body flex-grow-1">
+                                        <p class="media-heading"><span class="fw-bolder">High memory</span>&nbsp;usage</p><small class="notification-text"> BLR Server using high memory</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown-menu-footer"><a class="btn btn-primary w-100" href="#">Read all notifications</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">John Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img class="round" src="../dashboard-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="auth-login-cover.html"><i class="me-50" data-feather="power"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  
+    <!-- END: Header-->
+
+
+    <!-- BEGIN: Main Menu-->
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item me-auto"><a class="navbar-brand" href="../admin/dashboard.html"><span class="brand-logo">
+                </span>
+                        <h2 class="brand-text">Admin Dashboard</h2>
+                    </a></li>
+               
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <div class="main-menu-content">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+                <li class=" nav-item"><a class="d-flex align-items-center" href="../admin/dashboard.html"><i
+                            data-feather="home"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">Dashboard</span></a>
+                </li>
+
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
+                        data-feather="more-horizontal"></i>
+                </li>
+
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="app-email.html"><i
+                            data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">users</span></a>
+                </li>
+
+                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
+                </li>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
+                </li>
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Email">users</span></a>
+                </li>
+           
+              
+             
+            </ul>
+        </div>
+    </div>
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <!-- users list start -->
+                <section class="app-user-list">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+
+                                        <h3 class="fw-bolder mb-75" id="total-users-count">21,459</h3>
+                                        <span>Total Users</span>
+                                    </div>
+                                    <div class="avatar bg-light-primary p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="user" class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75">4,567</h3>
+                                        <span>Paid Users</span>
+                                    </div>
+                                    <div class="avatar bg-light-danger p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="user-plus" class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="active-users-count">19,860</h3>
+                                        <span>Active Users</span>
+                                    </div>
+                                    <div class="avatar bg-light-success p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="user-check" class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="inactive-users-count">237</h3>
+                                        <span>Inactive Users</span>
+                                      
+
+                                    </div>
+                                    <div class="avatar bg-light-warning p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather="user-x" class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- list and filter start -->
+                    <div class="card">
+                        <div class="card-body border-bottom">
+                            <h4 class="card-title">Search & Filter</h4>
+                            <div class="row">
+                                <div class="col-md-4 user_role"></div>
+                                <div class="col-md-4 user_plan"></div>
+                                <div class="col-md-4 user_status"></div>
+                            </div>
+                        </div>
+                        <div class="card-datatable table-responsive pt-0">
+                            <table class="user-list-table table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>gender</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="modal fade text-start" id="create-updateUser" tabindex="-1"
+                            aria-labelledby="myModalLabel33" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New User</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form id="add-update-user-form">
+                                            <input type="hidden" id="user-id">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-name">
+                                                            Name</label>
+                                                        <input type="text" id="user-name" name="user-name"
+                                                            class="form-control" placeholder="First Name" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-phone">
+                                                            phone</label>
+                                                        <input type="text" id="user-phone" name="user-phone"
+                                                            class="form-control" placeholder="Phone Number" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-email">Email</label>
+                                                        <input type="email" id="user-email" name="user-email"
+                                                            class="form-control" placeholder="Email" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-Gender">Gender</label>
+                                                        <select id="user-gender" name="user-gender" class="select2 form-select">
+                                                               <option value=""> select gender</option>
+                                                               <option value="1"> female</option>
+                                                               <option value="2">male</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="mb-1">
+                                                        <label for="user-profile-pic" class="form-label">Profile
+                                                            pic</label>
+                                                        <input class="form-control" type="file" id="user-profile-pic"
+                                                            name="user-profile-pic" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-country">Governorate</label>
+                                                        <select id="user-country" name="user-country" class="select2 form-select">
+                                                            <option value="">please select governate</option>
+                                                            <option value="Alexandria">Alexandria</option>
+                                                            <option value="Aswan">Aswan</option>
+                                                            <option value="Asyut">Asyut</option>
+                                                            <option value="Beheira">Beheira</option>
+                                                            <option value="Beni Suef">Beni Suef</option>
+                                                            <option value="Cairo">Cairo</option>
+                                                            <option value="Dakahlia">Dakahlia</option>
+                                                            <option value="Damietta">Damietta</option>
+                                                            <option value="Faiyum">Faiyum</option>
+                                                            <option value="Gharbia">Gharbia</option>
+                                                            <option value="Giza">Giza</option>
+                                                            <option value="Ismailia">Ismailia</option>
+                                                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                                                            <option value="Luxor">Luxor</option>
+                                                            <option value="Matrouh">Matrouh</option>
+                                                            <option value="Minya">Minya</option>
+                                                            <option value="Monufia">Monufia</option>
+                                                            <option value="New Valley">New Valley</option>
+                                                            <option value="North Sinai">North Sinai</option>
+                                                            <option value="Port Said">Port Said</option>
+                                                            <option value="Qalyubia">Qalyubia</option>
+                                                            <option value="Qena">Qena</option>
+                                                            <option value="Red Sea">Red Sea</option>
+                                                            <option value="Sharqia">Sharqia</option>
+                                                            <option value="Sohag">Sohag</option>
+                                                            <option value="South Sinai">South Sinai</option>
+                                                            <option value="Suez">Suez</option>
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-address">Address</label>
+                                                        <input type="text" id="user-address" name="user-address" class="form-control"
+                                                            placeholder="address" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary me-1 add-update-btn"
+                                                    onclick="users.addUpdate(event);">Add</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
+                            aria-labelledby="myModalLabel120" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel120">Danger Modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="danger-modal-text">
+
+                                        </div>
+                                        <input type="hidden" class="deleted-record-id">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" onclick="users.delete();"
+                                            data-bs-dismiss="modal">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal to add new user Ends-->
+            </div>
+            <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light">
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+    <!-- END: Footer-->
+
+
+    <!-- BEGIN: Vendor JS-->
+
+    <script src="../dashboard-assets/vendors/js/vendors.min.js" ></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="../dashboard-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/forms/cleave/cleave.min.js"></script>
+    <script src="../dashboard-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
+
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="../dashboard-assets/js/core/app-menu.js"></script>
+    <script src="../dashboard-assets/js/core/app.js"></script>
+    <!-- <script src="../dashboard-assets/js/scripts/components/components-modals.js"></script> -->
+
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <!-- <script src="../dashboard-assets/js/scripts/pages/app-user-list.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../dashboard-assets/custome-js/general.js"></script>
+    <script src="../dashboard-assets/custome-js/indexedDb.js"></script>
+    <script src="../dashboard-assets/custome-js/users.js"></script>
+    <!-- END: Page JS-->
+
+    <script>
+        $(window).on('load', function () {
+     
+            dbController.openDataBase().then(() => { users.viewUsers(); } );
+            general.initToastr();
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+</body>
+<!-- END: Body-->
+
+</html>
