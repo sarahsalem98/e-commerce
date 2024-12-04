@@ -23,6 +23,7 @@
         href="../dashboard-assets/vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
     <!-- END: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/plugins/forms/form-validation.css">
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/css/bootstrap-extended.css">
@@ -32,8 +33,10 @@
 
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
     <!-- END: Custom CSS-->
 
 </head>
@@ -214,7 +217,7 @@
                 <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                         data-feather="more-horizontal"></i>
                 </li>
-               
+
                 <li class=" nav-item active"><a class="d-flex align-items-center" href="app-email.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">users</span></a>
@@ -242,7 +245,8 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75">21,459</h3>
+
+                                        <h3 class="fw-bolder mb-75" id="total-users-count">21,459</h3>
                                         <span>Total Users</span>
                                     </div>
                                     <div class="avatar bg-light-primary p-50">
@@ -258,7 +262,7 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75">19,860</h3>
+                                        <h3 class="fw-bolder mb-75" id="active-users-count">19,860</h3>
                                         <span>Active Users</span>
                                     </div>
                                     <div class="avatar bg-light-success p-50">
@@ -273,8 +277,10 @@
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75">237</h3>
-                                        <span>Pending Users</span>
+                                        <h3 class="fw-bolder mb-75" id="inactive-users-count">237</h3>
+                                        <span>Inactive Users</span>
+                                      
+
                                     </div>
                                     <div class="avatar bg-light-warning p-50">
                                         <span class="avatar-content">
@@ -285,6 +291,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- list and filter start -->
                     <div class="card">
                         <div class="card-body border-bottom">
@@ -302,138 +309,129 @@
                                         <th>Name</th>
                                         <th>Address</th>
                                         <th>Phone</th>
+                                        <th>gender</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-                        <div class="modal fade text-start" id="inlineForm" tabindex="-1"
+
+                        <div class="modal fade text-start" id="create-updateUser" tabindex="-1"
                             aria-labelledby="myModalLabel33" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel33">Add New User</h4>
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New User</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
                                     <div class="modal-body">
-                                        <form class="form form-vertical">
+                                        <form id="add-update-user-form">
+                                            <input type="hidden" id="user-id">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="first-name-vertical">
+                                                        <label class="form-label" for="user-name">
                                                             Name</label>
-                                                        <input type="text" id="first-name-vertical" class="form-control"
-                                                            name="fname" placeholder="First Name" />
+                                                        <input type="text" id="user-name" name="user-name"
+                                                            class="form-control" placeholder="First Name" />
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="first-name-vertical">
+                                                        <label class="form-label" for="user-phone">
                                                             phone</label>
-                                                        <input type="text" id="first-name-vertical" class="form-control"
-                                                            name="fname" placeholder="First Name" />
+                                                        <input type="text" id="user-phone" name="user-phone"
+                                                            class="form-control" placeholder="Phone Number" />
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="email-id-vertical">Email</label>
-                                                        <input type="email" id="email-id-vertical" class="form-control"
-                                                            name="email-id" placeholder="Email" />
+                                                        <label class="form-label" for="user-email">Email</label>
+                                                        <input type="email" id="user-email" name="user-email"
+                                                            class="form-control" placeholder="Email" />
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-2">
+                                                <div class="col-6">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="country">Country</label>
-                                                        <select id="country" class="select2 form-select">
-                                                            <option value="Australia">USA</option>
-                                                            <option value="Bangladesh">Bangladesh</option>
-                                                            <option value="Belarus">Belarus</option>
-                                                            <option value="Brazil">Brazil</option>
-                                                            <option value="Canada">Canada</option>
-                                                            <option value="China">China</option>
-                                                            <option value="France">France</option>
-                                                            <option value="Germany">Germany</option>
-                                                            <option value="India">India</option>
-                                                            <option value="Indonesia">Indonesia</option>
-                                                            <option value="Israel">Israel</option>
-                                                            <option value="Italy">Italy</option>
-                                                            <option value="Japan">Japan</option>
-                                                            <option value="Korea">Korea, Republic of</option>
-                                                            <option value="Mexico">Mexico</option>
-                                                            <option value="Philippines">Philippines</option>
-                                                            <option value="Russia">Russian Federation</option>
-                                                            <option value="South Africa">South Africa</option>
-                                                            <option value="Thailand">Thailand</option>
-                                                            <option value="Turkey">Turkey</option>
-                                                            <option value="Ukraine">Ukraine</option>
-                                                            <option value="United Arab Emirates">United Arab Emirates
-                                                            </option>
-                                                            <option value="United Kingdom">United Kingdom</option>
-                                                            <option value="United States">United States</option>
+                                                        <label class="form-label" for="user-Gender">Gender</label>
+                                                        <select id="user-gender" name="user-gender" class="select2 form-select">
+                                                               <option value=""> select gender</option>
+                                                               <option value="1"> female</option>
+                                                               <option value="2">male</option>
                                                         </select>
                                                     </div>
                                                 </div>
-
-
-
-                                                <div class="col-2">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="country">city</label>
-                                                        <select id="country" class="select2 form-select">
-                                                            <option value="Australia">USA</option>
-                                                            <option value="Bangladesh">Bangladesh</option>
-                                                            <option value="Belarus">Belarus</option>
-                                                            <option value="Brazil">Brazil</option>
-                                                            <option value="Canada">Canada</option>
-                                                            <option value="China">China</option>
-                                                            <option value="France">France</option>
-                                                            <option value="Germany">Germany</option>
-                                                            <option value="India">India</option>
-                                                            <option value="Indonesia">Indonesia</option>
-                                                            <option value="Israel">Israel</option>
-                                                            <option value="Italy">Italy</option>
-                                                            <option value="Japan">Japan</option>
-                                                            <option value="Korea">Korea, Republic of</option>
-                                                            <option value="Mexico">Mexico</option>
-                                                            <option value="Philippines">Philippines</option>
-                                                            <option value="Russia">Russian Federation</option>
-                                                            <option value="South Africa">South Africa</option>
-                                                            <option value="Thailand">Thailand</option>
-                                                            <option value="Turkey">Turkey</option>
-                                                            <option value="Ukraine">Ukraine</option>
-                                                            <option value="United Arab Emirates">United Arab Emirates
-                                                            </option>
-                                                            <option value="United Kingdom">United Kingdom</option>
-                                                            <option value="United States">United States</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-8">
-                                                    <div class="mb-1">
-                                                        <label class="form-label"
-                                                            for="password-vertical">address</label>
-                                                        <input type="password" id="password-vertical"
-                                                            class="form-control" name="contact"
-                                                            placeholder="Password" />
-                                                    </div>
-                                                </div>
                                             </div>
-                                            
-                                           
 
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary me-1">Add</button>
-                                                    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                                    <div class="mb-1">
+                                                        <label for="user-profile-pic" class="form-label">Profile
+                                                            pic</label>
+                                                        <input class="form-control" type="file" id="user-profile-pic"
+                                                            name="user-profile-pic" />
+                                                    </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-country">Governorate</label>
+                                                        <select id="user-country" name="user-country" class="select2 form-select">
+                                                            <option value="">please select governate</option>
+                                                            <option value="Alexandria">Alexandria</option>
+                                                            <option value="Aswan">Aswan</option>
+                                                            <option value="Asyut">Asyut</option>
+                                                            <option value="Beheira">Beheira</option>
+                                                            <option value="Beni Suef">Beni Suef</option>
+                                                            <option value="Cairo">Cairo</option>
+                                                            <option value="Dakahlia">Dakahlia</option>
+                                                            <option value="Damietta">Damietta</option>
+                                                            <option value="Faiyum">Faiyum</option>
+                                                            <option value="Gharbia">Gharbia</option>
+                                                            <option value="Giza">Giza</option>
+                                                            <option value="Ismailia">Ismailia</option>
+                                                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                                                            <option value="Luxor">Luxor</option>
+                                                            <option value="Matrouh">Matrouh</option>
+                                                            <option value="Minya">Minya</option>
+                                                            <option value="Monufia">Monufia</option>
+                                                            <option value="New Valley">New Valley</option>
+                                                            <option value="North Sinai">North Sinai</option>
+                                                            <option value="Port Said">Port Said</option>
+                                                            <option value="Qalyubia">Qalyubia</option>
+                                                            <option value="Qena">Qena</option>
+                                                            <option value="Red Sea">Red Sea</option>
+                                                            <option value="Sharqia">Sharqia</option>
+                                                            <option value="Sohag">Sohag</option>
+                                                            <option value="South Sinai">South Sinai</option>
+                                                            <option value="Suez">Suez</option>
+                                                        </select>
+                                                        
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-6">
+                                                    <div class="mb-1">
+                                                        <label class="form-label" for="user-address">Address</label>
+                                                        <input type="text" id="user-address" name="user-address" class="form-control"
+                                                            placeholder="address" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary me-1 add-update-btn"
+                                                    onclick="users.addUpdate(event);">Add</button>
+                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                             </div>
                                     </div>
 
@@ -445,8 +443,33 @@
 
                             </div>
                         </div>
+
+                        <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
+                            aria-labelledby="myModalLabel120" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel120">Danger Modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="danger-modal-text">
+
+                                        </div>
+                                        <input type="hidden" class="deleted-record-id">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" onclick="users.delete();"
+                                            data-bs-dismiss="modal">Yes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                  
+
                     <!-- Modal to add new user Ends-->
             </div>
             <!-- list and filter end -->
@@ -469,7 +492,8 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="../dashboard-assets/vendors/js/vendors.min.js"></script>
+
+    <script src="../dashboard-assets/vendors/js/vendors.min.js" ></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -488,22 +512,29 @@
     <script src="../dashboard-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
     <script src="../dashboard-assets/vendors/js/forms/cleave/cleave.min.js"></script>
     <script src="../dashboard-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
+
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="../dashboard-assets/js/core/app-menu.js"></script>
     <script src="../dashboard-assets/js/core/app.js"></script>
+    <!-- <script src="../dashboard-assets/js/scripts/components/components-modals.js"></script> -->
+
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
     <!-- <script src="../dashboard-assets/js/scripts/pages/app-user-list.js"></script> -->
-    <script src="../dashboard-assets/js/scripts/components/components-modals.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../dashboard-assets/custome-js/general.js"></script>
+    <script src="../dashboard-assets/custome-js/indexedDb.js"></script>
     <script src="../dashboard-assets/custome-js/users.js"></script>
     <!-- END: Page JS-->
 
     <script>
         $(window).on('load', function () {
-            users.viewUsers();
+     
+            dbController.openDataBase().then(() => { users.viewUsers(); } );
+            general.initToastr();
             if (feather) {
                 feather.replace({
                     width: 14,
