@@ -1,0 +1,73 @@
+[
+    {
+      "product_id": 3,
+      "user_id": 1,
+      "user_name":"sara",
+      "rate": 5,
+      "description": "Absolutely love this necklace! The quality is outstanding and it looks even better in person."
+    },
+    {
+      "product_id": 3,
+      "user_id": 2,
+      "user_name":"sara",
+      "rate": 4,
+      "description": "Very nice ring, but it was slightly smaller than I expected. Still, great quality."
+    },
+    {
+      "product_id": 3,
+      "user_id": 3,
+      "user_name":"sara",
+      "rate": 3,
+      "description": "The bracelet looks good, but the clasp is a bit loose. I'm happy with the design overall."
+    },
+    {
+      "product_id": 4,
+      "user_id": 4,
+      "user_name":"sara",
+      "rate": 5,
+      "description": "This pair of earrings is stunning! Perfect for a night out. The shine is amazing."
+    },
+    {
+      "product_id": 5,
+      "user_id": 5,
+      "user_name":"sara",
+      "rate": 2,
+      "description": "The pendant broke after a week of wearing it. Disappointed with the durability."
+    },
+    {
+      "product_id": 6,
+      "user_id": 6,
+      "user_name":"sara",
+      "rate": 4,
+      "description": "The bangle is beautiful, but it was a bit too tight for my wrist. Otherwise, it's great."
+    },
+    {
+      "product_id": 7,
+      "user_id": 7,
+      "user_name":"sara",
+      "rate": 1,
+      "description": "Terrible quality. The anklet broke the first day I wore it. Would not recommend."
+    },
+    {
+      "product_id": 8,
+      "user_id": 8,
+      "user_name":"sara",
+      "rate": 3,
+      "description": "Nice necklace, but the chain is too short for my liking. I had to buy an extension."
+    },
+    {
+      "product_id": 9,
+      "user_id": 9,
+      "user_name":"sara",
+      "rate": 4,
+      "description": "Really pretty ring! The stone shines brightly, but the band feels a little flimsy."
+    },
+    {
+      "product_id": 10,
+      "user_id": 10,
+      "user_name":"sara",
+      "rate": 5,
+      "description": "Absolutely gorgeous earrings. They match everything and are perfect for daily wear."
+    }
+  ]
+  

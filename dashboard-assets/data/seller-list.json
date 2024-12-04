@@ -1,0 +1,102 @@
+[
+  {
+      "id": 1,
+      "full_name": "Galen Slixby",
+      "phone": "+1-234-567-8901",
+      "email": "gslixby0@abc.net.au",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 2,
+      "full_name": "Jules Windsor",
+      "phone": "+1-345-678-9012",
+      "email": "jwindsor1@xyz.com",
+      "status_user": 2,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 3,
+      "full_name": "Talia Keyes",
+      "phone": "+1-456-789-0123",
+      "email": "tkeyes2@example.org",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 4,
+      "full_name": "Liam Grayson",
+      "phone": "+1-567-890-1234",
+      "email": "lgrayson3@abc.net.au",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 5,
+      "full_name": "Olivia Barnes",
+      "phone": "+1-678-901-2345",
+      "email": "obarnes4@xyz.com",
+      "status_user": 2,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 6,
+      "full_name": "Noah Carter",
+      "phone": "+1-789-012-3456",
+      "email": "ncarter5@example.org",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 7,
+      "full_name": "Sophia James",
+      "phone": "+1-890-123-4567",
+      "email": "sjames6@abc.net.au",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 8,
+      "full_name": "Mason King",
+      "phone": "+1-901-234-5678",
+      "email": "mking7@xyz.com",
+      "status_user": 2,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 9,
+      "full_name": "Ella Fisher",
+      "phone": "+1-012-345-6789",
+      "email": "efisher8@example.org",
+      "status_user": 2,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  },
+  {
+      "id": 10,
+      "full_name": "Lucas Harper",
+      "phone": "+1-123-456-7890",
+      "email": "lharper9@abc.net.au",
+      "status_user": 1,
+      "national_id": "1234567891234",
+      "password":"12345",
+      "commercial_registration": "676577"
+  }
+]
