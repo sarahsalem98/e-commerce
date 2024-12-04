@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    
+ 
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+     
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cartGlobals.css">
+    <link rel="stylesheet" href="./css/cart.css">
+
+     
+    <script src="js/cartGlabals.js"></script>
+    <style>
+ 
+             
+         
+         
+    </style>
+    <title>home</title>
+
+</head>
+
+<body>
+    <!--nav bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                BLINGG
+                <span class="brand-subtitle">JEWELRY STORE</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <div class="drawer-icons">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CART</a>
+                        </li>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PRODUCTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link2" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACT</a>
+                    </li>
+                    <div class="icons">
+                        <li class="nav-item">
+                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
+                                    class="badge badge-pill badge-primary">6</span></a>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+      
+
+        <!--  to active the current step you have to add tow classes  
+          
+        1-active-page for the main anchor tage   
+        2- active-page-step-num  for span that is represent current step  -->
+
+
+
+        <section  class="cart-section container mt-5">
+            
+            <h2 class="title">cart</h2>
+
+
+            <!-- progressbar -->
+            <div class="prgressive-bar" class="row">
+
+                <a href="cart.html" class="page one active-page">
+
+                    <span class="step-number active-page-step-num">1</span>
+                    <p>Shopping Cart </p>
+                    
+
+                </a>
+
+                <span>></span>
+                 
+                <a href="cart1.html" class="page two" >
+
+                    <span class="step-number">2</span>
+                    <p>checkout details</p>
+
+                </a>
+
+                 
+                <span>></span>
+                <a href="#" class="page three" >
+
+                    <span class="step-number">3</span>
+                    <p>order complete</p>
+
+                </a>
+
+            </div>
+        
+            <!-- for updating purpose in our cart -->
+            <div class="d-flex border-top border-3 border-dark pt-3" style="background-color:var(--updating-cart-bars-bg-color); line-height: 2em; ">
+                <!-- <img src="utilities/cart_imgs/check_5610944.png" alt="" style="width:20px" height="20px" class="mx-2"> -->
+                
+                <div class="update-icon">
+                    <i class="fa-regular fa-circle-check p-1"></i>
+                    
+                </div>
+                <p>Cart Updated</p>
+            </div>
+
+            <!-- if cart is empty -->
+
+            <div class="d-flex border-top border-3 border-dark pt-2 mt-4" style="background-color:var(--updating-cart-bars-bg-color);">
+                 <!-- <img src="utilities/cart_imgs/delete-cart_7661838.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
+                 <!-- <img src="utilities/cart_imgs/add-cart_4401532.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
+                 <span class="fas fa-shopping-cart fa-1x mx-2" style="line-height: 2em;"></span>
+                <p  style="line-height: 2em;">Your cart is currently empty.</p>
+            </div>
+
+
+            <!-- tables -->
+
+            <!-- justify-content-evenly -->
+            <div class="d-flex justify-content-between mt-5 mb-5 cart-tables" style="width:100%;">
+
+                <!-- table for all product detailts that user added it -->
+             <table class="table table-bordered  border border-1 details-tabel">
+                <thead > 
+                    <tr>
+                        <th></th> 
+                        <th></th>   
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>subtotal</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr  >
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+
+                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
+
+                        <td><a href="" > Product name 1</a></td>
+
+                        <td>$350.00</td>
+                       
+                        <td class="">
+
+                            <div class=" d-flex controler">
+                                <input type="button"  value="-" >
+                                <input type="text" value="1" readonly/>
+                                <input type="button"    value="+"> 
+                            </div>
+                            
+                        </td>
+
+                        <td>
+                            $1,750.00
+                        </td>
+                        
+                    </tr>
+                    <tr  >
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+
+                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
+
+                        <td><a href="" > Product name 1</a></td>
+
+                        <td>$350.00</td>
+                       
+                        <td class="">
+
+                            <div class=" d-flex controler">
+                                <input type="button"  value="-" >
+                                <input type="text" value="1" readonly/>
+                                <input type="button"    value="+"> 
+                            </div>
+                            
+                        </td>
+
+                        <td>
+                            $1,750.00
+                        </td>
+                        
+                    </tr>
+                    <tr >
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+
+                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
+
+                        <td><a href="" > Product name 1</a></td>
+
+                        <td>$350.00</td>
+                       
+                        <td class="">
+
+                            <div class=" d-flex controler">
+                                <input type="button"  value="-" >
+                                <input type="text" value="1" readonly />
+                                <input type="button"    value="+"> 
+                            </div>
+                            
+                        </td>
+
+                        <td>
+                            $1,750.00
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+
+                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
+
+                        <td><a href="" > Product name 1</a></td>
+
+                        <td>$350.00</td>
+                       
+                        <td>
+
+                            <div class=" d-flex controler">
+                                <input type="button"  value="-" >
+                                <input type="text" value="1" readonly/>
+                                <input type="button"    value="+"> 
+                            </div>
+                            
+                        </td>
+
+                        <td>
+                            $1,750.00
+                        </td>
+                        
+                    </tr>
+                </tbody>
+             </table>
+
+             <table class="table table-bordered  summary-table border border-1">
+                <thead>
+                    <tr>
+                        <th colspan="2">Cart Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>$5,750.00</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$5,750.00</td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" class="btn btn-block" value="PROCEED TO CHECKOUT"/>
+                        </td>
+                    </tr>
+                </tfoot>
+             </table>
+
+            </div>
+           
+             
+         </section>
+
+
+        
+        
+
+     
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-section">
+                <h4>BLINGG</h4>
+                <span class="brand-subtitle">JEWELRY STORE</span>
+            </div>
+            <div class="footer-section">
+                <h5>About Us</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Shop</h5>
+                <ul>
+                    <li><a href="#">Rings</a></li>
+                    <li><a href="#">Bracelets</a></li>
+                    <li><a href="#">Earrings</a></li>
+                    <li><a href="#">Necklaces</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Address</h5>
+                <address> 123 Fifth Avenue, New York, NY 10160<br> <a
+                        href="mailto:contact@info.com">contact@info.com</a><br> <a
+                        href="tel:+19292426868">929-242-6868</a> </address>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2024 Blingg Jewelry | Powered by Blingg Jewelry</p>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
