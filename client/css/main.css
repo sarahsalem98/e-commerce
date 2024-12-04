@@ -111,7 +111,7 @@
         }
 /* start landing */
 .landing {
-    background-image: url(../images/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);
+    background-image: url(../utilities/imgs/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);
     background-size: cover;
     background-position:center center;
     background-repeat: no-repeat;
@@ -220,26 +220,26 @@
 
 .products .box .img1:hover {
     cursor: pointer;
-    content: url("../images/ring20.jpg");
+    content: url("../utilities/imgs/ring20.jpg");
     transition: transform 1s ease; 
 }
 
 .products .box .img2:hover {
     cursor: pointer;
-    content: url("../images/ring26.jpg");
+    content: url("../utilities/imgs/ring26.jpg");
 
   
 }
 
 .products .box .img3:hover {
     cursor: pointer;
-    content: url("../images/ring31.jpg");
+    content: url("../utilities/imgs/ring31.jpg");
    
 }
 
 .products .box .img4:hover {
     cursor: pointer;
-    content: url("../images/ring36.jpg");
+    content: url("../utilities/imgs/ring36.jpg");
 
 }
 
