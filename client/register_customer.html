@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>register</title>
+
+</head>
+
+<body class="container-fluid">
+    <!--nav bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#">
+                BLINGG
+                <span class="brand-subtitle">JEWELRY STORE</span>
+            </a> -->
+            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto text-center">
+                    <div class="drawer-icons">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CART</a>
+                        </li>
+                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">PRODUCTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link2" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+                    <div class="icons">
+                        <li class="nav-item">
+                            <!-- <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a> -->
+                            <a class="nav-link text-danger" href="login.html">LOGIN</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">SIGNUP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="register_customer.html" class="dropdown-item">customer</a></li>
+                                <li><a href="register_seller.html" class="dropdown-item">seller</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
+                                    class="badge badge-pill badge-primary">6</span></a>
+                        </li>
+                    </div>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- register-->
+    <main>
+        <section class="container mt-5">
+            <a class="text-decoration-none text-secondary" href="home.html">Home </a>/
+            <a class="text-decoration-none text-secondary" href="register.html"> Register</a>
+        </section>
+        <section class="row d-flex align-items-center">
+            <div class="col d-none d-lg-flex">
+                <img class="img-fluid" style="background-color:rgb(250, 245, 240);" src="utilities/imgs/register-removebg-preview.png" alt="register">
+            </div>
+            <div class="col m-3 p-5">
+                <h3>Creat an account</h3>
+                <p>Enter your details bellow</p>
+                <form class="form">
+                    <div class="mb-3"> 
+                        <input class="form-control border-0 border-bottom" type="text" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control border-0 border-bottom" type="email" placeholder="Email"> 
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control border-0 border-bottom" type="password" placeholder="Password">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control btn-outline-dark rounded-0" type="button" value="Creat Account">
+                    </div>
+                    <div class="mb-3 text-center text-dark">
+                        Already have account? 
+                        <a class="text-dark text-decoration-none" href="register.html">Log in</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer text-center text-md-start">
+        <div class="container">
+            <div class="footer-section">
+                <!-- <h4>BLINGG</h4>
+                <span class="brand-subtitle">JEWELRY STORE</span> -->
+                <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            </div>
+            <div class="footer-section">
+                <h5>About Us</h5>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Shop</h5>
+                <ul>
+                    <li><a href="#">Rings</a></li>
+                    <li><a href="#">Bracelets</a></li>
+                    <li><a href="#">Earrings</a></li>
+                    <li><a href="#">Necklaces</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Address</h5>
+                <address> 123 Fifth Avenue, New York, NY 10160<br> <a
+                        href="mailto:contact@info.com">contact@info.com</a><br> <a
+                        href="tel:+19292426868">929-242-6868</a> </address>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright &copy; 2024 Blingg Jewelry | Powered by Blingg Jewelry</p>
+        </div>
+    </footer>
+    
+    <!-- jQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Popper.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
