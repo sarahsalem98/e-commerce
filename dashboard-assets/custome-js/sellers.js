@@ -2,14 +2,12 @@ import { dbController } from "./indexedDb.js";
 
 export var sellers = {
     fetchData: async function () {
-        console.log("ssd");
         let data = await this.getDataFromStorage();
         let allusers = [];
         if (data.length!=0) {
             allusers = data;
 
         } else {
-            console.log("hell");
             let res = await fetch('../../dashboard-assets/data/seller-list.json');
             console.log(res);
             allusers = await res.json();

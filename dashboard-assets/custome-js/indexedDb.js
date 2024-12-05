@@ -4,7 +4,7 @@ export var dbController = {
 
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 1);
+            const request = indexedDB.open('AdminDataBase', 4);
 
             request.onupgradeneeded = function (event) {
                 const db = event.target.result;
@@ -26,6 +26,17 @@ export var dbController = {
                     reviewsStore.createIndex('user_id', 'user_id', { unique: false }); 
                     reviewsStore.createIndex('product_id', 'product_id', { unique: false }); 
 
+                }
+
+                if (!db.objectStoreNames.contains('carts')) {
+                    const cartstore = db.createObjectStore('carts', { keyPath: 'id', autoIncrement: true });
+                    cartstore.createIndex('userId_isFinished', ['user_id', 'is_finished'], { unique: false });
+                }
+
+                if (!db.objectStoreNames.contains('orders')) {
+                    const orderStore = db.createObjectStore('orders', { keyPath: 'id', autoIncrement: true });
+                    orderStore.createIndex('user_id', 'user_id', { unique: false }); 
+                    orderStore.createIndex('cart_id', 'cart_id', { unique: false }); 
                 }
             };
 
@@ -206,17 +217,17 @@ export var dbController = {
     
             const transaction = db.transaction([table], 'readwrite');
             const objectStore = transaction.objectStore(table);
-
+    
             const request = objectStore.add(data);
     
             request.onsuccess = function (event) {
-                console.log('New user added successfully');
-                resolve(true); 
+                console.log('Item added successfully:', event.target.result);
+                resolve(event.target.result); // Return the ID of the added item
             };
     
             request.onerror = function (event) {
-                console.error('Error adding new user:', event.target.errorCode);
-                reject(false); 
+                console.error('Error adding item:', event.target.errorCode);
+                resolve(false); // Return false on error
             };
         });
     },
@@ -242,7 +253,39 @@ export var dbController = {
                 reject(event.target.errorCode);  
             };
         });
+    },
+    getItemsByIndex: function (tableName, indexName, indexValues) {
+        return new Promise((resolve, reject) => {
+            if (!db) {
+                console.error('Database not initialized');
+                return reject('Database not initialized');
+            }
+    
+            const transaction = db.transaction([tableName], 'readonly');
+            const objectStore = transaction.objectStore(tableName);
+    
+            if (!objectStore.indexNames.contains(indexName)) {
+                console.error(`Index '${indexName}' does not exist in table '${tableName}'`);
+                return resolve([]); // Return an empty array if the index doesn't exist
+            }
+    
+            console.log('Querying index:', indexName, 'with values:', indexValues);
+    
+            const index = objectStore.index(indexName);
+            const request = index.getAll(IDBKeyRange.only(indexValues));
+    
+            request.onsuccess = function (event) {
+                console.log('Query successful:', event.target.result);
+                resolve(event.target.result);
+            };
+    
+            request.onerror = function (event) {
+                console.error('Error querying index:', event.target.error);
+                reject(event.target.error);
+            };
+        });
     }
+    
     
     
 

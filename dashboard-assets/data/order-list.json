@@ -1,0 +1,19 @@
+[
+    {
+        "id":1,
+        "user_id": 1,
+        "cart_id": 37,
+        "is_guest":false,
+        "email":"sasasalm44@gmail.com",
+        "status": 1,
+        "first_name":"sara",
+        "second_name":"salem",
+        "gov":"dakhlia",
+        "address":"madient mubark",
+        "phone_num1":"56756",
+        "phone_num2":"544645",   
+        "message": "Order placed successfully",
+        "created_at": "2024-12-04T12:34:56.789Z",
+        "updated_at": "2024-12-04T12:34:56.789Z"
+      }
+]
