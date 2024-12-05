@@ -250,3 +250,7 @@ section div a .hover13:hover{
     height: 500px;
     filter: brightness(75%);
 }
+.contact{
+    position: relative;
+    bottom: 100px;
+}
