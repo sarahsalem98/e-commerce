@@ -1048,15 +1048,18 @@
         import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
         import {order} from '../dashboard-assets/custome-js/Apis/orders.js';
         import {cart} from '../dashboard-assets/custome-js/Apis/cart.js';
+        import{clientProducts} from '../dashboard-assets/custome-js/Apis/products.js'
         $(window).on('load', function () {
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
 
             } else {
                 dbController.openDataBase().then(() => {
-                    //order.makeOrder(1,"ttt")
-                    //order.getUserOrdersHistory(1);
-                  cart.addToCart(1,3,1);    
+                   //var cc=  clientProducts.getAllProducts();
+                   // order.makeOrder(1,"ttt",'sarasalem99@gmail.com')
+                    //order.getUserOrdersHistory(1);   
+               // cart.addToCart(4,5,1,299.99);    
+                 //cart.getCartData(null);
                   clientAuth.getloggedInUserData(1);
                 });
                 
