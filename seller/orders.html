@@ -35,34 +35,12 @@
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
-    <!-- END: Custom CSS-->
-
-    <style>
-        #image-preview-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .image-wrapper {
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .image-wrapper .btn {
-            font-size: 12px;
-            padding: 2px 5px;
-        }
-    </style>
+<style>
+   #order-details-modal{
+   overflow: auto;
+   }
+      
+</style>
 
 </head>
 <!-- END: Head-->
@@ -243,12 +221,12 @@
                         data-feather="more-horizontal"></i>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="products.html"><i
+                <li class=" nav-item "><a class="d-flex align-items-center" href="products.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">Products</span></a>
                 </li>
 
-                <li class=" nav-item "><a class="d-flex align-items-center" href="orders.html"><i
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="orders.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">orders</span></a>
                 </li>
@@ -271,13 +249,13 @@
                 <!-- users list start -->
                 <section class="app-user-list">
                     <div class="row">
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
 
-                                        <h3 class="fw-bolder mb-75" id="total-products-count">21,459</h3>
-                                        <span>Total Products</span>
+                                        <h3 class="fw-bolder mb-75" id="total-orders-count">21,459</h3>
+                                        <span>Total </span>
                                     </div>
                                     <div class="avatar bg-light-primary p-50">
                                         <span class="avatar-content">
@@ -288,12 +266,46 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="active-products-count">19,860</h3>
-                                        <span>Active Products</span>
+                                        <h3 class="fw-bolder mb-75" id="placed-orders-count">19,860</h3>
+                                        <span>placed</span>
+                                    </div>
+                                    <div class="avatar bg-light-primary p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="prepared-orders-count">237</h3>
+                                        <span>prepared</span>
+
+
+                                    </div>
+                                    <div class="avatar bg-light-warning p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="completed-orders-count">237</h3>
+                                        <span>completed</span>
+
+
                                     </div>
                                     <div class="avatar bg-light-success p-50">
                                         <span class="avatar-content">
@@ -303,16 +315,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="inactive-products-count">237</h3>
-                                        <span>Inactive Products</span>
+                                        <h3 class="fw-bolder mb-75" id="deliverd-orders-count">237</h3>
+                                        <span>deliverd</span>
 
 
                                     </div>
-                                    <div class="avatar bg-light-warning p-50">
+                                    <div class="avatar bg-light-secondary p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="cancelled-orders-count">237</h3>
+                                        <span>cancelled</span>
+
+                                    </div>
+                                    <div class="avatar bg-light-danger p-50">
                                         <span class="avatar-content">
                                             <i data-feather='box' class="font-medium-4"></i>
                                         </span>
@@ -332,166 +360,111 @@
                             </div>
                         </div>
                         <div class="card-datatable table-responsive pt-0">
-                            <table class="product-list-table table">
+                            <table class="orders-list-table table">
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
+                                        <th>#id</th>
+                                        <th>email</th>
+                                        <th>userType </th>
+                                        <th>created_at</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-
-                        <div class="modal fade text-start" id="create-updateUser" tabindex="-1"
-                            aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New Product</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form id="add-update-product-form" enctype="multipart/form-data">
-                                            <input type="hidden" id="product-id">
-
-                                            <!-- Product Info Section -->
-                                            <div class="row mb-2">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="product-name">Name</label>
-                                                        <input type="text" id="product-name" name="product-name"
-                                                            class="form-control" placeholder="Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label"
-                                                            for="product-category">Category</label>
-                                                        <select id="product-category" name="product-category"
-                                                            class="select2 form-select">
-                                                            <option value=""> select category</option>
-                                                            <option value="1"> Necklaces</option>
-                                                            <option value="2">Rings</option>
-                                                            <option value="3">Bracelets</option>
-                                                            <option value="4">Earrings</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-2">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label for="product-price" class="form-label">Price</label>
-                                                        <input type="number" min="1" id="product-price"
-                                                            name="product-price" class="form-control"
-                                                            placeholder="Price" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label for="product-qty" class="form-label">Quantity</label>
-                                                        <input type="number" min="1" id="product-qty" name="product-qty"
-                                                            class="form-control" placeholder="Quantity" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label for="product-price" class="form-label">Description</label>
-                                                         <textarea  class="form-control" name="product-desc" id="product-desc"></textarea>
-                                                    </div>
-                                                </div>
-                                             
-                                            </div>
-
-                                            <!-- Image Preview Row -->
-                                            <div id="image-preview-row" class="d-flex flex-wrap gap-2 mb-2"></div>
-
-                                            <!-- Add Image Button -->
-                                            <div class="mb-2">
-                                                <button type="button" id="add-image-btn" class="btn btn-outline-primary"
-                                                    onclick="products.addPerviewImgs()">Add Image</button>
-                                            </div>
-
-                                            <!-- Form Submission Buttons -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary me-1 add-update-btn"
-                                                    onclick="products.addUpdate(event);">Add</button>
-                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div class="modal fade text-start" id="order-details-modal" tabindex="-1"
+                        aria-labelledby="myModalLabel33" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title updateTitle" id="myModalLabel33">Order Billing Details</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="modal-body" style="max-height: 70vh; overflow-y: auto;"> 
 
-
-                        <div class="modal fade text-start" id="review-modal" tabindex="-1"
-                            aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Product reviews</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <div class="card-datatable table-responsive pt-0">
-                                            <table class="review-list-table table">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>user</th>
-                                                        <th>rate</th>
-                                                        <th>description</th>
-
-                                                    </tr>
-                                                </thead>
-                                            </table>
+                                    <div class="row "> 
+                                        <div class="col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-email">Email</label>
+                                                <input type="text" id="order-email" class="form-control" placeholder="Name" />
+                                            </div>
                                         </div>
-                                      
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
-                            aria-labelledby="myModalLabel120" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel120">Delete Product</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="danger-modal-text">
-
+                    
+                                    <div class="row "> 
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-first-name">First Name</label>
+                                                <input type="text" id="order-first-name" class="form-control" placeholder="Name" />
+                                            </div>
                                         </div>
-                                        <input type="hidden" class="deleted-record-id">
-
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-last-name">Last Name</label>
+                                                <input type="text" id="order-last-name" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" onclick="products.delete();"
-                                            data-bs-dismiss="modal">Yes</button>
+                    
+                                    <div class="row "> 
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-gov">Governorate</label>
+                                                <input type="text" id="order-gov" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-address">Address</label>
+                                                <input type="text" id="order-address" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="row ">
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-phone1">Phone Num 1</label>
+                                                <input type="text" id="order-phone1" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-phone2">Phone Num 2</label>
+                                                <input type="text" id="order-phone2" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="row ">
+                                        <div class="col-12">
+                                            <div class="mb-1">
+                                                <label class="form-label" for="order-notes">Notes</label>
+                                                <textarea id="order-notes" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                   
+                                    <div class="card-datatable table-responsive pt-0">
+                                        <table class="billing-list-table table">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>#ProductID</th>
+                                                    <th>Qty</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+
 
                     </div>
 
@@ -555,12 +528,11 @@
     <!-- END: Page JS-->
 
     <script type="module">
-        import{dbController} from '../dashboard-assets/custome-js/./indexedDb.js'
-        import{products} from '../dashboard-assets/custome-js/products.js';
+        import { dbController } from '../dashboard-assets/custome-js/./indexedDb.js'
+        import { orders } from '../dashboard-assets/custome-js/orders.js';
 
         $(window).on('load', function () {
-
-            dbController.openDataBase().then(() => { products.viewProducts(); });
+            dbController.openDataBase().then(() => { orders.viewOrders(); });
             if (feather) {
                 feather.replace({
                     width: 14,

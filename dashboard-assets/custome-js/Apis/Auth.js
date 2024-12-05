@@ -17,7 +17,7 @@ export var clientAuth = {
             }
 
         }
-        console.log(isValid);
+        return isValid;
 
     },
     checkSession: function () {
