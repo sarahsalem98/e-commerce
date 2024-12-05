@@ -8,6 +8,8 @@ export var clientAuth = {
                 isValid = true;
                 let sessionData = {
                     email: email,
+                    name:data.full_name,
+                    id:data.id,
                     loginTime: new Date().getTime()
                 }
                 let expiryTime = new Date().getTime() + 24*60 * 60 * 1000;
@@ -50,8 +52,13 @@ export var clientAuth = {
             avatar: avatar
 
         }
-       dbController.addItem('users',user); 
-
+       
+        isAdded= await dbController.addItem('users',user); 
+        return isAdded;
+    },
+    getloggedInUserData:async function(userId){
+        var data= await dbController.getItem('users',userId);
+        return data;
 
     }
 }

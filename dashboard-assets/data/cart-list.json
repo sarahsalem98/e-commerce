@@ -1,0 +1,25 @@
+[
+    {
+
+        "user_id":"1",
+        "is_finished":"false",
+        "products":[
+            {"product_is":1,"price":200,"qty":2,"max_qty":80},
+            {"product_is":2,"price":200,"qty":2,"max_qty":80}
+        ]
+
+
+    },
+
+    {
+
+        "user_id":"1",
+        "is_finished":"true",
+        "products":[
+            {"product_is":3,"price":200,"qty":2,"max_qty":80},
+            {"product_is":4,"price":200,"qty":2,"max_qty":80}
+        ]
+
+
+    }
+]

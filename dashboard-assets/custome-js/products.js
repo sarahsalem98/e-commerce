@@ -314,6 +314,7 @@
         document.getElementById("product-category").value = data.category;
         document.getElementById("product-qty").value = data.qty;
         document.getElementById("product-price").value = data.price;
+        document.getElementById("product-desc").value = data.desciption;;
         products.populateExistingImages(data.pics);
     },
     addUpdate: async function (e) {
@@ -340,6 +341,7 @@
                     data.price = document.getElementById("product-price").value;
                     data.qty = document.getElementById("product-qty").value;
                     data.category = document.getElementById("product-category").value;
+                    data.desciption=document.getElementById("product-desc").value;
                     data.pics = pics;
 
                 }
@@ -362,6 +364,7 @@
                     price: document.getElementById("product-price").value,
                     qty: document.getElementById("product-qty").value,
                     category: document.getElementById("product-category").value,
+                    desciption:document.getElementById("product-desc").value,
                     status: 1,
                     pics: base64pics
                 }
@@ -412,6 +415,7 @@
                     'product-price': { required: true, },
                     'product-qty': { required: true },
                     'product-category': { required: true },
+                    'product-desc':{required:true}
 
 
                 },
@@ -420,6 +424,7 @@
                     'product-price': "Please enter price",
                     'product-qty': "Please enter qty",
                     'product-category': "Please enter category",
+                    'product-desc':"please enter description"
 
                 }
             });
@@ -434,16 +439,21 @@
         document.getElementById("product-price").value = '';
         document.getElementById("product-qty").value = '';
         document.getElementById("product-category").value = '';
+        document.getElementById("product-desc").value = '';
         let pics = document.getElementsByName("product-pics");
         for (var i = 0; i < pics.length; i++) {
             pics.value = "";
+        }
+        const previewRow = document.getElementById("image-preview-row");
+        if(previewRow){
+            previewRow.innerHTML="";
         }
 
     },
 
     addPerviewImgs: function () {
         const previewRow = document.getElementById("image-preview-row");
-        previewRow.innerHTML="";
+       // previewRow.innerHTML="";
         const input = document.createElement("input");
         input.type = "file";
         input.name = "product-pics"
@@ -526,7 +536,7 @@
         reviews.viewReviewsForProduct(productId);   
     }
 }
-
+window.products=products;
 
 
 
