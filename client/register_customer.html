@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="container-fluid">
+<body>
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -76,32 +76,70 @@
         </div>
     </nav>
     <!-- register-->
-    <main>
+    <main class="vh-100">
         <section class="container mt-5">
             <a class="text-decoration-none text-secondary" href="home.html">Home </a>/
             <a class="text-decoration-none text-secondary" href="register.html"> Register</a>
         </section>
-        <section class="row d-flex align-items-center">
+        <section class="d-flex align-items-center justify-content-center">
             <div class="col d-none d-lg-flex">
-                <img class="img-fluid" style="background-color:rgb(250, 245, 240);" src="utilities/imgs/register-removebg-preview.png" alt="register">
+                <img class="img-fluid" style="background-color:rgb(250, 245, 240);" src="utilities/imgs/login2.png" alt="register">
             </div>
             <div class="col m-3 p-5">
                 <h3>Creat an account</h3>
                 <p>Enter your details bellow</p>
                 <form class="form">
-                    <div class="mb-3"> 
-                        <input class="form-control border-0 border-bottom" type="text" placeholder="Name">
+                    <div class="mb-4 d-flex"> 
+                        <input class="form-control me-1" type="text" placeholder="First Name">
+                        <input class="form-control" type="text" placeholder="Last Name">
                     </div>
                     <div class="mb-3">
-                        <input class="form-control border-0 border-bottom" type="email" placeholder="Email"> 
+                        <input class="form-control" type="email" placeholder="Email"> 
                     </div>
-                    <div class="mb-3">
-                        <input class="form-control border-0 border-bottom" type="password" placeholder="Password">
+                    <div class="mb-4 d-flex">
+                        <select class="form-select text-secondary me-1" id="governorate" name="governorate" required>
+                            <option value="" disabled selected>Select a governorate</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Aswan">Aswan</option>
+                            <option value="Luxor">Luxor</option>
+                            <option value="Asyut">Asyut</option>
+                            <option value="Beheira">Beheira</option>
+                            <option value="Beni Suef">Beni Suef</option>
+                            <option value="Dakahlia">Dakahlia</option>
+                            <option value="Damietta">Damietta</option>
+                            <option value="Fayoum">Fayoum</option>
+                            <option value="Gharbia">Gharbia</option>
+                            <option value="Ismailia">Ismailia</option>
+                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                            <option value="Matrouh">Matrouh</option>
+                            <option value="Minya">Minya</option>
+                            <option value="Monufia">Monufia</option>
+                            <option value="New Valley">New Valley</option>
+                            <option value="North Sinai">North Sinai</option>
+                            <option value="Port Said">Port Said</option>
+                            <option value="Qalyubia">Qalyubia</option>
+                            <option value="Qena">Qena</option>
+                            <option value="Red Sea">Red Sea</option>
+                            <option value="Sharqia">Sharqia</option>
+                            <option value="Sohag">Sohag</option>
+                            <option value="South Sinai">South Sinai</option>
+                            <option value="Suez">Suez</option>
+                        </select>
+                        <input class="form-control" type="number" placeholder="phone">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
+                        <input class="form-control" type="text" placeholder="Address"> 
+                    </div>
+                    <div class="mb-4 d-flex">
+                        <input class="form-control me-1" type="password" placeholder="Password">
+                        <input class="form-control" type="password" placeholder="confirm Password">
+                    </div>
+                    <div class="mb-4">
                         <input class="form-control btn-outline-dark rounded-0" type="button" value="Creat Account">
                     </div>
-                    <div class="mb-3 text-center text-dark">
+                    <div class="mb-4 text-center text-dark">
                         Already have account? 
                         <a class="text-dark text-decoration-none" href="register.html">Log in</a>
                     </div>
