@@ -1,0 +1,93 @@
+:root {
+
+    --background-color: rgb(250, 245, 240);
+    --heading-font: 'Cinzel', serif;
+    --text-font: 'Roboto';
+    --text-color: rgba(0, 0, 0, 0.7);
+    --highligted-text-color: rgb(168, 110, 59);
+
+}
+.about  {
+    background-image: url(../utilities/imgs/Image\ .jpg);  
+    background-size: cover;                         
+    background-position: center center;             
+    min-height: 75vh;                              
+    min-width: 75vw;                                
+    color: black;                                  
+    text-align: center;    
+    opacity: 0.8;     
+    box-shadow: 0  0 150px rgb(58, 58, 58) inset;                  
+}
+.about .text1 {
+    color:black !important; 
+    font-family: var(--heading-font);
+    font-weight: 600px;
+    font-size:4rem;
+}
+.about h5{
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    
+   
+}
+
+.landing .description{
+margin-top: 3rem;
+
+   
+}
+
+
+
+/* small line */
+.main-title {
+    position: relative; 
+    margin-bottom: 3rem;
+}
+
+.main-title::after {
+    content: '';
+    width: 50px;
+    height: 0.1rem;
+    background-color: var(--highligted-text-color); 
+    position: absolute;
+    bottom: 1px;
+    left: 0;  
+    transform: translateX(0); 
+}
+
+.textlan{
+    max-width: 30rem;
+}
+
+
+
+
+/* body */
+.body .description{
+    font-family: var(--heading-font);
+    max-width: 0.5rem;
+}
+
+.body .title{
+    font-family: var(--heading-font);
+}
+.body p{
+    font-family: var(--text-font);
+    font-size: 1rem; 
+}
+.description1 h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.timeline .event {
+    margin-bottom: 1.5rem;
+}
+
+.timeline h5 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
