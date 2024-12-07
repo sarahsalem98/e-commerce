@@ -68,11 +68,11 @@ h1{
     margin-left: 15px;
 }
 
-.navbar .cart-icon .badge {
+/* .navbar .cart-icon .badge {
     position: absolute;
     top: -5px;
     right: -10px;
-}
+} */
 
 @media (min-width: 992px) {
     .drawer-icons {
@@ -260,3 +260,8 @@ section div a .hover13:hover{
    
 
  
+
+.contact{
+    position: relative;
+    bottom: 100px;
+}
