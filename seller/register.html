@@ -35,19 +35,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <!-- END: Custom CSS-->
-     <style>
-  
-  .auth-wrapper.auth-basic .auth-inner {
-    max-width: 700px;
+    <style>
+        .auth-wrapper.auth-basic .auth-inner {
+            max-width: 700px;
 
-}
-     </style>
+        }
+    </style>
 
 </head>
 <!-- END: Head-->
 
 <!-- BEGIN: Body-->
-<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+
+<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click"
+    data-menu="vertical-menu-modern" data-col="blank-page">
     <!-- BEGIN: Content-->
     <div class="app-content content ">
         <div class="content-overlay"></div>
@@ -56,63 +57,85 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <div class="auth-wrapper auth-basic px-2">
-                    <div class="auth-inner my-2">
-                        <!-- Login basic -->
-                        <div class="card mb-0">
-                            <div class="card-body">
-                               
+                <div class="auth-wrapper auth-cover">
+                    <div class="auth-inner row m-0">
 
-                                <h4 class="card-title mb-1">Welcome to Blingg dasboard for sellers!</h4>
-                                <form class="auth-login-form mt-2" id="seller-login-form" >
-                                    <div class="mb-1">
-                                        <label for="admin-login-email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="seller-login-email" name="seller-login-email" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
-                                    </div>
-
-                                    <div class="mb-1">
-                                       
-                                        <div class="input-group input-group-merge form-password-toggle">
-                                            <input type="password" class="form-control form-control-merge" id="seller-login-password" name="seller-login-password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
-                                            <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                        <!-- /Brand logo-->
+                        <!-- Left Text-->
+                        <div class="d-none d-lg-flex col-lg-6 align-items-center p-5">
+                            <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img
+                                    class="img-fluid" src="./register2.jpeg" alt="Register V2" /></div>
+                        </div>
+                        <!-- /Left Text-->
+                        <!-- Register-->
+                        <div class="d-flex col-lg-6 align-items-center auth-bg px-2 p-lg-5">
+                            <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                                <h2 class="card-title fw-bold mb-1">Adventure starts here with blingg</h2>
+                                <p class="card-text mb-2">sell more gain more</p>
+                                <form class="auth-register-form mt-2" id="seller-register-form" method="post">
+                                    <div class="row">
+                                        <div class="mb-1 col-6">
+                                            <label class="form-label" for="seller-register-name">Name</label>
+                                            <input class="form-control" id="seller-register-name" type="text"
+                                                name="seller-register-name" placeholder="johndoe"
+                                                aria-describedby="register-username" autofocus="" tabindex="1" />
+                                        </div>
+                                        <div class="mb-1 col-6">
+                                            <label class="form-label" for="seller-register-email">Email</label>
+                                            <input class="form-control" id="seller-register-email" type="text"
+                                                name="seller-register-email" placeholder="john@example.com"
+                                                aria-describedby="register-email" tabindex="2" />
                                         </div>
                                     </div>
-
-                                       <!-- Product Info Section -->
-                                       <div class="row mb-2">
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="product-name">Name</label>
-                                                <input type="text" id="product-name" name="product-name"
-                                                    class="form-control" placeholder="Name" />
+                                    <div class="row">
+                                        <div class="mb-1 col-6">
+                                            <label class="form-label" for="register-password">Password</label>
+                                            <div class="input-group input-group-merge form-password-toggle">
+                                                <input class="form-control form-control-merge"
+                                                    id="seller-register-password" type="password"
+                                                    name="seller-register-password" placeholder="············"
+                                                    aria-describedby="register-password" tabindex="3" /><span
+                                                    class="input-group-text cursor-pointer"><i
+                                                        data-feather="eye"></i></span>
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label"
-                                                    for="product-category">Category</label>
-                                                <select id="product-category" name="product-category"
-                                                    class="select2 form-select">
-                                                    <option value=""> select category</option>
-                                                    <option value="1"> Necklaces</option>
-                                                    <option value="2">Rings</option>
-                                                    <option value="3">Bracelets</option>
-                                                    <option value="4">Earrings</option>
-                                                </select>
+                                        <div class="mb-1 col-6">
 
-                                            </div>
+                                            <label class="form-label" for="seller-register-phone">phone</label>
+                                            <input class="form-control" id="seller-register-phone" type="text"
+                                                name="seller-register-phone" placeholder="0112345678"
+                                                aria-describedby="register-email" tabindex="2" />
+
                                         </div>
+
                                     </div>
-                                   
-                                    <button class="btn btn-primary w-100" tabindex="4" onclick="adminAuth.login(event)">Sign in</button>
+
+                                    <div class="mb-1 ">
+
+                                        <label class="form-label" for="seller-register-nationalId">National ID</label>
+                                        <input class="form-control" id="seller-register-nationalId" type="text"
+                                            name="seller-register-nationalId" placeholder="29810051201313"
+                                            aria-describedby="register-email" tabindex="2" />
+
+                                    </div>
+                                    <div class="mb-1 ">
+
+                                        <label class="form-label" for="seller-register-comReg">Commertial Registeration
+                                            Num</label>
+                                        <input class="form-control" id="seller-register-comReg" type="text"
+                                            name="seller-register-comReg" placeholder="9874512"
+                                            aria-describedby="register-email" tabindex="2" />
+
+                                    </div>
+
+                                    <button class="btn btn-primary w-100" tabindex="5" onclick="sellerAuth.register(event);" >Sign up</button>
                                 </form>
 
                             </div>
                         </div>
-                        <!-- /Login basic -->
+                        <!-- /Register-->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -135,10 +158,17 @@
     <!-- BEGIN: Page JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Page JS-->
-     <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
+    <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
 
-    <script>
-        $(window).on('load', function() {
+    <script type="module">
+         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
+        $(window).on('load',  async function () {
+            jQuery.validator.addMethod("regex", function (value, element, regexp) {
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            }, "Please check your input.");
+            await dbController.openDataBase();
+
             if (feather) {
                 feather.replace({
                     width: 14,

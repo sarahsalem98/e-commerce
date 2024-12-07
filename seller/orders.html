@@ -35,12 +35,11 @@
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
-<style>
-   #order-details-modal{
-   overflow: auto;
-   }
-      
-</style>
+    <style>
+        #order-details-modal {
+            overflow: auto;
+        }
+    </style>
 
 </head>
 <!-- END: Head-->
@@ -212,7 +211,7 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="../admin/dashboard.html"><i
+                <li class=" nav-item"><a class="d-flex align-items-center" href="dashboard.html"><i
                             data-feather="home"></i><span class="menu-title text-truncate"
                             data-i18n="Email">Dashboard</span></a>
                 </li>
@@ -226,10 +225,11 @@
                             data-i18n="Email">Products</span></a>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="orders.html"><i
+                <li class=" nav-item active "><a class="d-flex align-items-center" href="orders.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">orders</span></a>
                 </li>
+
 
 
 
@@ -375,95 +375,104 @@
                             </table>
                         </div>
                         <div class="modal fade text-start" id="order-details-modal" tabindex="-1"
-                        aria-labelledby="myModalLabel33" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title updateTitle" id="myModalLabel33">Order Billing Details</h4>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" style="max-height: 70vh; overflow-y: auto;"> 
+                            aria-labelledby="myModalLabel33" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Order Billing Details
+                                        </h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
 
-                                    <div class="row "> 
-                                        <div class="col-12">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-email">Email</label>
-                                                <input type="text" id="order-email" class="form-control" placeholder="Name" />
+                                        <div class="row ">
+                                            <div class="col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-email">Email</label>
+                                                    <input type="text" id="order-email" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                    
-                                    <div class="row "> 
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-first-name">First Name</label>
-                                                <input type="text" id="order-first-name" class="form-control" placeholder="Name" />
+
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-first-name">First Name</label>
+                                                    <input type="text" id="order-first-name" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-last-name">Last Name</label>
+                                                    <input type="text" id="order-last-name" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-last-name">Last Name</label>
-                                                <input type="text" id="order-last-name" class="form-control" placeholder="Name" />
+
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-gov">Governorate</label>
+                                                    <input type="text" id="order-gov" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-address">Address</label>
+                                                    <input type="text" id="order-address" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                    
-                                    <div class="row "> 
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-gov">Governorate</label>
-                                                <input type="text" id="order-gov" class="form-control" placeholder="Name" />
+
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-phone1">Phone Num 1</label>
+                                                    <input type="text" id="order-phone1" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-phone2">Phone Num 2</label>
+                                                    <input type="text" id="order-phone2" class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-address">Address</label>
-                                                <input type="text" id="order-address" class="form-control" placeholder="Name" />
+
+                                        <div class="row ">
+                                            <div class="col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-notes">Notes</label>
+                                                    <textarea id="order-notes" class="form-control"></textarea>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                    
-                                    <div class="row ">
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-phone1">Phone Num 1</label>
-                                                <input type="text" id="order-phone1" class="form-control" placeholder="Name" />
-                                            </div>
+
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table class="billing-list-table table">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>#ProductID</th>
+                                                        <th>Qty</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
                                         </div>
-                                        <div class="col-6">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-phone2">Phone Num 2</label>
-                                                <input type="text" id="order-phone2" class="form-control" placeholder="Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                    
-                                    <div class="row ">
-                                        <div class="col-12">
-                                            <div class="mb-1">
-                                                <label class="form-label" for="order-notes">Notes</label>
-                                                <textarea id="order-notes" class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                   
-                                    <div class="card-datatable table-responsive pt-0">
-                                        <table class="billing-list-table table">
-                                            <thead class="table-light">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>#ProductID</th>
-                                                    <th>Qty</th>
-                                                    <th>Price</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
+
 
 
                     </div>

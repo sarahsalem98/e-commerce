@@ -1040,32 +1040,23 @@
     <script src="../dashboard-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Page JS-->
-    <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
+    <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
 
 
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js'; 
-        import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
-        import {order} from '../dashboard-assets/custome-js/Apis/orders.js';
-        import {cart} from '../dashboard-assets/custome-js/Apis/cart.js';
-        import{clientProducts} from '../dashboard-assets/custome-js/Apis/products.js'
-        $(window).on('load', function () {
+        // import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
+        // import {order} from '../dashboard-assets/custome-js/Apis/orders.js';
+        // import {cart} from '../dashboard-assets/custome-js/Apis/cart.js';
+        // import{clientProducts} from '../dashboard-assets/custome-js/Apis/products.js'
+        $(window).on('load', async function () {
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
 
             } else {
-                dbController.openDataBase().then(() => {
-                   //var cc=  clientProducts.getAllProducts();
-                   // order.makeOrder(1,"ttt",'sarasalem99@gmail.com')
-                    //order.getUserOrdersHistory(1);   
-               // cart.addToCart(4,5,1,299.99);    
-                 //cart.getCartData(null);
-                  clientAuth.getloggedInUserData(1);
-                });
-                
-                
                 console.log('User is logged in, loading products');
                 document.getElementById("admin-email").innerText=adminAuth.adminCred.email;
+                await dbController.openDataBase();
             }
             if (feather) {
                 feather.replace({

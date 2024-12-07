@@ -1,7 +1,5 @@
 let db;
 export var dbController = {
-
-
     openDataBase: function () {
         return new Promise((resolve, reject) => {
             const request = indexedDB.open('AdminDataBase', 4);

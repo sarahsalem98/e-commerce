@@ -1,12 +1,12 @@
 export var generalClient={
 
     //example of rules and messages 
-    // rules: {
+    // rules= {
     //     'admin-login-email': { required: true, email: true },
     //     'admin-login-password': { required: true, },
 
     // },
-    // messages: {
+    // messages= {
     //     'admin-login-email': "Please enter valid email",
     //     'admin-login-password': "Please enter password",
     // }

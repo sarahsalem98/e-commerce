@@ -45,8 +45,8 @@ export var sellers = {
         document.getElementById("total-sellers-count").innerText=userData.length;
 
         var statusObj = {
-            1: { title: 'Active', class: 'badge-light-success' },
-            2: { title: 'Inactive', class: 'badge-light-danger' }
+            1: { title: 'pending', class: 'badge-light-warning' },
+            2: { title: 'active', class: 'badge-light-success' }
         };
  
 
@@ -156,8 +156,8 @@ export var sellers = {
                                 feather.icons['trash-2'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Delete</a>' +
                                 '<a href="javascript:;" class="dropdown-item delete-record" onclick="sellers.changeStatus(' + full['id'] + ')"> ' +
-                                (full['status_user'] == 1 ? feather.icons['x'].toSvg({ class: 'font-small-4 me-50' }) : feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' })) +
-                                (full['status_user'] == 1 ? 'deactivate' : 'activate') + '</a>'
+                                (full['status_user'] == 1 ? feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) : feather.icons['x'].toSvg({ class: 'font-small-4 me-50' })) +
+                                (full['status_user'] == 1 ? 'activate' : 'pend') + '</a>'
                                 + '</div>' +
                                 '</div>' +
                                 '</div>'
