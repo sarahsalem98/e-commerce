@@ -1,8 +1,8 @@
- 
- import {general}from "./general.js";
- import { dbController } from "./indexedDb.js";
 
- export var orders = {
+import { general } from "./general.js";
+import { dbController } from "./indexedDb.js";
+
+export var orders = {
     fetchData: async function () {
         let data = await this.getDataFromStorage();
         let allData = [];
@@ -42,21 +42,21 @@
         document.getElementById("total-orders-count").innerText = userData.length;
         document.getElementById("placed-orders-count").innerText = userData.filter(user => user.status == 1).length;
         document.getElementById("prepared-orders-count").innerText = userData.filter(user => user.status == 2).length;
-        document.getElementById("completed-orders-count").innerText = userData.filter(user => user.status ==3 ).length;
-        document.getElementById("deliverd-orders-count").innerText = userData.filter(user => user.status ==4).length; 
+        document.getElementById("completed-orders-count").innerText = userData.filter(user => user.status == 3).length;
+        document.getElementById("deliverd-orders-count").innerText = userData.filter(user => user.status == 4).length;
         document.getElementById("cancelled-orders-count").innerText = userData.filter(user => user.status == 5).length;
 
         var statusObj = {
             1: { title: 'orderplaced', class: 'badge-light-primary' },
             2: { title: 'preparing', class: 'badge-light-warning' },
             3: { title: 'completed', class: 'badge-light-success' },
-            4:{ title: 'deliverd', class: 'badge-light-secondary' },
-            5:{ title: 'cancelled', class: 'badge-light-danger' },
+            4: { title: 'deliverd', class: 'badge-light-secondary' },
+            5: { title: 'cancelled', class: 'badge-light-danger' },
         };
-      
+
 
         if ($.fn.dataTable.isDataTable('.orders-list-table')) {
-            $('.orders-list-table').DataTable().clear().destroy(); 
+            $('.orders-list-table').DataTable().clear().destroy();
         }
         $('.user_status select').remove();
         $('.user_status label').remove();
@@ -87,9 +87,9 @@
                     {
                         targets: 3,
                         render: function (data, type, full, meta) {
-                            return full['is_guest']==false?"Registered":"guest";
+                            return full['is_guest'] == false ? "Registered" : "guest";
 
-                           
+
                         }
                     },
 
@@ -106,8 +106,8 @@
                                 minute: '2-digit',
                                 second: '2-digit',
                             });
-                            
-                            return  formattedDate;
+
+                            return formattedDate;
                         }
                     },
                     {
@@ -140,30 +140,30 @@
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-end">' +
-                            
+
                                 // Status change options
                                 (full['status'] === 1
                                     ? '<a href="javascript:;" class="dropdown-item" onclick="orders.changeStatus(' + full['id'] + ', 2)"> ' +
-                                      feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Prepare</a>'
+                                    feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Prepare</a>'
                                     : '') +
                                 (full['status'] === 2
                                     ? '<a href="javascript:;" class="dropdown-item" onclick="orders.changeStatus(' + full['id'] + ', 3)"> ' +
-                                      feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Complete</a>'
+                                    feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Complete</a>'
                                     : '') +
                                 (full['status'] === 3
                                     ? '<a href="javascript:;" class="dropdown-item" onclick="orders.changeStatus(' + full['id'] + ', 4)"> ' +
-                                      feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Deliver</a>'
+                                    feather.icons['check-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Deliver</a>'
                                     : '') +
-                            
+
                                 (full['status'] < 4
                                     ? '<a href="javascript:;" class="dropdown-item" onclick="orders.changeStatus(' + full['id'] + ', 5)"> ' +
-                                      feather.icons['x-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Cancel</a>'
+                                    feather.icons['x-circle'].toSvg({ class: 'font-small-4 me-50' }) + ' Cancel</a>'
                                     : '') +
-                            
+
                                 // Details option
                                 '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#order-details-modal" onclick="orders.viewDetails(' + full['id'] + ')"> ' +
                                 feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) + ' Details</a>' +
-                            
+
                                 '</div>' +
                                 '</div>'
                             );
@@ -187,8 +187,8 @@
                     searchPlaceholder: 'Search..'
                 },
                 // Buttons with Dropdown
-       
-              
+
+
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal({
@@ -272,7 +272,7 @@
         document.getElementById("order-phone1").value = data.phone_num1;
         document.getElementById("order-phone2").value = data.phone_num2;
 
-        let productsdata=await dbController.getItem("carts",data.cart_id);
+        let productsdata = await dbController.getItem("carts", data.cart_id);
         console.log(productsdata);
         var dtUserTable = $('.billing-list-table');
         if (dtUserTable.length) {
@@ -303,30 +303,34 @@
 
     },
 
-    changeStatus: async function (id,status) {
+    changeStatus: async function (id, status) {
         var data = await dbController.getItem('orders', id);
         data.status = status;
-        dbController.updateItem('orders', id, data);
-        toastr.success("status changed successfully");
+        var done = await dbController.updateItem('orders', id, data);
+        if (done) {
+            toastr.success("status changed successfully");
+        } else {
+            toastr.error("something went wrong");
+        }
         this.viewOrders();
     },
 
- 
+
     resetFormFields: function () {
         document.getElementById("order-email").value = ''
         document.getElementById("order-first-name").value = '';
         document.getElementById("order-last-name").value = '';
         document.getElementById("order-gov").value = '';
-        document.getElementById("order-address").value ='';
+        document.getElementById("order-address").value = '';
         document.getElementById("order-phone1").value = '';
         document.getElementById("order-phone2").value = '';
 
-      
+
     }
 
 
 }
-window.orders=orders;
+window.orders = orders;
 
 
 

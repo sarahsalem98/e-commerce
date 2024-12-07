@@ -63,7 +63,7 @@
                 </ul>
             </div>
             <ul class="nav navbar-nav align-items-center ms-auto">
-
+<!-- 
                 <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#"
                         data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span
                             class="badge rounded-pill bg-danger badge-up">5</span></a>
@@ -166,18 +166,16 @@
                         <li class="dropdown-menu-footer"><a class="btn btn-primary w-100" href="#">Read all
                                 notifications</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">John Doe</span><span
-                                class="user-status">Admin</span></div><span class="avatar"><img class="round"
-                                src="../dashboard-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40"
-                                width="40"><span class="avatar-status-online"></span></span>
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder" id="logged-seller">John Doe</span><span
+                                class="user-status">seller</span></div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
-                            class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i>
-                            Profile</a><a class="dropdown-item" href="auth-login-cover.html"><i class="me-50"
+                            class="dropdown-item" href="profile.html"><i class="me-50" data-feather="user"></i>
+                            Profile</a><a class="dropdown-item" href="javascript:void();" onclick="sellerAuth.logout()";><i class="me-50"
                                 data-feather="power"></i> Logout</a>
                     </div>
                 </li>
@@ -1050,11 +1048,12 @@
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
         $(window).on('load', async function () {
             if (!sellerAuth.checkSession()) {
-                console.log("dfg");
+
                 window.location.href = 'login.html';
             } else {
                 console.log('seller is logged in, loading products');
                 await dbController.openDataBase();
+                sellerAuth.getloggedsellername();
                 if (feather) {
                     feather.replace({
                         width: 14,
