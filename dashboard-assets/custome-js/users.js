@@ -1,10 +1,10 @@
 import { dbController } from "./indexedDb.js";
-import { general } from "./general.js"; 
+import { general } from "./general.js";
 export var users = {
     fetchData: async function () {
         let data = await users.getDataFromStorage();
         let allusers = [];
-        if (data.length!=0) {
+        if (data.length != 0) {
             allusers = data;
 
         } else {
@@ -38,10 +38,10 @@ export var users = {
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
         const userData = await users.fetchData();
-  
-        document.getElementById("active-users-count").innerText=userData.filter(user=>user.status_user==1).length;
-        document.getElementById("inactive-users-count").innerText=userData.filter(user=>user.status_user==2).length;
-        document.getElementById("total-users-count").innerText=userData.length;
+
+        document.getElementById("active-users-count").innerText = userData.filter(user => user.status_user == 1).length;
+        document.getElementById("inactive-users-count").innerText = userData.filter(user => user.status_user == 2).length;
+        document.getElementById("total-users-count").innerText = userData.length;
 
         var statusObj = {
             1: { title: 'Active', class: 'badge-light-success' },
@@ -66,7 +66,7 @@ export var users = {
                     { data: 'full_name' },
                     { data: 'address' },
                     { data: 'phone' },
-                     {data:'gender'},
+                    { data: 'gender' },
                     { data: 'status_user' },
                     { data: null }
                 ],
@@ -89,11 +89,11 @@ export var users = {
                             var $name = full['full_name'],
                                 $email = full['email'],
                                 $image = full['avatar'];
-                               // console.log("dtaimg"+$image);
+                            // console.log("dtaimg"+$image);
                             if ($image) {
 
                                 var $output =
-                                    '<img src="' +$image+ '" alt="Avatar" height="32" width="32">';
+                                    '<img src="' + $image + '" alt="Avatar" height="32" width="32">';
                             } else {
 
                                 var stateNum = Math.floor(Math.random() * 6) + 1;
@@ -219,11 +219,11 @@ export var users = {
                         },
                         init: function (api, node, config) {
                             $(node).removeClass('btn-secondary');
-                            $(node).on('click',function(){
+                            $(node).on('click', function () {
                                 console.log("heellll");
                                 document.getElementsByClassName("updateTitle")[0].innerText = "Add New User";
                                 document.getElementsByClassName("add-update-btn")[0].innerText = "Add";
-                                 users.resetFormFields(); 
+                                users.resetFormFields();
 
                             })
                         }
@@ -319,46 +319,46 @@ export var users = {
             e.preventDefault();
             return;
         }
-        if (id != '') {  
+        if (id != '') {
             var user = await dbController.getItem('users', parseInt(id));
-            if(user!=null){
-                let file=(document.getElementById("user-profile-pic")).files[0];
+            if (user != null) {
+                let file = (document.getElementById("user-profile-pic")).files[0];
                 user.full_name = document.getElementById("user-name").value;
                 user.email = document.getElementById("user-email").value;
                 user.phone = document.getElementById("user-phone").value;
                 user.address = document.getElementById("user-address").value;
-                user.gender=document.getElementById("user-gender").value;
-                user.gov=document.getElementById("user-country").value;
-                user.avatar=await general.convertImgTo64(file);
-                
+                user.gender = document.getElementById("user-gender").value;
+                user.gov = document.getElementById("user-country").value;
+                user.avatar = await general.convertImgTo64(file);
+
             }
-            
-            dbController.updateItem('users',id,user);
+
+            dbController.updateItem('users', id, user);
             toastr.success("user update successfully");
             this.viewUsers();
             $('#create-updateUser').modal('hide');
-        }else{
+        } else {
 
             //add
 
-            let filenew=(document.getElementById("user-profile-pic")).files[0];
+            let filenew = (document.getElementById("user-profile-pic")).files[0];
             const newuser = {
                 full_name: document.getElementById("user-name").value,
                 username: document.getElementById("user-name").value,
                 email: document.getElementById("user-email").value,
-                address:document.getElementById("user-address").value,
-                phone:document.getElementById("user-phone").value,
-                gov:document.getElementById("user-country").value,
-                gender:document.getElementById("user-gender").value,
+                address: document.getElementById("user-address").value,
+                phone: document.getElementById("user-phone").value,
+                gov: document.getElementById("user-country").value,
+                gender: document.getElementById("user-gender").value,
                 status_user: 1,
                 avatar: await general.convertImgTo64(filenew)
             }
-              var ok=  await dbController.addItem('users',newuser);
-               if(ok){
+            var ok = await dbController.addItem('users', newuser);
+            if (ok) {
                 toastr.success("user added successfully");
-               }
-                this.viewUsers("user");
-                $('#create-updateUser').modal('hide');
+            }
+            this.viewUsers("user");
+            $('#create-updateUser').modal('hide');
 
 
 
@@ -370,8 +370,12 @@ export var users = {
         console.log("sataus" + data);
         var changedstatus = data.status_user == 1 ? 2 : 1;
         data.status_user = changedstatus;
-        dbController.updateItem('users', id, data);
-        toastr.success("status changed successfully");
+        let done = await dbController.updateItem('users', id, data);
+        if (done) {
+            toastr.success("status changed successfully");
+        } else {
+            toastr.error("something went wrong");
+        }
         this.viewUsers();
     },
     openDeleteModal: function (id, name) {
@@ -388,7 +392,7 @@ export var users = {
         let isDeletedSuccessfully = await dbController.deleteItem('users', id);
         console.log(isDeletedSuccessfully);
         if (isDeletedSuccessfully) {
-           toastr.success("user deleted successfully");
+            toastr.success("user deleted successfully");
             this.viewUsers();
         }
 
@@ -407,7 +411,7 @@ export var users = {
                     'user-address': { required: true },
                     'user-country': { required: true },
                     'user-gender': { required: true }
-                
+
                 },
                 messages: {
                     'user-name': "Please enter your name",
@@ -416,7 +420,7 @@ export var users = {
                     'user-address': "Please enter your address",
                     'user-country': "Please select a country",
                     'user-gender': "Please select a gender",
-                  
+
                 }
             });
 
@@ -426,13 +430,13 @@ export var users = {
         }
         return false;
     },
-     resetFormFields:function() {
+    resetFormFields: function () {
         document.getElementById("user-name").value = '';
         document.getElementById("user-email").value = '';
         document.getElementById("user-phone").value = '';
         document.getElementById("user-address").value = '';
-        document.getElementById("user-gender").value='';
-        document.getElementById("user-country").value='';
+        document.getElementById("user-gender").value = '';
+        document.getElementById("user-country").value = '';
         document.getElementById("user-profile-pic").value = ''; // Reset the file input
     }
 

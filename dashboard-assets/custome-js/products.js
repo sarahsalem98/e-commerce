@@ -347,10 +347,15 @@
                 }
                 console.log(data);
 
-                dbController.updateItem('products', id, data);
+               let done=await dbController.updateItem('products', id, data);
+               if(done){
                 toastr.success("product update successfully");
                 this.viewProducts();
                 $('#create-updateUser').modal('hide');
+               }else{
+                  toastr.error("something went wrong");
+               }
+           
             } else {
                 var inputPics = document.getElementsByName("product-pics");
                 var base64pics = [];
@@ -385,8 +390,13 @@
         var data = await dbController.getItem('products', id);
         var changedstatus = data.status == 1 ? 2 : 1;
         data.status = changedstatus;
-        dbController.updateItem('products', id, data);
-        toastr.success("status changed successfully");
+        let done=await dbController.updateItem('products', id, data);
+        if(done){
+            toastr.success("status changed successfully");
+        }else{
+            toastr.error("something went wrong");
+        }
+     
         this.viewProducts();
     },
     openDeleteModal: function (id, name) {
