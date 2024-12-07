@@ -57,7 +57,7 @@
                                
 
                                 <h4 class="card-title mb-1">Welcome to Blingg dasboard for sellers!</h4>
-                                <form class="auth-login-form mt-2" id="seller-login-form" >
+                                <form class="auth-login-form mt-2" id="seller-login-form" method="post" >
                                     <div class="mb-1">
                                         <label for="admin-login-email" class="form-label">Email</label>
                                         <input type="text" class="form-control" id="seller-login-email" name="seller-login-email" placeholder="john@example.com" aria-describedby="login-email" tabindex="1" autofocus />
@@ -71,7 +71,7 @@
                                         </div>
                                     </div>
                                    
-                                    <button class="btn btn-primary w-100" tabindex="4" onclick="adminAuth.login(event)">Sign in</button>
+                                    <button class="btn btn-primary w-100" tabindex="4" onclick="sellerAuth.login(event)">Sign in</button>
                                 </form>
 
                             </div>
@@ -102,10 +102,12 @@
     <!-- BEGIN: Page JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Page JS-->
-     <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
+     <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
 
-    <script>
-        $(window).on('load', function() {
+    <script type="module">
+       import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
+        $(window).on('load',  async function() {
+            await dbController.openDataBase();
             if (feather) {
                 feather.replace({
                     width: 14,

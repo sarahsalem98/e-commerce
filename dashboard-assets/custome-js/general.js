@@ -1,30 +1,43 @@
 export var general = {
     convertImgTo64: async function (fileInput) {
-        try{
-       const base64=await this.getBase64(fileInput);
-       return base64;
-        }catch(error){
+        try {
+            const base64 = await this.getBase64(fileInput);
+            return base64;
+        } catch (error) {
             console.error('Error converting file to Base64:', error);
         }
 
     },
-     getBase64:function(file) {
+    getBase64: function (file) {
         return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result); 
-          reader.onerror = (error) => reject(error); 
-          reader.readAsDataURL(file); 
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
         });
-      }
-      ,
-      initToastr: function () {
+    }
+    ,
+    initToastr: function () {
         toastr.options = {
             "positionClass": "toast-top-right",
-            "timeOut": "3000",               
-            "extendedTimeOut": "1000",       
-            "closeButton": true,            
-            "progressBar": true               
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "closeButton": true,
+            "progressBar": true
         };
+    },
+    validateForm: function (formId, rules, messages) {
+        var form = $(`#${formId}`);
+        if (form.length) {
+            form.validate({
+                rules: rules,
+                messages: messages
+            });
+    
+            var isValid = form.valid();
+            return isValid;
+        }
+        return false;
     }
 
 

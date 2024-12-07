@@ -483,7 +483,7 @@
     <!-- <script src="../dashboard-assets/js/scripts/pages/app-user-list.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- END: Page JS-->
-    <script src="../dashboard-assets/custome-js/AuthDashboard.js"></script>
+    <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
         import { sellers } from '../../dashboard-assets/custome-js/sellers.js';
@@ -491,9 +491,9 @@
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
             } else {
-                console.log('User is logged in, loading products');
-
+                
                 dbController.openDataBase().then(() => { sellers.viewUsers(); });
+                console.log('User is logged in, loading products');
                 if (feather) {
                     feather.replace({
                         width: 14,
