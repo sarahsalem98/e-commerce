@@ -309,10 +309,15 @@ export var sellers = {
                     
                 }
                 
-                dbController.updateItem('sellers',id,user);
+               let done=await dbController.updateItem('sellers',id,user);
+               if(done){
                 toastr.success("seller update successfully");
                 this.viewUsers();
                 $('#create-updateUser').modal('hide');
+               }else{
+                toastr.error("something went wrong");
+               }
+       
             }else{
     
                 //add
@@ -344,8 +349,12 @@ export var sellers = {
         var data = await dbController.getItem('sellers', id);
         var changedstatus = data.status_user == 1 ? 2 : 1;
         data.status_user = changedstatus;
-        dbController.updateItem('sellers', id, data);
-        toastr.success("status changed successfully");
+        let done=await dbController.updateItem('sellers', id, data);
+        if(done){
+            toastr.success("status changed successfully");
+        }else{
+            toastr.error("something went wrong");
+        }
         this.viewUsers();
     },
     openDeleteModal: function (id, name) {

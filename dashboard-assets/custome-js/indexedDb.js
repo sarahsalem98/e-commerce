@@ -134,41 +134,46 @@ export var dbController = {
     },
 
     updateItem: function (table, id, updatedData) {
-        let idParsed=parseInt(id);
-        if (!db) {
-            console.error('Database not initialized');
-            return;
-        }
+        let idParsed = parseInt(id);
 
-        const transaction = db.transaction([table], 'readwrite');
-        const objectStore = transaction.objectStore(table);
-        const request = objectStore.get(idParsed);
-       // console.log(reque)
-
-        request.onsuccess = function (event) {
-
-            const item = event.target.result;
-            console.log(item);
-            if (item) {
-
-                Object.assign(item, updatedData);
-
-                const putRequest = objectStore.put(item);
-                putRequest.onsuccess = function () {
-                    console.log('User updated successfully');
-                };
-
-                putRequest.onerror = function (event) {
-                    console.error('Error updating user:', event.target.errorCode);
-                };
-            } else {
-                console.log('User not found');
+        return new Promise((resolve, reject) => {
+            if (!db) {
+                console.error('Database not initialized');
+                resolve(false); // Return false when the database is not initialized
+                return;
             }
-        };
-
-        request.onerror = function (event) {
-            console.error('Error retrieving user:', event.target.errorCode);
-        };
+    
+            const transaction = db.transaction([table], 'readwrite');
+            const objectStore = transaction.objectStore(table);
+            const request = objectStore.get(idParsed);
+    
+            request.onsuccess = function (event) {
+                const item = event.target.result;
+    
+                if (item) {
+                    Object.assign(item, updatedData);
+    
+                    const putRequest = objectStore.put(item);
+                    putRequest.onsuccess = function () {
+                        console.log('User updated successfully');
+                        resolve(true); // Return true on successful update
+                    };
+    
+                    putRequest.onerror = function (event) {
+                        console.error('Error updating user:', event.target.errorCode);
+                        resolve(false); // Return false on update error
+                    };
+                } else {
+                    console.log('User not found');
+                    resolve(false); // Return false if the user is not found
+                }
+            };
+    
+            request.onerror = function (event) {
+                console.error('Error retrieving user:', event.target.errorCode);
+                resolve(false); // Return false on retrieval error
+            };
+        });
     },
     deleteItem: function (table, id) {
         return new Promise(function (resolve, reject) {
