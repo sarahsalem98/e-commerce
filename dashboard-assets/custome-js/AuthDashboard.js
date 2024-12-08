@@ -65,6 +65,7 @@ import { general } from "./general.js";
         }
         return false;
     },
+   
 
     logout: function () {
         localStorage.removeItem('adminSession');
