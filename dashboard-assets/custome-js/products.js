@@ -6,27 +6,24 @@ import { dbController } from "./indexedDb.js";
 
 export var products = {
     fetchData: async function (seller_id) {
-        let data = await this.getDataFromStorage(seller_id);
-        let allData = [];
-        if(seller_id!=null || seller_id!=undefined){
-            if(data.length!=0){
-                allData=data;
-            }
-
-        }else{
-            if (data.length != 0) {
-                allData = data;
-    
-            } else {
-               
-                let res = await fetch('../../dashboard-assets/data/product-list.json');
-                allData = await res.json();
-                this.saveDataToStorage(allData);
-            }
-    
-        }
    
-        return allData;
+        let data = await this.getDataFromStorage(seller_id);
+        let alldatapro=await this.getDataFromStorage(null);
+        let allDataobj = [];
+        if(alldatapro.length==0){
+            let res = await fetch('../../dashboard-assets/data/product-list.json');
+            let allData = await res.json();
+            this.saveDataToStorage(allData);
+        }else{
+                if(data.length!=0){
+                    allDataobj=data;
+                }
+        }
+     
+      
+        console.log(allDataobj);
+         
+        return allDataobj;
     },
     getProductData: async function (id) {
         const data = await this.fetchData();
@@ -49,24 +46,23 @@ export var products = {
         return data;
     },
     viewProducts: async function (seller_id) {
-     
+      
         var dtUserTable = $('.product-list-table');
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
         const userData = await products.fetchData(seller_id);
-
+        
         
         document.getElementById("active-products-count").innerText = userData.filter(user => user.status == 1).length;
         document.getElementById("inactive-products-count").innerText = userData.filter(user => user.status == 2).length;
         document.getElementById("total-products-count").innerText = userData.length;
-         if(seller_id!=null ||seller_id!=undefined){
-             let sellerdata=await dbController.getItem('sellers',seller_id)
+        if(seller_id!=null ||seller_id!=undefined){
+             let sellerdata=await dbController.getItem('sellers',seller_id);
              const seller_name=document.getElementById("seller-name");
              if(seller_name){
                  seller_name.innerText=`#${seller_id}#-${sellerdata.full_name}`
 
              }
-            // document.getElementById("seller-id").value=seller_id;
 
          }
 

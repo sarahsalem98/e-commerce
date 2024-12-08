@@ -1,4 +1,5 @@
 import { dbController } from "../indexedDb.js";
+
 export var clientProducts = {
     getAllProducts: async function () {
         let data = dbController.getDataArray('products');
@@ -58,4 +59,4 @@ export var clientProducts = {
 
 }
 
-await clientProducts.getAllProducts();
+//await clientProducts.getAllProducts();
