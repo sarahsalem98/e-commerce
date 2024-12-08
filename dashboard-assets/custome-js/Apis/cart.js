@@ -1,6 +1,7 @@
 import { dbController } from "../indexedDb.js";
 import { clientProducts } from "./products.js";
 
+
 export var cart = {
     fetchDummyData: async function () {
         var data = await dbController.getDataArray('carts');
@@ -11,6 +12,7 @@ export var cart = {
             await dbController.saveDataArray('carts', alldata);
         }
     },
+
     addToCart: async function (productId, qty, userId, price) {
 
         await this.fetchDummyData();
@@ -94,6 +96,7 @@ export var cart = {
         }
 
     },
+
     getCartData: async function (userId) {
         let cartData;
         let cart;
@@ -108,6 +111,7 @@ export var cart = {
         cart = clientProducts.updateCartProducts(cart)
         return cart;
     }
+
     // ,
     // checkProductAvailability:async function(productId,qty){
     //       var productData=await dbController.getItem('products',productId);

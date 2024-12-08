@@ -1,38 +1,58 @@
  
+
+
  import { reviews } from "./reviews.js";
  import {general}from "./general.js";
  import { dbController } from "./indexedDb.js";
 
  export var products = {
+
+
     fetchData: async function () {
-        let data = await this.getDataFromStorage();
+
+        let data = await this.getDataFromStorage(); //just a wrapper form db conlroller
         let allData = [];
         if (data.length != 0) {
             allData = data;
 
         } else {
+
+            //fetching for the first time.
+            //hard coded data.
+
             let res = await fetch('../../dashboard-assets/data/product-list.json');
             allData = await res.json();
-            this.saveDataToStorage(allData);
+            this.saveDataToStorage(allData); //save data to local storage
         }
 
         return allData;
     },
+
+    ////what is the purpose.
+    //fetching data agin is very expesive.
     getProductData: async function (id) {
+
+        //////dummy code you have get item your db controller
         const data = await this.fetchData();
+
         var productData = data.find(function (product) {
             return product.id == id;
         });
+
         return productData;
+
     },
     saveDataToStorage: function (data) {
         dbController.saveDataArray('products', data);
-
     },
+
     getDataFromStorage: async function () {
+
         const data = await dbController.getDataArray('products');
+
         return data;
     },
+
     viewProducts: async function () {
 
         var dtUserTable = $('.product-list-table');
@@ -304,9 +324,19 @@
         }
     },
 
+
+    ////is it for seller purpose [onclick ptn]??? 
+    ///seller modal update ??
     openUpdateModal: async function (id) {
+
+
+        // why you will reset all fields thought after only two of lines you will override all of those values
+
         products.resetFormFields();
+
+
         let data = await this.getProductData(id);
+        
         document.getElementsByClassName("updateTitle")[0].innerText = "Update Product";
         document.getElementsByClassName("add-update-btn")[0].innerText = "update";
         document.getElementById("product-id").value = id;
@@ -314,9 +344,12 @@
         document.getElementById("product-category").value = data.category;
         document.getElementById("product-qty").value = data.qty;
         document.getElementById("product-price").value = data.price;
-        document.getElementById("product-desc").value = data.desciption;;
+        document.getElementById("product-desc").value = data.desciption; //if this line raise an error in merge -> cuz you put 2 semicoln only
+
         products.populateExistingImages(data.pics);
+
     },
+
     addUpdate: async function (e) {
         let id = document.getElementById("product-id").value.toString();
         //update
@@ -386,7 +419,9 @@
 
 
     },
+
     changeStatus: async function (id) {
+
         var data = await dbController.getItem('products', id);
         var changedstatus = data.status == 1 ? 2 : 1;
         data.status = changedstatus;
@@ -399,6 +434,7 @@
      
         this.viewProducts();
     },
+
     openDeleteModal: function (id, name) {
         document.getElementsByClassName("deleted-record-id")[0].value = id;
         var text = document.getElementsByClassName("danger-modal-text")[0];
@@ -444,20 +480,28 @@
         }
         return false;
     },
+
+    //for freeing purpose of presented data.
+
     resetFormFields: function () {
+
         document.getElementById("product-name").value = '';
         document.getElementById("product-price").value = '';
         document.getElementById("product-qty").value = '';
         document.getElementById("product-category").value = '';
         document.getElementById("product-desc").value = '';
+
         let pics = document.getElementsByName("product-pics");
         for (var i = 0; i < pics.length; i++) {
             pics.value = "";
         }
+
         const previewRow = document.getElementById("image-preview-row");
+
         if(previewRow){
             previewRow.innerHTML="";
         }
+
 
     },
 
@@ -473,8 +517,11 @@
 
         input.addEventListener("change", (e) => {
             const file = e.target.files[0];
+
             if (file) {
+
                 const reader = new FileReader();
+                
                 reader.onload = (event) => {
                     const wrapper = document.createElement("div");
                     wrapper.className = "file-wrapper position-relative me-2";
@@ -505,8 +552,12 @@
         });
 
     },
+
+    //// for occuping modale with images.
     populateExistingImages: function (images) {
+
         //console.log("imgs"+images);
+
         console.log(images.length);
         const previewRow = document.getElementById("image-preview-row");
         previewRow.innerHTML="";
@@ -541,6 +592,7 @@
             previewRow.appendChild(wrapper);
         });
     },
+
     viewReviews:function(productId){
         
         reviews.viewReviewsForProduct(productId);   

@@ -26,7 +26,7 @@ $(document).ready(function(){
      const containerDiv = document.querySelector('.main-section');
 
      console.log(currentWidth)
-     if(currentWidth>1400)
+     if(currentWidth>1300)
         $(".main-section .first-section .left-section").css("height",550);
      else if (currentWidth <=930) {
         containerDiv.classList.remove('container');
