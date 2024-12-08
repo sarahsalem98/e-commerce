@@ -538,7 +538,7 @@
     <script type="module">
         import { dbController } from '../dashboard-assets/custome-js/./indexedDb.js'
         import { orders } from '../dashboard-assets/custome-js/orders.js';
-
+        window.globalseller_id=null;
         $(window).on('load', function () {
            
            
@@ -546,7 +546,10 @@
                 window.location.href = 'login.html';
             } else {
                 
-                dbController.openDataBase().then(() => { orders.viewOrders(); });
+                dbController.openDataBase().then(() => { 
+                    window.globalseller_id=sellerAuth.getloggedsellerid();
+                    orders.viewOrders(window.globalseller_id);
+                 });
                 sellerAuth.getloggedsellername();
                 console.log('User is logged in');
                 if (feather) {
