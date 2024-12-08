@@ -353,6 +353,7 @@ export var sellers = {
                     national_id: document.getElementById("seller-nationalId").value,
                     commercial_registration: document.getElementById("seller-CommertialReg").value,
                     status_user: 1,
+                    password:"123456"
                 }
                 var ok = await dbController.addItem('sellers', newuser);
                 if (ok) {
