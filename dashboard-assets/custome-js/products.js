@@ -1,21 +1,31 @@
 
 import { reviews } from "./reviews.js";
 import { general } from "./general.js";
+import {seller} from "./AuthDashboard.js";
 import { dbController } from "./indexedDb.js";
 
 export var products = {
     fetchData: async function (seller_id) {
         let data = await this.getDataFromStorage(seller_id);
         let allData = [];
-        if (data.length != 0) {
-            allData = data;
+        if(seller_id!=null || seller_id!=undefined){
+            if(data.length!=0){
+                allData=data;
+            }
 
-        } else {
-            let res = await fetch('../../dashboard-assets/data/product-list.json');
-            allData = await res.json();
-            this.saveDataToStorage(allData);
+        }else{
+            if (data.length != 0) {
+                allData = data;
+    
+            } else {
+               
+                let res = await fetch('../../dashboard-assets/data/product-list.json');
+                allData = await res.json();
+                this.saveDataToStorage(allData);
+            }
+    
         }
-
+   
         return allData;
     },
     getProductData: async function (id) {
@@ -30,10 +40,9 @@ export var products = {
 
     },
     getDataFromStorage: async function (seller_id) {
-        console.log(seller_id);
         var data = [];
         if (seller_id != null|| seller_id!=undefined) {
-            data = await dbController.getItemsByIndex('products', 'seller_id', seller_id);
+            data = await dbController.getItemsByIndex('products', 'seller_id', parseInt(seller_id));
         } else {
             data = await dbController.getDataArray('products');
         }
@@ -46,9 +55,20 @@ export var products = {
         var userView = 'app-user-view-account.html';
         const userData = await products.fetchData(seller_id);
 
+        
         document.getElementById("active-products-count").innerText = userData.filter(user => user.status == 1).length;
         document.getElementById("inactive-products-count").innerText = userData.filter(user => user.status == 2).length;
         document.getElementById("total-products-count").innerText = userData.length;
+         if(seller_id!=null ||seller_id!=undefined){
+             let sellerdata=await dbController.getItem('sellers',seller_id)
+             const seller_name=document.getElementById("seller-name");
+             if(seller_name){
+                 seller_name.innerText=`#${seller_id}#-${sellerdata.full_name}`
+
+             }
+            // document.getElementById("seller-id").value=seller_id;
+
+         }
 
         var statusObj = {
             1: { title: 'Active', class: 'badge-light-success' },
@@ -180,7 +200,7 @@ export var products = {
                                 feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
                                 '</a>' +
                                 '<div class="dropdown-menu dropdown-menu-end">' +
-                                '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create-updateUser" onclick="products.openUpdateModal(' + full['id'] + ')">' +
+                                '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create-updateUser" onclick="products.openUpdateModal(' + full['id'] +')">' +
                                 feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Update</a>' +
                                 '<a href="javascript:;" class="dropdown-item delete-record"  data-bs-toggle="modal" data-bs-target="#danger-Modal" onclick="products.openDeleteModal(' + full["id"] + ', \'' + full["name"].replace(/'/g, "\\'") + '\')">' +
@@ -316,11 +336,12 @@ export var products = {
         document.getElementsByClassName("updateTitle")[0].innerText = "Update Product";
         document.getElementsByClassName("add-update-btn")[0].innerText = "update";
         document.getElementById("product-id").value = id;
+        document.getElementById("seller-id").value=window.globalseller_id;
         document.getElementById("product-name").value = data.name;
         document.getElementById("product-category").value = data.category;
         document.getElementById("product-qty").value = data.qty;
         document.getElementById("product-price").value = data.price;
-        document.getElementById("product-desc").value = data.desciption;;
+        document.getElementById("product-desc").value = data.desciption;
         products.populateExistingImages(data.pics);
     },
     addUpdate: async function (e) {
@@ -348,6 +369,7 @@ export var products = {
                     data.qty = document.getElementById("product-qty").value;
                     data.category = document.getElementById("product-category").value;
                     data.desciption = document.getElementById("product-desc").value;
+                    data.seller_id=parseInt(window.globalseller_id);
                     data.pics = pics;
 
                 }
@@ -356,7 +378,7 @@ export var products = {
                 let done = await dbController.updateItem('products', id, data);
                 if (done) {
                     toastr.success("product update successfully");
-                    this.viewProducts();
+                    this.viewProducts(window.globalseller_id);
                     $('#create-updateUser').modal('hide');
                 } else {
                     toastr.error("something went wrong");
@@ -376,15 +398,16 @@ export var products = {
                     qty: document.getElementById("product-qty").value,
                     category: document.getElementById("product-category").value,
                     desciption: document.getElementById("product-desc").value,
+                    seller_id:parseInt(window.globalseller_id),
                     status: 1,
                     pics: base64pics
                 }
-                console.log(newdata);
+              //  console.log(newdata);
                 var ok = await dbController.addItem('products', newdata);
                 if (ok) {
                     toastr.success("product added successfully");
                 }
-                this.viewProducts();
+                this.viewProducts(window.globalseller_id);
                 $('#create-updateUser').modal('hide');
 
             }
@@ -403,7 +426,7 @@ export var products = {
             toastr.error("something went wrong");
         }
 
-        this.viewProducts();
+        this.viewProducts(window.globalseller_id);
     },
     openDeleteModal: function (id, name) {
         document.getElementsByClassName("deleted-record-id")[0].value = id;
@@ -417,7 +440,7 @@ export var products = {
         let isDeletedSuccessfully = await dbController.deleteItem('products', id);
         if (isDeletedSuccessfully) {
             toastr.success("products deleted successfully");
-            this.viewProducts();
+            this.viewProducts(window.globalseller_id);
         }
 
     },
@@ -451,11 +474,13 @@ export var products = {
         return false;
     },
     resetFormFields: function () {
+        document.getElementById("product-id").value='';
         document.getElementById("product-name").value = '';
         document.getElementById("product-price").value = '';
         document.getElementById("product-qty").value = '';
         document.getElementById("product-category").value = '';
         document.getElementById("product-desc").value = '';
+
         let pics = document.getElementsByName("product-pics");
         for (var i = 0; i < pics.length; i++) {
             pics.value = "";

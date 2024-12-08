@@ -125,9 +125,12 @@ export var sellers = {
                         targets: 5,
                         render: function (data, type, full, meta) {
                             return (
-                                '<button class="btn btn-secondary " onclick="products.viewProducts('+full['id']+')">' +
+                                '<a class="btn btn-secondary "'+
+                               // +' onclick="products.viewProducts('+full['id']+')
+                                 'href="sellerproducts.html?seller_id='+full['id']+'"'
+                                +'>' +
                                 ' products' +
-                                '</button>'
+                                '</a>'
                             );
                         }
                     },
@@ -135,11 +138,13 @@ export var sellers = {
 
                         targets: 6,
                         render: function (data, type, full, meta) {
-                            console.log(full['id'])
                             return (
-                                '<button class="btn btn-success " onclick="products.viewProducts('+full['id']+')">' +
+                                '<a class="btn btn-success "'+
+                               // +' onclick="products.viewProducts('+full['id']+')
+                                 'href="sellerorders.html?seller_id='+full['id']+'"'
+                                +'>' +
                                 ' orders' +
-                                '</button>'
+                                '</a>'
                             );
                         }
                     },

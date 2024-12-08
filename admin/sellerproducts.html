@@ -190,7 +190,7 @@
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">users</span></a>
                 </li>
-                <li class=" nav-item active "><a class="d-flex align-items-center" href="sellers.html"><i
+                <li class=" nav-item  "><a class="d-flex align-items-center" href="sellers.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">sellers</span></a>
                 </li>
@@ -216,7 +216,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html">sellers</a>
                                     </li>
-                                    <li class="breadcrumb-item active">details
+                                    <li class="breadcrumb-item active">products
                                     </li>
                                 </ol>
                             </div>
@@ -318,6 +318,7 @@
                                     <div class="modal-body">
                                         <form id="add-update-product-form" enctype="multipart/form-data">
                                             <input type="hidden" id="product-id">
+                                            <input type="hidden" id="seller-id">
 
                                             <!-- Product Info Section -->
                                             <div class="row mb-2">
@@ -515,12 +516,18 @@
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
         import { products } from '../../dashboard-assets/custome-js/products.js';
+        window.globalseller_id=null;
         $(window).on('load', function () {
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
             } else {
                 console.log('User is logged in, loading products');
-                dbController.openDataBase().then(() => { products.viewProducts(); });
+                dbController.openDataBase().then(() => {
+                    const url_params=new URLSearchParams(window.location.search);
+                    const seller_id=url_params.get('seller_id');
+                    window.globalseller_id=seller_id;
+                     products.viewProducts(window.globalseller_id);
+                     });
                 if (feather) {
                     feather.replace({
                         width: 14,

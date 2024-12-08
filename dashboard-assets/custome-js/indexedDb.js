@@ -82,7 +82,7 @@ export var dbController = {
     },
 
     getItem: function (table, id) {
-      
+        let idParsed = parseInt(id);
         return new Promise((resolve, reject) => {
             if (!db) {
                 console.error('Database not initialized');
@@ -91,7 +91,7 @@ export var dbController = {
 
             const transaction = db.transaction([table], 'readonly');
             const objectStore = transaction.objectStore(table);
-            const request = objectStore.get(id);
+            const request = objectStore.get(idParsed);
 
             request.onsuccess = function (event) {
                 console.log(request.result);
