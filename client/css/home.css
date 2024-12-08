@@ -234,3 +234,15 @@
 .products .image-container a .hover4:hover{
     content:url(/client/utilities/imgs/ring-04-b-400x500.jpg)
 }
+.products .image-container a .hover10:hover{
+    content:url(/client/utilities/imgs/earrings-02-b-400x500.jpg)
+}
+.products .image-container a .hover12:hover{
+    content:url(/client/utilities/imgs/earrings-04-b-400x500.jpg)
+}
+.products .image-container a .hover8:hover{
+    content:url(/client/utilities/imgs/necklace-04-b-400x500.jpg)
+}
+.products .image-containera .hover13:hover{
+    content:url(/client/utilities/imgs/necklace-06-b-400x500.jpg)
+}

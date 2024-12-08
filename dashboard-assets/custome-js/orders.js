@@ -3,8 +3,8 @@ import { general } from "./general.js";
 import { dbController } from "./indexedDb.js";
 
 export var orders = {
-    fetchData: async function () {
-        let data = await this.getDataFromStorage();
+    fetchData: async function (seller_id) {
+        let data = await this.getDataFromStorage(seller_id);
         let allData = [];
         if (data.length != 0) {
             allData = data;
@@ -28,16 +28,26 @@ export var orders = {
         dbController.saveDataArray('orders', data);
 
     },
-    getDataFromStorage: async function () {
-        const data = await dbController.getDataArray('orders');
+    getDataFromStorage: async function (seller_id) {
+        console.log(seller_id);
+        let data=[];
+        // if(seller_id!=null || seller_id!=undefined){
+            
+        //    var datainf= await dbController.getItemsByIndexspecialEd('carts','userId_isFinished','true');
+        //    console.log(datainf);
+        //    data=datainf;
+            
+        // }else{
+            data = await dbController.getDataArray('orders');
+       // }
         return data;
     },
-    viewOrders: async function () {
+    viewOrders: async function (seller_id) {
 
         var dtUserTable = $('.orders-list-table');
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
-        const userData = await orders.fetchData();
+        const userData = await orders.fetchData(seller_id);
 
         document.getElementById("total-orders-count").innerText = userData.length;
         document.getElementById("placed-orders-count").innerText = userData.filter(user => user.status == 1).length;

@@ -1044,10 +1044,10 @@
 
 
     <script type="module">
-        import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js'; 
+        import { dbController } from '../dashboard-assets/custome-js/indexedDb.js'; 
         // import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
         // import {order} from '../dashboard-assets/custome-js/Apis/orders.js';
-        // import {cart} from '../dashboard-assets/custome-js/Apis/cart.js';
+        import {cart} from '../dashboard-assets/custome-js/Apis/cart.js';
         // import{clientProducts} from '../dashboard-assets/custome-js/Apis/products.js'
         $(window).on('load', async function () {
             if (!adminAuth.checkSession()) {
@@ -1056,7 +1056,10 @@
             } else {
                 console.log('User is logged in, loading products');
                 document.getElementById("admin-email").innerText=adminAuth.adminCred.email;
-                await dbController.openDataBase();
+                 dbController.openDataBase().then(()=>{
+                  cart.fetchDummyData();
+
+                 });
             }
             if (feather) {
                 feather.replace({
