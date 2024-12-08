@@ -1,0 +1,104 @@
+/*for product  name anchor */
+/*we have to override the default style for anchor thought we give the whole table color:var(--text-color).*/
+.details-tabel a{
+    text-decoration: none ;
+    color: var(--text-font);
+} 
+.details-tabel a:hover{
+    color: var(--text-font);
+} 
+
+.details-tabe thead tr:first-child:hover{
+    color: black;
+}
+
+.controler *{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    outline: none;
+    border: 1px solid rgb(241, 225, 225);
+}
+.controler *:nth-child(2){
+    text-align: center;
+}
+
+/* we gave the second table a fixed width*/
+.summary-table{
+    height: 300px;
+}
+
+.details-tabel , .summary-table {
+    color: var( --text-color);
+    /* border: 1px solid var(--non-active-cart-color); */
+}
+
+.details-tabel tr, .summary-table tr{
+    vertical-align: middle;
+}
+
+.details-tabel thead, .summary-table thead
+{
+    background-color: var(--background-color);
+}
+
+
+.delete-icon{   
+    color: var(--non-active-cart-color) !important; /*because the whole table are givent the default color */
+    font-size:25px;
+}
+
+.delete-icon:hover{
+    color: var(--text-font)!important;
+}
+
+.update-icon{
+    font-size: 20px;
+}
+ 
+
+.details-tabel{
+   flex-basis: 65%;
+}
+
+.summary-table{
+    flex-basis:30%;
+}
+
+.summary-table tfoot tr td{
+    text-align: center;
+    width: 100%;
+}
+
+
+.summary-table tfoot tr td input{
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 0; 
+    padding: 10px;  
+}
+
+.summary-table tfoot tr td input:hover , .controler input[type="button"]:hover {
+    background-color: black;
+    border-color:black ;
+    color: white;
+}
+ 
+ 
+@media (max-width: 1000px){
+
+    .cart-tables{
+        flex-wrap: wrap;
+    }
+    .cart-section .cart-tables .details-tabel{
+        flex-basis: 100%;
+    }
+    .cart-section .cart-tables .summary-table{
+        flex-basis: 100%;
+    }
+
+}
+
+ 
+

@@ -7,29 +7,31 @@
     --highligted-text-color: rgb(168, 110, 59);
 
 }
-.about  {
+/* about */
+  .about {
     background-image: url(../utilities/imgs/Image\ .jpg);  
-    background-size: cover;                         
-    background-position: center center;             
-    min-height: 75vh;                              
-    min-width: 75vw;                                
-    color: black;                                  
-    text-align: center;    
-    opacity: 0.8;     
-    box-shadow: 0  0 150px rgb(58, 58, 58) inset;                  
+    background-size: cover;
+    background-position: center center;
+    min-height: 70vh; 
+    width: 100%; 
+    color: black; 
+    text-align: center; 
+    opacity: 0.8; 
+    box-shadow: 0 0 150px rgb(58, 58, 58) inset; 
 }
+
 .about .text1 {
-    color:black !important; 
+    color: black !important; 
     font-family: var(--heading-font);
-    font-weight: 600px;
-    font-size:4rem;
+    font-weight: 500; 
+    font-size: 3rem;
 }
-.about h5{
+
+.about h5 {
     font-family: var(--heading-font);
     font-size: 1.5rem;
-    
-   
 }
+
 
 .landing .description{
 margin-top: 3rem;
