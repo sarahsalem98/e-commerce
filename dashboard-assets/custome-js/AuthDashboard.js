@@ -1,6 +1,6 @@
 import { dbController } from "./indexedDb.js";
 import { general } from "./general.js";
-var adminAuth = {
+ var adminAuth = {
     adminCred: {
         email: "admin@gmail.com",
         password: 123456
@@ -73,7 +73,7 @@ var adminAuth = {
 
 }
 
-var seller = {
+export var seller = {
 
     login: async function (e) {
         console.log("gffd");
@@ -255,6 +255,10 @@ var seller = {
     getloggedsellername:function(){
         var name=JSON.parse(localStorage.getItem("sellerSession")).sessionData.name;
         document.getElementById("logged-seller").innerText=name;
+    },
+    getloggedsellerid:function(){
+        var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
+        return id;
     }
 }
 window.adminAuth = adminAuth;
