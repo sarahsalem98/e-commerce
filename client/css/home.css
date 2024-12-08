@@ -221,9 +221,16 @@
 /* End business */
 
 
+.products .image-container a .hover1:hover{
+    content:url(/client/utilities/imgs/ring-01-b-400x500.jpg)
+}
 
-
-
-
-
-
+.products .image-container a .hover2:hover{
+    content:url(/client/utilities/imgs/ring-02-c-400x500.jpg)
+}
+.products .image-container a .hover3:hover{
+    content:url(/client/utilities/imgs/ring-03-b-400x500.jpg)
+}
+.products .image-container a .hover4:hover{
+    content:url(/client/utilities/imgs/ring-04-b-400x500.jpg)
+}
