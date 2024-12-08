@@ -5,13 +5,7 @@ export var dbController = {
 
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-
-            const request = indexedDB.open('AdminDataBase', 4);  // this number represnt current version of database schema , version num??
-            // if the database already is exit , the onupgradeneeded is not going to trigger 
-
-            //when database will be created for the first time on you browser || update data base schecma || define new schema 
-
-            
+            const request = indexedDB.open('AdminDataBase', 1);
 
             request.onupgradeneeded = function (event) {
 
@@ -121,7 +115,7 @@ export var dbController = {
 
 
     getItem: function (table, id) {
-      
+        let idParsed = parseInt(id);
         return new Promise((resolve, reject) => {
             if (!db) {
                 console.error('Database not initialized');
@@ -130,7 +124,7 @@ export var dbController = {
 
             const transaction = db.transaction([table], 'readonly');
             const objectStore = transaction.objectStore(table);
-            const request = objectStore.get(id);
+            const request = objectStore.get(idParsed);
 
             request.onsuccess = function (event) {
 
@@ -360,7 +354,50 @@ export var dbController = {
                 reject(event.target.error);
             };
         });
+    },
+
+    getItemsByIndexspecialEd: function (tableName, indexName, conditionValue) {
+        return new Promise((resolve, reject) => {
+            if (!db) {
+                console.error('Database not initialized');
+                return reject('Database not initialized');
+            }
+    
+            const transaction = db.transaction([tableName], 'readonly');
+            const objectStore = transaction.objectStore(tableName);
+    
+            if (!objectStore.indexNames.contains(indexName)) {
+                console.error(`Index '${indexName}' does not exist in table '${tableName}'`);
+                return resolve([]); // Return an empty array if the index doesn't exist
+            }
+    
+            console.log('Querying index:', indexName, 'with condition:', conditionValue);
+    
+            const index = objectStore.index(indexName);
+            const results = [];
+            const request = index.openCursor();
+    
+            request.onsuccess = function (event) {
+                const cursor = event.target.result;
+                if (cursor) {
+                    const [key1, key2] = cursor.key; // Assuming a compound index [key1, key2]
+                    if (key2 === conditionValue) { // Check only the second key
+                        results.push(cursor.value);
+                    }
+                    cursor.continue();
+                } else {
+                    console.log('Query complete:', results);
+                    resolve(results);
+                }
+            };
+    
+            request.onerror = function (event) {
+                console.error('Error querying index:', event.target.error);
+                reject(event.target.error);
+            };
+        });
     }
+    
     
     
     

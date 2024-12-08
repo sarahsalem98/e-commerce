@@ -358,7 +358,7 @@
                                     <div class="modal-body">
                                         <form id="add-update-product-form" enctype="multipart/form-data">
                                             <input type="hidden" id="product-id">
-
+                                            <input type="hidden" id="seller-id">
                                             <!-- Product Info Section -->
                                             <div class="row mb-2">
                                                 <div class="col-6">
@@ -556,13 +556,17 @@
     <script type="module">
         import{dbController} from '../dashboard-assets/custome-js/./indexedDb.js'
         import{products} from '../dashboard-assets/custome-js/products.js';
-
+        window.globalseller_id=null;
         $(window).on('load', function () {
             if (!sellerAuth.checkSession()) {
                 window.location.href = 'login.html';
             } else {
                 
-                dbController.openDataBase().then(() => { products.viewProducts(); });
+                dbController.openDataBase().then(() => {
+                    window.globalseller_id=sellerAuth.getloggedsellerid();
+                     products.viewProducts(window.globalseller_id); 
+                    
+                    });
                 sellerAuth.getloggedsellername();
                 console.log('User is logged in');
                 if (feather) {

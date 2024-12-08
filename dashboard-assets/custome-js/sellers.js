@@ -4,7 +4,7 @@ export var sellers = {
     fetchData: async function () {
         let data = await this.getDataFromStorage();
         let allusers = [];
-        if (data.length!=0) {
+        if (data.length != 0) {
             allusers = data;
 
         } else {
@@ -39,16 +39,16 @@ export var sellers = {
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
         const userData = await sellers.fetchData();
-  
-        document.getElementById("active-sellers-count").innerText=userData.filter(user=>user.status_user==1).length;
-        document.getElementById("inactive-sellers-count").innerText=userData.filter(user=>user.status_user==2).length;
-        document.getElementById("total-sellers-count").innerText=userData.length;
+
+        document.getElementById("active-sellers-count").innerText = userData.filter(user => user.status_user == 1).length;
+        document.getElementById("inactive-sellers-count").innerText = userData.filter(user => user.status_user == 2).length;
+        document.getElementById("total-sellers-count").innerText = userData.length;
 
         var statusObj = {
             1: { title: 'pending', class: 'badge-light-warning' },
             2: { title: 'active', class: 'badge-light-success' }
         };
- 
+
 
         if ($.fn.dataTable.isDataTable('.seller-list-table')) {
             $('.seller-list-table').DataTable().clear().destroy(); // Destroy the existing DataTable
@@ -65,6 +65,8 @@ export var sellers = {
                     { data: 'national_id' },
                     { data: 'commercial_registration' },
                     { data: 'phone' },
+                    { data: null },
+                    { data: null },
                     { data: 'status_user' },
                     { data: null }
                 ],
@@ -86,15 +88,15 @@ export var sellers = {
                         render: function (data, type, full, meta) {
                             var $name = full['full_name'],
                                 $email = full['email'];
-                                var stateNum = Math.floor(Math.random() * 6) + 1;
-                                var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
-                                var $state = states[stateNum],
-                                    $name = full['full_name'],
-                                    $initials = $name.match(/\b\w/g) || [];
-                                $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-                               var $output = '<span class="avatar-content">' + $initials + '</span>';
-                            
-                            var colorClass =' bg-light-' + $state + ' ' ;
+                            var stateNum = Math.floor(Math.random() * 6) + 1;
+                            var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
+                            var $state = states[stateNum],
+                                $name = full['full_name'],
+                                $initials = $name.match(/\b\w/g) || [];
+                            $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
+                            var $output = '<span class="avatar-content">' + $initials + '</span>';
+
+                            var colorClass = ' bg-light-' + $state + ' ';
                             var $row_output =
                                 '<div class="d-flex justify-content-left align-items-center">' +
                                 '<div class="avatar-wrapper">' +
@@ -118,10 +120,38 @@ export var sellers = {
                             return $row_output;
                         }
                     },
+                    {
+
+                        targets: 5,
+                        render: function (data, type, full, meta) {
+                            return (
+                                '<a class="btn btn-secondary "'+
+                               // +' onclick="products.viewProducts('+full['id']+')
+                                 'href="sellerproducts.html?seller_id='+full['id']+'"'
+                                +'>' +
+                                ' products' +
+                                '</a>'
+                            );
+                        }
+                    },
+                    {
+
+                        targets: 6,
+                        render: function (data, type, full, meta) {
+                            return (
+                                '<a class="btn btn-success "'+
+                               // +' onclick="products.viewProducts('+full['id']+')
+                                 'href="sellerorders.html?seller_id='+full['id']+'"'
+                                +'>' +
+                                ' orders' +
+                                '</a>'
+                            );
+                        }
+                    },
 
                     {
                         // User Status
-                        targets: 5,
+                        targets: 7,
                         width: '10%',
                         render: function (data, type, full, meta) {
                             var $status = full['status_user'];
@@ -137,7 +167,7 @@ export var sellers = {
                     },
                     {
                         // Actions
-                        targets: 6,
+                        targets: 8,
                         width: '5%',
                         title: 'Actions',
                         orderable: false,
@@ -192,10 +222,10 @@ export var sellers = {
                         },
                         init: function (api, node, config) {
                             $(node).removeClass('btn-secondary');
-                            $(node).on('click',function(){
+                            $(node).on('click', function () {
                                 document.getElementsByClassName("updateTitle")[0].innerText = "Add New Seller";
                                 document.getElementsByClassName("add-update-btn")[0].innerText = "Add";
-                                 sellers.resetFormFields(); 
+                                sellers.resetFormFields();
 
                             })
                         }
@@ -241,7 +271,7 @@ export var sellers = {
                 },
                 initComplete: function () {
                     this.api()
-                        .columns(5)
+                        .columns(7)
                         .every(function () {
                             var column = this;
                             var label = $('<label class="form-label" for="FilterTransaction">Status</label>').appendTo('.user_status');
@@ -292,67 +322,68 @@ export var sellers = {
             e.preventDefault();
             return;
         }
-        let enterdEmail=document.getElementById("seller-email").value;
-        let enterdNationalId=document.getElementById("seller-nationalId").value;
-        var isvalidform=await sellers.validEmailAndNationalId(enterdEmail,enterdNationalId);
-        if(isvalidform){
-            if (id != '') {  
+        let enterdEmail = document.getElementById("seller-email").value;
+        let enterdNationalId = document.getElementById("seller-nationalId").value;
+        var isvalidform = await sellers.validEmailAndNationalId(enterdEmail, enterdNationalId);
+        if (isvalidform) {
+            if (id != '') {
                 var user = await dbController.getItem('sellers', parseInt(id));
-                if(user!=null){
-               
-                    
-                     user.full_name = document.getElementById("seller-name").value;
+                if (user != null) {
+
+
+                    user.full_name = document.getElementById("seller-name").value;
                     user.email = document.getElementById("seller-email").value;
                     user.phone = document.getElementById("seller-phone").value;
                     user.national_id = document.getElementById("seller-nationalId").value;
-                    user.commercial_registration=document.getElementById("seller-CommertialReg").value;
-                    
+                    user.commercial_registration = document.getElementById("seller-CommertialReg").value;
+
                 }
-                
-               let done=await dbController.updateItem('sellers',id,user);
-               if(done){
-                toastr.success("seller update successfully");
-                this.viewUsers();
-                $('#create-updateUser').modal('hide');
-               }else{
-                toastr.error("something went wrong");
-               }
-       
-            }else{
-    
+
+                let done = await dbController.updateItem('sellers', id, user);
+                if (done) {
+                    toastr.success("seller update successfully");
+                    this.viewUsers();
+                    $('#create-updateUser').modal('hide');
+                } else {
+                    toastr.error("something went wrong");
+                }
+
+            } else {
+
                 //add
                 const newuser = {
                     full_name: document.getElementById("seller-name").value,
                     email: document.getElementById("seller-email").value,
-                    phone:document.getElementById("seller-phone").value,
-                    national_id:document.getElementById("seller-nationalId").value,
-                    commercial_registration:document.getElementById("seller-CommertialReg").value,
+                    phone: document.getElementById("seller-phone").value,
+                    national_id: document.getElementById("seller-nationalId").value,
+                    commercial_registration: document.getElementById("seller-CommertialReg").value,
                     status_user: 1,
+                    password:"123456"
                 }
-                  var ok=  await dbController.addItem('sellers',newuser);
-                   if(ok){
+                var ok = await dbController.addItem('sellers', newuser);
+                if (ok) {
                     toastr.success("seller added successfully");
-                   }
-                    this.viewUsers();
-                    $('#create-updateUser').modal('hide');
-    
+                }
+                this.viewUsers();
+                $('#create-updateUser').modal('hide');
+
             }
-        }else{
+        } else {
             toastr.error("enter valid email or national id");
             return;
 
         }
-      
+
 
     },
     changeStatus: async function (id) {
         var data = await dbController.getItem('sellers', id);
         var changedstatus = data.status_user == 1 ? 2 : 1;
         data.status_user = changedstatus;
-        let done=await dbController.updateItem('sellers', id, data);
-        if(done){
+        let done = await dbController.updateItem('sellers', id, data);
+        if (done) {
             toastr.success("status changed successfully");
-        }else{
+        } else {
             toastr.error("something went wrong");
         }
         this.viewUsers();
@@ -368,7 +399,7 @@ export var sellers = {
         let id = document.getElementsByClassName("deleted-record-id")[0].value;
         let isDeletedSuccessfully = await dbController.deleteItem('sellers', id);
         if (isDeletedSuccessfully) {
-           toastr.success("seller deleted successfully");
+            toastr.success("seller deleted successfully");
             this.viewUsers();
         }
 
@@ -376,7 +407,7 @@ export var sellers = {
     validateForm: function () {
         $('.select2').select2();
         var form = $('#add-update-seller-form');
-        if (form.length) {    
+        if (form.length) {
             form.validate({
                 rules: {
                     'seller-name': { required: true },
@@ -384,7 +415,7 @@ export var sellers = {
                     'seller-phone': { required: true },
                     'seller-nationalId': { required: true },
                     'seller-CommertialReg': { required: true },
-                
+
                 },
                 messages: {
                     'seller-name': "Please enter your name",
@@ -393,7 +424,7 @@ export var sellers = {
                     'seller-nationalId': "Please enter your National Id",
                     'seller-CommertialReg': "Please select a Commertial Registeration",
 
-                  
+
                 }
             });
 
@@ -402,21 +433,21 @@ export var sellers = {
         }
         return false;
     },
-     resetFormFields:function() {
+    resetFormFields: function () {
         document.getElementById("seller-name").value = '';
         document.getElementById("seller-email").value = '';
         document.getElementById("seller-phone").value = '';
         document.getElementById("seller-nationalId").value = '';
-        document.getElementById("seller-CommertialReg").value='';
+        document.getElementById("seller-CommertialReg").value = '';
 
     },
-    validEmailAndNationalId:async function(email, nationalId){
-        let data= await sellers.fetchData();
-        let isvalidEmail= !data.some(user=>user.email===email);
-        let isvalidNationalId=!data.some(user=>user.national_id===nationalId);
-        return isvalidEmail&&isvalidNationalId;
+    validEmailAndNationalId: async function (email, nationalId) {
+        let data = await sellers.fetchData();
+        let isvalidEmail = !data.some(user => user.email === email);
+        let isvalidNationalId = !data.some(user => user.national_id === nationalId);
+        return isvalidEmail && isvalidNationalId;
     }
 
 }
-window.sellers=sellers;
+window.sellers = sellers;
 

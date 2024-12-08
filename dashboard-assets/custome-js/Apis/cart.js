@@ -4,6 +4,7 @@ import { clientProducts } from "./products.js";
 
 export var cart = {
     fetchDummyData: async function () {
+        console.log("tt");
         var data = await dbController.getDataArray('carts');
         if (data.length == 0) {
             let res = await fetch('../../dashboard-assets/data/cart-list.json');

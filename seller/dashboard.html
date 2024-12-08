@@ -1048,7 +1048,6 @@
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
         $(window).on('load', async function () {
             if (!sellerAuth.checkSession()) {
-
                 window.location.href = 'login.html';
             } else {
                 console.log('seller is logged in, loading products');
