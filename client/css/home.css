@@ -19,9 +19,9 @@
     background-size: cover;
     background-position:center center;
     background-repeat: no-repeat;
-    min-height: calc(100vh - 24px);
-    min-width: calc(100vh - 24px);
-   color: black;
+    height: calc(100vh - 60px);
+    width: 100%;
+    color: black;
 }
 .landing .text h1{
     font-family: var(--heading-font);
@@ -68,6 +68,7 @@
 }
 /* End brands */
 
+
    /* start products */
    .main-title::after{
     content: '';
@@ -88,6 +89,21 @@
     font-family: var(--heading-font); 
     font-size: 2.8rem;
 }
+    
+
+.cart-icon {
+    width: 40px; 
+    height: 40px;
+    transition: all 0.5s ease; 
+    opacity: 0;
+   
+}
+
+.image-container:hover .cart-icon {
+    opacity: 1; 
+    transform: scale(1.2);
+}
+
 
 
 /* start Unique */
@@ -105,45 +121,38 @@
 }
 
 /* End Unique */
-  */
  
-.box {
-    background-color: white;
-    position: relative; 
-    overflow: hidden;
-    text-align: center;
-    padding: 20px;
-}
+.products .box .image-container {
 
-.products .box img {
-    width: 100%;
-    height: auto;
-    transition: opacity 1s ease;
+   
+    transition:  transform 0.8s ease; 
 
 }
+
+************************************
+
 
 .products .box .img1:hover {
     cursor: pointer;
-    content: url("../utilities/imgs/ring20.jpg");
-    transition: transform 1s ease; 
+    content: url("../utilities/imgs/ring36.jpg");
 }
 
 .products .box .img2:hover {
     cursor: pointer;
-    content: url("../utilities/imgs/ring26.jpg");
+    content: url("../utilities/imgs/ring20.jpg");
 
   
 }
 
 .products .box .img3:hover {
     cursor: pointer;
-    content: url("../utilities/imgs/ring31.jpg");
+    content: url("../utilities/imgs/ring26.jpg");
    
 }
 
 .products .box .img4:hover {
     cursor: pointer;
-    content: url("../utilities/imgs/ring36.jpg");
+    content: url("../utilities/imgs/ring31.jpg");
 
 }
 
@@ -157,7 +166,7 @@
 
 
 .product .box img {
-    transition: transform 0.8s ease; 
+    transition:  transform 0.8s ease; 
 }
 
 
