@@ -2,20 +2,25 @@
 import { general } from "./general.js";
 import { dbController } from "./indexedDb.js";
 
+let globale_orders=[];
 export var orders = {
+
     fetchData: async function (seller_id) {
         let data = await this.getDataFromStorage(seller_id);
-        let allData = [];
-        if (data.length != 0) {
-            allData = data;
+        let alldataorders=await this.getDataFromStorage(null);
+        let allDataobj = [];
+        if (alldataorders.length == 0) {
+            let res = await fetch('../../dashboard-assets/data/order-list.json');
+            let allData = await res.json();
+            this.saveDataToStorage(allData);
+
 
         } else {
-            let res = await fetch('../../dashboard-assets/data/order-list.json');
-            allData = await res.json();
-            this.saveDataToStorage(allData);
+            if(data.length!=0){
+                allDataobj=data;
+            }
         }
-
-        return allData;
+        return allDataobj;
     },
     getOrderData: async function (id) {
         const data = await this.fetchData();
@@ -29,21 +34,41 @@ export var orders = {
 
     },
     getDataFromStorage: async function (seller_id) {
-        console.log(seller_id);
-        let data=[];
-        // if(seller_id!=null || seller_id!=undefined){
-            
-        //    var datainf= await dbController.getItemsByIndexspecialEd('carts','userId_isFinished','true');
-        //    console.log(datainf);
-        //    data=datainf;
-            
-        // }else{
-            data = await dbController.getDataArray('orders');
-       // }
-        return data;
+        console.log("ttt"+seller_id);
+        let orders = [];
+        if (seller_id != null && seller_id != undefined) {
+            orders = await dbController.getDataArray('orders');
+            for (let order of orders) {
+                let cart_id = order.cart_id;
+                let cart = await dbController.getItem('carts', cart_id);
+                if (cart) {
+                    let validProducts = [];
+                    for (let product of cart.products) {
+                        let product_data = await dbController.getItem('products', product.product_id);
+
+                        if (product_data && product_data.seller_id == seller_id) {
+                            validProducts.push(product);
+                        }
+                    }
+                    cart.products = validProducts;
+                    if (cart.products.length > 0) {
+                        order.cart = cart;
+                    } else {
+                        orders = orders.filter(o => o.id !== order.id);
+                    }
+                } else {
+                    orders = orders.filter(o => o.id !== order.id);
+                }
+                globale_orders=orders;
+            }
+        } else {
+            orders = await dbController.getDataArray('orders');
+        }
+     
+
+        return orders;
     },
     viewOrders: async function (seller_id) {
-
         var dtUserTable = $('.orders-list-table');
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
@@ -273,7 +298,18 @@ export var orders = {
 
     viewDetails: async function (id) {
         orders.resetFormFields();
-        let data = await this.getOrderData(id);
+        let data;
+        let details;
+        if(globale_orders.length==0){
+         data = await this.getOrderData(id);
+         let cart= await dbController.getItem('carts',data.cart_id);
+         details=cart.products ;
+
+        }else{
+           data= globale_orders.find(o=>o.id==id);
+           details=data.cart.products;
+        }
+        console.log(details);
         document.getElementById("order-email").value = data.email;
         document.getElementById("order-first-name").value = data.first_name;
         document.getElementById("order-last-name").value = data.second_name;
@@ -281,13 +317,15 @@ export var orders = {
         document.getElementById("order-address").value = data.address;
         document.getElementById("order-phone1").value = data.phone_num1;
         document.getElementById("order-phone2").value = data.phone_num2;
-
-        let productsdata = await dbController.getItem("carts", data.cart_id);
-        console.log(productsdata);
+        document.getElementById("order-notes").value = data.message;
+        //let productsdata = data.cart;        
+        if ($.fn.dataTable.isDataTable('.billing-list-table')) {
+            $('.billing-list-table').DataTable().clear().destroy();
+        }
         var dtUserTable = $('.billing-list-table');
         if (dtUserTable.length) {
             dtUserTable.DataTable({
-                data: productsdata.products,
+                data: details,
                 columns: [
                     { data: null },
                     { data: 'product_id' },
