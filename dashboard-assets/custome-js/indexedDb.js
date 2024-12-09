@@ -2,7 +2,7 @@ let db;
 export var dbController = {
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 1);
+            const request = indexedDB.open('AdminDataBase', 2);
 
             request.onupgradeneeded = function (event) {
                 const db = event.target.result;
@@ -35,6 +35,10 @@ export var dbController = {
                     const orderStore = db.createObjectStore('orders', { keyPath: 'id', autoIncrement: true });
                     orderStore.createIndex('user_id', 'user_id', { unique: false }); 
                     orderStore.createIndex('cart_id', 'cart_id', { unique: false }); 
+                }
+                if (!db.objectStoreNames.contains('contactus')) {
+                    const contact = db.createObjectStore('contactus', { keyPath: 'id', autoIncrement: true });
+                    contact.createIndex('email', 'email', { unique: false }); 
                 }
             };
 
