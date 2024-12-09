@@ -5,7 +5,7 @@ export var dbController = {
 
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 1);
+            const request = indexedDB.open('AdminDataBase', 2);
 
             request.onupgradeneeded = function (event) {
 
@@ -52,6 +52,10 @@ export var dbController = {
                     
                     //why we use cart id.
 
+                }
+                if (!db.objectStoreNames.contains('contactus')) {
+                    const contact = db.createObjectStore('contactus', { keyPath: 'id', autoIncrement: true });
+                    contact.createIndex('email', 'email', { unique: false }); 
                 }
             };
 

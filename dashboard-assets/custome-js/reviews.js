@@ -34,6 +34,10 @@ export var reviews={
             await reviews.fetchData();
             
         let data=await dbController.getItemsByUniqueKey("reviews","product_id",productId);
+        
+        if ($.fn.dataTable.isDataTable('.review-list-table')) {
+            $('.review-list-table').DataTable().clear().destroy();
+        }
         var dtUserTable = $('.review-list-table');
         if (dtUserTable.length) {
             dtUserTable.DataTable({

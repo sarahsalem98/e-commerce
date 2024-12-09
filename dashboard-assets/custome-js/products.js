@@ -18,11 +18,7 @@ export var products = {
                 if(data.length!=0){
                     allDataobj=data;
                 }
-        }
-     
-      
-        console.log(allDataobj);
-         
+        }         
         return allDataobj;
     },
 
@@ -380,8 +376,8 @@ export var products = {
                         }
                     }
                     data.name = document.getElementById("product-name").value;
-                    data.price = document.getElementById("product-price").value;
-                    data.qty = document.getElementById("product-qty").value;
+                    data.price =parseInt(document.getElementById("product-price").value);
+                    data.qty =parseInt(document.getElementById("product-qty").value);
                     data.category = document.getElementById("product-category").value;
                     data.desciption = document.getElementById("product-desc").value;
                     data.seller_id=parseInt(window.globalseller_id);
@@ -409,8 +405,8 @@ export var products = {
 
                 const newdata = {
                     name: document.getElementById("product-name").value,
-                    price: document.getElementById("product-price").value,
-                    qty: document.getElementById("product-qty").value,
+                    price: parseInt(document.getElementById("product-price").value),
+                    qty: parseInt(document.getElementById("product-qty").value),
                     category: document.getElementById("product-category").value,
                     desciption: document.getElementById("product-desc").value,
                     seller_id:parseInt(window.globalseller_id),
