@@ -365,7 +365,7 @@
                                             <div class="col-12">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-email">Email</label>
-                                                    <input type="text" id="order-email" class="form-control"
+                                                    <input type="text" id="order-email" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
@@ -375,14 +375,14 @@
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-first-name">First Name</label>
-                                                    <input type="text" id="order-first-name" class="form-control"
+                                                    <input type="text" id="order-first-name" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-last-name">Last Name</label>
-                                                    <input type="text" id="order-last-name" class="form-control"
+                                                    <input type="text" id="order-last-name" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
@@ -392,14 +392,14 @@
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-gov">Governorate</label>
-                                                    <input type="text" id="order-gov" class="form-control"
+                                                    <input type="text" id="order-gov" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-address">Address</label>
-                                                    <input type="text" id="order-address" class="form-control"
+                                                    <input type="text" id="order-address" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
@@ -409,14 +409,14 @@
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-phone1">Phone Num 1</label>
-                                                    <input type="text" id="order-phone1" class="form-control"
+                                                    <input type="text" id="order-phone1" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-phone2">Phone Num 2</label>
-                                                    <input type="text" id="order-phone2" class="form-control"
+                                                    <input type="text" id="order-phone2" disabled class="form-control"
                                                         placeholder="Name" />
                                                 </div>
                                             </div>
@@ -426,7 +426,7 @@
                                             <div class="col-12">
                                                 <div class="mb-1">
                                                     <label class="form-label" for="order-notes">Notes</label>
-                                                    <textarea id="order-notes" class="form-control"></textarea>
+                                                    <textarea id="order-notes" disabled class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -513,7 +513,7 @@
 
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
-        import { products } from '../../dashboard-assets/custome-js/products.js';
+        import { orders } from '../dashboard-assets/custome-js/orders.js';
         window.globalseller_id = null;
         $(window).on('load', function () {
             if (!adminAuth.checkSession()) {
@@ -525,7 +525,7 @@
                     const seller_id = url_params.get('seller_id');
                     window.globalseller_id = seller_id;
                     document.getElementById("admin-email").innerText = adminAuth.adminCred.email;
-                    products.viewProducts(window.globalseller_id);
+                    orders.viewOrders(window.globalseller_id);
                 });
                 if (feather) {
                     feather.replace({
