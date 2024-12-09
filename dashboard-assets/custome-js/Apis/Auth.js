@@ -22,7 +22,6 @@ export var clientAuth = {
     },
     checkSession: function () {
         let storedSession = JSON.parse(localStorage.getItem('clientSession'));
-
         if (storedSession) {
             let currentTime = new Date().getTime();
             if (currentTime < storedSession.expiryTime) {
@@ -69,8 +68,8 @@ export var clientAuth = {
                 status_user: 1,
                 gov: governorate,
                 gender: gender,
-                password: password,
-                avatar: avatar
+                password: password
+                //avatar: avatar
             }
 
             isUpdated = await dbController.updateItem("sellers", userId, userupdated);
@@ -81,6 +80,7 @@ export var clientAuth = {
     getloggedInUserData: async function (userId) {
         var data = await dbController.getItem('users', userId);
         return data;
+    
 
     }
 }

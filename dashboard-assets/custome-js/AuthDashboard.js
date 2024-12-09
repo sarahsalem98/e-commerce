@@ -138,7 +138,8 @@ export var seller = {
 
         if (general.validateForm('seller-register-form', rules, messages)) {
             var sellerexisted = await dbController.getItemsByUniqueKey('sellers', 'email', email);
-            if (sellerexisted) {
+            console.log(email);
+            if (sellerexisted.length>0) {
                 toastr.error("this email is already registered try to login");
             } else {
                 var seller = {
