@@ -23,9 +23,12 @@ export var clientProducts = {
     },
     updateCartProducts: async function (cartData) {
         console.log("tt");
+        
         let updatedCart = [];
         let isUpdated;
+
         if(cartData!=null){
+
             if (cartData.products.length != 0) {
                 for (var i = 0; i < cartData.products; i++) {
                     var product = await dbController.getItem('products', cartData.products[i].product_id);

@@ -1,5 +1,9 @@
+ 
 
 $(document).ready(function(){
+
+ 
+
     let lastClickedImage=null;
    $(".first-section .left-section .img-nav .img").on("click",function(){
          
@@ -20,7 +24,7 @@ $(document).ready(function(){
 
      const currentWidth = document.body.offsetWidth;
 
-     console.log('Window Width:', currentWidth); // Debugging
+    //  console.log('Window Width:', currentWidth); // Debugging
 
      //  for removeing the  bootstrap container class from main-section
      const containerDiv = document.querySelector('.main-section');

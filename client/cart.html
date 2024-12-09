@@ -340,6 +340,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        //import {cart} from "../../dashboard-assets/custome-js/Apis/cart.js"
+        import { dbController } from "../dashboard-assets/custome-js/indexedDb.js"
+
+   $(window).on("load", function(){
+     dbController.openDataBase().then(() => {
+
+        console.log("jello");
+     })
+   })
+
+
+    </script>
 </body>
 
 </html>
