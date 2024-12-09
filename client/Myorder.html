@@ -17,7 +17,7 @@
      
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/cartGlobals.css">
-    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/Myorder.css">
 
      
     <script src="js/cartGlabals.js"></script>
@@ -27,11 +27,11 @@
          
          
     </style>
-    <title>home</title>
+    <title>myorder</title>
 
 </head>
 
-<body >
+<body>
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -57,7 +57,7 @@
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">PRODUCTS</a>
+                        <a class="nav-link" href="products.html">PRODUCTS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link2" href="About.html">ABOUT</a>
@@ -79,73 +79,19 @@
             </div>
         </div>
     </nav>
-
-      
-
-        <!--  to active the current step you have to add tow classes  
-          
-        1-active-page for the main anchor tage   
-        2- active-page-step-num  for span that is represent current step  -->
-
-
-
         <section  class="cart-section container mt-5">
             
-            <h2 class="title">cart</h2>
+            <h2 class="title">My Order</h2>
 
 
-            <!-- progressbar -->
             <div class="prgressive-bar" class="row">
 
                 <a href="cart.html" class="page one active-page">
 
                     <span class="step-number active-page-step-num">1</span>
-                    <p>Shopping Cart </p>
-                    
-
-                </a>
-
-                <span>></span>
-                 
-                <a href="cart1.html" class="page two" >
-
-                    <span class="step-number">2</span>
-                    <p>checkout details</p>
-
-                </a>
-
-                 
-                <span>></span>
-                <a href="#" class="page three" >
-
-                    <span class="step-number">3</span>
-                    <p>order complete</p>
-
-                </a>
+                    <p>My Order </p>
 
             </div>
-        
-            <!-- for updating purpose in our cart -->
-            <div class="d-flex border-top border-3 border-dark pt-3" style="background-color:var(--updating-cart-bars-bg-color); line-height: 2em; ">
-                <!-- <img src="utilities/cart_imgs/check_5610944.png" alt="" style="width:20px" height="20px" class="mx-2"> -->
-                
-                <div class="update-icon">
-                    <i class="fa-regular fa-circle-check p-1"></i>
-                    
-                </div>
-                <p>Cart Updated</p>
-            </div>
-
-            <!-- if cart is empty -->
-
-            <div class="d-flex border-top border-3 border-dark pt-2 mt-4" style="background-color:var(--updating-cart-bars-bg-color);">
-                 <!-- <img src="utilities/cart_imgs/delete-cart_7661838.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
-                 <!-- <img src="utilities/cart_imgs/add-cart_4401532.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
-                 <span class="fas fa-shopping-cart fa-1x mx-2" style="line-height: 2em;"></span>
-                <p  style="line-height: 2em;">Your cart is currently empty.</p>
-            </div>
-
-
             <!-- tables -->
 
             <!-- justify-content-evenly -->
@@ -165,7 +111,7 @@
                 </thead>
                 <tbody >
                     <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark"></i></td>
 
                         <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
 
