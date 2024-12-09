@@ -172,8 +172,6 @@
     </nav>
 
     <!-- END: Header-->
-
-
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
@@ -199,23 +197,23 @@
                         data-feather="more-horizontal"></i>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="users.html"><i
+                <li class=" nav-item "><a class="d-flex align-items-center" href="users.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">users</span></a>
                 </li>
-                <li class=" nav-item "><a class="d-flex align-items-center" href="sellers.html"><i
+                <li class=" nav-item  "><a class="d-flex align-items-center" href="sellers.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
                             data-i18n="Email">sellers</span></a>
                 </li>
-                <li class=" nav-item  "><a class="d-flex align-items-center" href="orders.html"><i
+                <li class=" nav-item active "><a class="d-flex align-items-center" href="orders.html"><i
                             data-feather="box"></i><span class="menu-title text-truncate"
                             data-i18n="Email">orders</span></a>
                 </li>
-
                 <li class=" nav-item "><a class="d-flex align-items-center" href="contactus.html"><i
-                    data-feather="file-text"></i><span class="menu-title text-truncate"
-                    data-i18n="Email">contact-us</span></a>
-               </li>
+                            data-feather="file-text"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">contact-us</span></a>
+                </li>
+
 
             </ul>
         </div>
@@ -233,50 +231,100 @@
                 <!-- users list start -->
                 <section class="app-user-list">
                     <div class="row">
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
 
-                                        <h3 class="fw-bolder mb-75" id="total-users-count">21,459</h3>
-                                        <span>Total Users</span>
+                                        <h3 class="fw-bolder mb-75" id="total-orders-count">21,459</h3>
+                                        <span>Total </span>
                                     </div>
                                     <div class="avatar bg-light-primary p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="active-users-count">19,860</h3>
-                                        <span>Active Users</span>
+                                        <h3 class="fw-bolder mb-75" id="placed-orders-count">19,860</h3>
+                                        <span>placed</span>
                                     </div>
-                                    <div class="avatar bg-light-success p-50">
+                                    <div class="avatar bg-light-primary p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user-check" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-6">
+                        <div class="col-lg-2 col-sm-6">
                             <div class="card">
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <div>
-                                        <h3 class="fw-bolder mb-75" id="inactive-users-count">237</h3>
-                                        <span>Inactive Users</span>
+                                        <h3 class="fw-bolder mb-75" id="prepared-orders-count">237</h3>
+                                        <span>prepared</span>
 
 
                                     </div>
                                     <div class="avatar bg-light-warning p-50">
                                         <span class="avatar-content">
-                                            <i data-feather="user-x" class="font-medium-4"></i>
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="completed-orders-count">237</h3>
+                                        <span>completed</span>
+
+
+                                    </div>
+                                    <div class="avatar bg-light-success p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="deliverd-orders-count">237</h3>
+                                        <span>deliverd</span>
+
+
+                                    </div>
+                                    <div class="avatar bg-light-secondary p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="card">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h3 class="fw-bolder mb-75" id="cancelled-orders-count">237</h3>
+                                        <span>cancelled</span>
+
+                                    </div>
+                                    <div class="avatar bg-light-danger p-50">
+                                        <span class="avatar-content">
+                                            <i data-feather='box' class="font-medium-4"></i>
                                         </span>
                                     </div>
                                 </div>
@@ -290,181 +338,135 @@
                             <h4 class="card-title">Search & Filter</h4>
                             <div class="row">
                                 <div class="col-md-4 user_status"></div>
+
                             </div>
                         </div>
                         <div class="card-datatable table-responsive pt-0">
-                            <table class="user-list-table table">
+                            <table class="orders-list-table table">
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
-                                        <th>Name</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>gender</th>
+                                        <th>#id</th>
+                                        <th>email</th>
+                                        <th>userType </th>
+                                        <th>created_at</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-
-                        <div class="modal fade text-start" id="create-updateUser" tabindex="-1"
+                        <div class="modal fade text-start" id="order-details-modal" tabindex="-1"
                             aria-labelledby="myModalLabel33" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New User</h4>
+                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Order Billing Details
+                                        </h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
+                                    <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
 
-                                    <div class="modal-body">
-                                        <form id="add-update-user-form">
-                                            <input type="hidden" id="user-id">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-name">
-                                                            Name</label>
-                                                        <input type="text" id="user-name" name="user-name"
-                                                            class="form-control" placeholder="First Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-phone">
-                                                            phone</label>
-                                                        <input type="text" id="user-phone" name="user-phone"
-                                                            class="form-control" placeholder="Phone Number" />
-                                                    </div>
+                                        <div class="row ">
+                                            <div class="col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-email">Email</label>
+                                                    <input type="text" id="order-email" disabled class="form-control"
+                                                        placeholder="Name" />
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-email">Email</label>
-                                                        <input type="email" id="user-email" name="user-email"
-                                                            class="form-control" placeholder="Email" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-Gender">Gender</label>
-                                                        <select id="user-gender" name="user-gender"
-                                                            class="select2 form-select">
-                                                            <option value=""> select gender</option>
-                                                            <option value="1"> female</option>
-                                                            <option value="2">male</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label for="user-profile-pic" class="form-label">Profile
-                                                            pic</label>
-                                                        <input class="form-control" type="file" id="user-profile-pic"
-                                                            name="user-profile-pic" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-country">Governorate</label>
-                                                        <select id="user-country" name="user-country"
-                                                            class="select2 form-select">
-                                                            <option value="">please select governate</option>
-                                                            <option value="Alexandria">Alexandria</option>
-                                                            <option value="Aswan">Aswan</option>
-                                                            <option value="Asyut">Asyut</option>
-                                                            <option value="Beheira">Beheira</option>
-                                                            <option value="Beni Suef">Beni Suef</option>
-                                                            <option value="Cairo">Cairo</option>
-                                                            <option value="Dakahlia">Dakahlia</option>
-                                                            <option value="Damietta">Damietta</option>
-                                                            <option value="Faiyum">Faiyum</option>
-                                                            <option value="Gharbia">Gharbia</option>
-                                                            <option value="Giza">Giza</option>
-                                                            <option value="Ismailia">Ismailia</option>
-                                                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-                                                            <option value="Luxor">Luxor</option>
-                                                            <option value="Matrouh">Matrouh</option>
-                                                            <option value="Minya">Minya</option>
-                                                            <option value="Monufia">Monufia</option>
-                                                            <option value="New Valley">New Valley</option>
-                                                            <option value="North Sinai">North Sinai</option>
-                                                            <option value="Port Said">Port Said</option>
-                                                            <option value="Qalyubia">Qalyubia</option>
-                                                            <option value="Qena">Qena</option>
-                                                            <option value="Red Sea">Red Sea</option>
-                                                            <option value="Sharqia">Sharqia</option>
-                                                            <option value="Sohag">Sohag</option>
-                                                            <option value="South Sinai">South Sinai</option>
-                                                            <option value="Suez">Suez</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="user-address">Address</label>
-                                                        <input type="text" id="user-address" name="user-address"
-                                                            class="form-control" placeholder="address" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary me-1 add-update-btn"
-                                                    onclick="users.addUpdate(event);">Add</button>
-                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                                            </div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
-                                aria-labelledby="myModalLabel120" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel120">Delete Seller</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="danger-modal-text">
 
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-first-name">First Name</label>
+                                                    <input type="text" id="order-first-name" disabled
+                                                        class="form-control" placeholder="Name" />
+                                                </div>
                                             </div>
-                                            <input type="hidden" class="deleted-record-id">
-
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-last-name">Last Name</label>
+                                                    <input type="text" id="order-last-name" disabled
+                                                        class="form-control" placeholder="Name" />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" onclick="users.delete();"
-                                                data-bs-dismiss="modal">Yes</button>
+
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-gov">Governorate</label>
+                                                    <input type="text" id="order-gov" disabled class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-address">Address</label>
+                                                    <input type="text" id="order-address" disabled class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-phone1">Phone Num 1</label>
+                                                    <input type="text" id="order-phone1" disabled class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-phone2">Phone Num 2</label>
+                                                    <input type="text" id="order-phone2" disabled class="form-control"
+                                                        placeholder="Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row ">
+                                            <div class="col-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="order-notes">Notes</label>
+                                                    <textarea id="order-notes" disabled class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-datatable table-responsive pt-0">
+                                            <table class="billing-list-table table">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>#ProductID</th>
+                                                        <th>Qty</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
-                        <!-- Modal to add new user Ends-->
-                    </div>
-                    <!-- list and filter end -->
-                </section>
-                <!-- users list ends -->
 
+
+                    </div>
+
+                    <!-- Modal to add new user Ends-->
             </div>
+            <!-- list and filter end -->
+            </section>
+            <!-- users list ends -->
+
         </div>
+    </div>
     </div>
     <!-- END: Content-->
 
@@ -518,7 +520,7 @@
 
     <script type="module">
         import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
-        import { users } from '../../dashboard-assets/custome-js/users.js';
+        import { orders } from '../dashboard-assets/custome-js/orders.js';
         $(window).on('load', function () {
             if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
@@ -526,8 +528,7 @@
                 console.log('User is logged in, loading products');
                 dbController.openDataBase().then(() => {
                     document.getElementById("admin-email").innerText = adminAuth.adminCred.email;
-                    users.viewUsers();
-
+                    orders.viewOrders(null);
                 });
                 if (feather) {
                     feather.replace({
