@@ -2,7 +2,7 @@ let db;
 export var dbController = {
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 2);
+            const request = indexedDB.open('AdminDataBase2', 2);
 
             request.onupgradeneeded = function (event) {
                 const db = event.target.result;
@@ -86,6 +86,7 @@ export var dbController = {
     },
 
     getItem: function (table, id) {
+  
         let idParsed = parseInt(id);
         return new Promise((resolve, reject) => {
             if (!db) {
@@ -98,11 +99,11 @@ export var dbController = {
             const request = objectStore.get(idParsed);
 
             request.onsuccess = function (event) {
-                console.log(request.result);
-                if (request.result) {
+                //console.log(event);
+               // if (request.result) {
                     console.log(' Data:', request.result);
                     resolve(request.result);
-                }
+                //}
             };
 
             request.onerror = function (event) {
