@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* General Form Styling */
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Labels */
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input Fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Input Hover and Focus States */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Buttons */
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form .add-update-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+form .add-update-btn:hover {
+    background-color: #0056b3;
+}
+
+form .cancel-btn {
+    background-color: #6c757d;
+    color: #fff;
+    margin-right: 10px;
+}
+
+form .cancel-btn:hover {
+    background-color: #565e64;
+}
+
+/* Form Title */
+form .updateTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+        font-size: 12px;
+    }
+
+    form button {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+
+</style>
+<body>
+    <form>
+        <input type="hidden" id="user-id" />
+        <label>First Name</label>
+        <input type="text" id="user-first-name" placeholder="First Name" />
+        <label>Last Name</label>
+        <input type="text" id="user-last-name" placeholder="Last Name" />
+        <label>Email</label>
+        <input type="email" id="user-email" placeholder="Email" />
+        <label>Address</label>
+        <input type="text" id="user-address" placeholder="Address" />
+        <label>Current Password</label>
+        <input type="password" id="current-password" placeholder="Current Password" />
+        <label>New Password</label>
+        <input type="password" id="new-password" placeholder="New Password" />
+        <label>Confirm New Password</label>
+        <input type="password" id="confirm-new-password" placeholder="Confirm New Password" />
+        <button class="add-update-btn" type="submit">Save Changes</button>
+    </form>
+    <script>
+
+openUpdateModal: async function (id) {
+    // Fetch user data by ID
+    var userdata = await users.getUserData(id);
+
+    // Update the modal fields with user data
+    document.getElementsByClassName("updateTitle")[0].innerText = "Update Profile";
+    document.getElementsByClassName("add-update-btn")[0].innerText = "Save Changes";
+
+    // Split full name into first and last name
+    const [firstName, lastName] = userdata.full_name.split(' ');
+
+    document.getElementById("user-id").value = id; // Hidden ID field
+    document.getElementById("user-first-name").value = firstName;
+    document.getElementById("user-last-name").value = lastName;
+    document.getElementById("user-email").value = userdata.email;
+    document.getElementById("user-address").value = userdata.address;
+
+    // Note: Current password is not fetched for security reasons
+},
+
+addUpdate: async function (e) {
+    let id = document.getElementById("user-id").value.toString();
+
+    // Validate form fields
+    if (!this.validateForm()) {
+        e.preventDefault();
+        return;
+    }
+
+    // Prepare user data
+    const firstName = document.getElementById("user-first-name").value;
+    const lastName = document.getElementById("user-last-name").value;
+    const fullName = `${firstName} ${lastName}`;
+    const email = document.getElementById("user-email").value;
+    const address = document.getElementById("user-address").value;
+    const currentPassword = document.getElementById("current-password").value;
+    const newPassword = document.getElementById("new-password").value;
+    const confirmPassword = document.getElementById("confirm-new-password").value;
+
+    // Password validation
+    if (newPassword && newPassword !== confirmPassword) {
+        toastr.error("New password and confirmation do not match.");
+        e.preventDefault();
+        return;
+    }
+
+    if (id) {
+        // Update user profile
+        var user = await dbController.getItem('users', parseInt(id));
+        if (user) {
+            user.full_name = fullName;
+            user.email = email;
+            user.address = address;
+
+            // If a new password is provided, update it
+            if (newPassword) {
+                user.password = newPassword; // Make sure passwords are hashed
+            }
+
+            // Save updated data
+            await dbController.updateItem('users', id, user);
+            toastr.success("Profile updated successfully.");
+        }
+    } else {
+        // Create a new user (if applicable)
+        const newUser = {
+            full_name: fullName,
+            email: email,
+            address: address,
+            password: newPassword, // Ensure password is hashed
+            status_user: 1,
+        };
+        var ok = await dbController.addItem('users', newUser);
+        if (ok) {
+            toastr.success("User profile created successfully.");
+        }
+    }
+
+    // Refresh view and close the modal
+    this.viewUsers();
+    $('#create-updateUser').modal('hide');
+},
+
+    </script>
+</body>
+</html>
