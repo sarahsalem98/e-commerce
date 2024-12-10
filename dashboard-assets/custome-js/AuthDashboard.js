@@ -1,5 +1,6 @@
 import { dbController } from "./indexedDb.js";
 import { general } from "./general.js";
+import { order } from "./Apis/orders.js";
  var adminAuth = {
     adminCred: {
         email: "admin@gmail.com",
@@ -65,12 +66,40 @@ import { general } from "./general.js";
         }
         return false;
     },
-   
-
     logout: function () {
         localStorage.removeItem('adminSession');
         window.location.href = 'login.html';
+    },
+
+    dashboardData:async function(){
+      let orders=await dbController.getDataArray('orders');
+      let products=await dbController.getDataArray('products');
+      let customers=await dbController.getDataArray('users');
+      let carts=await dbController.getDataArray('carts');
+      let totalrevenue=0;
+      console.log(carts);
+
+      let ordersnum=orders.length;
+      let productsnum=products.length;
+      let customernum=customers.length;
+      orders.forEach(order=>{
+        const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
+        console.log(cart);
+        if(cart){
+            cart.products.forEach(product=>{
+                totalrevenue+=product.price*product.qty;
+            })
+        }
+      })
+
+      
+      
+      document.getElementById("sales-num").innerText=ordersnum;
+      document.getElementById("customers-num").innerText=customernum;
+      document.getElementById("products-num").innerText=productsnum;
+      document.getElementById("revenue-num").innerText=totalrevenue;
     }
+
 
 }
 
@@ -197,6 +226,7 @@ export var seller = {
     loadDataProfile:async function(){
         var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;  
         var dataseller=await dbController.getItem("sellers",id);
+        console.log(id);
         document.getElementById("seller-register-email").value=dataseller.email;
         document.getElementById("seller-register-password").value=dataseller.password;
         document.getElementById("seller-register-phone").value=dataseller.phone;

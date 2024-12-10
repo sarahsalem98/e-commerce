@@ -116,9 +116,7 @@ export var users = {
                                 '</div>' +
                                 '</div>' +
                                 '<div class="d-flex flex-column">' +
-                                '<a href="' +
-                                userView +
-                                '" class="user_name text-truncate text-body"><span class="fw-bolder">' +
+                                '<a href="javascript:void;" class="user_name text-truncate text-body"><span class="fw-bolder">' +
                                 $name +
                                 '</span></a>' +
                                 '<small class="emp_post text-muted">' +
@@ -311,6 +309,7 @@ export var users = {
         document.getElementById("user-email").value = userdata.email;
         document.getElementById("user-phone").value = userdata.phone;
         document.getElementById("user-address").value = userdata.address;
+        document.getElementById("user-gender").value=userdata.gender;
     },
     addUpdate: async function (e) {
         let id = document.getElementById("user-id").value.toString();
@@ -437,7 +436,7 @@ export var users = {
         document.getElementById("user-address").value = '';
         document.getElementById("user-gender").value = '';
         document.getElementById("user-country").value = '';
-        document.getElementById("user-profile-pic").value = ''; // Reset the file input
+        document.getElementById("user-profile-pic").value = ''; 
     }
 
 }

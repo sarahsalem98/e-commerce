@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <title>seller</title>
+    <title>Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
         rel="stylesheet">
 
@@ -36,33 +36,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <!-- END: Custom CSS-->
-
-    <style>
-        #image-preview-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .image-wrapper {
-            position: relative;
-            width: 80px;
-            height: 80px;
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .image-wrapper .btn {
-            font-size: 12px;
-            padding: 2px 5px;
-        }
-    </style>
 
 </head>
 <!-- END: Head-->
@@ -198,18 +171,17 @@
                     </ul>
                 </li> -->
                 <li class="nav-item dropdown dropdown-user">
-                    <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder"
-                                id="logged-seller">John
-                                Doe</span><span class="user-status">seller</span></div><span class="avatar"><img
-                                class="round" src="user-default.webp" alt="avatar" height="40" width="40"><span
-                                class="avatar-status-online"></span></span>
+                    <a class="nav-link dropdown-toggle dropdown-user-link"
+                        id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder" id="admin-email">John
+                                Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img
+                                    class="round" src="user-default.webp"
+                                alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
-                            class="dropdown-item" href="profile.html"><i class="me-50" data-feather="user"></i>
-                            Profile</a><a class="dropdown-item" href="javascript:void();" onclick="sellerAuth.logout();"><i class="me-50"
-                                data-feather="power"></i> Logout</a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
+                        <a class="dropdown-item" href="javascript:void();" onclick="adminAuth.logout();"><i
+                                class="me-50" data-feather="power"></i> Logout</a>
                     </div>
                 </li>
             </ul>
@@ -226,7 +198,7 @@
                 <li class="nav-item me-auto"><a class="navbar-brand" href="../admin/dashboard.html"><span
                             class="brand-logo">
                         </span>
-                        <h2 class="brand-text">Seller Dashboard</h2>
+                        <h2 class="brand-text">Admin Dashboard</h2>
                     </a></li>
 
             </ul>
@@ -235,7 +207,7 @@
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
-                <li class=" nav-item"><a class="d-flex align-items-center" href="dashboard.html"><i
+                <li class=" nav-item"><a class="d-flex align-items-center" href="../admin/dashboard.html"><i
                             data-feather="home"></i><span class="menu-title text-truncate"
                             data-i18n="Email">Dashboard</span></a>
                 </li>
@@ -244,18 +216,23 @@
                         data-feather="more-horizontal"></i>
                 </li>
 
-                <li class=" nav-item active"><a class="d-flex align-items-center" href="products.html"><i
+                <li class=" nav-item "><a class="d-flex align-items-center" href=" users.html"><i
                             data-feather="user"></i><span class="menu-title text-truncate"
-                            data-i18n="Email">Products</span></a>
+                            data-i18n="Email">users</span></a>
                 </li>
 
-                <li class=" nav-item "><a class="d-flex align-items-center" href="orders.html"><i
+                <li class=" nav-item"><a class="d-flex align-items-center" href="sellers.html"><i
+                            data-feather="user"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">sellers</span></a>
+                </li>
+                <li class=" nav-item  "><a class="d-flex align-items-center" href="orders.html"><i
                             data-feather="box"></i><span class="menu-title text-truncate"
                             data-i18n="Email">orders</span></a>
                 </li>
-
-
-
+                <li class=" nav-item active"><a class="d-flex align-items-center" href="contactus.html"><i
+                            data-feather="file-text"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">contact-us</span></a>
+                </li>
             </ul>
         </div>
     </div>
@@ -269,61 +246,7 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
-                <!-- users list start -->
                 <section class="app-user-list">
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between">
-                                    <div>
-
-                                        <h3 class="fw-bolder mb-75" id="total-products-count">21,459</h3>
-                                        <span>Total Products</span>
-                                    </div>
-                                    <div class="avatar bg-light-primary p-50">
-                                        <span class="avatar-content">
-                                            <i data-feather='box' class="font-medium-4"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75" id="active-products-count">19,860</h3>
-                                        <span>Active Products</span>
-                                    </div>
-                                    <div class="avatar bg-light-success p-50">
-                                        <span class="avatar-content">
-                                            <i data-feather='box' class="font-medium-4"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6">
-                            <div class="card">
-                                <div class="card-body d-flex align-items-center justify-content-between">
-                                    <div>
-                                        <h3 class="fw-bolder mb-75" id="inactive-products-count">237</h3>
-                                        <span>Inactive Products</span>
-
-
-                                    </div>
-                                    <div class="avatar bg-light-warning p-50">
-                                        <span class="avatar-content">
-                                            <i data-feather='box' class="font-medium-4"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- list and filter start -->
                     <div class="card">
                         <div class="card-body border-bottom">
                             <h4 class="card-title">Search & Filter</h4>
@@ -333,170 +256,21 @@
                             </div>
                         </div>
                         <div class="card-datatable table-responsive pt-0">
-                            <table class="product-list-table table">
+                            <table class="contact-list-table table">
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Qty</th>
-                                        <th>Status</th>
+                                        <th>firstName</th>
+                                        <th>lastName</th>
+                                        <th> Email</th>
+                                        <th>message</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
 
-                        <div class="modal fade text-start" id="create-updateUser" tabindex="-1"
-                            aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Add New Product</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form id="add-update-product-form" enctype="multipart/form-data">
-                                            <input type="hidden" id="product-id">
-                                            <input type="hidden" id="seller-id">
-                                            <!-- Product Info Section -->
-                                            <div class="row mb-2">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label" for="product-name">Name</label>
-                                                        <input type="text" id="product-name" name="product-name"
-                                                            class="form-control" placeholder="Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label class="form-label"
-                                                            for="product-category">Category</label>
-                                                        <select id="product-category" name="product-category"
-                                                            class="select2 form-select">
-                                                            <option value=""> select category</option>
-                                                            <option value="1"> Necklaces</option>
-                                                            <option value="2">Rings</option>
-                                                            <option value="3">Bracelets</option>
-                                                            <option value="4">Earrings</option>
-                                                        </select>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-2">
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label for="product-price" class="form-label">Price</label>
-                                                        <input type="number" min="1" id="product-price"
-                                                            name="product-price" class="form-control"
-                                                            placeholder="Price" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="mb-1">
-                                                        <label for="product-qty" class="form-label">Quantity</label>
-                                                        <input type="number" min="1" id="product-qty" name="product-qty"
-                                                            class="form-control" placeholder="Quantity" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label for="product-price" class="form-label">Description</label>
-                                                         <textarea  class="form-control" name="product-desc" id="product-desc"></textarea>
-                                                    </div>
-                                                </div>
-                                             
-                                            </div>
-
-                                            <!-- Image Preview Row -->
-                                            <div id="image-preview-row" class="d-flex flex-wrap gap-2 mb-2"></div>
-
-                                            <!-- Add Image Button -->
-                                            <div class="mb-2">
-                                                <button type="button" id="add-image-btn" class="btn btn-outline-primary"
-                                                    onclick="products.addPerviewImgs()">Add Image</button>
-                                            </div>
-
-                                            <!-- Form Submission Buttons -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary me-1 add-update-btn"
-                                                    onclick="products.addUpdate(event);">Add</button>
-                                                <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="modal fade text-start" id="review-modal" tabindex="-1"
-                            aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title updateTitle" id="myModalLabel33">Product reviews</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <div class="card-datatable table-responsive pt-0">
-                                            <table class="review-list-table table">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>user</th>
-                                                        <th>rate</th>
-                                                        <th>description</th>
-
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
-                            aria-labelledby="myModalLabel120" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel120">Delete Product</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="danger-modal-text">
-
-                                        </div>
-                                        <input type="hidden" class="deleted-record-id">
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" onclick="products.delete();"
-                                            data-bs-dismiss="modal">Yes</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
-                    <!-- Modal to add new user Ends-->
             </div>
             <!-- list and filter end -->
             </section>
@@ -551,27 +325,21 @@
     <!-- BEGIN: Page JS-->
     <!-- <script src="../dashboard-assets/js/scripts/pages/app-user-list.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
-
-
     <!-- END: Page JS-->
-
+    <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
     <script type="module">
-        import{dbController} from '../dashboard-assets/custome-js/./indexedDb.js'
-        import{products} from '../dashboard-assets/custome-js/products.js';
-        window.globalseller_id=null;
+        import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
+        import { contactus } from '../../dashboard-assets/custome-js/contactus.js';
         $(window).on('load', function () {
-            if (!sellerAuth.checkSession()) {
+            if (!adminAuth.checkSession()) {
                 window.location.href = 'login.html';
             } else {
-                
+
                 dbController.openDataBase().then(() => {
-                    window.globalseller_id=sellerAuth.getloggedsellerid();
-                     products.viewProducts(window.globalseller_id); 
-                    
-                    });
-                sellerAuth.getloggedsellername();
-                console.log('User is logged in');
+                    document.getElementById("admin-email").innerText = adminAuth.adminCred.email;
+                    contactus.view();
+                });
+                console.log('User is logged in, loading products');
                 if (feather) {
                     feather.replace({
                         width: 14,

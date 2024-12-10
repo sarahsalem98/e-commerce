@@ -1,65 +1,98 @@
-window.addEventListener("load",function(){
+window.addEventListener("load", function () {
+  const profileForm = document.getElementById("profileForm");
+  const firstNameField = document.getElementById("firstName");
+  const lastNameField = document.getElementById("lastName");
+  const emailField = document.getElementById("email");
+  const addressField = document.getElementById("address");
+  const currentPasswordField = document.getElementById("currentPassword");
+  const newPasswordField = document.getElementById("newPassword");
+  const confirmPasswordField = document.getElementById("confirmPassword");
 
-    document.getElementById("profileForm").addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
-      
-        // Fetch input values
-        const firstName = document.getElementById("firstName").value.trim();
-        const lastName = document.getElementById("lastName").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const address = document.getElementById("address").value.trim();
-        const currentPassword = document.getElementById("currentPassword").value.trim();
-        const newPassword = document.getElementById("newPassword").value.trim();
-        const confirmPassword = document.getElementById("confirmPassword").value.trim();
-      
-        // Check if new password and confirm password match
-        if (newPassword !== confirmPassword) {
-          alert("New Password and Confirm Password do not match.");
-          return;
-        }
-      
-        // Prepare the data to send in the API call
-        const requestData = {
-          firstName,
-          lastName,
-          email,
-          address,
-          currentPassword,
-          newPassword,
-        };
-      
-        try {
-          // Make API call
-          const response = await fetch("../../dashboard-assets/data/user-list.json", {
-            method: "PUT", // Or PATCH, based on your API
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer YOUR_TOKEN", // Add authentication token if required
-            },
-            body: JSON.stringify(requestData),
-          });
-      
-          // Handle response
-          if (response.ok) {
-            const result = await response.json();
-            alert("Profile updated successfully!");
-            console.log("Updated Profile:", result);
-          } else {
-            const errorData = await response.json();
-            alert(`Error: ${errorData.message}`);
-            console.error("API Error:", errorData);
+  const currentUserId = 1;
+
+
+  async function preloadUserData(userId) {
+      try {
+          const userData = await clientAuth.getloggedInUserData(userId);
+          if (userData) {
+              const [firstName, lastName] = userData.full_name.split(' ');
+              firstNameField.value = firstName || '';
+              lastNameField.value = lastName || '';
+              emailField.value = userData.email;
+              addressField.value = userData.address;
           }
-        } catch (error) {
-          console.error("An error occurred:", error);
-          alert("An error occurred while updating the profile. Please try again later.");
-        }
-      });
+      } catch (error) {
+          console.error('Error fetching user data:', error);
+      }
+  }
+
+ 
+  preloadUserData(currentUserId);
+
+  
+  profileForm.addEventListener("submit", async (event) => {
+      event.preventDefault(); 
+
       
-      // Optional: Handle Cancel Button
-      document.getElementById("cancelBtn").addEventListener("click", () => {
-        // Reset form fields (optional)
-        document.getElementById("profileForm").reset();
-        alert("Changes discarded.");
-      });
-      
-})//end of load
+      const firstName = firstNameField.value.trim();
+      const lastName = lastNameField.value.trim();
+      const email = emailField.value.trim();
+      const address = addressField.value.trim();
+      const currentPassword = currentPasswordField.value.trim();
+      const newPassword = newPasswordField.value.trim();
+      const confirmPassword = confirmPasswordField.value.trim();
+
+
+      if (!firstName || !lastName) {
+          alert('First Name and Last Name cannot be empty.');
+          return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+      }
+
+      if (!address) {
+          alert('Address cannot be empty.');
+          return;
+      }
+
+      if (newPassword && newPassword !== confirmPassword) {
+          alert('New Password and Confirm Password must match.');
+          return;
+      }
+
+      try {
+       
+          const fullName = `${firstName} ${lastName}`;
+          const updatedUserData = {
+              first_name: firstName,
+              last_name: lastName,
+              email: email,
+              address: address,
+              password: newPassword,
+          };
+
+          
+          const isUpdated = await clientAuth.updateProfile(
+              currentUserId,
+              fullName,
+              updatedUserData.email,
+              updatedUserData.password,
+              updatedUserData.address
+          );
+
+          if (isUpdated) {
+              alert('Profile updated successfully!');
+              preloadUserData(currentUserId); 
+          } else {
+              alert('Failed to update the profile. Please try again.');
+          }
+      } catch (error) {
+          console.error('Error updating user profile:', error);
+          alert('An error occurred while updating the profile.');
+      }
+  });
+});

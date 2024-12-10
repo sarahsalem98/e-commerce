@@ -79,171 +79,54 @@
             </div>
         </div>
     </nav>
-        <section  class="cart-section container mt-5">
-            
-            <h2 class="title">My Order</h2>
-
-
-            <div class="prgressive-bar" class="row">
-
-                <a href="cart.html" class="page one active-page">
-
-                    <span class="step-number active-page-step-num">1</span>
-                    <p>My Order </p>
-
+    <section class="cart-section  mb-5 mt-5">
+        <div class="container">
+            <h2 class="title text-center mb-4"> View Order</h2>
+    
+            <!-- Tables -->
+            <div class="d-flex flex-column align-items-center cart-tables">
+                <table class="table table-bordered text-center ">
+                    <thead class="headtable">
+                        <tr>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                         
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr>
+                            <th>1</th>
+                            <th>Product1</th>
+                            <th>20$</th>
+                            <th>2</th>
+                         
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <th>Product2</th>
+                            <th>30$</th>
+                            <th>3</th>
+                         
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <th>Product3</th>
+                            <th>40$</th>
+                            <th>2</th>
+                         
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- tables -->
-
-            <!-- justify-content-evenly -->
-            <div class="d-flex justify-content-between mt-5 mb-5 cart-tables" style="width:100%;">
-
-                <!-- table for all product detailts that user added it -->
-             <table class="table table-bordered  border border-1 details-tabel">
-                <thead > 
-                    <tr>
-                        <th></th> 
-                        <th></th>   
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>subtotal</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly />
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td>
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                </tbody>
-             </table>
-
-             <table class="table table-bordered  summary-table border border-1">
-                <thead>
-                    <tr>
-                        <th colspan="2">Cart Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>$5,750.00</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>$5,750.00</td>
-                    </tr>
-                    
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <input type="button" class="btn btn-block" value="PROCEED TO CHECKOUT"/>
-                        </td>
-                    </tr>
-                </tfoot>
-             </table>
-
-            </div>
-           
-             
-         </section>
+        </div>
+       
+    </section>
+    
 
 
-        
-        
-
+      
      
     <!-- Footer -->
     <footer class="footer">
@@ -286,6 +169,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="myorder.js"></script>
 </body>
 
 </html>
