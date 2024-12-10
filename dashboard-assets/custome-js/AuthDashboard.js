@@ -197,6 +197,7 @@ export var seller = {
     loadDataProfile:async function(){
         var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;  
         var dataseller=await dbController.getItem("sellers",id);
+        console.log(id);
         document.getElementById("seller-register-email").value=dataseller.email;
         document.getElementById("seller-register-password").value=dataseller.password;
         document.getElementById("seller-register-phone").value=dataseller.phone;
