@@ -333,15 +333,15 @@ $(window).on('load', function () {
       },
       distributed: true
     },
-    colors: [window.colors.solid.primary, window.colors.solid.warning],
+    colors: [window.colors.solid.success, window.colors.solid.danger],
     series: [
       {
         name: 'Earning',
-        data: [95, 177, 284, 256, 105, 63, 168, 218, 72]
+        data: [95, 177, 284, 256, 105, 63, 168, 218, 72,10]
       },
       {
         name: 'Expense',
-        data: [-145, -80, -60, -180, -100, -60, -85, -75, -100]
+        data: [-145, -80, -60, -180, -100, -60, -85, -75, -100,-10]
       }
     ],
     dataLabels: {
@@ -360,7 +360,7 @@ $(window).on('load', function () {
       }
     },
     xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','oct','nov','des'],
       labels: {
         style: {
           colors: $textMutedColor,
