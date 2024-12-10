@@ -363,6 +363,7 @@ export var orders = {
     changeStatus: async function (id, status) {
         var data = await dbController.getItem('orders', id);
         data.status = status;
+        data.updated_at=new Date();
         var done = await dbController.updateItem('orders', id, data);
         if (done) {
             toastr.success("status changed successfully");
