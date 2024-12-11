@@ -17,24 +17,32 @@ export var cart = {
          
     },
 
+    //product id --> string 
+    //qty ---> string 
+    //user id --- string 
+    //price --->string 
+
     addToCart: async function (productId, qty, userId, price) {
 
-        console.log("df");
+        // console.log("df");
 
-        await this.fetchDummyData();
+        // await this.fetchDummyData();
 
         let cartData;
         let cart;
 
-        let product = await dbController.getItem('products', productId);
+        console.log("before ")
 
-        console.log(product);
+         
+        let product = await dbController.getItem('products', productId );
 
-        if (qty < product.qty) {
+        qty=Number(qty);
 
+        if (qty <= product.qty) {
+            console.log("available")
             if (price == product.price) {
 
-                console.log("yy");
+                // console.log("yy");
 
                 if(userId!=null){
 
@@ -53,7 +61,6 @@ export var cart = {
                     cart=JSON.parse(cartData); //if user dosenot have any cart the cart var will contain null
 
                 }
-
                 //if user dose not have cart before thistime.
                 if (!cart) {
            

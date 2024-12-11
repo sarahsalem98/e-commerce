@@ -5,7 +5,7 @@ export var dbController = {
 
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 2);
+            const request = indexedDB.open('AdminDataBase', 4);
 
             request.onupgradeneeded = function (event) {
 
@@ -119,7 +119,9 @@ export var dbController = {
 
 
     getItem: function (table, id) {
+
         let idParsed = parseInt(id);
+        
         return new Promise((resolve, reject) => {
             if (!db) {
                 console.error('Database not initialized');
@@ -132,11 +134,11 @@ export var dbController = {
 
             request.onsuccess = function (event) {
 
-                console.log(request.result); // may be it return null
+                // console.log("hello i'm the res : "+ request.result); // may be it return null
 
                 if (request.result) {
 
-                    console.log(' Data:', request.result);
+                    // console.log(' Data:', request.result);
 
                     resolve(request.result); //the data will be returned in case of resolving
 
@@ -308,6 +310,7 @@ export var dbController = {
                 return reject('Database not initialized');
             }
     
+            console.log("value value :" + value)
             const transaction = db.transaction([table], 'readonly');
             const objectStore = transaction.objectStore(table);
             const index = objectStore.index(key);
@@ -329,6 +332,7 @@ export var dbController = {
 
 
     getItemsByIndex: function (tableName, indexName, indexValues) {
+
         return new Promise((resolve, reject) => {
             if (!db) {
                 console.error('Database not initialized');
@@ -339,17 +343,17 @@ export var dbController = {
             const objectStore = transaction.objectStore(tableName);
     
             if (!objectStore.indexNames.contains(indexName)) {
-                console.error(`Index '${indexName}' does not exist in table '${tableName}'`);
+                // console.error(`Index '${indexName}' does not exist in table '${tableName}'`);
                 return resolve([]); // Return an empty array if the index doesn't exist
             }
     
-            console.log('Querying index:', indexName, 'with values:', indexValues);
+            // console.log('Querying index:', indexName, 'with values:', indexValues);
     
             const index = objectStore.index(indexName);
             const request = index.getAll(IDBKeyRange.only(indexValues));
     
             request.onsuccess = function (event) {
-                console.log('Query successful:', event.target.result);
+                // console.log('Query successful:', event.target.result);
                 resolve(event.target.result);
             };
     

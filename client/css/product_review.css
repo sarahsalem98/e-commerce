@@ -5,11 +5,11 @@
 }
 
 .first-section .left-section{
-    width: 50%;
+    width: 55%;
     height: 550px;
 }
 .first-section .right-section{
-    width: 45%;
+    width: 47%;
     height: fit-content;
      
 }
@@ -22,7 +22,7 @@
 
 .first-section .left-section .displayer{
     
-    background-image: url('../utilities/imgs/necklace-d.jpg');
+    /* background-image: url('../utilities/imgs/necklace-d.jpg'); */
     background-size: 100% 100%;
 }
 
@@ -94,7 +94,7 @@
     font-size: 1.5em;
     font-weight: 500;
 }
-.right-section .details{
+.right-section .product-details{
     line-height:1.8 ;
 }
 
@@ -128,7 +128,7 @@
 }
 
 .star.highlight { 
-    color:var(--text-color);;
+    color:var(--text-color);
 }  
 
 .required{
