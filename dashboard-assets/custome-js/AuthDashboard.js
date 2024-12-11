@@ -77,27 +77,31 @@ import { order } from "./Apis/orders.js";
       let customers=await dbController.getDataArray('users');
       let carts=await dbController.getDataArray('carts');
       let totalrevenue=0;
-      console.log(carts);
 
-      let ordersnum=orders.length;
+      let ordersnum=orders.filter(order=>order.status==4).length;
       let productsnum=products.length;
       let customernum=customers.length;
       orders.forEach(order=>{
-        const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
-        console.log(cart);
-        if(cart){
-            cart.products.forEach(product=>{
-                totalrevenue+=product.price*product.qty;
-            })
+        if(order.status==4){
+            const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
+            if(cart){
+                cart.products.forEach(product=>{
+                    totalrevenue+=product.price*product.qty;
+                })
+            }
         }
       })
 
-      
+ 
+
+
       
       document.getElementById("sales-num").innerText=ordersnum;
       document.getElementById("customers-num").innerText=customernum;
       document.getElementById("products-num").innerText=productsnum;
-      document.getElementById("revenue-num").innerText=totalrevenue;
+      document.getElementById("revenue-num").innerText=String(totalrevenue);
+      general.chartData(orders);
+      
     }
 
 
@@ -291,7 +295,44 @@ export var seller = {
     getloggedsellerid:function(){
         var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
         return id;
-    }
+    },
+    dashboardData:async function(seller_id){
+        let orders=await dbController.getDataArray('orders');
+        let orderseller=await general.getSellerOrders(orders,seller_id);
+        console.log(orderseller);
+
+
+        let products=await dbController.getItemsByUniqueKey('products','seller_id',seller_id);
+
+        let carts=await dbController.getDataArray('carts');
+        let totalrevenue=0;
+  
+        let ordersnumsales=orderseller.filter(order=>order.status==4).length;
+        let productsnum=products.length;
+        let ordersnum=orderseller.length;
+
+        orderseller.forEach(order=>{
+          if(order.status==4){
+              const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
+              if(cart){
+                  cart.products.forEach(product=>{
+                      totalrevenue+=product.price*product.qty;
+                  })
+              }
+          }
+        })
+  
+   
+  
+  
+        
+        document.getElementById("sales-num").innerText=ordersnumsales;
+        document.getElementById("orders-num").innerText=ordersnum;
+        document.getElementById("products-num").innerText=productsnum;
+        document.getElementById("revenue-num").innerText=String(totalrevenue);
+        general.chartData(orderseller);
+        
+      }
 }
 window.adminAuth = adminAuth;
 window.sellerAuth = seller;
