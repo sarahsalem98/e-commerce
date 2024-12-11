@@ -79,57 +79,50 @@
             </div>
         </div>
     </nav>
-    <section class="cart-section  mb-5 mt-5">
+     <div class="order mb-5 mt-5">
         <div class="container">
-            <h2 class="title text-center mb-4"> View Order</h2>
-    
-            <!-- Tables -->
-            <div class="d-flex flex-column align-items-center cart-tables">
-                <table class="table table-bordered text-center ">
-                    <thead class="headtable">
-                        <tr>
-                            <th>#</th>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                         
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr>
-                            <th>1</th>
-                            <th>Product1</th>
-                            <th>20$</th>
-                            <th>2</th>
-                         
-                        </tr>
-                        <tr>
-                            <th>2</th>
-                            <th>Product2</th>
-                            <th>30$</th>
-                            <th>3</th>
-                         
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <th>Product3</th>
-                            <th>40$</th>
-                            <th>2</th>
-                         
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row">
+                <div class=" col-12 col-md-3">
+                    <div class="sidebar">
+                        <h5 class="fw-bold">Order History</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a href="profileUser.html" class="nav-link active fw-bold"> Previous page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=" col-12 col-md-9">
+                  
+                    <div class="table">
+                        <caption>Order history with detailed information.</caption>
+                        <table id="order-history-table" class="table table-bordered text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                    <th>Message</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <p id="no-orders" class="no-orders d-none">No orders found.</p>
+                </div>
             </div>
         </div>
-       
-    </section>
+    </div>
     
-
-
       
      
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer ">
         <div class="container">
             <div class="footer-section">
                 <h4>BLINGG</h4>

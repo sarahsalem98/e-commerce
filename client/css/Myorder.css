@@ -5,51 +5,34 @@
     --text-color: rgba(0, 0, 0, 0.7);
     --highlighted-text-color: rgb(168, 110, 59);
 }
-
-.cart-section {
-    
-    padding: 20px;
-    border-radius: 10px;
- 
-    font-family: var(--text-font);
+.sidebar .nav-link.active {
+    color:var(--highligted-text-color)
+  }
+.order{
+    margin-top: 30px;
+    padding-bottom: 10rem;
+    width: 100%;
+    word-wrap: break-word; 
 }
 
-.cart-section .title {
-    font-family: var(--heading-font);
-    color: var(--highlighted-text-color);
-}
-
-
-.headtable {
+thead {
     background-color: var(--background-color);
-    font-weight: bold;
-}
-
-.table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s;
-}
-
-.table-bordered {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-
-.table td, .table th {
-    vertical-align: middle;
-    font-size: 0.95rem;
-}
-
-.table tbody tr td {
-    text-align: center;
     color: var(--text-color);
-    font-style: var(--text-color);
 }
 
 
+tbody tr:nth-child(odd) {
+    background-color: var(--highlighted-text-color);
+}
 
-@media (max-width: 768px) {
-    .table {
-        font-size: 0.85rem;
-    }
+tbody tr:nth-child(even) {
+    background-color: var(--background-color);
+}
+
+.no-orders {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: bold;
 }
