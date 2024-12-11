@@ -41,7 +41,6 @@ export var orders = {
             for (let order of orders) {
                 let cart_id = order.cart_id;
                 let cart = await dbController.getItem('carts', cart_id);
-                console.log("tt"+cart);
                 if (cart) {
                     let validProducts = [];
                     for (let product of cart.products) {
