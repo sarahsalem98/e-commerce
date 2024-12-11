@@ -387,7 +387,7 @@
 
     <script type="module">
         import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
-        // import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
+        import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
         import { order } from '../dashboard-assets/custome-js/Apis/orders.js';
         import { clientProducts } from '../dashboard-assets/custome-js/Apis/products.js';
         import { cart } from '../dashboard-assets/custome-js/Apis/cart.js';
@@ -403,6 +403,7 @@
                     //clientProducts.getreviews();
                    cart.fetchDummyData();
                     adminAuth.dashboardData();
+                    clientProducts.getBestSellingProducts();
                     // cart.addToCart(12,1,11,299)
                     // cart.addToCart(10,1,11,349.99)
                     //order.makeOrder(11,'sasasalem44@gmail.com','sara','salem','Cairo','madint mubark','01305345','0234234','come early')
