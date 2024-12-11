@@ -2,7 +2,7 @@
 import { general } from "./general.js";
 import { dbController } from "./indexedDb.js";
 
-let globale_orders=[];
+let global_orders=[];
 export var orders = {
 
     fetchData: async function (seller_id) {
@@ -59,7 +59,7 @@ export var orders = {
                 } else {
                     orders = orders.filter(o => o.id !== order.id);
                 }
-                globale_orders=orders;
+                global_orders=orders;
             }
         } else {
             orders = await dbController.getDataArray('orders');
@@ -88,7 +88,15 @@ export var orders = {
             4: { title: 'deliverd', class: 'badge-light-secondary' },
             5: { title: 'cancelled', class: 'badge-light-danger' },
         };
+        if(seller_id!=null ||seller_id!=undefined){
+            let sellerdata=await dbController.getItem('sellers',seller_id);
+            const seller_name=document.getElementById("seller-name");
+            if(seller_name){
+                seller_name.innerText=`#${seller_id}#-${sellerdata.full_name}`
 
+            }
+
+        }
 
         if ($.fn.dataTable.isDataTable('.orders-list-table')) {
             $('.orders-list-table').DataTable().clear().destroy();
@@ -300,13 +308,13 @@ export var orders = {
         orders.resetFormFields();
         let data;
         let details;
-        if(globale_orders.length==0){
+        if(global_orders.length==0){
          data = await this.getOrderData(id);
          let cart= await dbController.getItem('carts',data.cart_id);
          details=cart.products ;
 
         }else{
-           data= globale_orders.find(o=>o.id==id);
+           data= global_orders.find(o=>o.id==id);
            details=data.cart.products;
         }
         console.log(details);
@@ -354,6 +362,7 @@ export var orders = {
     changeStatus: async function (id, status) {
         var data = await dbController.getItem('orders', id);
         data.status = status;
+        data.updated_at=new Date();
         var done = await dbController.updateItem('orders', id, data);
         if (done) {
             toastr.success("status changed successfully");

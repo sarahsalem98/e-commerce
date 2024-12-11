@@ -142,9 +142,7 @@ export var products = {
                                 '</div>' +
                                 '</div>' +
                                 '<div class="d-flex flex-column">' +
-                                '<a href="' +
-                                userView +
-                                '" class="user_name text-truncate text-body"><span class="fw-bolder">' +
+                                '<a href="javascript:void;" class="user_name text-truncate text-body"><span class="fw-bolder">' +
                                 $name +
                                 '</span></a>' +
                                 '</div>' +

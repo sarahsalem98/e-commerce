@@ -62,4 +62,3 @@ export var clientProducts = {
 
 }
 
-//await clientProducts.getAllProducts();

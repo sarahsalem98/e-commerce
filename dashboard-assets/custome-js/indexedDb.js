@@ -119,7 +119,6 @@ export var dbController = {
 
 
     getItem: function (table, id) {
-
         let idParsed = parseInt(id);
         
         return new Promise((resolve, reject) => {
