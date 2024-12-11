@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +14,6 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/profileUser.css">
     <title>home</title>
-
 </head>
 
 <body>
@@ -67,64 +65,50 @@
         </div>
     </nav>
 
-    <div class="ProfileUser mt-5 tb-5">
-    <div class="container mt-5 ">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="sidebar">
-              <h5  class="fw-bold">Manage My Account</h5>
-              <ul class="nav flex-column">
-                <li class="nav-item"><a href="#" class="nav-link active fw-bold">My Profile</a></li>
-                <li class="nav-item"><a href="Myorder.html" class="nav-link text-black-50">My Orders</a></li>
-              </ul>
-              
-     
-            </div>
-          </div>
-          <div class="col-md-9">
-            <div class="  ">
-              <h5 class="mb-4">Edit Your Profile</h5>
-              <form>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="firstName">
+    <div class="ProfileUser mt-4 ">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-md-3">
+                  <div class="sidebar">
+                      <h5 class="fw-bold">Manage My Account</h5>
+                      <ul class="nav flex-column">
+                          <li class="nav-item"><a href="#" class="nav-link active fw-bold">My Profile</a></li>
+                          <li class="nav-item"><a href="Myorder.html" class="nav-link text-black-50">My Orders</a></li>
+                      </ul>
                   </div>
-                  <div class="col-md-6">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="lastName">
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" id="email" class="form-control" placeholder="ProfileUser@gmail.com">
-                </div>
-                <div class="mb-3">
-                  <label for="address" class="form-label">Address</label>
-                  <input type="text" id="address" class="form-control" placeholder="Address">
-                </div>
-                <div class="mb-3">
-                  <label for="currentPassword" class="form-label">Current Password</label>
-                  <input type="password" id="currentPassword" class="form-control ">
-                </div>
-                <div class="mb-3">
-                  <label for="newPassword" class="form-label">New Password</label>
-                  <input type="password" id="newPassword" class="form-control">
-                </div>
-                <div class="mb-3">
-                  <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                  <input type="password" id="confirmPassword" class="form-control">
-                </div>
-                <div class="d-flex justify-content-end">
-                  <button type="button" class="btn btn-secondary me-2">Cancel</button>
-                  <button type="submit" class="btn btn-danger">Save Changes</button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="col-12 col-md-9  ">
+                  <h3>Edit Your Profile</h3>
+                  <form id="updateProfileForm" class="form">
+                      <div class="mb-4 d-flex">
+                          <input id="firstName" class="form-control me-1" type="text" placeholder="First Name">
+                          <input id="lastName" class="form-control" type="text" placeholder="Last Name">
+                      </div>
+                      <div class="mb-3">
+                          <input id="email" class="form-control" type="email" placeholder="Email">
+                      </div>
+                  
+                      <div class="mb-4 d-flex">
+                          <input id="address" class="form-control" type="text" placeholder="Address">
+                          <input id="phone" class="form-control" type="number" placeholder="Phone">
+                      </div>
+                    
+                      <div class="mb-4 d-flex">
+                          <input id="currentPassword" class="form-control me-1" type="password" placeholder="Current Password">
+                          <input id="newPassword" class="form-control" type="password" placeholder="New Password">
+                          <input id="confirmPassword" class="form-control" type="password" placeholder="Confirm Password">
+                      </div>
+                  
+                      <div class="mb-4">
+                          <input id="updateButton" class="form-control updateButton " type="button" value="Update Profile">
+                          <input id="cancelButton" class="form-control updateButton   mt-2" type="reset" value="Cancel">
+                      </div>
+                  </form>
+                  <p id="passwordError" class="no-orders d-none">New passwords do not match!</p>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+  </div>
 
 
     <!-- Footer -->
@@ -168,12 +152,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-    <script src="./js/"></script>
-=======
-
-    <script src="/client/js/profileuser.js"></script>
->>>>>>> bf4507ee03ff6b55982c188939dbe8438cb16686
+    <script src="./js/profileuser.js"></script>
 </body>
 
 </html>
