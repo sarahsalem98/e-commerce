@@ -100,7 +100,7 @@
                       </div>
                   
                       <div class="mb-4">
-                          <input id="updateButton" class="form-control updateButton " type="button" value="Update Profile">
+                          <input id="updateButton" class="form-control updateButton" onclick="sara.updateProfile();"  type="button" value="Update Profile">
                           <input id="cancelButton" class="form-control updateButton   mt-2" type="reset" value="Cancel">
                       </div>
                   </form>
@@ -152,7 +152,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="./js/profileuser.js"></script>
+    <script src="./js/profileuser.js" type="module"></script>
+
+    <script src="../dashboard-assets/custome-js/Apis/Auth.js" type="module"></script>
+
+    <script type="module">
+        import { clientAuth } from '../dashboard-assets/custome-js/Apis/Auth.js';
+        $(window).on('load', function () {
+            clientAuth.test();
+   
+
+        })
+    </script>
+
 </body>
 
 </html>

@@ -1,4 +1,3 @@
-
 window.addEventListener("load", async function() {
     let userId = localStorage.getItem("user_id"); 
     if (!userId) {
