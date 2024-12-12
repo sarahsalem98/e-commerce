@@ -4,7 +4,7 @@
 
     --background-color: rgb(250, 245, 240);
     --heading-font: 'Cinzel', serif;
-    --text-font: 'Roboto';
+    --text-font: 'Roboto', sans-serif;
     --text-color: rgba(0, 0, 0, 0.7);
     --highligted-text-color: rgb(168, 110, 59);
 
@@ -112,7 +112,9 @@ h1{
     color: var(--text-color) !important;
 }
 
-
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
 
 .footer {
     background-color: var(--background-color);
