@@ -10,7 +10,7 @@
 }
 body{
     font-family:var(--text-font);
-    font-weight: 100;
+    font-weight: 300;
 }
 h1,h2,h3{
     font-family:var(--heading-font);
@@ -85,7 +85,7 @@ p{
 
 }
 
-@media (max-width:767px) {
+@media (max-width:992px) {
     .navbar {
         padding: 0 2rem;
     }
@@ -201,45 +201,10 @@ p{
         /* Reduce padding for mobile */
     }
 }
-section div a .hover1:hover{
-    content:url(/client/utilities/imgs/ring-01-b-400x500.jpg)
+section div a:hover .hover-img1{
+    display: none;
 }
-section div a .hover2:hover{
-    content:url(/client/utilities/imgs/ring-02-c-400x500.jpg)
-}
-section div a .hover3:hover{
-    content:url(/client/utilities/imgs/ring-03-b-400x500.jpg)
-}
-section div a .hover4:hover{
-    content:url(/client/utilities/imgs/ring-04-b-400x500.jpg)
-}
-section div a .hover5:hover{
-    content:url(/client/utilities/imgs/necklace-01-b-400x500.jpg)
-}
-section div a .hover6:hover{
-    content:url(/client/utilities/imgs/necklace-02-b-400x500.jpg)
-}
-section div a .hover7:hover{
-    content:url(/client/utilities/imgs/necklace-03-b-400x500.jpg)
-}
-section div a .hover8:hover{
-    content:url(/client/utilities/imgs/necklace-04-b-400x500.jpg)
-}
-section div a .hover9:hover{
-    content:url(/client/utilities/imgs/earrings-01-c-400x500.jpg)
-}
-section div a .hover10:hover{
-    content:url(/client/utilities/imgs/earrings-02-b-400x500.jpg)
-}
-section div a .hover11:hover{
-    content:url(/client/utilities/imgs/earrings-03-b-400x500.jpg)
-}
-section div a .hover12:hover{
-    content:url(/client/utilities/imgs/earrings-04-b-400x500.jpg)
-}
-section div a .hover13:hover{
-    content:url(/client/utilities/imgs/necklace-06-b-400x500.jpg)
-}
+
 .color{
     background-color: var(--background-color);
 }
@@ -253,4 +218,11 @@ section div a .hover13:hover{
 .contact{
     position: relative;
     bottom: 100px;
+}
+ .icon-cart {
+    opacity: 0;
+} 
+
+section div a:hover .icon-cart {
+    opacity: 1;  
 }

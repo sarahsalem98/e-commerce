@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
     <title>home</title>
+    <script type="module" src="./js/login.js"></script>
 
 </head>
 
@@ -53,16 +54,19 @@
                         <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
                     <div class="icons">
-                        <li class="nav-item">
-                            <!-- <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a> -->
-                            <a class="nav-link text-danger" href="login.html">LOGIN</a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">SIGNUP</a>
+                        <div class="d-flex draw-icons">
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="login.html">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                            </li>
+                        </div>
+                        <li class="nav-item user-menu d-none">
+                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="register_customer.html" class="dropdown-item">customer</a></li>
-                                <li><a href="register_seller.html" class="dropdown-item">seller</a></li>
+                                <li><a href="register_customer.html" class="dropdown-item">profil</a></li>
+                                <li><a href="register_seller.html" class="dropdown-item">log out</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -137,6 +141,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module" src="./js/login.js"></script>
 </body>
 
 </html>
