@@ -30,7 +30,6 @@ h1{
 .navbar {
     margin: 0;
     max-width: 100%;
-    overflow: hidden;
     background-color: var(--background-color)!important;
 }
 
