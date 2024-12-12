@@ -1,27 +1,26 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
-import { products } from "../../dashboard-assets/custome-js/products.js";
 import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js";
+ 
 
-var ge;
 
 (async function () {
   try {
-
-    // sessionStorage.setItem('userId', '1');
-
-
-
-      // Open the database
+    // Open the database
     await dbController.openDataBase();
+    
+    
+
+    sessionStorage.setItem('userId', '1');
+
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
        
     const userId=sessionStorage.getItem('userId');
 
     
-    var product=await clientProducts.getProductById(1);
+    var product=await clientProducts.getProductById(id);
     
     //set name of product 
     document.getElementsByClassName("product-name")[0].innerText=product["name"];
@@ -72,32 +71,28 @@ var ge;
 
     btns[3].addEventListener('click',async function(){    
       if( !(btns[1].value=='')){       
-        await cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
+        cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
+         
+         
       }
       
     })//add to cart button
 
-    /********************************************************************/
+    
+     /************************************************************************************ */
+     //review section
 
-    //review ssection 
-
-     
-
-    const reviews=await  clientReiview.getProductReiview(Number(id));
+    const reviews=await clientReiview.getProductReiview(Number(id));  
      
     
-    console.log(reviews)
 
     var nextReview=0;
     
     
 
     function addReview(){
-      if(nextReview==0){
-        var block=document.querySelector(".third-section .last-review-info")
-        block.setAttribute("display","none")
-      }
-
+      if(nextReview==0)
+        document.querySelector(".third-section .last-review-info").classList.add('d-none');
       var review_wrapper=document.createElement("div")
       review_wrapper.setAttribute("class","review-"+nextReview+" d-flex pt-3")
      
@@ -133,7 +128,7 @@ var ge;
 
       var rating_number=Number(reviews[nextReview]['rate'])
 
-      debugger;
+       
       for(var i=1 ; i<6 ; ++i){
 
         var created_span=document.createElement("span");
@@ -222,11 +217,16 @@ var ge;
 
 
    function resetFileds(){
+    rating_value=0;
+    isUserNameValid=false;
+    isEmailValid=false;
+    isValidRatting=false;
+    isValidTextarea=false;
     name.value=""
     email.value=""
     textarea.value=""
     for(var i=0 ; i<rating_stars.length ; ++i){
-      rating_stars[i].style.color="lightgray"
+      rating_stars[i].classList.remove("highlight")
     }
    }
   
@@ -266,11 +266,14 @@ var ge;
           "rate": rating_value,
           "description":  document.querySelector("textarea").value
         }
-        
+
         await clientReiview.addReview(reviewObj);
         reviews.push(reviewObj)
         resetFileds();
-
+        if(reviews.length<=1){
+          initReview();
+        }
+        
       }
 
    })//end of submit btn
@@ -284,18 +287,18 @@ var ge;
     e.preventDefault();
    }) 
 
-
-
-   if(reviews){
-    addReview();
-    var btn=document.querySelector(".main-section .see-more-btn")
-    btn.style.visibility = 'visible';
-     
+    debugger;
+   function initReview(){
+    if(reviews.length)
+      
+      addReview();
+      var btn=document.querySelector(".main-section .see-more-btn");
+      btn.style.visibility = 'visible';    
    }
 
 
-     
-
+  
+   initReview();
 
 
   } catch (error) {

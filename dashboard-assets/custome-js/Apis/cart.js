@@ -166,6 +166,32 @@ export var cart = {
         cart = clientProducts.updateCartProducts(cart)
         return cart;
     }
+    ,
+    //string or number
+    getCartProducts :async function (userCart){
+         
+         
+        if(userCart==null)
+            return null;
+
+       
+        let cartProducts=userCart['products'];
+
+        if(cartProducts==null)
+            return null;
+         
+        let products=[];
+
+        let nextProduct;
+        for(var i=0 ; i<cartProducts.length ; ++i){
+            products.push(await clientProducts.getProductById(cartProducts[i]['product_id']));
+             
+        }
+       
+             
+        return products;
+         
+    }
 
     // ,
     // checkProductAvailability:async function(productId,qty){
