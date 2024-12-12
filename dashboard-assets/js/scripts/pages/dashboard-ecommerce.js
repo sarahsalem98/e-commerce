@@ -317,74 +317,75 @@ $(window).on('load', function () {
   earningsChart = new ApexCharts($earningsChart, earningsChartOptions);
   earningsChart.render();
 
-  //------------ Revenue Report Chart ------------
-  //----------------------------------------------
-  revenueReportChartOptions = {
-    chart: {
-      height: 230,
-      stacked: true,
-      type: 'bar',
-      toolbar: { show: false }
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: '17%',
-        endingShape: 'rounded'
-      },
-      distributed: true
-    },
-    colors: [window.colors.solid.success, window.colors.solid.danger],
-    series: [
-      {
-        name: 'Earning',
-        data: [95, 177, 284, 256, 105, 63, 168, 218, 72,10]
-      },
-      {
-        name: 'Expense',
-        data: [-145, -80, -60, -180, -100, -60, -85, -75, -100,-10]
-      }
-    ],
-    dataLabels: {
-      enabled: false
-    },
-    legend: {
-      show: false
-    },
-    grid: {
-      padding: {
-        top: -20,
-        bottom: -10
-      },
-      yaxis: {
-        lines: { show: false }
-      }
-    },
-    xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','oct','nov','des'],
-      labels: {
-        style: {
-          colors: $textMutedColor,
-          fontSize: '0.86rem'
-        }
-      },
-      axisTicks: {
-        show: false
-      },
-      axisBorder: {
-        show: false
-      }
-    },
-    yaxis: {
-      labels: {
-        style: {
-          colors: $textMutedColor,
-          fontSize: '0.86rem'
-        }
-      }
-    }
-  };
-  revenueReportChart = new ApexCharts($revenueReportChart, revenueReportChartOptions);
-  revenueReportChart.render();
+  // console.log("re");
+  // //------------ Revenue Report Chart ------------
+  // //----------------------------------------------
+  // revenueReportChartOptions = {
+  //   chart: {
+  //     height: 230,
+  //     stacked: true,
+  //     type: 'bar',
+  //     toolbar: { show: false }
+  //   },
+  //   plotOptions: {
+  //     bar: {
+  //       columnWidth: '17%',
+  //       endingShape: 'rounded'
+  //     },
+  //     distributed: true
+  //   },
+  //   colors: [window.colors.solid.success, window.colors.solid.danger],
+  //   series: [
+  //     {
+  //       name: 'Earning',
+  //       data:window.monthlyOrderData.deliverd
+  //     },
+  //     {
+  //       name: 'Expense',
+  //       data: window.monthlyOrderData.cancelled
+  //     }
+  //   ],
+  //   dataLabels: {
+  //     enabled: false
+  //   },
+  //   legend: {
+  //     show: false
+  //   },
+  //   grid: {
+  //     padding: {
+  //       top: -20,
+  //       bottom: -10
+  //     },
+  //     yaxis: {
+  //       lines: { show: false }
+  //     }
+  //   },
+  //   xaxis: {
+  //     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','oct','nov','des'],
+  //     labels: {
+  //       style: {
+  //         colors: $textMutedColor,
+  //         fontSize: '0.86rem'
+  //       }
+  //     },
+  //     axisTicks: {
+  //       show: false
+  //     },
+  //     axisBorder: {
+  //       show: false
+  //     }
+  //   },
+  //   yaxis: {
+  //     labels: {
+  //       style: {
+  //         colors: $textMutedColor,
+  //         fontSize: '0.86rem'
+  //       }
+  //     }
+  //   }
+  // };
+  // revenueReportChart = new ApexCharts($revenueReportChart, revenueReportChartOptions);
+  // revenueReportChart.render();
 
   //---------------- Budget Chart ----------------
   //----------------------------------------------

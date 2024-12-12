@@ -3,13 +3,14 @@ export var clientAuth = {
     login: async function (email, password) {
         let isValid = false;
         let data = await dbController.getItemsByUniqueKey('users', 'email', email);
+        console.log(data);
         if (data.length > 0) {
             if (data[0].password == parseInt(password)) {
                 isValid = true;
                 let sessionData = {
                     email: email,
-                    name: data.full_name,
-                    id: data.id,
+                    name: data[0].full_name,
+                    id: data[0].id,
                     loginTime: new Date().getTime()
                 }
                 let expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000;
