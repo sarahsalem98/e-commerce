@@ -32,10 +32,18 @@
 // }
 
 // window.userProfile=userProfile;
+import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
+
 import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
 export var userProfile={
 updateProfile:async function() {
 
+    await dbController.openDataBase();
+
+    console.log(await dbController.getItemsByUniqueKey('users', 'email', email))
+   console.log(await clientAuth.login("gslixby0@abc.net.au",12345)) 
+    
+   
   var firstName = document.getElementById("firstName").value.trim();
   var lastName = document.getElementById("lastName").value.trim();
   var email = document.getElementById("email").value.trim();
@@ -46,55 +54,71 @@ updateProfile:async function() {
   var newPassword = document.getElementById("newPassword").value.trim();
   var confirmPassword = document.getElementById("confirmPassword").value.trim();
 
+  
   if (!firstName || !lastName || !email || !address || !phone || !currentPassword) {
       alert("Please fill in all required fields.");
       return;
   }
 
-  if (newPassword !== confirmPassword) {
-      document.getElementById("passwordError").classList.remove("d-none");
-      return;
-  } else {
-      document.getElementById("passwordError").classList.add("d-none");
-  }
+
+
+  chrome.runtime.sendMessage({ action: "doSomething" }, (response) => {
+    console.log("Response from background:", response);
+});
+
+//   if (newPassword !== confirmPassword) {
+//     console.log("this is an erroe")
+//       document.getElementById("passwordError").classList.remove("d-none");
+//       return;
+//   } else {
+//       document.getElementById("passwordError").classList.add("d-none");
+//   }
 
   try {
-     
-      var sessionData = JSON.parse(localStorage.getItem("clientSession"));
-      if (!sessionData || !sessionData.sessionData || !sessionData.sessionData.id) {
-          alert("User is not logged in.");
-          return;
-      }
 
-      var userId = sessionData.sessionData.id;
+
+     
+    //   var sessionData = JSON.parse(localStorage.getItem("clientSession"));
+
+    //   console.log("hello from session ",sessionData)
+    //   if (!sessionData || !sessionData.sessionData || !sessionData.sessionData.id) {
+    //       alert("User is not logged in.");
+    //       return;
+    //   }
+
+    //   var userId = sessionData.sessionData.id;
 
  
-      var fullName = `${firstName} ${lastName}`;
+    //   var fullName = `${firstName} ${lastName}`;
 
   
-      var isUpdated = await clientAuth.updateProfile(
-          userId,
-          fullName,
-          email,
-          newPassword || currentPassword,
-          address,
-          phone,
-          governorate
-      );
+    //   var isUpdated = await clientAuth.updateProfile(
+    //       userId,
+    //       fullName,
+    //       email,
+    //       newPassword || currentPassword,
+    //       address,
+    //       phone,
+    //       governorate
+    //   );
 
-      if (isUpdated) {
-          alert("Profile updated successfully!");
+    //   if (isUpdated) {
+    //       alert("Profile updated successfully!");
 
-          userProfile.showUserData();
-      } else {
-          alert("Failed to update profile. Please try again.");
-      }
+    //       userProfile.showUserData();
+    //   } else {
+    //       alert("Failed to update profile. Please try again.");
+    //   }
   } catch (error) {
      // console.error("Error updating profile:", error);
      // alert("An error occurred while updating the profile.");
   }
 }
 }
+ 
 
-document.getElementById("updateButton").addEventListener("click", userProfile.updateProfile);
+ 
+  
+
+// document.getElementById("updateButton").addEventListener("click", userProfile.updateProfile);
 

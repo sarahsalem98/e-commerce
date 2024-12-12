@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/profileUser.css">
+    <script src="./js/profileuser.js" type="module"></script>
+    
     <title>home</title>
 </head>
 
@@ -174,7 +176,7 @@
                         <div class="mb-3">
 
                             <input id="email" name="email" class="form-control" type="email" placeholder="Email"
-                                value="Email">
+                                value="">
                         </div>
                         <div class="mb-3">
 
@@ -184,7 +186,7 @@
                         <div class="mb-3">
 
                             <input id="phone" name="phone" class="form-control" type="number" placeholder="Phone"
-                                value="Phone">
+                                value="">
                         </div>
                         <div class="mb-4">
 
@@ -221,9 +223,11 @@
                             </select>
                         </div>
                         <div class="mb-4 d-flex">
-                            <input id="currentPassword" class="form-control me-1" type="password" placeholder="Current Password">
-                            <input id="newPassword" class="form-control" type="password" placeholder="New Password">
-                            <input id="confirmPassword" class="form-control" type="password" placeholder="Confirm Password">
+                            <input id="currentPassword" class="form-control me-1" type="password" placeholder="Current Password"  autocomplete="">
+
+                            <input id="newPassword" class="form-control" type="password" placeholder="New Password" autocomplete="">
+
+                            <input id="confirmPassword" class="form-control" type="password" placeholder="Confirm Password" autocomplete="">
                         </div>
                         <div class="mb-4">
                  <input id="updateButton" class="form-control updateButton"onclick="userProfile.updateProfile();" type="button" value="Update Profile">
@@ -280,22 +284,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="./js/profileuser.js" type="module"></script>
+    
+    <!-- <script src="./js/profileuser.js" type="module"></script>
 
 
 
 
     <script type="module">
-        import { clientAuth } from '../dashboard-assets/custome-js/Apis/Auth.js';
         import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
-        import { userProfile } from './js/profileuser.js';
+        import { clientAuth } from '../dashboard-assets/custome-js/Apis/Auth.js';
+        import { userProfile } from '../js/profileuser.js';
+        import {users} from "../dashboard-assets/custome-js/users.js"
         $(window).on('load', async function () {
             await dbController.openDataBase();
-            userProfile.showUserData();
+            
+            
+
 
 
         })
-    </script>
+    </script> -->
 
 </body>
 

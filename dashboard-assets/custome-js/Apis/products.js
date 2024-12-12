@@ -23,6 +23,7 @@ export var clientProducts = {
     },
     updateCartProducts: async function (cartData) {
         console.log("tt");
+        
         let updatedCart = [];
         let isUpdated;
         if (cartData != null) {

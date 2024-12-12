@@ -1,5 +1,6 @@
 import { dbController } from "../indexedDb.js";
 export var clientAuth = {
+    
     login: async function (email, password) {
         let isValid = false;
         let data = await dbController.getItemsByUniqueKey('users', 'email', email);
