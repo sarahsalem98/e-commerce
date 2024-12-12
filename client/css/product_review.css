@@ -1,0 +1,182 @@
+.main-section .first-section ,.main-section .second-section{
+    width: 100%;
+    height: auto !important;
+    
+}
+
+.first-section .left-section{
+    width: 55%;
+    height: 550px;
+}
+.first-section .right-section{
+    width: 47%;
+    height: fit-content;
+     
+}
+
+.first-section .left-section .img-nav .img{ 
+    height: calc(100% / 4.2);
+    background-size: 100% 100%; 
+    cursor: pointer
+}
+
+.first-section .left-section .displayer{
+    
+    /* background-image: url('../utilities/imgs/necklace-d.jpg'); */
+    background-size: 100% 100%;
+}
+
+@media (max-width:950px) {
+
+    .main-section{
+        margin-top: 0 !important;
+    }
+
+
+    .main-section .first-section .left-section, .main-section .first-section .right-section,
+    .main-section .second-section .left-section,.main-section .second-section .right-section{
+
+        width: 100% !important;
+       margin-bottom: 60px !important;
+       
+    }
+}
+ 
+ 
+
+.controler *{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    outline: none;
+    border: 1px solid rgb(241, 225, 225);
+    position: relative;
+    text-align: center;
+    top:-10px;
+}
+
+.controler-add-btn .controler *{
+    top: 0px;
+}
+
+.controler-add-btn .add-cart-btn,.second-section .right-section input[type='button']{
+    display: inline-block;
+    width: 150px;
+    background-color: white;
+    border-width: 1px;
+    padding: 5px;
+    
+}
+
+
+.controler input[type="button"]:hover,.controler-add-btn .add-cart-btn:hover ,.second-section .right-section input[type='button']:hover{
+    background-color: black;
+    border-color:black ;
+    color: white;
+    
+}
+
+
+.navigation-bar a{
+    text-decoration: none !important;
+    color: var(--text-color);
+}
+
+.navigation-bar a:hover{
+    color: var(--text-color);
+}
+.navigation-bar nav{
+    font-size: .8em;
+}
+
+.right-section .price{
+    color: var( --highligted-text-color);
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.right-section .product-details{
+    line-height:1.8 ;
+}
+
+.second-section .left-section{
+    width: 25%;
+}
+
+.second-section .right-section{
+    width: 75%;
+     
+}
+
+
+
+ .second-section .left-section{
+    height: fit-content;
+}
+.second-section .right-section input,.second-section .right-section textarea{
+    outline: none;
+}
+.star-rating {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.star {
+    color: var( --non-active-cart-color);
+    transition: color 0.2s;
+}
+
+.star.highlight { 
+    color:var(--text-color);
+}  
+
+.required{
+    text-decoration: none !important; 
+}
+ 
+p{
+    font-weight: 300;
+} 
+
+.wrapper-form .form input ,.wrapper-form textarea{
+    border: 1px solid lightgray;
+}
+
+.wrapper-form .form>div{
+    margin-bottom: 20px;
+     
+}
+
+/*****************************/
+
+.see-more-btn {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff; 
+    background: none;
+    border: none;
+    cursor: pointer ;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;  
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    visibility: hidden;
+    margin-left: 10px;
+    }
+
+    .see-more-btn::after {
+        content: "▼"; /* Down arrow */
+        font-size: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .see-more-btn:hover {
+    color: #0056b3; /* Darker blue on hover */
+    }
+
+    .see-more-btn:hover::after {
+    transform: translateY(2px); /* Moves the arrow slightly down */
+    }

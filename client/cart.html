@@ -20,18 +20,27 @@
     <link rel="stylesheet" href="./css/cart.css">
 
      
-    <script src="js/cartGlabals.js"></script>
+    <script src="js/cartGlabals.js" type="module"></script>
+    <script src="js/cart.js" type="module"></script>
     <style>
  
              
-         
+
          
     </style>
+
+    <!-- <script>
+        function sendProductId(product_ID) {
+            const encodedData = encodeURIComponent(product_ID); // URL-safe encoding
+            window.location.href = `../../client/product_review.html?id=${encodedData}`;
+            
+        }
+    </script> -->
     <title>home</title>
 
 </head>
 
-<body>
+<body >
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -54,13 +63,13 @@
                         </li>
                     </div>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">PRODUCTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link2" href="#">ABOUT</a>
+                        <a class="nav-link link2" href="About.html">ABOUT</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">CONTACT</a>
@@ -126,7 +135,7 @@
             </div>
         
             <!-- for updating purpose in our cart -->
-            <div class="d-flex border-top border-3 border-dark pt-3" style="background-color:var(--updating-cart-bars-bg-color); line-height: 2em; ">
+            <div class="d-flex border-top border-3 border-dark pt-3 d-none update-cart-slider " style="background-color:var(--updating-cart-bars-bg-color); line-height: 2em; ">
                 <!-- <img src="utilities/cart_imgs/check_5610944.png" alt="" style="width:20px" height="20px" class="mx-2"> -->
                 
                 <div class="update-icon">
@@ -138,7 +147,7 @@
 
             <!-- if cart is empty -->
 
-            <div class="d-flex border-top border-3 border-dark pt-2 mt-4" style="background-color:var(--updating-cart-bars-bg-color);">
+            <div class="d-flex border-top border-3 border-dark pt-2 mt-4 d-none empty-car-slider  " style="background-color:var(--updating-cart-bars-bg-color);">
                  <!-- <img src="utilities/cart_imgs/delete-cart_7661838.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
                  <!-- <img src="utilities/cart_imgs/add-cart_4401532.png" alt="" style="width:30px; height:30px;" class="mx-2"> -->
                  <span class="fas fa-shopping-cart fa-1x mx-2" style="line-height: 2em;"></span>
@@ -152,7 +161,7 @@
             <div class="d-flex justify-content-between mt-5 mb-5 cart-tables" style="width:100%;">
 
                 <!-- table for all product detailts that user added it -->
-             <table class="table table-bordered  border border-1 details-tabel">
+             <table class="table table-bordered  border border-1 details-tabel" style="height: fit-content;">
                 <thead > 
                     <tr>
                         <th></th> 
@@ -164,7 +173,38 @@
                     </tr>
                 </thead>
                 <tbody >
-                    <tr  >
+                     <!-- <tr  >
+                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+
+
+                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
+
+
+                        <td><a href="" ><p>Product name 1</p> </a></td>
+
+
+                        <td>$350.00</td>
+                       
+
+                        <td class="">
+
+                            <div class=" d-flex controler">
+                                <input type="button"  value="-" >
+                                <input type="text" value="1" readonly/>
+                                <input type="button"    value="+"> 
+                            </div>
+                            
+                        </td>
+
+
+                        <td>
+                            <span>  $1,750.00</span>
+                        </td>
+                        
+
+                    </tr>   -->
+
+                    <!-- <tr  >
                         <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
 
                         <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
@@ -187,32 +227,9 @@
                             $1,750.00
                         </td>
                         
-                    </tr>
-                    <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
+                    </tr> -->
 
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr >
+                    <!-- <tr >
                         <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
 
                         <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
@@ -235,8 +252,9 @@
                             $1,750.00
                         </td>
                         
-                    </tr>
-                    <tr>
+                    </tr> -->
+
+                    <!-- <tr>
                         <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
 
                         <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
@@ -259,11 +277,12 @@
                             $1,750.00
                         </td>
                         
-                    </tr>
+                    </tr> -->
+
                 </tbody>
              </table>
 
-             <table class="table table-bordered  summary-table border border-1">
+             <table class="table table-bordered  summary-table border border-1" >
                 <thead>
                     <tr>
                         <th colspan="2">Cart Total</th>
@@ -272,26 +291,29 @@
                 <tbody>
                     <tr>
                         <td>Subtotal</td>
-                        <td>$5,750.00</td>
+                        <td>$ <span class="sub-total"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping Fees</td>
+                        <td>$ <span class="shipping-fees"></span></td>
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td>$5,750.00</td>
+                        <td>$ <span class="Total"></span></td>
                     </tr>
                     
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="2">
-                            <input type="button" class="btn btn-block" value="PROCEED TO CHECKOUT"/>
+                            <input type="button" class="btn btn-block" value="PROCEED TO CHECKOUT"
+                            />
                         </td>
                     </tr>
                 </tfoot>
              </table>
 
             </div>
-           
-             
          </section>
 
 
@@ -340,6 +362,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        //import {cart} from "../../dashboard-assets/custome-js/Apis/cart.js"
+        import { dbController } from "../dashboard-assets/custome-js/indexedDb.js"
+
+   $(window).on("load", function(){
+     dbController.openDataBase().then(() => {
+
+        console.log("jello");
+     })
+   })
+
+
+    </script>
 </body>
 
 </html>

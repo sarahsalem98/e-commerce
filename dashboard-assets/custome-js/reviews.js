@@ -1,5 +1,8 @@
+
 import { dbController } from "./indexedDb.js";
+
 export var reviews={
+
     fetchData: async function () {
         let data = await this.getDataFromStorage();
         let allData = [];
@@ -14,18 +17,27 @@ export var reviews={
 
         return allData;
     },
+
     saveDataToStorage: function (data) {
         dbController.saveDataArray('reviews', data);
 
     },
+
+
     getDataFromStorage: async function () {
         const data = await dbController.getDataArray('reviews');
         return data;
     },
+
      
      viewReviewsForProduct:async function(productId){
-                await reviews.fetchData();
+            await reviews.fetchData();
+            
         let data=await dbController.getItemsByUniqueKey("reviews","product_id",productId);
+        
+        if ($.fn.dataTable.isDataTable('.review-list-table')) {
+            $('.review-list-table').DataTable().clear().destroy();
+        }
         var dtUserTable = $('.review-list-table');
         if (dtUserTable.length) {
             dtUserTable.DataTable({
@@ -53,4 +65,6 @@ export var reviews={
 
         }
      }
+
+     
 }

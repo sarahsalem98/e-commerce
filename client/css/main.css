@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
+ 
 :root {
 
     --background-color: rgb(250, 245, 240);
     --heading-font: 'Cinzel', serif;
-    --text-font: 'Roboto', sans-serif;
+    --text-font: 'Roboto';
     --text-color: rgba(0, 0, 0, 0.7);
     --highligted-text-color: rgb(168, 110, 59);
 
@@ -14,25 +15,31 @@ body{
 }
 h1,h2,h3{
     font-family:var(--heading-font);
+     
 }
+ 
 h1{
     font-size: 4.3333333333333rem;
     font-weight: 400;
-}
-p{
+} 
+
+/* p{
     color:  rgb(84, 84, 84);
-}
+}   */
 
 .navbar {
     margin: 0;
     max-width: 100%;
+    overflow: hidden;
     background-color: var(--background-color)!important;
 }
 
+ 
 .navbar-brand {
     font-family: var(--heading-font);
-    /* Use Google Font similar to Trajan Pro */
+    
     font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .navbar-toggler {
@@ -106,9 +113,7 @@ p{
     color: var(--text-color) !important;
 }
 
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
+
 
 .footer {
     background-color: var(--background-color);
@@ -140,9 +145,7 @@ p{
     list-style: none;
     padding: 0;
 
-
 }
-
 .footer .footer-section ul li {
     margin-bottom: 10px;
 
@@ -193,12 +196,12 @@ p{
 @media (max-width: 767px) {
     .footer .container {
         flex-direction: column;
-        /* Stack the footer sections vertically on mobile */
+        
     }
 
     .footer .footer-section {
         padding: 5px 0;
-        /* Reduce padding for mobile */
+        
     }
 }
 section div a:hover .hover-img1{

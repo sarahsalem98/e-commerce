@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cartGlobals.css">
+
+
+    <script>
+      
+    </script>
+</head>
+<body>
+    <h1>IndexedDB Demo</h1>
+    <script type="module" src="././js/test.js"></script>
+
+
+    <button onclick="sendData()">Go to Next Page</button>
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+    <script>
+    function sendData() {
+        const data = "1";
+        const encodedData = encodeURIComponent(data); // URL-safe encoding
+        window.location.href = `product_review.html?id=${encodedData}`;
+    }
+    </script>
+
+</body>
+</html>
