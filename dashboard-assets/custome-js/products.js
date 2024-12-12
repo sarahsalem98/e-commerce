@@ -21,16 +21,23 @@ export var products = {
         }         
         return allDataobj;
     },
+
+    ////what is the purpose.
+    //fetching data agin is very expesive.
     getProductData: async function (id) {
+
+        //////dummy code you have get item your db controller
         const data = await this.fetchData();
+
         var productData = data.find(function (product) {
             return product.id == id;
         });
+
         return productData;
+
     },
     saveDataToStorage: function (data) {
         dbController.saveDataArray('products', data);
-
     },
     getDataFromStorage: async function (seller_id) {
         var data = [];
@@ -320,9 +327,19 @@ export var products = {
         }
     },
 
+
+    ////is it for seller purpose [onclick ptn]??? 
+    ///seller modal update ??
     openUpdateModal: async function (id) {
+
+
+        // why you will reset all fields thought after only two of lines you will override all of those values
+
         products.resetFormFields();
+
+
         let data = await this.getProductData(id);
+        
         document.getElementsByClassName("updateTitle")[0].innerText = "Update Product";
         document.getElementsByClassName("add-update-btn")[0].innerText = "update";
         document.getElementById("product-id").value = id;
@@ -333,7 +350,9 @@ export var products = {
         document.getElementById("product-price").value = data.price;
         document.getElementById("product-desc").value = data.desciption;
         products.populateExistingImages(data.pics);
+
     },
+
     addUpdate: async function (e) {
         let id = document.getElementById("product-id").value.toString();
         //update
@@ -405,7 +424,9 @@ export var products = {
 
 
     },
+
     changeStatus: async function (id) {
+
         var data = await dbController.getItem('products', id);
         var changedstatus = data.status == 1 ? 2 : 1;
         data.status = changedstatus;
@@ -418,6 +439,7 @@ export var products = {
 
         this.viewProducts(window.globalseller_id);
     },
+
     openDeleteModal: function (id, name) {
         document.getElementsByClassName("deleted-record-id")[0].value = id;
         var text = document.getElementsByClassName("danger-modal-text")[0];
@@ -463,6 +485,9 @@ export var products = {
         }
         return false;
     },
+
+    //for freeing purpose of presented data.
+
     resetFormFields: function () {
         document.getElementById("product-id").value='';
         document.getElementById("product-name").value = '';
@@ -475,10 +500,12 @@ export var products = {
         for (var i = 0; i < pics.length; i++) {
             pics.value = "";
         }
+
         const previewRow = document.getElementById("image-preview-row");
         if (previewRow) {
             previewRow.innerHTML = "";
         }
+
 
     },
 
@@ -494,8 +521,11 @@ export var products = {
 
         input.addEventListener("change", (e) => {
             const file = e.target.files[0];
+
             if (file) {
+
                 const reader = new FileReader();
+                
                 reader.onload = (event) => {
                     const wrapper = document.createElement("div");
                     wrapper.className = "file-wrapper position-relative me-2";
@@ -526,8 +556,12 @@ export var products = {
         });
 
     },
+
+    //// for occuping modale with images.
     populateExistingImages: function (images) {
+
         //console.log("imgs"+images);
+
         console.log(images.length);
         const previewRow = document.getElementById("image-preview-row");
         previewRow.innerHTML = "";

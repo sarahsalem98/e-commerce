@@ -1,8 +1,26 @@
  
 
+
+ 
+
+
+(async function () {
+    try {
+        // Open the database
+        // await dbController.openDataBase();
+
+        // console.log(globals.products)
+
+    } catch (error) {
+        console.error('Error interacting with IndexedDB:', error);
+    }
+
+})();
+  
+
 window.addEventListener("load",function(){
     
-
+    
     // for drop down
     $('.search_select_box select').selectpicker();
 

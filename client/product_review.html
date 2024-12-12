@@ -15,21 +15,22 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/cartGlobals.css">
     <link rel="stylesheet" href="./css/product_review.css">
-    <title>home</title>
-    <script src="jquery/jquery.js"></script>
-    <script src="js/product_review.js"></script>
-    <style>
-         
- 
-          
-    </style>
-    <script src="js/product_reviw.js">
+    <link rel="stylesheet" href="../client/jquery/jquery.js">
 
-    </script>
+    <title>home</title>
+
+    <script src="../client/js/product_review.js" type="module"></script>
+
+
+    <style>
+     
+
+    </style>
+
 
 </head>
 
-<body >
+<body>
     <!--nav bar-->
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -84,156 +85,194 @@
   
     <section class="main-section container  mt-5"  > 
 
-        <section class="first-section d-flex flex-wrap justify-content-between"  >
+        <section class="first-section d-flex flex-wrap justify-content-between">
 
             <section class="left-section  d-flex flex-wrap justify-content-between" style="width: 50%;">
-                 
-                    <div class="img-nav  d-flex flex-column justify-content-between " style="width:20%">
-                        <div class="img one"  style="background-image: url('utilities/imgs/necklace-d.jpg');"></div>
-                        <div class="img two" style="background-image: url('utilities/imgs/necklace-01-b-400x500.jpg');"></div>
-                        <div class="img three" style="background-image: url('utilities/imgs/necklace-01-b-400x500.jpg');"></div>
-                        <div class="img four" style="background-image: url('utilities/imgs/necklace-01-b-400x500.jpg');"></div>
+
+                <div class="img-nav  d-flex flex-column justify-content-between " style="width:20%">
+
+                    <div class="img one" ></div>
+                    <div class="img two" >
                     </div>
-                    <div class="displayer  " style="width: 78%;">
+
+                    <div class="img three"  >
+
+                    </div>
+
+                    <div class="img four">
                         
                     </div>
-               
-                
+                </div>
+                <div class="displayer  " style="width: 78%;">
+
+                </div>
+
+
             </section>
 
-            <section class="right-section p-2  " style="border: 0px solid black;">
+            <section class="right-section p-2 sticky-top " style="border: 0px solid black;">
 
-                <section class="navigation-bar d-flex justify-content-between " style="position: relative;">
+                <section class="navigation-bar d-flex justify-content-between" style="position: relative;">
 
                     <nav aria-label="breadcrumb ">
-                        <ol class="breadcrumb d-flex alig-items-end"  > 
-                          <li class="breadcrumb-item"><a href="home.html">Home</a></li>
-                          <li class="breadcrumb-item"><a href="#">Necklaces</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Product Name 13</li>
+                        <ol class="breadcrumb d-flex alig-items-end">
+                            <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Necklaces</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Product Name 13</li>
                         </ol>
                     </nav>
 
-                    <div class="controler" >
+                    <div class="controler">
                         <input type="button" value="<">
                         <input type="button" value=">">
-                         
+
                     </div>
                 </section>
 
-                <h3 class="mt-4">Product Name 13</h3>
-                <p class="price mt-4"> <strong>$950.00</strong></p>
-                <p class="details">
-                    Ut non elit lorem. Duis pharetra odio vitae nisl luctus, at volutpat arcu lacinia. Aliquam id ullamcorper augue. Fusce feugiat nibh et nisl mollis hendrerit. Mauris sit amet nulla in augue laoreet lobortis ac eleifend nunc. Quisque eleifend sollicitudin nulla, et consequat eros. Donec pellentesque dapibus massa ut cursus.
+                <h3 class="mt-4 product-name">Product Name 13</h3>
+                <p class="price mt-4"> <strong class="prodect-price">$950.00</strong></p>
+                <p class="product-details">
+                    Ut non elit lorem. Duis pharetra odio vitae nisl luctus, at volutpat arcu lacinia. Aliquam id
+                    ullamcorper augue. Fusce feugiat nibh et nisl mollis hendrerit. Mauris sit amet nulla in augue
+                    laoreet lobortis ac eleifend nunc. Quisque eleifend sollicitudin nulla, et consequat eros. Donec
+                    pellentesque dapibus massa ut cursus.
 
-                    Quisque ut augue eu dui semper eleifend. Aliquam imperdiet nisl libero, vitae vulputate lectus fringilla eget.
+                    Quisque ut augue eu dui semper eleifend. Aliquam imperdiet nisl libero, vitae vulputate lectus
+                    fringilla eget.
                 </p>
 
                 <div class="d-flex controler-add-btn justify-content-between  " style="width: 300px;">
-                    <div class=" d-flex controler" >
-                        <input type="button"  value="-" >
-                        <input type="text" value="1" readonly/>
-                        <input type="button"    value="+"> 
+                    <div class=" d-flex controler">
+                        <input type="button" value="-">
+                        <input type="text" value="1"  />
+                        <input type="button" value="+">
                     </div>
-                    <input type="button" class="add-cart-btn" value="ADD TO CART"/>
-    
+                     
+                    <input type="button" class="add-cart-btn" value="ADD TO CART" />
+
                 </div>
-                </section>
+            </section>
         </section>
 
-        <section class="second-section d-flex  flex-wrap mt-5 mb-5" >
+        <section class="second-section d-flex  flex-wrap mt-5 mb-5">
 
-            <h3 class="left-section" style="height: fit-content;">Reviews (<span class="reviews-count">5</span>)</h3>
+            <!-- <h3 class="left-section" style="height: fit-content;">Reviews</h3> -->
             <div class="right-section">
 
-                <div class="last-review-info d-flex">
-                    <p class="fs-7">There are no reviews yet.</p>
-                </div>
-                
+                <div class="wrapper-form" style="border: 1px solid var(--non-active-cart-color); padding: 15px;">
 
-                <div  class="wrapper-form" style="border: 1px solid var(--non-active-cart-color); padding: 15px;">
+                     
+                    <h5 class="fs-5 mass2">Add a review</h5>
 
-                    <h5 class="fs-5 ">Be the first to review “Product Name 14”</h5>
-
-                    <p class="fs-6">  email address will not be published. Required fields are marked * </p>
+                    <p class="fs-6"> email address will not be published. Required fields are marked * </p>
 
 
                     <div class="form d-flex flex-wrap justify-content-between">
 
                         <div class="wrapper-rating d-flex fs-5  " style="width:100%">
 
-                            <label for="" class="" >your rating 
+                            <label for="ratting" class="">your rating
                                 <abbr class="required" title="required">*</abbr>
                                 &nbsp;
                             </label>
 
-                            <div class="star-rating">
+                            <div class="star-rating" id="ratting">
                                 <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
-                                <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span> 
-                                <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span> 
-                                <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span> 
-                                <span class="star" data-value="5"><i class="fa-solid fa-star"></i> </span>  
+                                <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
+                                <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
+                                <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
+                                <span class="star" data-value="5"><i class="fa-solid fa-star"></i> </span>
                             </div>
 
                         </div>
-                        
+
 
                         <div class="wrapper-review d-flex flex-wrap  " style="width:100% ; height: auto;">
-                            <label for="review-textarea" class="fs-5" >your review 
+                            <label for="review-textarea" class="fs-5">your review
                                 <abbr class="required" title="required">*</abbr>
                             </label>
 
-                            <textarea name="" id="review-textarea" style="width: 100%; resize: vertical;"  ></textarea>
+                            <textarea name="" id="review-textarea" style="width: 100%; resize: vertical;" maxlength="300"></textarea>
 
                         </div>
 
-                       
-                            <div class="d-flex flex-wrap  " style="width: 49%;">
-                                <label for="name" class="" >Name 
-                                    <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="text" id="name" style="width: 100%;">
-                            </div>
-    
-                            <div class="d-flex flex-wrap "  style="width: 49%;">
-                                <label for="email" class="" >Email 
-                                    <abbr class="required" title="required">*</abbr>
-                                </label>
-                                <input type="email" name="email" style="width: 100%;">
-                            </div>
-                            <input type="button" value="SUBMIT">
-                     </div>
-                    <!--end of form -->
-                   
-    
+
+                        <div class="d-flex flex-wrap " style="width: 49%;">
+                            <label for="name" class="">Name
+                                <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <input type="text" id="name" style="width: 100%;" maxlength="20">
+                        </div>
+
+                        <div class="d-flex flex-wrap " style="width: 49%;">
+                            <label for="email" class="">Email
+                                <abbr class="required" title="required">*</abbr>
+                            </label>
+                            <input type="email" id="email" style="width: 100%;">
+                        </div>
+                        <input type="button" value="SUBMIT">
                     </div>
+
+                    <!--end of form -->
+
+
                 </div>
             </div>
+            </div>
         </section>
-    </section>   
 
 
-    
+        <section class="third-section">
 
-    
-
-
-    
-
-
-
-
+            <h3 class="left-section" style="height: fit-content;">Reviews</h3>
+            <div class="last-review-info d-flex" >
+                <p class="fs-7">There are no reviews yet.</p>
+            </div>
+        
+                <!-- <div class="review-1 d-flex pt-3">
 
 
+                    <div class="left-section d-flex flex-column align-items-center pe-3">
+
+                        <img src="./images/product_review/user.png" alt="" width="65px" height="65px">
+                        <p class="username">sara</p>
+
+                    </div>
+                    
 
 
 
 
-    
+
+
+                    <div class="right-section d-flex flex-column justify-content-start pt-3">
+
+                        <p class="comment">this product is awesome this product is awesome this product is awesome this product is awesome</p>
+                        
+                        <div class="reviewed-rating">
+                            <span   data-value="1"><i class="fa-solid fa-star"></i></span>
+                            <span   data-value="2"><i class="fa-solid fa-star"></i></span>
+                            <span   data-value="3"><i class="fa-solid fa-star"></i></span>
+                            <span   data-value="4"><i class="fa-solid fa-star"></i></span>
+                            <span   data-value="5"><i class="fa-solid fa-star"></i> </span>
+                        </div>
+                        
+                    </div>
+
+
+                </div> -->
+            
+            </section>
+            <button   class="see-more-btn"   >See More</button>
+
+
+    </section>
+
+
+
+
  
 
-
-
-     
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -275,6 +314,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  
+    
+     
+ 
 </body>
 
 </html>

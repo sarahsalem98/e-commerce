@@ -371,8 +371,6 @@ export var orders = {
         }
         this.viewOrders();
     },
-
-
     resetFormFields: function () {
         document.getElementById("order-email").value = ''
         document.getElementById("order-first-name").value = '';
