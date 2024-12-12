@@ -90,8 +90,8 @@ updateProfile:async function() {
           alert("Failed to update profile. Please try again.");
       }
   } catch (error) {
-      console.error("Error updating profile:", error);
-      alert("An error occurred while updating the profile.");
+     // console.error("Error updating profile:", error);
+     // alert("An error occurred while updating the profile.");
   }
 }
 }
