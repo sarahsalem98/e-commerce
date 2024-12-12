@@ -83,5 +83,8 @@ export var clientAuth = {
         return data;
     
 
-    }
+    },
+    // test:function(){
+    //     console.log("test");
+    // }
 }

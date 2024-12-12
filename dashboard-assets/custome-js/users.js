@@ -299,7 +299,7 @@ export var users = {
 
         }
     },
-
+    
     openUpdateModal: async function (id) {
         var userdata = await users.getUserData(id);
         document.getElementsByClassName("updateTitle")[0].innerText = "Update User";
