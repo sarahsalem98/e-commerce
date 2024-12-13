@@ -77,7 +77,7 @@ export var products = {
             1: { title: 'Necklaces', class: 'badge-light-success' },
             2: { title: 'Rings', class: 'badge-light-warning' },
             3: { title: 'Bracelets', class: 'badge-light-secondary' },
-            4: { title: 'Earrings', class: 'badge-light-priamary' }
+            4: { title: 'Earrings', class: 'badge-light-primary' }
         };
 
 
