@@ -38,9 +38,8 @@ import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
 export var userProfile={
 updateProfile:async function() {
 
-    await dbController.openDataBase();
-
-    console.log(await dbController.getItemsByUniqueKey('users', 'email', email))
+    
+     
    console.log(await clientAuth.login("gslixby0@abc.net.au",12345)) 
     
    
@@ -66,49 +65,49 @@ updateProfile:async function() {
     console.log("Response from background:", response);
 });
 
-//   if (newPassword !== confirmPassword) {
-//     console.log("this is an erroe")
-//       document.getElementById("passwordError").classList.remove("d-none");
-//       return;
-//   } else {
-//       document.getElementById("passwordError").classList.add("d-none");
-//   }
+  if (newPassword !== confirmPassword) {
+    console.log("this is an erroe")
+      document.getElementById("passwordError").classList.remove("d-none");
+      return;
+  } else {
+      document.getElementById("passwordError").classList.add("d-none");
+  }
 
   try {
 
 
      
-    //   var sessionData = JSON.parse(localStorage.getItem("clientSession"));
+      var sessionData = JSON.parse(localStorage.getItem("clientSession"));
 
-    //   console.log("hello from session ",sessionData)
-    //   if (!sessionData || !sessionData.sessionData || !sessionData.sessionData.id) {
-    //       alert("User is not logged in.");
-    //       return;
-    //   }
+      console.log("hello from session ",sessionData)
+      if (!sessionData || !sessionData.sessionData || !sessionData.sessionData.id) {
+          alert("User is not logged in.");
+          return;
+      }
 
-    //   var userId = sessionData.sessionData.id;
+      var userId = sessionData.sessionData.id;
 
  
-    //   var fullName = `${firstName} ${lastName}`;
+      var fullName = `${firstName} ${lastName}`;
 
   
-    //   var isUpdated = await clientAuth.updateProfile(
-    //       userId,
-    //       fullName,
-    //       email,
-    //       newPassword || currentPassword,
-    //       address,
-    //       phone,
-    //       governorate
-    //   );
+      var isUpdated = await clientAuth.updateProfile(
+          userId,
+          fullName,
+          email,
+          newPassword || currentPassword,
+          address,
+          phone,
+          governorate
+      );
 
-    //   if (isUpdated) {
-    //       alert("Profile updated successfully!");
+      if (isUpdated) {
+          alert("Profile updated successfully!");
 
-    //       userProfile.showUserData();
-    //   } else {
-    //       alert("Failed to update profile. Please try again.");
-    //   }
+          userProfile.showUserData();
+      } else {
+          alert("Failed to update profile. Please try again.");
+      }
   } catch (error) {
      // console.error("Error updating profile:", error);
      // alert("An error occurred while updating the profile.");
