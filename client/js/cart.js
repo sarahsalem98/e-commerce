@@ -33,9 +33,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 
         // Open the database
         await dbController.openDataBase();
-         
-
-       
+        
 
         sessionStorage.setItem('userId', '1');
         const userId=sessionStorage.getItem('userId');
@@ -43,7 +41,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 
         globals.cart=await cart.getCartData(userId);
 
-        console.log(globals.cart)
+     
         
         globals.products=await cart.getCartProducts(globals.cart);
         
@@ -60,7 +58,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
         total = globals.productsSummaryT.querySelector(".Total");
         shipping_fees=globals.productsSummaryT.querySelector(".shipping-fees");
 
-        console.log(subtotal , total)
+       
 
         /*****************************************************************/
         function addProductRow(p,requiredQuantity){
@@ -72,7 +70,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
             var createdAnchor=document.createElement("a");
             createdAnchor.href="";
             createdAnchor.addEventListener("click",async function(){
-                cart.addToCart(p['id'],0,userId,p['price']);
+                await cart.addToCart(p['id'],0,userId,p['price']);
                 location.reload(true);
             })//end of registration  
 
@@ -143,25 +141,25 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
                             return;
                         } 
                         else{
-                            cart.addToCart(p['id'],(this.value + e.key),userId,p['price']);
+                            await cart.addToCart(p['id'],(this.value + e.key),userId,p['price']);
                             this.value=this.value+e.key;
-                            debugger;
                             showUpdatedCartSlider();
+                            globals.cart=await cart.getCartData(userId);
+                            globals.products=await cart.getCartProducts(globals.cart);
                         }
                     }
-
-                        
-                  
-                
-
+ 
             })//end of input quantity field 
 
  
-            createdInputFiled.addEventListener('blur',function(){
+            createdInputFiled.addEventListener('blur', async function(){
                 if(Number(this.value)==0){
-                    cart.addToCart(p['id'], 0 ,userId,p['price']);
+                    await cart.addToCart(p['id'], 0 ,userId,p['price']);
                     this.value=0;
                     showUpdatedCartSlider();
+                    globals.cart=await cart.getCartData(userId);
+                    globals.products=await cart.getCartProducts(globals.cart);
+
                 }
             })//end of blure
 
@@ -176,13 +174,21 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 
                 var newVal= Number(createdInputFiled.value)-1;
                 if(newVal>=0){
+
+                    console.log("new val",newVal)
                     createdInputFiled.value=newVal.toString();
-                    cart.addToCart(p['id'],newVal,userId,p['price']);
+                    await cart.addToCart(p['id'],newVal,userId,p['price']);
                     /*************************************** */
                     ///update subtotal
                     createdSpnaSubtotal.innerText=( Number(createdSpnaSubtotal.innerText)-p['price']).toFixed(2)
                     updatedSummaryTable(-1*p['price'])
+                    
                     showUpdatedCartSlider();
+
+                    globals.cart=await cart.getCartData(userId);       
+                    globals.products=await cart.getCartProducts(globals.cart);
+
+                    
                 }
 
 
@@ -198,13 +204,17 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
                 var newVal= Number(createdInputFiled.value)+1;
 
                 if(newVal<=p['qty']){
-                    createdInputFiled.value=newVal.toString();
-                    cart.addToCart(p['id'],newVal,userId,p['price']);
+                    console.log("new val",newVal)
+                    createdInputFiled.value=newVal;
+
+                    await cart.addToCart(p['id'],newVal,userId,p['price']);
                     /*************************************** */
                     ///update subtotal
                     createdSpnaSubtotal.innerText=(Number(createdSpnaSubtotal.innerText)+p['price']).toFixed(2); 
                     updatedSummaryTable(p['price'])
                     showUpdatedCartSlider();
+                    globals.cart=await cart.getCartData(userId);       
+                    globals.products=await cart.getCartProducts(globals.cart);
                 }
               })//end of increment 
 
@@ -233,7 +243,6 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
         
         if(globals.cart && globals.products){
             globals.products.forEach(function(p,index){
-
                 addProductRow(globals.products[index],globals.cart['products'][index]['qty']);
                 subTotalVal+=(globals.products[index]['price'])*globals.cart['products'][index]['qty'];
             })
@@ -254,17 +263,21 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
             shipping_fees.innerText=shipping_fees_val;
         }
 
-        globals.productsSummaryT.querySelector("input[type='button']").addEventListener('click',function(){
-            window.location.href="./cart1.html"
-        });
-       
+        
+        /*********************************************************** */
+        //preceeding to the next page handling
 
-         
+        function nextPageListener(e){ 
+            if(!globals.products)
+               e.preventDefault();
+            else
+             window.location.href="./cart1.html";
+        }
+
+        globals.productsSummaryT.querySelector("input[type='button']").addEventListener('click',nextPageListener);
+        
         //cart page two registration
-        document.querySelector(".prgressive-bar .two").addEventListener('click',function(e){
-                 if(!globals.products)
-                    e.preventDefault();
-        })//end of third page registration
+        document.querySelector(".prgressive-bar .two").addEventListener('click',nextPageListener)//end of third page registration
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);

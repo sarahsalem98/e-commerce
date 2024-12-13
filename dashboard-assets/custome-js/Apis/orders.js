@@ -1,5 +1,6 @@
 import { dbController } from "../indexedDb.js"
 export var order = {
+    
     makeOrder: async function (userId, email, firstName, lastName, gov, address, phone_num1, phone_num2, message) {
         var allDone = false;
         let cartData;
@@ -28,10 +29,11 @@ export var order = {
                 };
     
                 let orderDone = await dbController.addItem('orders', order);
+              
                 if (orderDone) {
                     // Adjust product quantities and prices
                     for (let product of cart.products) {
-                        let productData = await dbController.getItemById('products', product.id);
+                        let productData = await dbController.getItem('products', product.id);
                         if (productData) {
                             let updatedQty = productData.qty - product.qty;
                             if (updatedQty < 0) {
@@ -51,6 +53,8 @@ export var order = {
                         is_finished: 'true',
                         products: cart.products
                     };
+
+                    console.log(cartDatainfo);
                     allDone = await dbController.updateItem('carts', cart.id, cartDatainfo);
                 }
             }
@@ -88,7 +92,7 @@ export var order = {
                     if (orderGuestDone) {
                         // Adjust product quantities and prices for guest
                         for (let product of cart.products) {
-                            let productData = await dbController.getItemById('products', product.id);
+                            let productData = await dbController.getItem('products', product.id);
                             if (productData) {
                                 let updatedQty = productData.qty - product.qty;
                                 if (updatedQty < 0) {

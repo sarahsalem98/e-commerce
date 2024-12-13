@@ -162,7 +162,7 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     name.addEventListener("keyup",function(){
        var reg=new RegExp("^[A-Za-z]{3,25}[ ]*$")
         
-        if( this.value.trim().length==0  &&  !reg.test(this.value) ){
+        if( this.value.trim().length==0 ||  !reg.test(this.value) ){
           document.querySelector(".wrapper-form .form label[for='name']").style.color="red"
           isUserNameValid=false;
            
@@ -287,7 +287,7 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     e.preventDefault();
    }) 
 
-    debugger;
+    
    function initReview(){
     if(reviews.length)
       
