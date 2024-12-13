@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/profileUser.css">
-   
-    
+    <!-- <script src="./js/profileuser.js" type="module"></script> -->
+
     <title>home</title>
+
+
 </head>
 
 <body>
@@ -223,17 +225,22 @@
                             </select>
                         </div>
                         <div class="mb-4 d-flex">
-                            <input id="currentPassword" class="form-control me-1" type="password" placeholder="Current Password"  autocomplete="">
+                            <input id="currentPassword" class="form-control me-1" type="password"
+                                placeholder="Current Password" autocomplete="">
 
-                            <input id="newPassword" class="form-control" type="password" placeholder="New Password" autocomplete="">
+                            <input id="newPassword" class="form-control" type="password" placeholder="New Password"
+                                autocomplete="">
 
-                            <input id="confirmPassword" class="form-control" type="password" placeholder="Confirm Password" autocomplete="">
+                            <input id="confirmPassword" class="form-control" type="password"
+                                placeholder="Confirm Password" autocomplete="">
                         </div>
                         <div class="mb-4">
-                 <input id="updateButton" class="form-control updateButton"onclick="userProfile.updateProfile();" type="button" value="Update Profile">
-                            
-                 <input id="cancelButton" class="form-control updateButton   mt-2" type="reset" value="Cancel">
-                                
+                            <input id="updateButton" class="form-control updateButton"
+                                onclick="userProfile.updateProfile();" type="button" value="Update Profile">
+
+                            <input id="cancelButton" class="form-control updateButton   mt-2" type="reset"
+                                value="Cancel">
+
                         </div>
                     </form>
                     <p id="passwordError" class="text-danger d-none">New passwords do not match!</p>
@@ -284,14 +291,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
-    
-    
+    <script src="../dashboard-assets//custome-js/indexedDb.js"></script>
 
 
 
+  <script src="./js/test.js" type="module"></script>
 
- 
+
 
 </body>
 
