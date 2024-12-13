@@ -14,8 +14,8 @@ let currentSortOrder = '';
 
         productsData = await clientProducts.getAllProducts();
         filteredData = [...productsData];
-
         displayProducts(filteredData);
+       await updateCartPill();
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);
@@ -61,6 +61,7 @@ function displayProducts(products) {
                 }
                 var res = await cart.addToCart(product_id, 1, user_id, product_price);
                 if (res) {
+                    await updateCartPill();
                     toastr.success("products added to cart successfully");
                 }
             }
@@ -68,20 +69,24 @@ function displayProducts(products) {
     });
 }
 
-function updateCartPill() {
+async function updateCartPill() {
     let usersession = JSON.parse(localStorage.getItem("clientSession"));
-    let pillCount=0;
+    let cartinfo=[];
+    let count=0;
     let userId = null
     if (usersession) {
         userId = usersession.sessionData.id;
     }
     if(userId){
-
-        
+        cartinfo= await cart.getCartData(userId);
     }else{
- 
-
+       cartinfo=JSON.parse(localStorage.getItem("user-cart"));
     }
+    if(cartinfo){
+        count=cartinfo.products.length;
+    }
+    var pill= document.getElementsByClassName("badge-pill")[0];
+    pill.innerText=count;
 }
 
 
