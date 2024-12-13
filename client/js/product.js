@@ -1,6 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { updateUIBasedOnSession, handleLogout } from './login.js';
+import {cart} from '../../dashboard-assets/custome-js/Apis/cart.js';
 
 
 let productsData = [];
@@ -30,10 +31,10 @@ function displayProducts(products) {
         productCard.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-5';
 
         productCard.innerHTML = `
-            <a href="#" class="product-link position-relative" data-id="${product.id}">
+            <a href="/client/product_review.html?id=${product.id}" class="product-link position-relative" data-id="${product.id}">
                 <img class="img-fluid position-absolute hover-img1" src="${product.pics[0]}" alt="${product.name}">
                 <img class="img-fluid" src="${product.pics[1]}" alt="${product.name}">
-                <div class="icon-cart btn btn-light rounded-circle position-absolute end-0 m-3">
+                <div id="addcartbtn" class="icon-cart btn btn-light rounded-circle position-absolute end-0 m-3">
                     <i class="fa-solid fa-basket-shopping"></i>
                 </div>
             </a>
@@ -46,14 +47,14 @@ function displayProducts(products) {
         productsContainer.appendChild(productCard);
     });
 
-    document.querySelectorAll('.product-link, .product-title-link').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const productId = this.getAttribute('data-id');
-            console.log(productId)
-            return productId;
-        });
-    });
+    // document.querySelectorAll('.product-link, .product-title-link').forEach(link => {
+    //     link.addEventListener('click', function (event) {
+    //         event.preventDefault();
+    //         const productId = this.getAttribute('data-id');
+    //         console.log(productId)
+    //         return productId;
+    //     });
+    // });
 }
 
 document.getElementById('categoryFilter').addEventListener('change', (event) => {
