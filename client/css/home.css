@@ -132,12 +132,12 @@
 ************************************
 
 
-.products .box .img1:hover {
+/* .products .box .img1:hover {
     cursor: pointer;
     content: url("../utilities/imgs/ring36.jpg");
-}
+} */
 
-.products .box .img2:hover {
+/* .products .box .img2:hover {
     cursor: pointer;
     content: url("../utilities/imgs/ring20.jpg");
 
@@ -154,7 +154,7 @@
     cursor: pointer;
     content: url("../utilities/imgs/ring31.jpg");
 
-}
+} */
 
 
 

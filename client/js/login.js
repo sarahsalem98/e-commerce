@@ -6,6 +6,7 @@ import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
         
         await dbController.openDataBase();
 
+        
         document.getElementById('loginForm').addEventListener('click', async function () {
 
             const email = document.getElementById('email').value;
