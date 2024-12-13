@@ -31,7 +31,7 @@ export var order = {
                 if (orderDone) {
                     // Adjust product quantities and prices
                     for (let product of cart.products) {
-                        let productData = await dbController.getItemById('products', product.id);
+                        let productData = await dbController.getItem('products', product.id);
                         if (productData) {
                             let updatedQty = productData.qty - product.qty;
                             if (updatedQty < 0) {
