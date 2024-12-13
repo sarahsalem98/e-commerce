@@ -72,8 +72,6 @@ export var clientProducts = {
                     }
                 });
             }
-
-
         }
         let topProductIds = Object.entries(product_sales)
             .sort((a, b) => b[1] - a[1])
