@@ -2,7 +2,7 @@ import { dbController } from "../indexedDb.js";
 
 export var clientProducts = {
     getAllProducts: async function () {
-        let data = dbController.getDataArray('products');
+        let data = await dbController.getDataArray('products');
         console.log(data);
         return data;
     },
