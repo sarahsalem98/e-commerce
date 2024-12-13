@@ -31,18 +31,18 @@ export var order = {
                 if (orderDone) {
                     // Adjust product quantities and prices
                     for (let product of cart.products) {
-                        let productData = await dbController.getItemById('products', product.id);
+                        let productData = await dbController.getItem('products', product.product_id);
                         if (productData) {
                             let updatedQty = productData.qty - product.qty;
                             if (updatedQty < 0) {
-                                console.error(`Not enough stock for product ID: ${product.id}`);
+                                console.error(`Not enough stock for product ID: ${product.product_id}`);
                                 return false;
                             }
                             let updatedProduct = {
                                 ...productData,
                                 qty: updatedQty
                             };
-                            await dbController.updateItem('products', product.id, updatedProduct);
+                            await dbController.updateItem('products', product.product_id, updatedProduct);
                         }
                     }
     
@@ -88,11 +88,12 @@ export var order = {
                     if (orderGuestDone) {
                         // Adjust product quantities and prices for guest
                         for (let product of cart.products) {
-                            let productData = await dbController.getItemById('products', product.id);
+                            console.log(product);
+                            let productData = await dbController.getItem('products', product.product_id);
                             if (productData) {
                                 let updatedQty = productData.qty - product.qty;
                                 if (updatedQty < 0) {
-                                    console.error(`Not enough stock for product ID: ${product.id}`);
+                                    console.error(`Not enough stock for product ID: ${product.product_id}`);
                                     return false;
                                 }
                                 let updatedProduct = {
@@ -100,7 +101,7 @@ export var order = {
                                     qty: updatedQty,
                                     price: product.price // Adjust price if needed
                                 };
-                                await dbController.updateItem('products', product.id, updatedProduct);
+                                await dbController.updateItem('products', product.product_id, updatedProduct);
                             }
                         }
     
