@@ -13,8 +13,6 @@ let currentSortOrder = '';
         await dbController.openDataBase();
 
         productsData = await clientProducts.getAllProducts();
-       var  bestSellingProductsData=await clientProducts.getBestSellingProducts();
-        console.log(bestSellingProductsData)
         filteredData = [...productsData];
         displayProducts(filteredData);
        await updateCartPill();
