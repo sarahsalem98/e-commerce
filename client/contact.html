@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <title>Contact</title>
-
+ 
 </head>
 
 
@@ -105,16 +106,16 @@
                 </ul>
             </div>
             <div class="col-12 col-md-6">
-                <form class="form p-5 color w-75 m-5 contact">
+                <form class="form p-5 color w-75 m-5 contact" id="contact-form">
                     <div class="mb-3 d-flex">
-                        <input class="form-control me-4" type="text" placeholder="First Name"> 
-                        <input class="form-control" type="text" placeholder="Last Name"> 
+                        <input class="form-control me-4" type="text" name="first-name" placeholder="First Name"> 
+                        <input class="form-control" type="text" name="last-name" placeholder="Last Name"> 
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="email" placeholder="Email"> 
+                        <input class="form-control" type="email" name="email" placeholder="Email"> 
                     </div>
                     <div class="mb-3">
-                        <textarea rows="5" class="form-control w-100"></textarea>
+                        <textarea rows="5" class="form-control w-100" name="message"></textarea>
                     </div>
                     <div class="mb-3">
                         <input class="form-control btn-outline-dark rounded-0 w-25" type="button" value="SEND">
@@ -166,6 +167,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
     <script type="module" src="./js/contact.js"></script>
 </body>
 

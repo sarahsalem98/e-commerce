@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <title>register</title>
 
 </head>
@@ -89,94 +90,135 @@
         </div>
     </nav>
     <!-- register-->
-    <main class="vh-100">
+    <main>
         <!-- <section class="container mt-5">
             <a class="text-decoration-none text-secondary" href="home.html">Home </a>/
             <a class="text-decoration-none text-secondary" href="register.html"> Register</a>
         </section> -->
         <section class="d-flex align-items-center justify-content-center">
             <div class="col d-none d-lg-flex ">
-                
-                <img class="img-fluid" style="background-color:rgb(250, 245, 240) ; width:80%; margin: 30px; margin-left: 90px; " src="utilities/imgs/register2.jpeg" alt="register">
+
+                <img class="img-fluid"
+                    style="background-color:rgb(250, 245, 240) ; width:80%; max-height:600px ; margin: 20px; margin-left: 90px; "
+                    src="utilities/imgs/register2.jpeg" alt="register">
             </div>
             <div class="col m-3 p-5">
                 <h3>Creat an account</h3>
                 <p>Enter your details bellow</p>
-                <form class="form">
-                    <div class="mb-4 d-flex"> 
-                        <input class="form-control me-1" type="text" placeholder="First Name">
-                        <input class="form-control" type="text" placeholder="Last Name">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="email" placeholder="Email"> 
-                    </div>
-                    <div class="mb-4 d-flex">
-                        <select class="form-select text-secondary me-1" id="governorate" name="governorate" required>
-                            <option value="" disabled selected>Select a governorate</option>
-                            <option value="Cairo">Cairo</option>
-                            <option value="Alexandria">Alexandria</option>
-                            <option value="Giza">Giza</option>
-                            <option value="Aswan">Aswan</option>
-                            <option value="Luxor">Luxor</option>
-                            <option value="Asyut">Asyut</option>
-                            <option value="Beheira">Beheira</option>
-                            <option value="Beni Suef">Beni Suef</option>
-                            <option value="Dakahlia">Dakahlia</option>
-                            <option value="Damietta">Damietta</option>
-                            <option value="Fayoum">Fayoum</option>
-                            <option value="Gharbia">Gharbia</option>
-                            <option value="Ismailia">Ismailia</option>
-                            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
-                            <option value="Matrouh">Matrouh</option>
-                            <option value="Minya">Minya</option>
-                            <option value="Monufia">Monufia</option>
-                            <option value="New Valley">New Valley</option>
-                            <option value="North Sinai">North Sinai</option>
-                            <option value="Port Said">Port Said</option>
-                            <option value="Qalyubia">Qalyubia</option>
-                            <option value="Qena">Qena</option>
-                            <option value="Red Sea">Red Sea</option>
-                            <option value="Sharqia">Sharqia</option>
-                            <option value="Sohag">Sohag</option>
-                            <option value="South Sinai">South Sinai</option>
-                            <option value="Suez">Suez</option>
-                        </select>
-                        <input class="form-control" type="number" placeholder="phone">
-                    </div>
-                    <div class="mb-4">
-                        <div class="d-flex">
-                            <label class="form-control border-0 ps-0 w-25">gender</label>
-                            <label for="female" class="form-control me-2 d-flex justify-content-between">female
-                                <input type="radio" name="gender" value="1">  
-                            </label>
-                            <label for="male" class="form-control d-flex justify-content-between">male
-                                <input type="radio" name="gender" value="2">
-                            </label>
+                <form class="form" id="register_form">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+
+                                <input class="form-control me-1" type="text" name="first-name" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input class="form-control" type="text" name="last-name" placeholder="Last Name">
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-4">
-                        <input class="form-control" type="text" placeholder="Address"> 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <input class="form-control" type="email" name="email" placeholder="Email">
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="mb-4 d-flex">
-                        <input class="form-control me-1" type="password" placeholder="Password">
-                        <input class="form-control" type="password" placeholder="confirm Password">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="mb-3">
+
+                                <select class="form-select text-secondary me-1" id="governorate" name="governorate"
+                                    required>
+                                    <option value="" disabled selected>Select a governorate</option>
+                                    <option value="Cairo">Cairo</option>
+                                    <option value="Alexandria">Alexandria</option>
+                                    <option value="Giza">Giza</option>
+                                    <option value="Aswan">Aswan</option>
+                                    <option value="Luxor">Luxor</option>
+                                    <option value="Asyut">Asyut</option>
+                                    <option value="Beheira">Beheira</option>
+                                    <option value="Beni Suef">Beni Suef</option>
+                                    <option value="Dakahlia">Dakahlia</option>
+                                    <option value="Damietta">Damietta</option>
+                                    <option value="Fayoum">Fayoum</option>
+                                    <option value="Gharbia">Gharbia</option>
+                                    <option value="Ismailia">Ismailia</option>
+                                    <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+                                    <option value="Matrouh">Matrouh</option>
+                                    <option value="Minya">Minya</option>
+                                    <option value="Monufia">Monufia</option>
+                                    <option value="New Valley">New Valley</option>
+                                    <option value="North Sinai">North Sinai</option>
+                                    <option value="Port Said">Port Said</option>
+                                    <option value="Qalyubia">Qalyubia</option>
+                                    <option value="Qena">Qena</option>
+                                    <option value="Red Sea">Red Sea</option>
+                                    <option value="Sharqia">Sharqia</option>
+                                    <option value="Sohag">Sohag</option>
+                                    <option value="South Sinai">South Sinai</option>
+                                    <option value="Suez">Suez</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="mb-3">
+                                <input class="form-control" type="text" name="address" placeholder="Address">
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-4">
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+
+                                <input class="form-control me-1" type="password" name="password" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input class="form-control" type="password" name="confirm-password"
+                                    placeholder="confirm Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <input class="form-control" name="phone" placeholder="phone">
+                          
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-4">
+                                <select id="user-gender" name="user-gender" class="select2 form-select">
+                                    <option value=""> select gender</option>
+                                    <option value="1"> female</option>
+                                    <option value="2">male</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-2">
                         <input class="form-control btn-outline-dark rounded-0" type="button" value="Creat Account">
                     </div>
-                    <div class="mb-4 text-center text-dark">
-                        Already have account? 
-                        <a class="text-dark text-decoration-none" href="register.html">Log in</a>
+
+                    <div class="mb-3 text-center text-dark">
+                        Already have account?
+                        <a class="text-dark text-decoration-none" href="login.html"> Log in</a>
                     </div>
                 </form>
             </div>
         </section>
-    </main> 
+    </main>
 
- 
+
     <!-- Footer -->
-     
-    <footer class="footer">
+    <footer class="footer text-center text-md-start">
         <div class="container">
             <div class="footer-section">
                 <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
@@ -215,6 +257,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
     <script type="module" src="././js/register_customer.js"></script>
 </body>
 
