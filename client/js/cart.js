@@ -131,26 +131,31 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
             createdInputFiled.setAttribute("type","text");
             createdInputFiled.setAttribute("value",requiredQuantity);
 
-            createdInputFiled.addEventListener("keydown",async function(e){
+            createdInputFiled.addEventListener("keydown", async function (e) {
+                const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight'];
+              
+                
+                if (allowedKeys.includes(e.key)) {
+                  return;
+                }
+              
+                 
+                if ((e.key >= '0' && e.key <= '9') && Number(this.value + e.key) <= p['qty']) {
+                  e.preventDefault();  // i'm preventing browser from updating current input i'll do with jop.
+               
+                  this.value = this.value + e.key;
 
-                const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight'];  
-
-                    if(!allowedKeys.includes(e.key)){
-                        if(!( ( e.key >= '0'&&e.key <= '9') && Number(this.value + e.key) <= p['qty'] ) ){
-                            e.preventDefault();
-                            return;
-                        } 
-                        else{
-                            await cart.addToCart(p['id'],(this.value + e.key),userId,p['price']);
-                            this.value=this.value+e.key;
-                            showUpdatedCartSlider();
-                            globals.cart=await cart.getCartData(userId);
-                            globals.products=await cart.getCartProducts(globals.cart);
-                        }
-                    }
+                  await cart.addToCart(p['id'], this.value, userId, p['price']);
+                  showUpdatedCartSlider();
+                  globals.cart = await cart.getCartData(userId);
+                  globals.products = await cart.getCartProducts(globals.cart);
+                } else {
+                  // Prevent invalid input
+                  e.preventDefault();
+                }
+              });
+              //end of input quantity field 
  
-            })//end of input quantity field 
-
  
             createdInputFiled.addEventListener('blur', async function(){
                 if(Number(this.value)==0){

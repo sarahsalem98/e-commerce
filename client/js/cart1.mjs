@@ -1,5 +1,6 @@
 import {dbController} from "../../dashboard-assets/custome-js/indexedDb.js"
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
+import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
  
 
 (async function () {
@@ -7,7 +8,8 @@ import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
         
 
         sessionStorage.setItem('userId', '1');
-         
+        
+        debugger;
 
         // Open the database
         await dbController.openDataBase();
@@ -222,17 +224,23 @@ import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
             isChecked=!isChecked;
         })
 
+       
+
 
         document.querySelector(".checout_btn").addEventListener('click',async function(){
        
             console.log(isValidEmail , isValidFname ,isValidLname , isValidPhone_1 , isValidPhone_2 ,isValidAddress)
+
             if(isValidFname && isValidLname && isValidZipcode && isValidPhone_1 && isValidPhone_2 & isChecked){
                 console.log("hello");
 
-                let regionVal=document.querySelector('#countries');
+                let regionVal=document.querySelector('#countries').value;
                 let commentArea=document.querySelector('.addationale_info textarea').value;
-               
-                window.location.href="./cart2.html"
+                let order_id= await order.makeOrder(userId,emaliVal,fnameVal,lnameVal,regionVal,addressVal,phoneVal_1,phoneVal_2,commentArea);
+                
+                const encoded_order_id= encodeURIComponent(order_id);  
+
+                window.location.href = `cart2.html?id=${encoded_order_id}`;
                   
             }
             else{
@@ -257,6 +265,8 @@ import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 window.addEventListener("load",function(){
     
     
+    
+
     // for drop down
     $('.search_select_box select').selectpicker();
 
@@ -286,33 +296,12 @@ window.addEventListener("load",function(){
         
     
     }
-
-    // // for text area 
-    // this.document.querySelector("textarea").addEventListener("keyup",function(){
-
-    //     /************************************************************ */
-    //     target=this.document.querySelector(".addationale_info textarea label");
-    //     /***************************************************/
-
-    //     if(this.value.trim().length){
-                     
-    //         target.classList.remove("apperance-status-label_toggle");
-    //         this.classList.add("apperance-status-input");   
-
-    //     }else{
-
-    //         AllLabels[m].classList.add("apperance-status-label_toggle");
-    //         this.classList.remove("apperance-status-input");
-
-    //     }
-
-    // })//end of textarea registration
-
     this.document.querySelector(".payment_section>ul>li input").addEventListener("change",function(){
         console.log("wellcom")
         document.querySelector(".payment_section>ul>li p").classList.toggle("payment_details_toggle");
         
     })
+
 
 
 })//end of load window

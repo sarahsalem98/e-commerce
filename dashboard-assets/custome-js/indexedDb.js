@@ -5,7 +5,7 @@ export var dbController = {
 
     openDataBase: function () {
         return new Promise((resolve, reject) => {
-            const request = indexedDB.open('AdminDataBase', 5);
+            const request = indexedDB.open('AdminDataBase', 4);
 
             request.onupgradeneeded = function (event) {
 

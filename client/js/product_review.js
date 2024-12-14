@@ -22,6 +22,7 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     
     var product=await clientProducts.getProductById(id);
     
+    
     //set name of product 
     document.getElementsByClassName("product-name")[0].innerText=product["name"];
 
@@ -289,11 +290,12 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
 
     
    function initReview(){
-    if(reviews.length)
-      
+    if(reviews.length){
       addReview();
       var btn=document.querySelector(".main-section .see-more-btn");
       btn.style.visibility = 'visible';    
+    }
+      
    }
 
 
