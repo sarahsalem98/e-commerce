@@ -74,7 +74,7 @@ export var clientAuth = {
                 //avatar: avatar
             }
 
-            isUpdated = await dbController.updateItem("sellers", userId, userupdated);
+            isUpdated = await dbController.updateItem("users", userId, userupdated);
         }
         return isUpdated;
 
@@ -87,5 +87,5 @@ export var clientAuth = {
     },
     // test:function(){
     //     console.log("test");
-    // }
+
 }

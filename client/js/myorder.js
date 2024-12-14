@@ -1,41 +1,105 @@
-window.addEventListener("load", async function() {
-    let userId = localStorage.getItem("user_id"); 
-    if (!userId) {
-        console.error("User ID is missing");
-        document.getElementById('no-orders').classList.remove('d-none');  
-        return;
-    }
-    let orderList = await fetchUserOrders(userId);
-    populateOrder(orderList);
-});
 
-function populateOrder(orderList) {
-    let tableBody = document.querySelector('.tbody');
-    let noOrdersMessage = document.getElementById('no-orders');
+//  import {order} from'../../dashboard-assets/custome-js/Apis/orders.js'
+//  export var orderhistory={
+//      getUserOrdersHistory:async function(){
+//            ]
+               
+        
+//           await order.getUserOrdersHistory();
+
+//       },
+//       showorderData:async function(  ){
+//        var id= JSON.parse(localStorage.getItem("clientSession")).sessionData.id;
+
+
+
+
+//         console.log( (await order.getUserOrdersHistory(1)).length);
+      
+//        }
+//     }
+
+import { order } from '../../dashboard-assets/custome-js/Apis/orders.js'
+
+export const orderhistory = {
+    getUserOrdersHistory: async function() {
+        try {
+            const clientSession = JSON.parse(localStorage.getItem("clientSession"));
+            if (!clientSession || !clientSession.sessionData || !clientSession.sessionData.id) {
+                throw new Error("Please log in to view your orders");
+            }
+
+            const userId = clientSession.sessionData.id;
+            const orders = await order.getUserOrdersHistory(userId);
+            this.showorderData(orders);
+        } catch (error) {
+            console.error("Error fetching order history:", error);
+            const noOrdersElement = document.querySelector("#no-orders");
+            noOrdersElement.textContent = error.message || "Error loading orders";
+            noOrdersElement.classList.remove("d-none");
+        }
+    },
+      
+    getStatusClass: function(status) {
+        switch(status.toLowerCase()) {
+            case 'pending':
+                return 'status-pending';
+            case 'shipped':
+                return 'status-shipped';
+            case 'delivered':
+                return 'status-delivered';
+            default:
+                return '';
+        }
+    },
     
-    tableBody.innerHTML = "";  
+    showorderData: async function(orders){
+        const tableBody = document.querySelector("#orderTable tbody");
+        const Message = document.querySelector("#no-orders");
+        
+        if (!tableBody) {
+            console.error("Table body not found");
+            return;
+        }
 
-    if (orderList.length === 0) {
-        noOrdersMessage.classList.remove('d-none');  
-        return;
-    } else {
-        noOrdersMessage.classList.add('d-none');  
+     
+        tableBody.innerHTML = "";
+
+        if (!orders || orders.length === 0) {
+              Message.classList.remove("d-none");
+            return;
+        }
+
+        Message.classList.add("d-none");
+
+   
+        orders.forEach((orderItem) => {
+            const row = document.createElement("tr");
+            
+       
+            const orderDate = new Date(orderItem.orderDate).toLocaleDateString();
+            const statusClass = this.getStatusClass(orderItem.status);
+            
+            row.innerHTML = `
+                <td>${orderItem.orderId}</td>
+                <td>${orderDate}</td>
+                <td>
+                    <ul class="product-list">
+                        ${orderItem.products.map(product => `
+                            <li>
+                                ${product.name}
+                                <br>Quantity: ${product.quantity}
+                                <br>Price: $${product.price.toFixed(2)}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </td>
+                <td>$${orderItem.totalAmount.toFixed(2)}</td>
+                <td><span class="order-status ${statusClass}">${orderItem.status}</span></td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
     }
-
-    
-    orderList.forEach((order, index) => {
-        let formattedDate = new Date(order.created_at).toLocaleString();
-        let row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${order.first_name} ${order.second_name}</td>
-            <td>${order.email}</td>
-            <td>${order.address}, ${order.gov}</td>
-            <td>${order.phone_num1} / ${order.phone_num2}</td>
-            <td>${order.status === 1 ? 'Completed' : 'Pending'}</td>
-            <td>${formattedDate}</td>
-            <td>${order.message}</td>
-        `;
-        tableBody.appendChild(row);
-    });
 }
+

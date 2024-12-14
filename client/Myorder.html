@@ -9,23 +9,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    
- 
+
     <link rel="stylesheet" href="./css/all.min.css">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
-     
+
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/cartGlobals.css">
     <link rel="stylesheet" href="./css/Myorder.css">
 
-     
+
     <script src="js/cartGlabals.js"></script>
+    <script type="module" src="js/myorder.js"></script>
     <style>
- 
-             
-         
-         
+
     </style>
     <title>myorder</title>
 
@@ -79,7 +76,7 @@
             </div>
         </div>
     </nav>
-     <div class="order mb-5 mt-5">
+    <div class="order mb-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class=" col-12 col-md-3">
@@ -93,34 +90,31 @@
                     </div>
                 </div>
                 <div class=" col-12 col-md-9">
-                  
-                    <div class="table">
-                        <caption>Order history with detailed information.</caption>
-                        <table id="order-history-table" class="table table-bordered text-center">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Status</th>
-                                    <th>Created At</th>
-                                    <th>Message</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tbody">
-                            </tbody>
-                        </table>
+                    <div class="container mt-5">
+                     
+                        <div class="table">
+                            <table id="orderTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Products</th>
+                                        <th>Total Amount</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                             
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <p id="no-orders" class="no-orders d-none">No orders found.</p>
                 </div>
             </div>
         </div>
     </div>
-    
-      
-     
+
     <!-- Footer -->
     <footer class="footer ">
         <div class="container">
@@ -163,7 +157,15 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script src="myorder.js"></script>
+    <script type="module">
+        import { orderhistory } from './js/myorder.js';
+                // import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
+                // import { order } from '../dashboard-assets/custome-js/Apis/Auth.js';
+        document.addEventListener('load', async function () {
+            await dbController.openDataBase();
+            orderhistory.getUserOrdersHistory();
+        });
+    </script>
 </body>
 
 </html>

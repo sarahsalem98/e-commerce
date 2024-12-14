@@ -1,16 +1,8 @@
 //  import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
-// // // import {order} from'../../dashboard-assets/custome-js/Apis/orders.js'
 // export var userProfile={
 //       updateProfile:async function(){
 //               //await clientAuth.login("obarnes4@xyz.com",12345);
-//                  // Retrieve form values
-//                  var firstName=document.getElementById("firstName").value();
-//                  var lastName=document.getElementById("lastName").value();
-//                  var email=document.getElementById("email").value();
-//                  var address=document.getElementById("address").value();
-//                  var phone=document.getElementById("phone").value();
-//                  var governorate=document.getElementById("governorate").value();
-//                  var currentPassword=document.getElementById("currentPassword").value();
+
         
 //           await clientAuth.updateProfile();
 
@@ -31,76 +23,96 @@
 //       }
 // }
 
-// window.userProfile=userProfile;
-import { dbController } from '../../dashboard-assets/custome-js/indexedDb.js';
+import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
 
-
-export const userProfile = {
-  updateProfile: async function () {
-    try {
-      await dbController.openDataBase();
+export var userProfile = {
+    
+    updateProfile: async function () {
+          
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var address = document.getElementById("address").value;
+            var phone = document.getElementById("phone").value;
+            var governorate = document.getElementById("governorate").value;
+            var currentPassword = document.getElementById("currentPassword").value;
+            var newPassword = document.getElementById("newPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
 
       
-      const firstName = document.getElementById("firstName").value.trim();
-      const lastName = document.getElementById("lastName").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const governorate = document.getElementById("governorate").value;
-      const currentPassword = document.getElementById("currentPassword").value.trim();
-      const newPassword = document.getElementById("newPassword").value.trim();
-      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            if (newPassword && newPassword !== confirmPassword) {
+                document.getElementById("passwordError").classList.remove("d-none");
+                return;
+            } else {
+                document.getElementById("passwordError").classList.add("d-none");
+            }
 
-    
-    console.log(firstName , " " , lastName , " " , email , " ", address , " " , phone , " " , currentPassword)
-    //   if (!firstName || !lastName || !email || !address || !phone || !currentPassword) {
-    //     alert("Please fill in all required fields.");
-    //     return;
-    //   }
-
-      if (newPassword && newPassword !== confirmPassword) {
-        document.getElementById("passwordError").classList.remove("d-none");
-        return;
-      } else {
-        document.getElementById("passwordError").classList.add("d-none");
-      }
-
-    //   const sessionData = JSON.parse(localStorage.getItem("clientSession"));
-    //   if (!sessionData || !sessionData.sessionData || !sessionData.sessionData.id) {
-    //     alert("User is not logged in.");
-    //     return;
-    //   }
-
-      const userId = sessionData.sessionData.id;
-      const fullName = `${firstName} ${lastName}`;
-      const password = newPassword || currentPassword;
-
-      const isUpdated = await clientAuth.updateProfile(
-        1, "ahmednasser", "ahmednasser@gmai.l.com", "12345", " wlglaa street", "0101820858", "elbehira"
-      );
-
-      console.log(isUpdated);
-
-      if (isUpdated) {
-        alert("Profile updated successfully!");
           
-      } else {
-        alert("Failed to update profile. Please try again.");
-      }
+            var email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
 
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert("An error occurred while updating the profile.");
+          
+            var phone = /^\d{11}$/;
+            if (!phone.test(phone)) {
+                alert("Please enter a valid 11-digit phone number.");
+                return;
+            }
+
+         
+            var userId = JSON.parse(localStorage.getItem("clientSession")).sessionData.id;
+
+        
+            var fullName = `${firstName} ${lastName}`;
+
+        
+            var isUpdated = await clientAuth.updateProfile(userId, fullName, email, newPassword || currentPassword, address, phone, null, governorate);
+
+     
+            if (isUpdated) {
+                alert("Profile updated successfully!");
+                window.location.reload();
+            } else {
+                alert("Failed to update profile. Please try again.");
+            }
+     
+    },
+
+   
+    showUserData: async function () {
+   
+        
+            var userId = JSON.parse(localStorage.getItem("clientSession")).sessionData.id;
+
+        
+            var dataUser = await clientAuth.getloggedInUserData(userId);
+
+            if (dataUser) {
+           
+                var nameParts = dataUser.full_name.split(" ");
+                document.getElementById("firstName").value = nameParts[0] || "";
+                document.getElementById("lastName").value = nameParts[1] || "";
+                document.getElementById("email").value = dataUser.email || "";
+                document.getElementById("address").value = dataUser.address || "";
+                document.getElementById("phone").value = dataUser.phone || "";
+                document.getElementById("governorate").value = dataUser.gov || "";
+            } else {
+                alert("Failed to load user data. Please log in again.");
+            }
+       
     }
-  },
-
-  showUserData:function () {
-  
-    console.log("Refreshing user data...");
-  },
 };
 
 
-document.getElementById("updateButton").addEventListener("click", userProfile.updateProfile);
+window.userProfile = userProfile;
+
+
+window.addEventListener("load", () => {
+    userProfile.showUserData();
+});
+
+
 
 
