@@ -82,7 +82,6 @@ function displayProducts(products) {
 
 
 
-
 document.getElementById('categoryFilter').addEventListener('change', (event) => {
     
     const categoryValue = parseInt(event.target.value);
@@ -91,7 +90,6 @@ document.getElementById('categoryFilter').addEventListener('change', (event) => 
 
 function filterProductsByCategory(category) {
     if (category) {
-
         filteredData = productsData.filter(product => product.category === category);
     } else {
         filteredData = [...productsData];
