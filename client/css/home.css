@@ -91,7 +91,7 @@
 }
     
 
-.cart-icon {
+.cartt-icon {
     width: 40px; 
     height: 40px;
     transition: all 0.5s ease; 
@@ -99,7 +99,7 @@
    
 }
 
-.image-container:hover .cart-icon {
+.image-container:hover .cartt-icon {
     opacity: 1; 
     transform: scale(1.2);
 }
@@ -137,7 +137,7 @@
     content: url("../utilities/imgs/ring36.jpg");
 }
 
-.products .box .img2:hover {
+ .products .box .img2:hover {
     cursor: pointer;
     content: url("../utilities/imgs/ring20.jpg");
 
@@ -154,7 +154,7 @@
     cursor: pointer;
     content: url("../utilities/imgs/ring31.jpg");
 
-}
+} 
 
 
 
@@ -221,7 +221,7 @@
 /* End business */
 
 
-.products .image-container a .hover1:hover{
+/* .products .image-container a .hover1:hover{
     content:url(/client/utilities/imgs/ring-01-b-400x500.jpg)
 }
 
@@ -245,4 +245,4 @@
 }
 .products .image-containera .hover13:hover{
     content:url(/client/utilities/imgs/necklace-06-b-400x500.jpg)
-}
+} */

@@ -101,6 +101,7 @@ import { order } from "./Apis/orders.js";
       document.getElementById("products-num").innerText=productsnum;
       document.getElementById("revenue-num").innerText=String(totalrevenue);
       general.chartData(orders);
+      general.getChartPie(customers);
       
     }
 
@@ -331,6 +332,7 @@ export var seller = {
         document.getElementById("products-num").innerText=productsnum;
         document.getElementById("revenue-num").innerText=String(totalrevenue);
         general.chartData(orderseller);
+        general.getChartPieSeller(orderseller);
         
       }
 }

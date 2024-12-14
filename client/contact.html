@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <title>Contact</title>
-
+ 
 </head>
 
 
@@ -22,25 +23,13 @@
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <!-- <a class="navbar-brand" href="#">
-                BLINGG
-                <span class="brand-subtitle">JEWELRY STORE</span>
-            </a> -->
-            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto text-center">
-                    <div class="drawer-icons">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CART</a>
-                        </li>
-                    </div>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
@@ -53,25 +42,50 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
-                    <div class="icons">
+                    <div class="drawer-icons draw-icons">
                         <li class="nav-item">
-                            <!-- <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a> -->
-                            <a class="nav-link text-danger" href="login.html">LOGIN</a>
-
+                            <a class="nav-link" href="login.html">LOGIN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">SIGNUP</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="register_customer.html" class="dropdown-item">customer</a></li>
-                                <li><a href="register_seller.html" class="dropdown-item">seller</a></li>
+                            <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    <div class="drawer-icons user-menu d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profileUser.html">profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="">log out</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    
+                    <div class="icons">
+                        <div class="d-flex draw-icons">
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="login.html">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                            </li>
+                        </div>
+                        <li class="nav-item user-menu d-none">
+                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <ul class="dropdown-menu ">
+                                <li><a href="profileUser.html" class="dropdown-item">profile</a></li>
+                                <li><a href="" class="dropdown-item logout">log out</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
-                                    class="badge badge-pill badge-primary">6</span></a>
+                            <a class="nav-link cart-icon" href="cart.html"><i class="fa-solid fa-basket-shopping"></i><span
+                                    class="badge badge-pill badge-primary text-secondary">0</span></a>
                         </li>
                     </div>
-
                 </ul>
             </div>
         </div>
@@ -92,16 +106,16 @@
                 </ul>
             </div>
             <div class="col-12 col-md-6">
-                <form class="form p-5 color w-75 m-5 contact">
+                <form class="form p-5 color w-75 m-5 contact" id="contact-form">
                     <div class="mb-3 d-flex">
-                        <input class="form-control me-4" type="text" placeholder="First Name"> 
-                        <input class="form-control" type="text" placeholder="Last Name"> 
+                        <input class="form-control me-4" type="text" name="first-name" placeholder="First Name"> 
+                        <input class="form-control" type="text" name="last-name" placeholder="Last Name"> 
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="email" placeholder="Email"> 
+                        <input class="form-control" type="email" name="email" placeholder="Email"> 
                     </div>
                     <div class="mb-3">
-                        <textarea rows="5" class="form-control w-100"></textarea>
+                        <textarea rows="5" class="form-control w-100" name="message"></textarea>
                     </div>
                     <div class="mb-3">
                         <input class="form-control btn-outline-dark rounded-0 w-25" type="button" value="SEND">
@@ -114,28 +128,26 @@
         </section>
     </main>
     <!-- Footer -->
-    <footer class="footer text-center text-md-start">
+    <footer class="footer">
         <div class="container">
             <div class="footer-section">
-                <!-- <h4>BLINGG</h4>
-                <span class="brand-subtitle">JEWELRY STORE</span> -->
-                <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+                <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             </div>
             <div class="footer-section">
                 <h5>About Us</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h5>Shop</h5>
                 <ul>
-                    <li><a href="#">Rings</a></li>
-                    <li><a href="#">Bracelets</a></li>
-                    <li><a href="#">Earrings</a></li>
-                    <li><a href="#">Necklaces</a></li>
+                    <li><a href="products.html?category=2">Rings</a></li>
+                    <li><a href="products.html?category=3">Bracelets</a></li>
+                    <li><a href="products.html?category=4">Earrings</a></li>
+                    <li><a href="products.html?category=1">Necklaces</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -155,6 +167,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+
     <script type="module" src="./js/contact.js"></script>
 </body>
 
