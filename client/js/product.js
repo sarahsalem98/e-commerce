@@ -92,7 +92,7 @@ export async function updateCartPill() {
 
 
 document.getElementById('categoryFilter').addEventListener('change', (event) => {
-    const categoryValue = event.target.value;
+    const categoryValue = parseInt(event.target.value);
     filterProductsByCategory(categoryValue);
 });
 
