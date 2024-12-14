@@ -171,8 +171,8 @@
                         aria-expanded="false">
                         <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder" id="admin-email">John
                                 Doe</span><span class="user-status">Admin</span></div><span class="avatar"><img
-                                class="round" src="user-default.webp"
-                                alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                                class="round" src="user-default.webp" alt="avatar" height="40" width="40"><span
+                                class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                         <a class="dropdown-item" href="javascript:void();" onclick="adminAuth.logout();"><i
@@ -224,6 +224,10 @@
                             data-feather="box"></i><span class="menu-title text-truncate"
                             data-i18n="Email">orders</span></a>
                 </li>
+                <li class=" nav-item "><a class="d-flex align-items-center" href="products.html"><i
+                            data-feather="box"></i><span class="menu-title text-truncate"
+                            data-i18n="Email">products</span></a>
+                </li>
                 <li class=" nav-item "><a class="d-flex align-items-center" href="contactus.html"><i
                             data-feather="file-text"></i><span class="menu-title text-truncate"
                             data-i18n="Email">contact-us</span></a>
@@ -248,7 +252,7 @@
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="row match-height">
-                  
+
 
                         <!-- Statistics Card -->
                         <div class="col-xl-12 col-md-12 col-12">
@@ -319,7 +323,14 @@
 
                     <div class="row match-height">
                         <!-- Revenue Report Card -->
-                        <div class="col-lg-12 col-12">
+                        <div class="col-lg-4 col-12">
+                            <div class="card card-revenue-budget">
+                                <div class="d-sm-flex justify-content-between align-items-center mt-4">
+                                    <div id="gender-pie"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12">
                             <div class="card card-revenue-budget">
                                 <div class="row mx-0">
                                     <div class="col-md-12 col-12 revenue-report-wrapper">
@@ -366,7 +377,7 @@
     <!-- END: Footer-->
 
 
-  
+
     <!-- BEGIN: Vendor JS-->
     <script src="../dashboard-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
@@ -381,13 +392,13 @@
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-   
+
     <script src="../dashboard-assets/custome-js/AuthDashboard.js" type="module"></script>
     <!-- END: Page JS-->
 
     <script type="module">
         import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
-        import {clientAuth} from '../dashboard-assets/custome-js/Apis/Auth.js';
+        import { clientAuth } from '../dashboard-assets/custome-js/Apis/Auth.js';
         import { order } from '../dashboard-assets/custome-js/Apis/orders.js';
         import { clientProducts } from '../dashboard-assets/custome-js/Apis/products.js';
         import { cart } from '../dashboard-assets/custome-js/Apis/cart.js';
@@ -401,10 +412,11 @@
                 document.getElementById("admin-email").innerText = adminAuth.adminCred.email;
                 dbController.openDataBase().then(() => {
                     //clientProducts.getreviews();
-                   cart.fetchDummyData();
+                    cart.fetchDummyData();
                     adminAuth.dashboardData();
-                    clientProducts.getBestSellingProducts();
-                    //order.makeOrder(null,"hamody@gmail.com","hamody","salah","dakahlia","madinat mubark","09503486405","845985679","good order")
+                    //clientProducts.getBestSellingProducts();
+                    order.getOrderData(18);
+                    // order.makeOrder(null,"marmory@gmail.com","sarsory","salah","dakahlia","madinat mubark","09503486405","845985679","good order")
                     // cart.addToCart(12,1,11,299)
                     // cart.addToCart(10,1,11,349.99)
                     //order.makeOrder(11,'sasasalem44@gmail.com','sara','salem','Cairo','madint mubark','01305345','0234234','come early')
@@ -418,7 +430,7 @@
             }
         })
     </script>
-      
+
 </body>
 <!-- END: Body-->
 
