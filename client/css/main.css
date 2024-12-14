@@ -115,6 +115,10 @@ h1{
 .nav-item:hover .dropdown-menu {
     display: block;
 }
+.nav-link:hover,
+.nav-link:hover .badge {
+    color:rgb(168, 110, 59) !important;
+}
 
 .footer {
     background-color: var(--background-color);
@@ -206,6 +210,9 @@ h1{
     }
 }
 section div a:hover .hover-img1{
+    display: none;
+}
+.box div a:hover .hover-img1{
     display: none;
 }
 

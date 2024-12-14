@@ -9,7 +9,8 @@ import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js
         await dbController.openDataBase();
         await genreal.updateCartPill();
 
-        document.getElementById('loginbtn').addEventListener('click', async function () {
+        
+        document.getElementById('loginForm').addEventListener('click', async function () {
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;

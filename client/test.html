@@ -27,8 +27,8 @@
     <button onclick="sendData()">Go to Next Page</button>
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
     <script>
-    function sendData() {
-        const data = "1";
+    function sendData(data) {
+       
         const encodedData = encodeURIComponent(data); // URL-safe encoding
         window.location.href = `product_review.html?id=${encodedData}`;
     }
