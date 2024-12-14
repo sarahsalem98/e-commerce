@@ -125,6 +125,81 @@ export var general = {
 
 
     },
+    getChartPie: async function(customers){
+        var malecustomers=customers.slice().filter(user=>user.gender==2).length;
+        var femalecustomers=customers.slice().filter(user=>user.gender==1).length
+        var options = {
+            series: [femalecustomers, malecustomers],
+            chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ['Female', 'Male'],
+          colors: ['#FF6384', '#36A2EB'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#gender-pie"), options);
+          chart.render();
+    },
+    getChartPieSeller:async function(orders){
+        console.log(orders);
+        let orders_delivered = orders.filter(order => order.status == 4);
+        let category_sales = {1:0,2:0,3:0,4:0};
+        for (let order of orders_delivered) {
+            let cart_id = order.cart_id;
+            let cart = await dbController.getItem('carts', cart_id);
+            if (cart) {
+                for(var product of cart.products )  {
+                   let productinfo= await dbController.getItem('products',product.product_id);
+                   let product_category=productinfo.category;
+                    if (category_sales[product_category]) {
+                        category_sales[product_category] += product.qty;
+                    } else {
+                        category_sales[product_category] = product.qty;
+                    }
+                };
+            }
+        }
+
+        var options = {
+            series: [ category_sales[1],category_sales[2],category_sales[3],category_sales[4]],
+            chart: {
+            width: 380,
+            type: 'pie',
+          },
+          labels: ["Necklaces", "Rings","Bracelets","Earrings"],
+         // colors: ['#FF6384', '#36A2EB'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#category-pie"), options);
+          chart.render();
+       
+
+    },
     getSellerOrders:async function(orders,seller_id){
         let returnedOrders=[];
         for (let order of orders) {

@@ -17,10 +17,15 @@
 .landing {
     background-image: url(../utilities/imgs/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);
     background-size: cover;
-    background-position:center center;
+    background-position: center;
     background-repeat: no-repeat;
-    height: calc(100vh - 60px);
-    width: 100%;
+    min-height: calc(100vh - 60px);
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     color: black;
 }
 .landing .text h1{

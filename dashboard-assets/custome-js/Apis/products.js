@@ -2,7 +2,7 @@ import { dbController } from "../indexedDb.js";
 
 export var clientProducts = {
     getAllProducts: async function () {
-        let data = dbController.getDataArray('products');
+        let data = await dbController.getDataArray('products');
         console.log(data);
         return data;
     },
@@ -72,8 +72,6 @@ export var clientProducts = {
                     }
                 });
             }
-
-
         }
         let topProductIds = Object.entries(product_sales)
             .sort((a, b) => b[1] - a[1])

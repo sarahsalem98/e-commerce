@@ -77,7 +77,7 @@ export var products = {
             1: { title: 'Necklaces', class: 'badge-light-success' },
             2: { title: 'Rings', class: 'badge-light-warning' },
             3: { title: 'Bracelets', class: 'badge-light-secondary' },
-            4: { title: 'Earrings', class: 'badge-light-priamary' }
+            4: { title: 'Earrings', class: 'badge-light-primary' }
         };
 
 
@@ -376,7 +376,7 @@ export var products = {
                     data.name = document.getElementById("product-name").value;
                     data.price =parseInt(document.getElementById("product-price").value);
                     data.qty =parseInt(document.getElementById("product-qty").value);
-                    data.category = document.getElementById("product-category").value;
+                    data.category = parseInt(document.getElementById("product-category").value);
                     data.desciption = document.getElementById("product-desc").value;
                     data.seller_id=parseInt(window.globalseller_id);
                     data.pics = pics;
@@ -405,7 +405,7 @@ export var products = {
                     name: document.getElementById("product-name").value,
                     price: parseInt(document.getElementById("product-price").value),
                     qty: parseInt(document.getElementById("product-qty").value),
-                    category: document.getElementById("product-category").value,
+                    category:parseInt(document.getElementById("product-category").value),
                     desciption: document.getElementById("product-desc").value,
                     seller_id:parseInt(window.globalseller_id),
                     status: 1,
