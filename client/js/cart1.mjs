@@ -1,7 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
-import { genreal } from "./general.js";
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 (async function () {
     try {
@@ -313,6 +313,9 @@ window.addEventListener("load", function () {
 
 
 })//end of load window
+
+updateUIBasedOnSession();
+handleLogout();
 
 
 

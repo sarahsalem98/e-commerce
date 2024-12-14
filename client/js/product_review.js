@@ -2,7 +2,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js";
-import { genreal } from "./general.js";
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 
 (async function () {
@@ -410,6 +410,8 @@ $(document).ready(function(){
 
 
 })//end of load
+updateUIBasedOnSession();
+handleLogout();
 
 
 

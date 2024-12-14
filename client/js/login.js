@@ -1,6 +1,6 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
-import { genreal } from "./general.js";
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js";
 
 (async function () {
@@ -50,34 +50,8 @@ import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js
     }
 })();
 
-export function updateUIBasedOnSession() {
-    if (clientAuth.checkSession()) {
-        document.querySelectorAll(".draw-icons").forEach(element => {
-            element.classList.add("d-none");
-        });
-        document.querySelectorAll(".user-menu").forEach(element => {
-            element.classList.remove("d-none");
-        });
-    } else {
-        document.querySelectorAll(".draw-icons").forEach(element => {
-            element.classList.remove("d-none");
-        });
-        document.querySelectorAll(".user-menu").forEach(element => {
-            element.classList.add("d-none");
-        });
-    }
-}
-
-export function handleLogout() {
-    document.querySelectorAll('.logout').forEach(element => {
-        element.addEventListener('click', function (event) {
-            event.preventDefault();
-            clientAuth.logout();
-            window.location.href = "../client/login.html";
-            updateUIBasedOnSession();
-        });
-    })
-}
+updateUIBasedOnSession();
+handleLogout();
 
 
 

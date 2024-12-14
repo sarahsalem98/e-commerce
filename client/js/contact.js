@@ -1,5 +1,5 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
-import { updateUIBasedOnSession, handleLogout } from './login.js';
+import { genreal,updateUIBasedOnSession, handleLogout } from './general.js';
 import { contactus } from '../../dashboard-assets/custome-js/Apis/contact-us.js';
 import { generalClient } from '../../dashboard-assets/custome-js/Apis/general.js'
 
@@ -7,6 +7,7 @@ import { generalClient } from '../../dashboard-assets/custome-js/Apis/general.js
     try {
         // Open the database
         await dbController.openDataBase();
+        await genreal.updateCartPill();
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);
