@@ -1,7 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from '../../dashboard-assets/custome-js/Apis/cart.js';
-//import { updateUIBasedOnSession, handleLogout } from './login.js';
+import { updateUIBasedOnSession, handleLogout } from './login.js';
 
 (async function () {
     try {
@@ -80,3 +80,5 @@ async function updateCartPill() {
     var pill= document.getElementsByClassName("badge-pill")[0];
     pill.innerText=count;
 }
+updateUIBasedOnSession();
+handleLogout();
