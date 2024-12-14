@@ -15,33 +15,22 @@
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <title>home</title>
 
 </head>
 
 <body>
     <!-- nav bar -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <!-- <a class="navbar-brand" href="#">
-                BLINGG
-                <span class="brand-subtitle">JEWELRY STORE</span>
-            </a> 
-            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto text-center">
-                    <div class="drawer-icons">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CART</a>
-                        </li>
-                    </div>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
@@ -54,29 +43,54 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
-                    <div class="icons">
+                    <div class="drawer-icons draw-icons">
                         <li class="nav-item">
-                            <!-- <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a> 
-                            <a class="nav-link text-danger" href="login.html">LOGIN</a>
-
+                            <a class="nav-link" href="login.html">LOGIN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">SIGNUP</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="register_customer.html" class="dropdown-item">customer</a></li>
-                                <li><a href="register_seller.html" class="dropdown-item">seller</a></li>
+                            <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    <div class="drawer-icons user-menu d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profileUser.html">profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="">log out</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    
+                    <div class="icons">
+                        <div class="d-flex draw-icons">
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="login.html">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                            </li>
+                        </div>
+                        <li class="nav-item user-menu d-none">
+                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <ul class="dropdown-menu ">
+                                <li><a href="profileUser.html" class="dropdown-item">profile</a></li>
+                                <li><a href="" class="dropdown-item logout">log out</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
-                                    class="badge badge-pill badge-primary">6</span></a>
+                            <a class="nav-link cart-icon" href="cart.html"><i class="fa-solid fa-basket-shopping"></i><span
+                                    class="badge badge-pill badge-primary text-secondary">0</span></a>
                         </li>
                     </div>
-
                 </ul>
             </div>
         </div>
-    </nav> -->
+    </nav>
 
    <!-- landing -->
    <div class="landing d-flex align-items-center">
@@ -151,7 +165,7 @@
     <div class="container">
         <div class="main-title position-relative">
             <h6 class="pb-3 text-black-50">Popular Products</h6>
-            <h1 class="text pb-4 text-black-50">Trending Now</h1>
+            <h1 class="text pb-4 text-black-50">Best Selling</h1>
         </div>
 
         <div class="row g-4 pt-5 best">
@@ -220,14 +234,14 @@
     <div class="container">
         <div class="main-title position-relative">
             <h6 class="pb-3 text-black-50">Shop</h6>
-            <h1 class="pb-4 text text-black-50">Best Selling</h1>
+            <h1 class="pb-4 text text-black-50">Categories</h1>
         </div>  
 
         <div class="row g-4 pt-5">
             
             <div class="col-6 col-sm-4 col-lg-3 mb-4">
                 <div class="box imag1 bg-white position-relative">
-                    <a href="#">  
+                    <a href="products.html?category=1">  
                         <img class="img-fluid" src="utilities/imgs/nick1.jpg" style="height: 400px;" alt="">
                         <div class="overlay-text">Necklaces</div>
                     </a> 
@@ -236,7 +250,7 @@
 
             <div class="col-6 col-sm-4 col-lg-3 mb-4">
                 <div class="box imag1 bg-white position-relative">
-                    <a href="#">
+                    <a href="products.html?category=2">
                         <img class="img-fluid" src="utilities/imgs/nick2.jpg" style="height: 400px;" alt="">
                         <div class="overlay-text">Rings</div>
                     </a> 
@@ -246,7 +260,7 @@
           
             <div class="col-6 col-sm-4 col-lg-3 mb-4">
                 <div class="box imag1 bg-white position-relative">
-                    <a href="#">
+                    <a href="products.html?category=3">
                         <img class="img-fluid" src="utilities/imgs/nick3.jpg" style="height: 400px;" alt="">
                         <div class="overlay-text">Bracelets</div>
                     </a>
@@ -256,9 +270,9 @@
            
             <div class="col-6 col-sm-4 col-lg-3 mb-4">
                 <div class="box imag1 bg-white position-relative">
-                    <a href="#">
+                    <a href="products.html?category=4">
                         <img class="img-fluid" src="utilities/imgs/nick4.jpg" style="height: 400px;" alt="">
-                        <div class="overlay-text">Bangles</div>
+                        <div class="overlay-text">Earrings</div>
                     </a>
                 </div>
             </div>
@@ -346,7 +360,7 @@
                         <p class="lh-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis vitae necessitatibus aliquam eum? 
                             Voluptatem repudiandae facilis quod nam error </p>
                         <div class="mt-2">
-                            <a class="btn  main-btn text-uppercase fw-bold" href="products.html">Shop Now</a>
+                            <a class="btn btn-outline-dark rounded-0" href="products.html">Shop Now</a>
                         </div>
                     </div>
                     <!-- <div class="col-md-8">
@@ -438,28 +452,26 @@
 
 
 <!--Footer************************************************ --> 
-<!-- <footer class="footer text-center text-md-start">
+<footer class="footer">
     <div class="container">
         <div class="footer-section">
-            <!-- <h4>BLINGG</h4>
-            <span class="brand-subtitle">JEWELRY STORE</span> 
-           <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
         </div>
         <div class="footer-section">
-            
+            <h5>About Us</h5>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="footer-section">
             <h5>Shop</h5>
             <ul>
-                <li><a href="#">Rings</a></li>
-                <li><a href="#">Bracelets</a></li>
-                <li><a href="#">Earrings</a></li>
-                <li><a href="#">Necklaces</a></li>
+                <li><a href="products.html?category=2">Rings</a></li>
+                <li><a href="products.html?category=3">Bracelets</a></li>
+                <li><a href="products.html?category=4">Earrings</a></li>
+                <li><a href="products.html?category=1">Necklaces</a></li>
             </ul>
         </div>
         <div class="footer-section">
@@ -472,7 +484,7 @@
     <div class="copyright">
         <p>Copyright &copy; 2024 Blingg Jewelry | Powered by Blingg Jewelry</p>
     </div>
-</footer> -->
+</footer>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper.js -->
@@ -480,6 +492,7 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/add8e35d4b.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="module" src="././js/home.js"></script>
 </body>
 

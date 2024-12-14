@@ -212,6 +212,9 @@ h1{
 section div a:hover .hover-img1{
     display: none;
 }
+.box div a:hover .hover-img1{
+    display: none;
+}
 
 .color{
     background-color: var(--background-color);
