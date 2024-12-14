@@ -1,5 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { updateUIBasedOnSession, handleLogout } from './login.js';
+import { contactus } from '../../dashboard-assets/custome-js/Apis/contact-us.js';
+import { generalClient } from '../../dashboard-assets/custome-js/Apis/general.js'
 
 (async function () {
     try {
@@ -14,35 +16,40 @@ import { updateUIBasedOnSession, handleLogout } from './login.js';
 document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.querySelector(".contact");
 
-    contactForm.querySelector('input[type="button"]').addEventListener("click", function () {
+    contactForm.querySelector('input[type="button"]').addEventListener("click", async function () {
 
         const firstName = contactForm.querySelector('input[placeholder="First Name"]').value.trim();
         const lastName = contactForm.querySelector('input[placeholder="Last Name"]').value.trim();
         const email = contactForm.querySelector('input[placeholder="Email"]').value.trim();
         const message = contactForm.querySelector("textarea").value.trim();
 
-        if (!firstName || !lastName || !email || !message) {
-            alert("Please fill out all fields.");
-            return;
+        let rules = {
+            'email': { required: true, email: true },
+            'message': { required: true }
+        }
+        let messages = {
+            'email': "please enter valid email",
+            'message': "pleas enter message"
+        }
+        var formvalid = await generalClient.validateForm("contact-form", rules, messages);
+        if (formvalid) {
+            const contactData = {
+                firstName,
+                lastName,
+                email,
+                message,
+            };
+            contactForm.reset();
+            var isadded = await contactus.add(contactData.firstName, contactData.lastName, contactData.email, contactData.message);
+            if (isadded) {
+                toastr.success("message sent successfully");
+            } else {
+                toastr.error("something went wrong , please try agin later");
+            }
+
         }
 
-        if (!validateEmail(email)) {
-            alert("Please enter a valid email address.");
-            return;
-        }
 
-        const contactData = {
-            firstName,
-            lastName,
-            email,
-            message,
-        };
-
-        alert("Thank you for contacting us, " + firstName + "! We'll get back to you soon.");
-
-        contactForm.reset();
-        console.log(contactData);
-        return contactData;
     });
 
     function validateEmail(email) {

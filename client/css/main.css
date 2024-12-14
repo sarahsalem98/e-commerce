@@ -230,3 +230,9 @@ section div a:hover .hover-img1{
 section div a:hover .icon-cart {
     opacity: 1;  
 }
+
+.error {
+    color: red; 
+    font-size: 12px; 
+    margin-top: 5px; 
+}
