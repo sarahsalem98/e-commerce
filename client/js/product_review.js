@@ -2,7 +2,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js";
- 
+import { genreal } from "./general.js";
 
 
 (async function () {
@@ -10,18 +10,21 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     // Open the database
     await dbController.openDataBase();
     
-    
+      genreal.updateCartPill();
 
-    sessionStorage.setItem('userId', '1');
+ 
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-       
-    const userId=sessionStorage.getItem('userId');
 
+    var sessiondata = JSON.parse(localStorage.getItem("clientSession"));
+    let userId = null;
+    if (sessiondata) {
+        userId = sessiondata.sessionData.id;
+    }
+   
     
     var product=await clientProducts.getProductById(id);
-    
     
     //set name of product 
     document.getElementsByClassName("product-name")[0].innerText=product["name"];
@@ -72,8 +75,8 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
 
     btns[3].addEventListener('click',async function(){    
       if( !(btns[1].value=='')){       
-        cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
-         
+        await cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
+        genreal.updateCartPill();
          
       }
       
