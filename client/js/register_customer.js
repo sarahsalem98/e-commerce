@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const governorateSelect = form.querySelector('#governorate');
     const passwordInput = form.querySelector('input[placeholder="Password"]');
     const confirmPasswordInput = form.querySelector('input[placeholder="confirm Password"]');
-    const genderInputs = form.querySelectorAll('input[name="gender"]');
+    const genderInputs =form.querySelectorAll('input[name="gender"]');
     const createAccountButton = form.querySelector('input[type="button"]');
 
     createAccountButton.addEventListener('click', async () => {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let gender = '';
         genderInputs.forEach(input => {
             if (input.checked) {
-                gender = input.value;
+                gender =parseInt(input.value);
             }
         });
 

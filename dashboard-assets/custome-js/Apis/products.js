@@ -3,7 +3,8 @@ import { dbController } from "../indexedDb.js";
 export var clientProducts = {
     getAllProducts: async function () {
         let data = await dbController.getDataArray('products');
-        console.log(data);
+        data=data.filter(product=>product.status==1)
+      //  console.log(data);
         return data;
     },
     getProductById: async function (id) {
