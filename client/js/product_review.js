@@ -2,7 +2,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js";
- 
+import { genreal } from "./general.js";
 
 
 (async function () {
@@ -10,15 +10,19 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     // Open the database
     await dbController.openDataBase();
     
-    
+      genreal.updateCartPill();
 
-    sessionStorage.setItem('userId', '1');
+ 
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-       
-    const userId=sessionStorage.getItem('userId');
 
+    var sessiondata = JSON.parse(localStorage.getItem("clientSession"));
+    let userId = null;
+    if (sessiondata) {
+        userId = sessiondata.sessionData.id;
+    }
+   
     
     var product=await clientProducts.getProductById(id);
     
@@ -71,8 +75,8 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
 
     btns[3].addEventListener('click',async function(){    
       if( !(btns[1].value=='')){       
-        cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
-         
+        await cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
+        genreal.updateCartPill();
          
       }
       
@@ -162,7 +166,7 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     name.addEventListener("keyup",function(){
        var reg=new RegExp("^[A-Za-z]{3,25}[ ]*$")
         
-        if( this.value.trim().length==0  &&  !reg.test(this.value) ){
+        if( this.value.trim().length==0 ||  !reg.test(this.value) ){
           document.querySelector(".wrapper-form .form label[for='name']").style.color="red"
           isUserNameValid=false;
            
@@ -287,13 +291,14 @@ import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js
     e.preventDefault();
    }) 
 
-    debugger;
+    
    function initReview(){
-    if(reviews.length)
-      
+    if(reviews.length){
       addReview();
       var btn=document.querySelector(".main-section .see-more-btn");
       btn.style.visibility = 'visible';    
+    }
+      
    }
 
 

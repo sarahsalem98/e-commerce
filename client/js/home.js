@@ -2,6 +2,7 @@ import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
 import { cart } from '../../dashboard-assets/custome-js/Apis/cart.js';
 import { updateUIBasedOnSession, handleLogout } from './login.js';
+import { genreal } from "./general.js";
 
 (async function () {
     try {
@@ -10,6 +11,7 @@ import { updateUIBasedOnSession, handleLogout } from './login.js';
        var  bestSellingProductsData=await clientProducts.getBestSellingProducts();
 
        displayBestSellingProducts(bestSellingProductsData);
+       await genreal.updateCartPill();
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);
@@ -30,7 +32,7 @@ function displayBestSellingProducts(products) {
                     <img class="img-fluid" src="${product.pics[1]}" alt="${product.name}">
                     </a>
                     <a href="#"  id="addcartbtn"  data-product_id="${product.id}" data-product_price="${product.price}"  class="cartt-icon btn btn-light rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2">
-                        <i class="fas fa-shopping-cart"></i>
+                         <i class="fa-solid fa-basket-shopping"></i>
                     </a>
                 </div>
                 <a class="text-decoration-none product-title-link" href="/client/product_review.html?id=${product.id}"><h5 class="p-3 text1 text-black-50 ">${product.name}</h5></a> 
@@ -54,7 +56,7 @@ function displayBestSellingProducts(products) {
                 }
                 var res = await cart.addToCart(product_id, 1, user_id, product_price);
                 if (res) {
-                    await updateCartPill();
+                    await genreal.updateCartPill();
                     toastr.success("products added to cart successfully");
                 }
             }

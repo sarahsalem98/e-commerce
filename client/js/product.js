@@ -16,6 +16,9 @@ let currentSortOrder = '';
 
         productsData = await clientProducts.getAllProducts();
         filteredData = [...productsData];
+        const url = new URL(window.location.href);
+        const category = url.searchParams.get('category');
+        filterProductsByCategory( parseInt(category));
         displayProducts(filteredData);
         await genreal.updateCartPill();
         filterProductsByCategory(category)
@@ -80,7 +83,6 @@ function displayProducts(products) {
 
 
 
-
 document.getElementById('categoryFilter').addEventListener('change', (event) => {
     const categoryValue =event.target.value;
     filterProductsByCategory(categoryValue);
@@ -92,7 +94,6 @@ function filterProductsByCategory(category) {
     } else {
         filteredData = [...productsData];
     }
-
     applyCurrentSort();
 }
 
@@ -118,8 +119,8 @@ function applyCurrentSort() {
 
     displayProducts(filteredData);
 }
-const params = new URLSearchParams(window.location.search);
-const category = params.get("category");
+// const params = new URLSearchParams(window.location.search);
+// const category = params.get("category");
 
 updateUIBasedOnSession();
 handleLogout();
