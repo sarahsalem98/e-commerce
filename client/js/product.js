@@ -1,8 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.js';
-import { updateUIBasedOnSession, handleLogout } from './login.js';
+import { genreal,updateUIBasedOnSession, handleLogout } from './general.js';
 import { cart } from '../../dashboard-assets/custome-js/Apis/cart.js';
-import { genreal } from "./general.js";
 
 
 
@@ -21,6 +20,7 @@ let currentSortOrder = '';
         filterProductsByCategory( parseInt(category));
         displayProducts(filteredData);
         await genreal.updateCartPill();
+        filterProductsByCategory(category)
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);
@@ -83,14 +83,13 @@ function displayProducts(products) {
 
 
 document.getElementById('categoryFilter').addEventListener('change', (event) => {
-    
-    const categoryValue = parseInt(event.target.value);
+    const categoryValue =event.target.value;
     filterProductsByCategory(categoryValue);
 });
 
 function filterProductsByCategory(category) {
     if (category) {
-        filteredData = productsData.filter(product => product.category === category);
+        filteredData = productsData.filter(product => product.category === +category);
     } else {
         filteredData = [...productsData];
     }
