@@ -10,7 +10,7 @@ import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js
         await genreal.updateCartPill();
 
         
-        document.getElementById('loginForm').addEventListener('click', async function () {
+        document.getElementById('loginbtn').addEventListener('click', async function () {
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;

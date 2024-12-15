@@ -250,8 +250,9 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="module">
-        import{genreal} from './js/general.js'
-        import {dbController,updateUIBasedOnSession, handleLogout} from '../dashboard-assets/custome-js/indexedDb.js';
+        import{genreal,updateUIBasedOnSession, handleLogout} from './js/general.js'
+        import {dbController} from '../dashboard-assets/custome-js/indexedDb.js';
+    
 
         $(window).on("load",async function(){
             await dbController.openDataBase();
