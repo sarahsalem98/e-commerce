@@ -8,20 +8,14 @@ import { genreal } from "./general.js";
 
 (async function () {
     try {
-
+ 
         let globals = {
             cart: null,
             products: [],
             productsDetailsT: null,
             productsSummaryT: null,
         }
-
-        genreal.updateCartPill();
-        function sendProductId(product_ID) {
-            const encodedData = encodeURIComponent(product_ID); // URL-safe encoding
-            window.location.href = `../client/product_review.html?id=${encodedData}`;
-        }
-
+    
         function showEmptyCarSlider() {
             document.querySelector('.empty-car-slider').classList.remove('d-none');
         }
@@ -45,7 +39,7 @@ import { genreal } from "./general.js";
         globals.products = await cart.getCartProducts(globals.cart);
 
         const tables = document.querySelector(".cart-section .cart-tables");
-
+        await genreal.updateCartPill();
         globals.productsDetailsT = tables.children[0];
 
         globals.productsSummaryT = tables.children[1];

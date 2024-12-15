@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:wght@300;400;500;600;700&family=Saira:wght@700&display=swap');
  
 :root {
 
@@ -23,9 +23,6 @@ h1{
     font-weight: 400;
 } 
 
-/* p{
-    color:  rgb(84, 84, 84);
-}   */
 
 .navbar {
     margin: 0;
