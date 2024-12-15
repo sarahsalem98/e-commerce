@@ -10,9 +10,9 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     // Open the database
     await dbController.openDataBase();
     
-      genreal.updateCartPill();
+    genreal.updateCartPill();
 
- 
+    
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -28,6 +28,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     
     //set name of product 
     document.getElementsByClassName("product-name")[0].innerText=product["name"];
+    //set nav with product name .
+    document.querySelector('.active').innerText=product["name"];
 
     //fil images
     var images=document.getElementsByClassName("img");
@@ -60,15 +62,20 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
     btns[0].addEventListener("click",function(){
       var newVal= Number(btns[1].value)-1;
-      if(newVal>=0)
+      if(newVal>=0){
         btns[1].value=newVal.toString();
+        btns[3].value="ADD TO CART"
+      }
 
     })//end of decrement
 
     btns[2].addEventListener("click",function(){
       var newVal= Number(btns[1].value)+1;
-      if(newVal<=product['qty'])
+      if(newVal<=product['qty']){
         btns[1].value=newVal.toString();
+        btns[3].value="ADD TO CART"
+
+      }
 
     })//end of decrement
 
@@ -78,6 +85,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
         await cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
         genreal.updateCartPill();
          
+        this.value="ADDED TO CARD ✓"
       }
       
     })//add to cart button
@@ -91,7 +99,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     
 
     var nextReview=0;
-    
+    var isSeeMoreVisible=false;
     
 
     function addReview(){
@@ -156,6 +164,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
       document.querySelector(".main-section .third-section").appendChild(review_wrapper);
 
       nextReview++;
+      if(nextReview==reviews.length-1)
+        toggleSeeMore();
     }
 
     /********************************************************************/
@@ -274,9 +284,13 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
         await clientReiview.addReview(reviewObj);
         reviews.push(reviewObj)
         resetFileds();
-        if(reviews.length<=1){
+        
+        if(reviews.length==0){
           initReview();
         }
+
+        if(reviews.length==2)
+            toggleSeeMore();
         
       }
 
@@ -295,15 +309,22 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
    function initReview(){
     if(reviews.length){
       addReview();
-      var btn=document.querySelector(".main-section .see-more-btn");
-      btn.style.visibility = 'visible';    
     }
-      
+   }
+
+   function toggleSeeMore(){
+    var btn=document.querySelector(".main-section .see-more-btn");
+    if(isSeeMoreVisible)
+      btn.style.visibility = 'hidden';   
+    else
+      btn.style.visibility = 'visible'; 
+    isSeeMoreVisible=!isSeeMoreVisible; 
    }
 
 
   
    initReview();
+   toggleSeeMore();
 
 
   } catch (error) {
