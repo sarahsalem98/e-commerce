@@ -118,7 +118,7 @@ export var seller = {
 
         if (this.validateFormLogin()) {
             var data = await dbController.getItemsByUniqueKey('sellers', 'email', email);
-            console.log(data);
+          //  console.log("fgg"+data);
             if (data[0]) {
                 if (data[0].status_user == 1) {
                     toastr.error("please wait admin approval");

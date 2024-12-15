@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const governorateSelect = form.querySelector('#governorate');
     const passwordInput = form.querySelector('input[placeholder="Password"]');
     const confirmPasswordInput = form.querySelector('input[placeholder="confirm Password"]');
-    const genderInputs = form.querySelectorAll('input[name="gender"]');
+    const genderInputs = document.getElementById("gender");
     const createAccountButton = form.querySelector('input[type="button"]');
+    console.log(genderInputs);
 
     createAccountButton.addEventListener('click', async () => {
         const firstName = firstNameInput.value.trim();
@@ -34,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value.trim();
         const confirmPassword = confirmPasswordInput.value.trim();
 
-        let gender = '';
-        genderInputs.forEach(input => {
-            if (input.checked) {
-                gender = parseInt(input.value);
-            }
-        });
+        // let gender = '';
+        // genderInputs.forEach(input => {
+        //     if (input.checked) {
+        //         gender = parseInt(input.value);
+        //     }
+        // });
 
 
         let rules = {
@@ -75,10 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 password: password,
                 address: address,
                 phone: phone,
-                gender: gender,
+                gender: parseInt(genderInputs.value),
                 governorate: governorate,
                 avatar: ''
             };
+            console.log(userData);
 
             try {
                 if ( await checkEmailExists(email)) {

@@ -395,12 +395,17 @@ export var sellers = {
     },
     delete: async function () {
         let id = document.getElementsByClassName("deleted-record-id")[0].value;
-        let isDeletedSuccessfully = await dbController.deleteItem('sellers', id);
-        if (isDeletedSuccessfully) {
-            toastr.success("seller deleted successfully");
-            this.viewUsers();
+        var products= await dbController.getItemsByUniqueKey('products','seller_id',parseInt(id));
+        console.log(products.length);
+        if(products.length==0){
+            let isDeletedSuccessfully = await dbController.deleteItem('sellers', id);
+            if (isDeletedSuccessfully) {
+                toastr.success("seller deleted successfully");
+                this.viewUsers();
+            }
+        }else{
+            toastr.error("this seller has products in the system");
         }
-
     },
     validateForm: function () {
         $('.select2').select2();
