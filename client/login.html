@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <title>login</title>
 
 </head>
@@ -21,35 +22,13 @@
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+            <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto text-center">
-                    <div class="drawer-icons draw-icons">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">SIGNUP</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CART</a>
-                        </li>
-                    </div>
-                    <div class="drawer-icons user-menu d-none">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">log out</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CART</a>
-                        </li>
-                    </div>
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
@@ -62,6 +41,29 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
+                    <div class="drawer-icons draw-icons">
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    <div class="drawer-icons user-menu d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profileUser.html">profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="">log out</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    
                     <div class="icons">
                         <div class="d-flex draw-icons">
                             <li class="nav-item">
@@ -73,17 +75,16 @@
                         </div>
                         <li class="nav-item user-menu d-none">
                             <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="" class="dropdown-item">profil</a></li>
-                                <li><a href="" class="dropdown-item">log out</a></li>
+                            <ul class="dropdown-menu ">
+                                <li><a href="profileUser.html" class="dropdown-item">profile</a></li>
+                                <li><a href="" class="dropdown-item logout">log out</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cart-icon" href="#"><i class="fa-solid fa-basket-shopping"></i><span
-                                    class="badge badge-pill badge-primary">6</span></a>
+                            <a class="nav-link cart-icon" href="cart.html"><i class="fa-solid fa-basket-shopping"></i><span
+                                    class="badge badge-pill badge-primary text-secondary">0</span></a>
                         </li>
                     </div>
-
                 </ul>
             </div>
         </div>
@@ -91,55 +92,54 @@
 
     <!-- logln-->
     <main>
-        <section class="container mt-5">
+        <!-- <section class="container mt-5">
             <a class="text-decoration-none text-secondary" href="home.html">Home </a>/
             <a class="text-decoration-none text-secondary" href="login.html">LogIn</a>
-        </section>
+        </section> -->
         <section class=" d-flex align-items-center">
-            <div class="col d-none d-lg-flex">
-                <img class="img-fluid" style="background-color:rgb(250, 245, 240);" src="utilities/imgs/register-removebg-preview.png" alt="register">
+          
+            <div class="col d-none d-lg-flex justify-content-center">
+                <img class="img-fluid" style="background-color:rgb(250, 245, 240); max-width: 70%; height: 440px; margin: 20px; margin-left: 70px;" src="utilities/imgs/photo2_batcheditor_fotor.jpg" alt="register">
             </div>
             <div class="col m-5 p-5 offset-10">
                 <h3>Log in</h3>
                 <p>Enter your details bellow</p>
                 <form class="form" id="loginForm">
                     <div class="mb-3">
-                        <input class="form-control border-0 border-bottom" type="email" placeholder="Email" id="email"> 
+                        <input class="form-control border-0 border-bottom" name="email" type="email" placeholder="Email" id="email"> 
                     </div>
                     <div class="mb-3">
-                        <input class="form-control border-0 border-bottom" type="password" placeholder="Password" id="password">
+                        <input class="form-control border-0 border-bottom" name="password" type="password" placeholder="Password" id="password">
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
-                        <input class="w-25 form-control btn-outline-dark rounded-0 me-5" type="button" value="Log in">
-                        <a class="text-dark text-decoration-none ms-5" href="">Forget password?</a>
+                        <input class=" form-control btn-outline-dark rounded-0 " id="loginbtn" type="button" value="Log in">
+                        <!-- <a class="text-dark text-decoration-none ms-5" href="">Forget password?</a> -->
                     </div>
                 </form>
             </div>
         </section>
     </main>
     <!-- Footer -->
-    <footer class="footer text-center text-md-start">
+    <footer class="footer">
         <div class="container">
             <div class="footer-section">
-                <!-- <h4>BLINGG</h4>
-                <span class="brand-subtitle">JEWELRY STORE</span> -->
-                <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
+                <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             </div>
             <div class="footer-section">
                 <h5>About Us</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h5>Shop</h5>
                 <ul>
-                    <li><a href="#">Rings</a></li>
-                    <li><a href="#">Bracelets</a></li>
-                    <li><a href="#">Earrings</a></li>
-                    <li><a href="#">Necklaces</a></li>
+                    <li><a href="products.html?category=2">Rings</a></li>
+                    <li><a href="products.html?category=3">Bracelets</a></li>
+                    <li><a href="products.html?category=4">Earrings</a></li>
+                    <li><a href="products.html?category=1">Necklaces</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -160,6 +160,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script type="module" src="./js/login.js"></script>
     <script>
 

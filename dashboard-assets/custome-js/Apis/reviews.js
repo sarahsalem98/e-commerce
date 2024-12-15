@@ -7,7 +7,7 @@ export  var clientReiview={
 
         // await reviews.fetchData(); // for initialization
         
-        let data=await dbController.getItemsByIndex("reviews","product_id",1);
+        let data=await dbController.getItemsByIndex("reviews","product_id",productId);
         return data;
     }
     ,

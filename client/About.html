@@ -21,22 +21,33 @@
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                BLINGG
-                <span class="brand-subtitle">JEWELRY STORE</span>
-            </a>
+            <a href=""><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <div class="drawer-icons">
+                    <div class="drawer-icons draw-icons">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
+                            <a class="nav-link" href="login.html">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="register_customer.html">SIGNUP</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">CART</a>
+                        </li>
+                    </div>
+                    <div class="drawer-icons user-menu d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="">log out</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="">CART</a>
                         </li>
                     </div>
                     <li class="nav-item">
@@ -52,15 +63,26 @@
                         <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
                     <div class="icons">
-                        <li class="nav-item">
+                        <div class="d-flex draw-icons">
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="login.html">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                            </li>
+                        </div>
+                        <li class="nav-item user-menu d-none">
                             <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" class="dropdown-item">profile</a></li>
+                                <li><a href="" class="dropdown-item logout">log out</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link cart-icon" href="#"><i class="fa-solid fa-basket-shopping"></i><span
-                                    class="badge badge-pill badge-primary">6</span></a>
+                                    class="badge badge-pill badge-primary text-secondary">6</span></a>
                         </li>
                     </div>
-
                 </ul>
             </div>
         </div>
@@ -133,6 +155,7 @@
 <div class="photo1 d-flex justify-content-center align-items-center mb-5 pb-5">
     <div class="container">
         <img src="utilities/imgs/bg-03.jpg" class="img-fluid photo" alt="" style="width: 100%; height: auto;">
+     
     </div>
 
    
@@ -227,6 +250,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module">
+        import{genreal,updateUIBasedOnSession, handleLogout} from './js/general.js'
+        import {dbController} from '../dashboard-assets/custome-js/indexedDb.js';
+    
+
+        $(window).on("load",async function(){
+            await dbController.openDataBase();
+            await genreal.updateCartPill();
+            await updateUIBasedOnSession();
+            await handleLogout();
+        })
+
+    </script>
 </body>
 
 </html>

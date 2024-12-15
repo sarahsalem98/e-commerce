@@ -35,6 +35,7 @@ export var userProfile = {
             var address = document.getElementById("address").value;
             var phone = document.getElementById("phone").value;
             var governorate = document.getElementById("governorate").value;
+            var gender = document.getElementById("gender").value;
             var currentPassword = document.getElementById("currentPassword").value;
             var newPassword = document.getElementById("newPassword").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
@@ -69,7 +70,7 @@ export var userProfile = {
             // console.log(email);
 
         
-           var isUpdated = await clientAuth.updateProfile(userId, fullName, email, newPassword , address, phone, null, governorate);
+           var isUpdated = await clientAuth.updateProfile(userId, fullName, email, newPassword , address, phone, gender, governorate);
 
      
             if (isUpdated) {
@@ -100,6 +101,7 @@ export var userProfile = {
                 document.getElementById("address").value = dataUser.address || "";
                 document.getElementById("phone").value = dataUser.phone || "";
                 document.getElementById("governorate").value = dataUser.gov || "";
+                document.getElementById("gender").value=dataUser.gender||"";
             } else {
                 alert("Failed to load user data. Please log in again.");
             }
