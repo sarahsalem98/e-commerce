@@ -382,16 +382,21 @@ export var products = {
                     data.pics = pics;
 
                 }
-                console.log(data);
-
-                let done = await dbController.updateItem('products', id, data);
-                if (done) {
-                    toastr.success("product update successfully");
-                    this.viewProducts(window.globalseller_id);
-                    $('#create-updateUser').modal('hide');
-                } else {
-                    toastr.error("something went wrong");
+                //console.log(data);
+                if(data.pics.length<2){
+                    toastr.error("please upload at least 2 pics for the product");
+                }else{
+                    let done = await dbController.updateItem('products', id, data);
+                    if (done) {
+                        toastr.success("product update successfully");
+                        this.viewProducts(window.globalseller_id);
+                        $('#create-updateUser').modal('hide');
+                    } else {
+                        toastr.error("something went wrong");
+                    }
                 }
+
+           
 
             } else {
                 var inputPics = document.getElementsByName("product-pics");
@@ -412,12 +417,17 @@ export var products = {
                     pics: base64pics
                 }
               //  console.log(newdata);
+              if(newdata.pics.length<2){
+                toastr.error("please upload at least 2 pics for the product");
+              }else{
                 var ok = await dbController.addItem('products', newdata);
                 if (ok) {
                     toastr.success("product added successfully");
                 }
                 this.viewProducts(window.globalseller_id);
                 $('#create-updateUser').modal('hide');
+              }
+           
 
             }
         }
