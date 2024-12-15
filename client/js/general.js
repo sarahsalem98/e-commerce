@@ -1,5 +1,6 @@
 
 import { cart } from '../../dashboard-assets/custome-js/Apis/cart.js';
+import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
 
 export var genreal={
     updateCartPill :async function () {
@@ -21,5 +22,34 @@ export var genreal={
         var pill= document.getElementsByClassName("badge-pill")[0];
         pill.innerText=count;
     }
+}
+
+export function updateUIBasedOnSession() {
+    if (clientAuth.checkSession()) {
+        document.querySelectorAll(".draw-icons").forEach(element => {
+            element.classList.add("d-none");
+        });
+        document.querySelectorAll(".user-menu").forEach(element => {
+            element.classList.remove("d-none");
+        });
+    } else {
+        document.querySelectorAll(".draw-icons").forEach(element => {
+            element.classList.remove("d-none");
+        });
+        document.querySelectorAll(".user-menu").forEach(element => {
+            element.classList.add("d-none");
+        });
+    }
+}
+
+export function handleLogout() {
+    document.querySelectorAll('.logout').forEach(element => {
+        element.addEventListener('click', function (event) {
+            event.preventDefault();
+            clientAuth.logout();
+            window.location.href = "../client/login.html";
+            updateUIBasedOnSession();
+        });
+    })
 }
 

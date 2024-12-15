@@ -1,6 +1,6 @@
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
-import { genreal } from "./general.js";
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 
 
@@ -285,6 +285,9 @@ import { genreal } from "./general.js";
 
         //cart page two registration
         document.querySelector(".prgressive-bar .two").addEventListener('click', nextPageListener)//end of third page registration
+
+        updateUIBasedOnSession();
+        handleLogout();
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);

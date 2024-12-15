@@ -1,6 +1,6 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js";
 import { clientAuth } from '../../dashboard-assets/custome-js/Apis/Auth.js';
-import { genreal } from "./general.js";
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js";
 
 (async function () {
@@ -152,3 +152,5 @@ document.addEventListener('DOMContentLoaded', () => {
         return users.length > 0;
     }
 });
+updateUIBasedOnSession();
+handleLogout();
