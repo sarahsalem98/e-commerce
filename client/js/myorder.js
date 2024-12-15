@@ -23,7 +23,7 @@ import { order } from '../../dashboard-assets/custome-js/Apis/orders.js'
 
 export const orderhistory = {
     getUserOrdersHistory: async function() {
-        try {
+      //  try {
             const clientSession = JSON.parse(localStorage.getItem("clientSession"));
             if (!clientSession || !clientSession.sessionData || !clientSession.sessionData.id) {
                 throw new Error("Please log in to view your orders");
@@ -31,13 +31,14 @@ export const orderhistory = {
 
             const userId = clientSession.sessionData.id;
             const orders = await order.getUserOrdersHistory(userId);
+            console.log(orders);
             this.showorderData(orders);
-        } catch (error) {
-            console.error("Error fetching order history:", error);
-            const noOrdersElement = document.querySelector("#no-orders");
-            noOrdersElement.textContent = error.message || "Error loading orders";
-            noOrdersElement.classList.remove("d-none");
-        }
+        // } catch (error) {
+        //     console.error("Error fetching order history:", error);
+        //     const noOrdersElement = document.querySelector("#no-orders");
+        //     noOrdersElement.textContent = error.message || "Error loading orders";
+        //     noOrdersElement.classList.remove("d-none");
+        // }
     },
       
     getStatusClass: function(status) {

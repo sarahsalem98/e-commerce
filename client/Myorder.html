@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="./css/cartGlobals.css">
     <link rel="stylesheet" href="./css/Myorder.css">
 
-
-    <script src="js/cartGlabals.js"></script>
     <script type="module" src="js/myorder.js"></script>
     <style>
 
@@ -158,10 +156,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script type="module">
+        import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
         import { orderhistory } from './js/myorder.js';
-                // import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
                 // import { order } from '../dashboard-assets/custome-js/Apis/Auth.js';
-        document.addEventListener('load', async function () {
+        window.addEventListener('load', async function () {
             await dbController.openDataBase();
             orderhistory.getUserOrdersHistory();
         });

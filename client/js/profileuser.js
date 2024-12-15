@@ -48,15 +48,15 @@ export var userProfile = {
             }
 
           
-            var email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            if (!email.test(email)) {
+            var validateEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!validateEmail.test(email)) {
                 alert("Please enter a valid email address.");
                 return;
             }
 
           
-            var phone = /^\d{11}$/;
-            if (!phone.test(phone)) {
+            var validatephone = /^\d{11}$/;
+            if (!validatephone.test(phone)) {
                 alert("Please enter a valid 11-digit phone number.");
                 return;
             }
@@ -66,9 +66,10 @@ export var userProfile = {
 
         
             var fullName = `${firstName} ${lastName}`;
+            // console.log(email);
 
         
-            var isUpdated = await clientAuth.updateProfile(userId, fullName, email, newPassword || currentPassword, address, phone, null, governorate);
+           var isUpdated = await clientAuth.updateProfile(userId, fullName, email, newPassword , address, phone, null, governorate);
 
      
             if (isUpdated) {
@@ -88,6 +89,7 @@ export var userProfile = {
 
         
             var dataUser = await clientAuth.getloggedInUserData(userId);
+            
 
             if (dataUser) {
            
@@ -104,14 +106,9 @@ export var userProfile = {
        
     }
 };
-
-
 window.userProfile = userProfile;
 
 
-window.addEventListener("load", () => {
-    userProfile.showUserData();
-});
 
 
 
