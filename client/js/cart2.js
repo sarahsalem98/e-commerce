@@ -7,10 +7,9 @@ import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
         // Open the database
         await dbController.openDataBase();
 
-        // const params = new URLSearchParams(window.location.search);
-        // const order_id  = params.get("id");
+        const params = new URLSearchParams(window.location.search);
+        const order_id  = params.get("id");
         /***************************************************************** */
-        const order_id =2;
         let subTotalVal=0 ;
         const shippingFees=50;
 
@@ -53,12 +52,13 @@ import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
              if(index==length-1)
                 updateTotals(subTotalVal);
         });
+        console.log(orderDeatails);
 
         document.querySelector('.title+address').innerHTML=`${orderDeatails['first_name']}&nbsp;${orderDeatails['second_name']}<br/>
                                                             ${orderDeatails['gov']}<br/>
                                                             ${orderDeatails['address']}<br/>
                                                             <span><i class="fa-solid fa-phone me-1 text-secondary"></i>${orderDeatails['phone_num1']}</span><br>
-                                                            <span><i class="fa-solid fa-phone me-1 text-secondary"></i>${orderDeatails['phone_num1']}</span><br>
+                                                            <span><i class="fa-solid fa-phone me-1 text-secondary"></i>${orderDeatails['phone_num2']}</span><br>
                                                             <span><i class="fa-regular fa-envelope me-1"></i>${orderDeatails['email']}</span><br>`
 
           
