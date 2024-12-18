@@ -232,17 +232,18 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
         document.querySelector(".checout_btn").addEventListener('click', async function () {
 
-            console.log(isValidEmail, isValidFname, isValidLname, isValidPhone_1, isValidPhone_2, isValidAddress)
+            console.log(isValidEmail, isValidFname, isValidLname, isValidPhone_1, isValidPhone_2, isValidAddress & isChecked)
 
             if (isValidFname && isValidLname && isValidZipcode && isValidPhone_1 && isValidPhone_2 & isChecked) {
                 console.log("hello");
 
                 let regionVal = document.querySelector('#countries').value;
+                console.log(regionVal);
                 let commentArea = document.querySelector('.addationale_info textarea').value;
                 let order_id = await order.makeOrder(userId, emaliVal, fnameVal, lnameVal, regionVal, addressVal, phoneVal_1, phoneVal_2, commentArea);
                 if (order_id) {
                     const encoded_order_id = encodeURIComponent(order_id);
-
+                     console.log(await order.getOrderData(order_id));
                     toastr.success("the order is completed successfully");
                     window.location.href = `cart2.html?id=${encoded_order_id}`;
                 } else {
