@@ -247,3 +247,7 @@ client/utilities/imgs/libwebp/lib/libwebp.lib
 client/utilities/imgs/libwebp/lib/libwebpdemux.lib
 client/utilities/imgs/libwebp/lib/libwebpmux.lib
 client/utilities/imgs/cwepbb64.sh
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/

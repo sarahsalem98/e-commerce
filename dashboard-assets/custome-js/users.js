@@ -350,16 +350,23 @@ export var users = {
                 gov: document.getElementById("user-country").value,
                 gender: document.getElementById("user-gender").value,
                 status_user: 1,
+                password:"12345",
                 avatar: await general.convertImgTo64(filenew)
             }
-            var ok = await dbController.addItem('users', newuser);
-            if (ok) {
-                toastr.success("user added successfully");
+            
+            var existeduser=await dbController.getItemsByUniqueKey("users","email",newuser.email);
+            //console.log(existeduser);
+            if(!(existeduser.length>0)){
+                var ok = await dbController.addItem('users', newuser);
+                if (ok) {
+                    toastr.success("user added successfully");
+                }
+                this.viewUsers("user");
+                $('#create-updateUser').modal('hide');
+    
+            }else{
+                toastr.error("user already existed try add another email");
             }
-            this.viewUsers("user");
-            $('#create-updateUser').modal('hide');
-
-
 
         }
 

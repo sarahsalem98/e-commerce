@@ -356,14 +356,20 @@ export var sellers = {
                     national_id: document.getElementById("seller-nationalId").value,
                     commercial_registration: document.getElementById("seller-CommertialReg").value,
                     status_user: 1,
-                    password:"123456"
+                    password:"12345"
                 }
-                var ok = await dbController.addItem('sellers', newuser);
-                if (ok) {
-                    toastr.success("seller added successfully");
+                var existedseller=await dbController.getItemsByUniqueKey("sellers","email",newuser.email);
+                if(!(existedseller.length>0)){
+                    var ok = await dbController.addItem('sellers', newuser);
+                    if (ok) {
+                        toastr.success("seller added successfully");
+                    }
+                    this.viewUsers();
+                    $('#create-updateUser').modal('hide');
+                }else{
+                    toastr.error("seller already existed try add another email");
                 }
-                this.viewUsers();
-                $('#create-updateUser').modal('hide');
+             
 
             }
         } else {

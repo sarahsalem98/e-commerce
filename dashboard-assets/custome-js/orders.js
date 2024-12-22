@@ -13,7 +13,7 @@ export var orders = {
             let res = await fetch('../../dashboard-assets/data/order-list.json');
             let allData = await res.json();
             this.saveDataToStorage(allData);
-
+            allDataobj=allData;
 
         } else {
             if(data.length!=0){
@@ -369,7 +369,7 @@ export var orders = {
         } else {
             toastr.error("something went wrong");
         }
-        this.viewOrders();
+        this.viewOrders(window.globalseller_id);
     },
     resetFormFields: function () {
         document.getElementById("order-email").value = ''

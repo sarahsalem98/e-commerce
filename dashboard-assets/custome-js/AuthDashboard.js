@@ -1,7 +1,7 @@
 import { dbController } from "./indexedDb.js";
 import { general } from "./general.js";
 import { order } from "./Apis/orders.js";
- var adminAuth = {
+var adminAuth = {
     adminCred: {
         email: "admin@gmail.com",
         password: 123456
@@ -71,38 +71,43 @@ import { order } from "./Apis/orders.js";
         window.location.href = 'login.html';
     },
 
-    dashboardData:async function(){
-      let orders=await dbController.getDataArray('orders');
-      let products=await dbController.getDataArray('products');
-      let customers=await dbController.getDataArray('users');
-      let carts=await dbController.getDataArray('carts');
-      let totalrevenue=0;
+    dashboardData: async function () {
+        let orders = await dbController.getDataArray('orders');
+        let products = await dbController.getDataArray('products');
+        let customers = await dbController.getDataArray('users');
+        let carts = await dbController.getDataArray('carts');
+        let totalrevenue = 0;
 
-      let ordersnum=orders.filter(order=>order.status==4).length;
-      let productsnum=products.length;
-      let customernum=customers.length;
-      orders.forEach(order=>{
-        if(order.status==4){
-            const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
-            if(cart){
-                cart.products.forEach(product=>{
-                    totalrevenue+=product.price*product.qty;
-                })
+        let ordersnum = orders.filter(order => order.status == 4).length;
+        let productsnum = products.length;
+        let customernum = customers.length;
+        orders.forEach(order => {
+            order.totalsum = 0;
+            if (order.status == 4) {
+                var ordertotal_sum = 0;
+                const cart = carts.find(cart => parseInt(cart.id) === parseInt(order.cart_id) && cart.is_finished == 'true');
+                if (cart) {
+                    cart.products.forEach(product => {
+                        totalrevenue += product.price * product.qty;
+                        ordertotal_sum += product.price * product.qty;
+                        order.totalsum = ordertotal_sum;
+                    })
+                }
             }
-        }
-      })
-
- 
+        })
 
 
-      
-      document.getElementById("sales-num").innerText=ordersnum;
-      document.getElementById("customers-num").innerText=customernum;
-      document.getElementById("products-num").innerText=productsnum;
-      document.getElementById("revenue-num").innerText=String(totalrevenue);
-      general.chartData(orders);
-      general.getChartPie(customers);
-      
+
+
+
+        document.getElementById("sales-num").innerText = ordersnum;
+        document.getElementById("customers-num").innerText = customernum;
+        document.getElementById("products-num").innerText = productsnum;
+        document.getElementById("revenue-num").innerText = String(totalrevenue);
+        general.chartData(orders);
+        general.getChartPie(customers);
+        general.getChartadminSales(orders);
+
     }
 
 
@@ -118,15 +123,15 @@ export var seller = {
 
         if (this.validateFormLogin()) {
             var data = await dbController.getItemsByUniqueKey('sellers', 'email', email);
-          //  console.log("fgg"+data);
+            //  console.log("fgg"+data);
             if (data[0]) {
                 if (data[0].status_user == 1) {
                     toastr.error("please wait admin approval");
                 } else {
                     if ((email == data[0].email) && (password == data[0].password)) {
                         let sessionData = {
-                            id:data[0].id,
-                            name:data[0].full_name,
+                            id: data[0].id,
+                            name: data[0].full_name,
                             email: email,
                             loginTime: new Date().getTime()
                         }
@@ -173,7 +178,7 @@ export var seller = {
         if (general.validateForm('seller-register-form', rules, messages)) {
             var sellerexisted = await dbController.getItemsByUniqueKey('sellers', 'email', email);
             console.log(email);
-            if (sellerexisted.length>0) {
+            if (sellerexisted.length > 0) {
                 toastr.error("this email is already registered try to login");
             } else {
                 var seller = {
@@ -228,21 +233,21 @@ export var seller = {
         }
         return false;
     },
-    loadDataProfile:async function(){
-        var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;  
-        var dataseller=await dbController.getItem("sellers",id);
-        console.log(id);
-        document.getElementById("seller-register-email").value=dataseller.email;
-        document.getElementById("seller-register-password").value=dataseller.password;
-        document.getElementById("seller-register-phone").value=dataseller.phone;
-        document.getElementById("seller-register-name").value=dataseller.full_name;
-        document.getElementById("seller-register-nationalId").value=dataseller.national_id;
-        document.getElementById("seller-register-comReg").value=dataseller.commercial_registration;
+    loadDataProfile: async function () {
+        var id = JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
+        var dataseller = await dbController.getItem("sellers", id);
+        //console.log(id);
+        document.getElementById("seller-register-email").value = dataseller.email;
+        document.getElementById("seller-register-password").value = dataseller.password;
+        document.getElementById("seller-register-phone").value = dataseller.phone;
+        document.getElementById("seller-register-name").value = dataseller.full_name;
+        document.getElementById("seller-register-nationalId").value = dataseller.national_id;
+        document.getElementById("seller-register-comReg").value = dataseller.commercial_registration;
 
     },
-    updateProfile: async function(e){
+    updateProfile: async function (e) {
         e.preventDefault();
-        var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;               
+        var id = JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
         let email = document.getElementById("seller-register-email").value;
         let password = document.getElementById("seller-register-password").value;
         let phone = document.getElementById("seller-register-phone").value;
@@ -265,76 +270,90 @@ export var seller = {
         }
 
         if (general.validateForm('seller-edit-form', rules, messages)) {
-                var seller = {
-                    full_name: name,
-                    phone: phone,
-                    email: email,
-                    status_user: 2,
-                    national_id: nationalId,
-                    password: password,
-                    commercial_registration: comReg
+            var seller = {
+                full_name: name,
+                phone: phone,
+                email: email,
+                status_user: 2,
+                national_id: nationalId,
+                password: password,
+                commercial_registration: comReg
+            }
+            var done = await dbController.updateItem('sellers', id, seller);
+            console.log(done);
+            if (done) {
+                toastr.success("the data is updated successfully !");
+                var expiryDate=JSON.parse(localStorage.getItem("sellerSession")).expiryTime;
+                let sessionData = {
+                    id: id,
+                    name: seller.full_name,
+                    email: seller.email,
+                    loginTime: new Date().getTime()
                 }
-                var done = await dbController.updateItem('sellers',id,seller);
-                console.log(done);
-                if (done) {
-                   toastr.success("the data is updated successfully !")
-                } else {
-                    toastr.error("something went wrong please try agin later");
-                }
-            
-        }
+                let expiryTime = expiryDate;
+                localStorage.setItem('sellerSession', JSON.stringify({ sessionData, expiryTime }));
 
+            } else {
+                toastr.error("something went wrong please try agin later");
+            }
+
+        }
     },
     logout: function () {
         localStorage.removeItem('sellerSession');
         window.location.href = 'login.html';
     },
-    getloggedsellername:function(){
-        var name=JSON.parse(localStorage.getItem("sellerSession")).sessionData.name;
-        document.getElementById("logged-seller").innerText=name;
+    getloggedsellername: function () {
+        var name = JSON.parse(localStorage.getItem("sellerSession")).sessionData.name;
+        document.getElementById("logged-seller").innerText = name;
     },
-    getloggedsellerid:function(){
-        var id=JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
+    getloggedsellerid: function () {
+        var id = JSON.parse(localStorage.getItem("sellerSession")).sessionData.id;
         return id;
     },
-    dashboardData:async function(seller_id){
-        let orders=await dbController.getDataArray('orders');
-        let orderseller=await general.getSellerOrders(orders,seller_id);
+    dashboardData: async function (seller_id) {
+        let orders = await dbController.getDataArray('orders');
+        let orderseller = await general.getSellerOrders(orders, seller_id);
         console.log(orderseller);
 
 
-        let products=await dbController.getItemsByUniqueKey('products','seller_id',seller_id);
+        let products = await dbController.getItemsByUniqueKey('products', 'seller_id', seller_id);
 
-        let carts=await dbController.getDataArray('carts');
-        let totalrevenue=0;
-  
-        let ordersnumsales=orderseller.filter(order=>order.status==4).length;
-        let productsnum=products.length;
-        let ordersnum=orderseller.length;
+        let carts = await dbController.getDataArray('carts');
+        let totalrevenue = 0;
 
-        orderseller.forEach(order=>{
-          if(order.status==4){
-              const cart=carts.find(cart=>parseInt(cart.id)===parseInt(order.cart_id) &&cart.is_finished=='true');
-              if(cart){
-                  cart.products.forEach(product=>{
-                      totalrevenue+=product.price*product.qty;
-                  })
-              }
-          }
+        let ordersnumsales = orderseller.filter(order => order.status == 4).length;
+        let productsnum = products.length;
+        let ordersnum = orderseller.length;
+
+        orderseller.forEach(order => {
+            order.totalsum = 0;
+            if (order.status == 4) {
+                var ordertotal_sum = 0;
+                const cart = carts.find(cart => parseInt(cart.id) === parseInt(order.cart_id) && cart.is_finished == 'true');
+                if (cart) {
+                    cart.products.forEach(product => {
+                        totalrevenue += product.price * product.qty;
+                        ordertotal_sum += product.price * product.qty;
+                        order.totalsum = ordertotal_sum;
+                    })
+                }
+            }
         })
-  
-   
-  
-  
-        
-        document.getElementById("sales-num").innerText=ordersnumsales;
-        document.getElementById("orders-num").innerText=ordersnum;
-        document.getElementById("products-num").innerText=productsnum;
-        document.getElementById("revenue-num").innerText=String(totalrevenue);
+
+
+
+
+
+        document.getElementById("sales-num").innerText = ordersnumsales;
+        document.getElementById("orders-num").innerText = ordersnum;
+        document.getElementById("products-num").innerText = productsnum;
+        document.getElementById("revenue-num").innerText = String(totalrevenue);
         general.chartData(orderseller);
         general.getChartPieSeller(orderseller);
-        
-      }
+        general.getChartsellerSales(orderseller);
+
+    }
 }
 window.adminAuth = adminAuth;
 window.sellerAuth = seller;
