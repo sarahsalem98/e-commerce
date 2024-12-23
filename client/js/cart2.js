@@ -1,7 +1,7 @@
 import { dbController } from "../../dashboard-assets/custome-js/indexedDb.js"
 import { products } from "../../dashboard-assets/custome-js/products.js";
 import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
-
+import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 (async function () {
     try {
         // Open the database
@@ -62,11 +62,7 @@ import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
                                                             <span><i class="fa-regular fa-envelope me-1"></i>${orderDeatails['email']}</span><br>`
 
           
-
-       
-         
-        
-        
+ 
 
         function updateTotals(subTotalVal){
 
@@ -100,6 +96,9 @@ import { order } from "../../dashboard-assets/custome-js/Apis/orders.js";
 
         }//end od add row function
 
+        updateUIBasedOnSession();
+        handleLogout();
+        genreal.updateCartPill();
 
     } catch (error) {
         console.error('Error interacting with IndexedDB:', error);
