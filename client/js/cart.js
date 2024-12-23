@@ -142,6 +142,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
+
                 } else {
                     // Prevent invalid input
                     e.preventDefault();
@@ -157,6 +159,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
 
                 }
             })//end of blure
@@ -185,7 +188,10 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
 
+                    if(newVal==0)
+                        window.location.reload(true);
 
                 }
 
@@ -213,7 +219,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
-
+                    genreal.updateCartPill();
 
                 }
    
