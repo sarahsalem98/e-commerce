@@ -23,7 +23,6 @@ export var genreal={
         pill.innerText=count;
     }
 }
-
 export function updateUIBasedOnSession() {
     if (clientAuth.checkSession()) {
         document.querySelectorAll(".draw-icons").forEach(element => {

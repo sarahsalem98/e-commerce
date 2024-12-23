@@ -103,7 +103,7 @@ var adminAuth = {
         document.getElementById("sales-num").innerText = ordersnum;
         document.getElementById("customers-num").innerText = customernum;
         document.getElementById("products-num").innerText = productsnum;
-        document.getElementById("revenue-num").innerText = String(totalrevenue);
+        document.getElementById("revenue-num").innerText = String(totalrevenue.toFixed(2));
         general.chartData(orders);
         general.getChartPie(customers);
         general.getChartadminSales(orders);
@@ -348,7 +348,7 @@ export var seller = {
         document.getElementById("sales-num").innerText = ordersnumsales;
         document.getElementById("orders-num").innerText = ordersnum;
         document.getElementById("products-num").innerText = productsnum;
-        document.getElementById("revenue-num").innerText = String(totalrevenue);
+        document.getElementById("revenue-num").innerText = String(totalrevenue.toFixed(2));
         general.chartData(orderseller);
         general.getChartPieSeller(orderseller);
         general.getChartsellerSales(orderseller);
