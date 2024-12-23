@@ -78,8 +78,7 @@ export var clientProducts = {
             .sort((a, b) => b[1] - a[1])
             .slice(0, 4)
             .map(entry => parseInt(entry[0])); 
-
-
+            
         let allProducts = await dbController.getDataArray('products');
         let topProducts = allProducts.filter(product => topProductIds.includes(product.id));
        return topProducts;

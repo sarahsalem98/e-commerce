@@ -19,7 +19,6 @@ export var clientAuth = {
 
         }
         return isValid;
-
     },
     checkSession: function () {
         let storedSession = JSON.parse(localStorage.getItem('clientSession'));

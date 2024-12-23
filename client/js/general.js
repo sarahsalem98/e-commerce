@@ -6,14 +6,17 @@ export var genreal={
     updateCartPill :async function () {
 
         let clientInfo=localStorage.getItem("clientSession")
-        if(clientInfo){
+         
 
             let usersession = JSON.parse(clientInfo);
             let cartinfo=[];
             let count=0;
             let userId = null
             
-            userId = usersession.sessionData.id;
+            if(usersession){
+
+                userId = usersession.sessionData.id;
+            }
            
             if(userId){
 
@@ -38,12 +41,11 @@ export var genreal={
                 pill.innerText=count;
             }
 
-        }//end of if
+        
         
 
     }//end of updateCartPill function.
 }
-
 export function updateUIBasedOnSession() {
     if (clientAuth.checkSession()) {
         document.querySelectorAll(".draw-icons").forEach(element => {
