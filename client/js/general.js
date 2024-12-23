@@ -43,7 +43,6 @@ export var genreal={
 
     }//end of updateCartPill function.
 }
-
 export function updateUIBasedOnSession() {
     if (clientAuth.checkSession()) {
         document.querySelectorAll(".draw-icons").forEach(element => {

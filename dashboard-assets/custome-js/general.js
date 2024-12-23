@@ -234,7 +234,7 @@ export var general = {
     orders.forEach(order => {
       const order_month = new Date(order.updated_at).getMonth();
       if (order.status == 4) {
-        monthelydata.deliverd[order_month] += order.totalsum;
+        monthelydata.deliverd[order_month] +=  order.totalsum.toFixed(1);
       }
     })
 
@@ -299,7 +299,7 @@ export var general = {
     orders.forEach(order => {
       const order_month = new Date(order.updated_at).getMonth();
       if (order.status == 4) {
-        monthelydata.deliverd[order_month] += order.totalsum;
+        monthelydata.deliverd[order_month] += order.totalsum.toFixed(1);
       }
     })
 
