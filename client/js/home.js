@@ -27,8 +27,8 @@ function displayBestSellingProducts(products) {
         productCard.innerHTML = `
             <div id="addcartbtn" class="box bg-white product-link">
                 <div class="image-container position-relative">
-                    <a href="/client/product_review.html?id=${product.id}"><img class="img-fluid position-absolute hover-img1" src="${product.pics[0]}" alt="${product.name}">
-                    <img class="img-fluid" src="${product.pics[1]}" alt="${product.name}">
+                    <a href="/client/product_review.html?id=${product.id}"><img class="img-fluid img position-absolute hover-img1" src="${product.pics[0]}" alt="${product.name}">
+                    <img class="img-fluid img" src="${product.pics[1]}" alt="${product.name}">
                     </a>
                     <a href="#"  id="addcartbtn"  data-product_id="${product.id}" data-product_price="${product.price}"  class="cartt-icon btn btn-light rounded-circle d-flex align-items-center justify-content-center position-absolute top-0 end-0 m-2">
                          <i class="fa-solid fa-basket-shopping"></i>
