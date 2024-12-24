@@ -41,24 +41,84 @@ function displayBestSellingProducts(products) {
     });
     document.querySelectorAll('.product-link, .product-title-link').forEach(link => {
         link.addEventListener('click', async function (event) {
-            console.log(link)
+             
             const cartButton = event.target.closest('#addcartbtn');
             console.log(cartButton)
-            if (cartButton) {
+            if(cartButton){
+
+            
                 event.preventDefault();
-                let product_id = cartButton.dataset.product_id;
-                let product_price = cartButton.dataset.product_price;
-                var datasession = JSON.parse(localStorage.getItem("clientSession"));
-                let user_id = null;
-                if (datasession) {
-                    user_id = datasession.sessionData.id;
+                
+                    
+                    let product_id = cartButton.dataset.product_id;
+                    console.log("i'm the product id : ",product_id);
+                    let product_price = cartButton.dataset.product_price;
+                    
+                    /********************************************************************* */
+                    var datasession = JSON.parse(localStorage.getItem("clientSession"));
+                    let user_id = null;
+                    if (datasession) 
+                        user_id = datasession.sessionData.id;
+                    /********************************************************************** */
+                    var res =0; //initial val
+    
+                    let userCart= await cart.getCartData(user_id); 
+                     
+    
+                    if(userCart && userCart['products'].length!=0){
+    
+                        // if user has a car --- check here if the product already added or not if it dose not added add  it else 
+                        //anounce user with your toser //the product already added to the cart .
+    
+                        
+                        let isExist=userCart['products'].find(function(p){
+                            if(p['product_id']==product_id)
+                                return true;
+                            return false;
+                        })
+                        
+                        let isAdded=false;
+                        
+                        if(!isExist){
+                            isAdded = await cart.addToCart(product_id, 1, user_id, product_price);
+    
+                            if(isAdded)
+                                res=1;
+                            else
+                                res=3;
+                        }else{
+                            res=2;
+                        }
+    
+    
+                    }else {
+                        //CUZ user have a cart .. so that  we will add product to car if it's not exist
+                         
+                        // false here represent two case: product out of stock ... add to cart faild.
+    
+                       let isAdded = await cart.addToCart(product_id, 1, user_id, product_price);
+    
+                       if(isAdded)
+                            res=1;
+                        else
+                            res=3;
+                     
+                    }
+                         
+                    console.log('res : ',res);
+    
+                    if (res==1) {
+                        await genreal.updateCartPill();
+                        toastr.success("product added to cart successfully");
+                    }else if (res==2)
+                        toastr.success("product already exit in cart");
+                    else if(res=3){
+                        toastr.success("sorry product out of stock");
+                    }else{
+                        toastr.success("error happend");
+                    }
+                    
                 }
-                var res = await cart.addToCart(product_id, 1, user_id, product_price);
-                if (res) {
-                    await genreal.updateCartPill();
-                    toastr.success("products added to cart successfully");
-                }
-            }
         });
     });
 }

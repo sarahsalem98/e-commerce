@@ -22,11 +22,14 @@ export var cart = {
     //user id --- string 
     //price --->string 
 
+     
+
     addToCart: async function (productId, qty, userId, price) {
 
         // console.log("df");
 
         // await this.fetchDummyData();
+
 
         let cartData;
         let cart;
@@ -42,9 +45,9 @@ export var cart = {
             console.log("available")
             if (price == product.price) {
 
-                // console.log("yy");
+           
 
-                if(userId!=null){
+                if(userId!=null){ //not registered user .
 
                     //get user cart
 
@@ -52,13 +55,13 @@ export var cart = {
                     
                     cart = cartData.length > 0 ? cartData[0] : null;
 
-                     
-
+                    
                 }else{
-
+                    
                     //if user registered as agust.
                     cartData= localStorage.getItem("user-cart");
                     cart=JSON.parse(cartData); //if user dosenot have any cart the cart var will contain null
+                    console.log("from add to cart when user is gust",cart);
 
                 }
                 //if user dose not have cart before thistime.
@@ -66,6 +69,7 @@ export var cart = {
            
                     //literal object
                     let newCart = {
+
                         user_id:userId==null? null :String (userId),
                         is_finished: 'false',
                         products: [
@@ -77,6 +81,8 @@ export var cart = {
                             }
                         ]
                     };
+
+                    console.log("new cart : ",newCart);
 
                     let isAdded;
                     //if user exist in our system so that we will store the created cart in cart store.
@@ -112,6 +118,7 @@ export var cart = {
                             }
 
                         } else {
+
                             existingProduct.qty = qty;
                             existingProduct.price=price  // to override old price.
                             existingProduct.max_qty=product.qty; // to update old old max quantitiy
@@ -133,10 +140,15 @@ export var cart = {
 
                     let isUpdated;
                     if(userId!=null){
+
                         isUpdated = await dbController.updateItem('carts', cart.id, updatedCart);
+
                     }else{
+
+                        console.log("saved cart :",updatedCart);
                         localStorage.setItem("user-cart",JSON.stringify(updatedCart));
                         isUpdated=true;
+
                     }
                    return isUpdated;
                 }
@@ -161,6 +173,7 @@ export var cart = {
 
         } else {
             cartData = localStorage.getItem("user-cart");
+            console.log("from get cart data",cartData);
             cart = JSON.parse(cartData);
         }
         cart = clientProducts.updateCartProducts(cart)

@@ -9,7 +9,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 
 
-        debugger;
+        
 
         // Open the database
         await dbController.openDataBase();
