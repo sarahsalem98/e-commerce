@@ -82,30 +82,54 @@
                         <h5 class="fw-bold">Order History</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a href="profileUser.html" class="nav-link active fw-bold"> Previous page</a>
+                                <a href="profileUser.html" class="nav-link active fw-bold">To UpdateProfile page</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class=" col-12 col-md-9">
-                    <div class="container mt-5">
+                <div class="col-12 col-md-9">
+                    <div class="table-container">
+                      
+                        <table id="orderTable">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>#ID</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                    <th>#Products</th>
+                                    <th>Product details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myorder"></tbody>
+                        </table>
+                        <p id="no-orders" class="d-none">No orders found.</p>
+                
                      
-                        <div class="table">
-                            <table id="orderTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Date</th>
-                                        <th>Products</th>
-                                        <th>Total Amount</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                             
-                                </tbody>
-                            </table>
+                        <table id="detailsTable" class="details-table d-none">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#ProductID</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                
+             
+                
+                    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+
+
+
                     </div>
                     <p id="no-orders" class="no-orders d-none">No orders found.</p>
                 </div>
@@ -156,14 +180,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script type="module">
-        import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
-        import { orderhistory } from './js/myorder.js';
-                // import { order } from '../dashboard-assets/custome-js/Apis/Auth.js';
-        window.addEventListener('load', async function () {
-            await dbController.openDataBase();
-            orderhistory.getUserOrdersHistory();
-        });
+        // import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
+        import { orderHistory } from './js/myorder.js';
+        
     </script>
+   
+        <!-- <script type="module">
+            window.addEventListener('load', async function () {
+                //await dbController.openDataBase();
+                await orderhistory.getUserOrdersHistory();
+                 
+            }); -->
+        </script>
 </body>
 
 </html>
