@@ -23,7 +23,7 @@ export var clientProducts = {
         return isDone == false ? false : true;
     },
     updateCartProducts: async function (cartData) {
-        console.log("tt");
+        
         
         let updatedCart = [];
         let isUpdated;
@@ -35,16 +35,24 @@ export var clientProducts = {
                     
                     var product = await dbController.getItem('products', cartData.products[i].product_id);
 
-                    if (product) {
+                    if ( product ) { 
+
+                        if(product.status==2){       // in a deactive status
+                            cartData.products.splice(i,1);
+                            continue;
+                        }            
+
+                        
 
                         cartData.products[i].max_qty = product.qty;
                         cartData.products[i].price = product.price;
                         console.log("from update");
-                        if(cartData.products[i].qty>product.qty){ // update user reqired quantity if stock is not enought
+
+                        if(cartData.products[i].qty>product.qty ){ // update user reqired quantity if stock is not enought
 
                             //if product out of stock
                             if(product.qty==0){    
-                                console.log("out of stock");
+                                
                                 console.log( cartData.products.splice(i,1));    //delete only one element from product index
                             }else{
                                 cartData.products[i].qty=product.qty;
@@ -102,6 +110,24 @@ export var clientProducts = {
         let topProducts = allProducts.filter(product => topProductIds.includes(product.id));
        return topProducts;
     }
+    ,
+    incrementProductBy:async function(product_id,qty){
+        //first of all , we have to get product.
+
+        let isUpdated=false;
+        let product= await this.getProductById(product_id);
+
+        if(product){
+            product.qty+=qty;
+            isUpdated = await dbController.updateItem('products', product_id, product );
+            console.log("product is already updated with adding new qty.")
+            return isUpdated;
+        }
+
+        return isUpdated;
+
+    }
+
 
 }
 

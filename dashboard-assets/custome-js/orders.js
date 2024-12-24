@@ -364,13 +364,16 @@ export var orders = {
         data.status = status;
         data.updated_at=new Date();
         var done = await dbController.updateItem('orders', id, data);
+
         if (done) {
             toastr.success("status changed successfully");
         } else {
             toastr.error("something went wrong");
         }
+        
         this.viewOrders(window.globalseller_id);
     },
+
     resetFormFields: function () {
         document.getElementById("order-email").value = ''
         document.getElementById("order-first-name").value = '';
