@@ -1,24 +1,29 @@
 import { dbController } from "../indexedDb.js";
 export var clientAuth = {
     login: async function (email, password) {
-        let isValid = false;
+        let result =0;
         let data = await dbController.getItemsByUniqueKey('users', 'email', email);
         console.log(data);
         if (data.length > 0) {
             if (data[0].password == parseInt(password)) {
-                isValid = true;
-                let sessionData = {
-                    email: email,
-                    name: data[0].full_name,
-                    id: data[0].id,
-                    loginTime: new Date().getTime()
+                if(data[0].status_user===1){
+                    result=1;
+                    let sessionData = {
+                        email: email,
+                        name: data[0].full_name,
+                        id: data[0].id,
+                        loginTime: new Date().getTime()
+                    }
+                    let expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+                    localStorage.setItem('clientSession', JSON.stringify({ sessionData, expiryTime }));
+                }else if(data[0].status_user===2){
+                    result=2;
                 }
-                let expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000;
-                localStorage.setItem('clientSession', JSON.stringify({ sessionData, expiryTime }));
+                
             }
 
         }
-        return isValid;
+        return result;
     },
     checkSession: function () {
         let storedSession = JSON.parse(localStorage.getItem('clientSession'));
