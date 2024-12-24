@@ -1,104 +1,99 @@
-/*for product  name anchor */
-/*we have to override the default style for anchor thought we give the whole table color:var(--text-color).*/
-.details-tabel a{
-    text-decoration: none ;
-    color: var(--text-font);
-} 
-.details-tabel a:hover{
-    color: var(--text-font);
-} 
-
-.details-tabe thead tr:first-child:hover{
-    color: black;
+:root {
+    --background-color: rgb(250, 245, 240);
+    --heading-font: 'Cinzel', serif;
+    --text-font: 'Roboto', sans-serif;
+    --text-color: rgba(0, 0, 0, 0.7);
+    --highlighted-text-color: rgb(168, 110, 59);
 }
 
-.controler *{
-    width: 30px;
-    height: 30px;
-    background-color: white;
-    outline: none;
-    border: 1px solid rgb(241, 225, 225);
-}
-.controler *:nth-child(2){
-    text-align: center;
+.sidebar .nav-link.active {
+    color: var(--highlighted-text-color);
 }
 
-/* we gave the second table a fixed width*/
-.summary-table{
-    height: 300px;
+.table-container {
+    padding-bottom: 5rem;
+    margin: 20px auto;
 }
 
-.details-tabel , .summary-table {
-    color: var( --text-color);
-    /* border: 1px solid var(--non-active-cart-color); */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
-.details-tabel tr, .summary-table tr{
-    vertical-align: middle;
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
 }
 
-.details-tabel thead, .summary-table thead
-{
+th {
     background-color: var(--background-color);
+    color: #6c757d;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
-
-.delete-icon{   
-    color: var(--non-active-cart-color) !important; /*because the whole table are givent the default color */
-    font-size:25px;
+td {
+    font-size: 14px;
+    color: #333;
 }
 
-.delete-icon:hover{
-    color: var(--text-font)!important;
+.status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background-color: #f6ebe0;
+    color: #b65e2e;
+    font-size: 12px;
+    text-transform: lowercase;
 }
 
-.update-icon{
-    font-size: 20px;
-}
- 
-
-.details-tabel{
-   flex-basis: 65%;
+.actions {
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    left: 50px;
 }
 
-.summary-table{
-    flex-basis:30%;
+.actions:hover {
+    color: #007bff;
 }
 
-.summary-table tfoot tr td{
-    text-align: center;
-    width: 100%;
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    z-index: 1000;
 }
 
+.dropdown-menu.d-none {
+    display: none;
+}
 
-.summary-table tfoot tr td input{
+.dropdown-menu:not(.d-none) {
     display: block;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.details-table {
+    display: none;
+    margin-top: 20px;
+    border-collapse: collapse;
     width: 100%;
-    border: 1px solid black;
-    border-radius: 0; 
-    padding: 10px;  
 }
-
-.summary-table tfoot tr td input:hover , .controler input[type="button"]:hover {
-    background-color: black;
-    border-color:black ;
-    color: white;
-}
- 
- 
-@media (max-width: 1000px){
-
-    .cart-tables{
-        flex-wrap: wrap;
-    }
-    .cart-section .cart-tables .details-tabel{
-        flex-basis: 100%;
-    }
-    .cart-section .cart-tables .summary-table{
-        flex-basis: 100%;
-    }
-
-}
-
- 
-

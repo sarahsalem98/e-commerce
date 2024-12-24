@@ -1,5 +1,6 @@
 import { dbController } from "../indexedDb.js";
 export var clientAuth = {
+    
     login: async function (email, password) {
         let result =0;
         let data = await dbController.getItemsByUniqueKey('users', 'email', email);
@@ -77,7 +78,7 @@ export var clientAuth = {
                 //avatar: avatar
             }
 
-            isUpdated = await dbController.updateItem("sellers", userId, userupdated);
+            isUpdated = await dbController.updateItem("users", userId, userupdated);
         }
         return isUpdated;
 
@@ -87,5 +88,8 @@ export var clientAuth = {
         return data;
     
 
-    }
+    },
+    // test:function(){
+    //     console.log("test");
+
 }

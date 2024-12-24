@@ -1,4 +1,7 @@
 {
+<<<<<<< HEAD
+    "liveServer.settings.port": 5503
+=======
   "liveServer.settings.port": 5502,
   "C_Cpp_Runner.cCompilerPath": "C:/Program Files (x86)/CodeBlocks/MinGW/bin/gcc.exe",
   "C_Cpp_Runner.cppCompilerPath": "C:/Program Files (x86)/CodeBlocks/MinGW/bin/g++.exe",
@@ -57,4 +60,5 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false
+>>>>>>> ee8fca0d03cc55c92a0d1c2c02c123ea1d603484
 }
