@@ -11,7 +11,6 @@
 .first-section .right-section{
     width: 47%;
     height: fit-content;
-     
 }
 
 .first-section .left-section .img-nav .img{ 
@@ -39,6 +38,13 @@
         width: 100% !important;
        margin-bottom: 60px !important;
        
+    }
+
+    .review{
+        margin-left: 20PX;
+    }
+    .review div:first-child{
+        margin-right: 20px;
     }
 }
  
@@ -90,7 +96,7 @@
 }
 
 .right-section .price{
-    color: var( --highligted-text-color);
+    color: black;
     font-size: 1.5em;
     font-weight: 500;
 }
@@ -153,7 +159,7 @@ p{
 .see-more-btn {
     font-size: 16px;
     font-weight: bold;
-    color: #007bff; 
+    color: var(--text-color); 
     background: none;
     border: none;
     cursor: pointer ;
@@ -164,7 +170,7 @@ p{
     transition: color 0.3s ease;
     margin-bottom: 20px;
     visibility: hidden;
-    margin-left: 10px;
+    margin-left: 5px;
     }
 
     .see-more-btn::after {
@@ -174,7 +180,7 @@ p{
     }
 
     .see-more-btn:hover {
-    color: #0056b3; /* Darker blue on hover */
+        color:black;  
     }
 
     .see-more-btn:hover::after {

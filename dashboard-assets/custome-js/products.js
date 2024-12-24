@@ -14,6 +14,7 @@ export var products = {
             let res = await fetch('../../dashboard-assets/data/product-list.json');
             let allData = await res.json();
             this.saveDataToStorage(allData);
+            allDataobj=allData;
         }else{
                 if(data.length!=0){
                     allDataobj=data;

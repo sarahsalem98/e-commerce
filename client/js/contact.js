@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.querySelector(".contact");
 
     contactForm.querySelector('input[type="button"]').addEventListener("click", async function () {
+        console.log("dg");
 
         const firstName = contactForm.querySelector('input[placeholder="First Name"]').value.trim();
         const lastName = contactForm.querySelector('input[placeholder="Last Name"]').value.trim();

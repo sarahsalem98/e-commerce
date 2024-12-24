@@ -1,18 +1,20 @@
 
-
+ 
 /*main button*/
 .main-btn{
-    background-color: var(--background-color);
-    color:var(--button-color); 
-    width: 8rem;
-     font-family: var(--heading-font);
-     transition: 0.3s ease;
-    }
-    .main-btn:hover{
-        background-color:var(--button-color);
-        color: white;
-      
-        }
+background-color:#f3edcc ;
+color:black; 
+border:1px solid  black ;
+width: 8rem;
+font-family: var(--heading-font);
+transition: 0.3s ease;
+}
+.main-btn:hover{
+    background-color:black;
+    color: white;
+    
+}
+
 /* start landing */
 .landing {
     background-image: url(../utilities/imgs/WhatsApp\ Image\ 2024-11-30\ at\ 22.32.43_c1105b65.jpg);

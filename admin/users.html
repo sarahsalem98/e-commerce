@@ -36,6 +36,9 @@
 
     <link rel="stylesheet" type="text/css" href="../dashboard-assets/custome-css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <style>
+
+    </style>
 
     <!-- END: Custom CSS-->
 
@@ -286,7 +289,7 @@
                             </div>
                         </div>
                     </div>
-
+                   
                     <!-- list and filter start -->
                     <div class="card">
                         <div class="card-body border-bottom">
@@ -434,34 +437,35 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
-                                aria-labelledby="myModalLabel120" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel120">Delete Seller</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="danger-modal-text">
 
-                                            </div>
-                                            <input type="hidden" class="deleted-record-id">
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" onclick="users.delete();"
-                                                data-bs-dismiss="modal">Yes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
 
                         <!-- Modal to add new user Ends-->
                     </div>
+                    <div class="modal fade modal-danger text-start" id="danger-Modal" tabindex="-1"
+                    aria-labelledby="myModalLabel120" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel120">Delete User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="danger-modal-text">
+
+                                </div>
+                                <input type="hidden" class="deleted-record-id">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" onclick="users.delete();"
+                                    data-bs-dismiss="modal">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <!-- list and filter end -->
                 </section>
                 <!-- users list ends -->
@@ -482,7 +486,7 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <script src="../dashboard-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->

@@ -10,9 +10,9 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     // Open the database
     await dbController.openDataBase();
     
-      genreal.updateCartPill();
+    genreal.updateCartPill();
 
- 
+    
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
@@ -28,6 +28,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     
     //set name of product 
     document.getElementsByClassName("product-name")[0].innerText=product["name"];
+    //set nav with product name .
+    document.querySelector('.active').innerText=product["name"];
 
     //fil images
     var images=document.getElementsByClassName("img");
@@ -60,24 +62,30 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
     btns[0].addEventListener("click",function(){
       var newVal= Number(btns[1].value)-1;
-      if(newVal>=0)
+      if(newVal>=0){
         btns[1].value=newVal.toString();
+        btns[3].value="ADD TO CART"
+      }
 
     })//end of decrement
 
     btns[2].addEventListener("click",function(){
       var newVal= Number(btns[1].value)+1;
-      if(newVal<=product['qty'])
+      if(newVal<=product['qty']){
         btns[1].value=newVal.toString();
+        btns[3].value="ADD TO CART"
+
+      }
 
     })//end of decrement
 
 
     btns[3].addEventListener('click',async function(){    
-      if( !(btns[1].value=='')){       
+      if( !(btns[1].value=='' ||  btns[1].value=='0')){       
         await cart.addToCart( product['id'] , btns[1].value ,userId,product["price"]);
         genreal.updateCartPill();
          
+        this.value="ADDED TO CARD ✓"
       }
       
     })//add to cart button
@@ -91,18 +99,17 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     
 
     var nextReview=0;
-    
-    
-
+  
+    /****************************************************************** */
     function addReview(){
       if(nextReview==0)
         document.querySelector(".third-section .last-review-info").classList.add('d-none');
       var review_wrapper=document.createElement("div")
-      review_wrapper.setAttribute("class","review-"+nextReview+" d-flex pt-3")
+      review_wrapper.setAttribute("class","review "+nextReview+" d-flex pt-3 ")
      
       
       var left_div=document.createElement('div')
-      left_div.setAttribute("class","d-flex flex-column align-items-center pe-3");
+      left_div.setAttribute("class","d-flex flex-column align-items-center");
       left_div.style.width="10%"
       
       var img=document.createElement("img");
@@ -122,7 +129,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
       /********************************************/
 
       var right_div=document.createElement('div');
-      right_div.setAttribute("class","d-flex flex-column justify-content-start pt-3");
+      right_div.setAttribute("class","d-flex flex-column justify-content-start pt-4 ps-2");
 
       var descParagraph=document.createElement("p");
       descParagraph.innerText=reviews[nextReview]['description'];
@@ -146,7 +153,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
         rat_wrapper.appendChild(created_span);
       }
-      console.log(descParagraph)
+     
       right_div.appendChild(descParagraph);
       right_div.appendChild(rat_wrapper);
 
@@ -156,6 +163,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
       document.querySelector(".main-section .third-section").appendChild(review_wrapper);
 
       nextReview++;
+      
+      checkBtnVisibility();
     }
 
     /********************************************************************/
@@ -164,7 +173,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
     var name=document.querySelector(".wrapper-form .form input[id='name']")
     name.addEventListener("keyup",function(){
-       var reg=new RegExp("^[A-Za-z]{3,25}[ ]*$")
+       var reg=new RegExp("^[A-Za-z ]{3,25}$")
         
         if( this.value.trim().length==0 ||  !reg.test(this.value) ){
           document.querySelector(".wrapper-form .form label[for='name']").style.color="red"
@@ -235,7 +244,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
    }
   
    //submit 
-
+   debugger;
    document.querySelector(".wrapper-form .form input[type='button']").addEventListener('click',async function(e){
       var isSomeThingMissed=false;
 
@@ -274,9 +283,16 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
         await clientReiview.addReview(reviewObj);
         reviews.push(reviewObj)
         resetFileds();
-        if(reviews.length<=1){
+        
+        if(reviews.length==1){
           initReview();
         }
+        
+        // if(reviews.length==2){
+        //  console.log('hhhhhhhhhhhhhhh') 
+        //   toggleSeeMore();
+        // }
+        checkBtnVisibility();
         
       }
 
@@ -295,15 +311,22 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
    function initReview(){
     if(reviews.length){
       addReview();
-      var btn=document.querySelector(".main-section .see-more-btn");
-      btn.style.visibility = 'visible';    
     }
-      
+   }
+
+   function checkBtnVisibility(){
+    var btn=document.querySelector(".main-section .see-more-btn");
+    if(reviews.length<2 || nextReview==reviews.length )
+      btn.style.visibility = 'hidden';   
+    else
+      btn.style.visibility = 'visible'; 
    }
 
 
   
    initReview();
+  
+  checkBtnVisibility();
 
 
   } catch (error) {

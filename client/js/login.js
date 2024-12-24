@@ -28,14 +28,17 @@ import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js
 
             if(isValidform){
               //  try {
-                    const isValid = await clientAuth.login(email, password);
-    
-                    if (isValid) {
-                        toastr.success("message sent successfully");
-                        window.location.href = "/client/products.html";
-                    } else {
-                        toastr.error("something went wrong ,please check your eamil or password");
-                    }
+                const result = await clientAuth.login(email, password);
+
+                if (result === 1) {
+                    toastr.success("Login successful!");
+                    window.location.href = "/client/index.html";
+                } else if (result === 2) {
+                    toastr.error("Your account is inactive. Please contact support.");
+                } else {
+                    toastr.error("Incorrect password or email. Please try again.");
+                }
+                
                 // } catch (authError) {
                 //     console.error("Authentication error:", authError);
                 //     toastr.error("something went wrong ,try again later");

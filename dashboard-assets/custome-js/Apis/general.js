@@ -3,7 +3,7 @@ export var generalClient={
     //example of rules and messages 
     // rules= {
     //     'admin-login-email': { required: true, email: true },
-    //     'admin-login-password': { required: true, },
+    //     'admin-login-password': { required: true, },         
 
     // },
     // messages= {
@@ -13,6 +13,14 @@ export var generalClient={
     validateForm: function (formId, rules, messages) {
         var form = $(`#${formId}`);
         if (form.length) {
+            $.validator.addMethod(
+                "regex",
+                function (value, element, regex) {
+                    return this.optional(element) || regex.test(value);
+                },
+                "Invalid format."
+            );
+            
             form.validate({
                 rules: rules,
                 messages: messages

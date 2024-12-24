@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const governorateSelect = form.querySelector('#governorate');
     const passwordInput = form.querySelector('input[placeholder="Password"]');
     const confirmPasswordInput = form.querySelector('input[placeholder="confirm Password"]');
-    const genderInputs = form.querySelectorAll('input[name="gender"]');
+    const genderSelect = form.querySelector('#gender');
     const createAccountButton = form.querySelector('input[type="button"]');
+    
 
     createAccountButton.addEventListener('click', async () => {
         const firstName = firstNameInput.value.trim();
@@ -32,39 +33,80 @@ document.addEventListener('DOMContentLoaded', () => {
         const address = addressInput.value.trim();
         const governorate = governorateSelect.value;
         const password = passwordInput.value.trim();
+        const gender = +genderSelect.value;
         const confirmPassword = confirmPasswordInput.value.trim();
 
-        let gender = '';
-        genderInputs.forEach(input => {
-            if (input.checked) {
-                gender = parseInt(input.value);
-            }
-        });
+        // let gender = '';
+        // genderInputs.forEach(input => {
+        //     if (input.checked) {
+        //         gender = parseInt(input.value);
+        //     }
+        // });
 
 
         let rules = {
-            'email': { required: true, email: true },
-            'password': { required: true },
-            'first-name': { required: true },
-            'last-name': { required: true },
-            'address': { required: true },
-            'gender': { required: true },
-            'phone': { required: true },
-            'governorate': { required: true },
-            'confirm-password': { required: true, equalTo: "#password" }
-        }
+            'email': { 
+                required: true, 
+                email: true 
+            },
+            'password': { 
+                required: true, 
+                minlength: 8 
+            },
+            'first-name': { 
+                required: true, 
+                regex: /^[A-Za-z][A-Za-z0-9\W]{2,}$/ 
+            },
+            'last-name': { 
+                required: true, 
+                regex: /^[A-Za-z][A-Za-z0-9\W]{2,}$/ 
+            },
+            'address': { 
+                required: true 
+            },
+            'gender': { 
+                required: true 
+            },
+            'phone': { 
+                required: true, 
+                regex: /^(010|011|012|015)[0-9]{8}$/ 
+            },
+            'governorate': { 
+                required: true 
+            },
+            'confirm-password': { 
+                required: true, 
+                equalTo: "#password" 
+            }
+        };
+        
         let messages = {
-            'email': 'please enter valid email',
-            'password': 'please enter password',
-            'first-name': 'please enter first name',
-            'last-name': 'please enter last name',
-            'address': 'please enter address',
-            'gender': 'please enter gender',
-            'phone': 'please enter valid phone',
-            'governorate': 'please enter governorate',
-            'confirm-password': { required: 'please enter confirm password', equalTo: "Password and confirmation do not match" },
-
-        }
+            'email': 'Please enter a valid email address.',
+            'password': {
+                required: 'Please enter a password.',
+                minlength: 'Password must be at least 8 characters long.'
+            },
+            'first-name': {
+                required: 'Please enter your first name.',
+                regex: 'First name must start with a letter and be at least 3 characters long. It can include letters, numbers, and special characters.'
+            },
+            'last-name': {
+                required: 'Please enter your last name.',
+                regex: 'Last name must start with a letter and be at least 3 characters long. It can include letters, numbers, and special characters.'
+            },
+            'address': 'Please enter your address.',
+            'gender': 'Please select your gender.',
+            'phone': {
+                required: 'Please enter your phone number.',
+                regex: 'Please enter a valid Egyptian phone number (must start with 010, 011, 012, or 015 and have 11 digits).'
+            },
+            'governorate': 'Please select your governorate.',
+            'confirm-password': {
+                required: 'Please confirm your password.',
+                equalTo: 'Password do not match.'
+            }
+        };
+        
 
         var isValidform = await generalClient.validateForm("register_form", rules, messages);
         if (isValidform) {
@@ -79,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 governorate: governorate,
                 avatar: ''
             };
+            console.log(userData);
 
             try {
                 if ( await checkEmailExists(email)) {

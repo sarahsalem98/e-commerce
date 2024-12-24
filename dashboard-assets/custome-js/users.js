@@ -177,7 +177,7 @@ export var users = {
                                 '<a href="javascript:;" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#create-updateUser" onclick="users.openUpdateModal(' + full['id'] + ')">' +
                                 feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Update</a>' +
-                                '<a href="javascript:;" class="dropdown-item delete-record"  data-bs-toggle="modal" data-bs-target="#danger-Modal" onclick="users.openDeleteModal(' + full["id"] + ', \'' + full["full_name"].replace(/'/g, "\\'") + '\')">' +
+                                '<a href="javascript:;" class="dropdown-item delete-record" data-bs-toggle="modal" data-bs-target="#danger-Modal" onclick="users.openDeleteModal(' + full["id"] + ', \'' + full["full_name"].replace(/'/g, "\\'") + '\')">' +
                                 feather.icons['trash-2'].toSvg({ class: 'font-small-4 me-50' }) +
                                 'Delete</a>' +
                                 '<a href="javascript:;" class="dropdown-item delete-record" onclick="users.changeStatus(' + full['id'] + ')"> ' +
@@ -350,16 +350,23 @@ export var users = {
                 gov: document.getElementById("user-country").value,
                 gender: document.getElementById("user-gender").value,
                 status_user: 1,
+                password:"12345",
                 avatar: await general.convertImgTo64(filenew)
             }
-            var ok = await dbController.addItem('users', newuser);
-            if (ok) {
-                toastr.success("user added successfully");
+            
+            var existeduser=await dbController.getItemsByUniqueKey("users","email",newuser.email);
+            //console.log(existeduser);
+            if(!(existeduser.length>0)){
+                var ok = await dbController.addItem('users', newuser);
+                if (ok) {
+                    toastr.success("user added successfully");
+                }
+                this.viewUsers("user");
+                $('#create-updateUser').modal('hide');
+    
+            }else{
+                toastr.error("user already existed try add another email");
             }
-            this.viewUsers("user");
-            $('#create-updateUser').modal('hide');
-
-
 
         }
 
@@ -378,6 +385,7 @@ export var users = {
         this.viewUsers();
     },
     openDeleteModal: function (id, name) {
+        console.log("fdgfd");
         // console.log("id" + id);
         // console.log("name" + name);
         document.getElementsByClassName("deleted-record-id")[0].value = id;

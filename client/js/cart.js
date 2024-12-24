@@ -8,20 +8,14 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 (async function () {
     try {
-
+ 
         let globals = {
             cart: null,
             products: [],
             productsDetailsT: null,
             productsSummaryT: null,
         }
-
-        genreal.updateCartPill();
-        function sendProductId(product_ID) {
-            const encodedData = encodeURIComponent(product_ID); // URL-safe encoding
-            window.location.href = `../client/product_review.html?id=${encodedData}`;
-        }
-
+    
         function showEmptyCarSlider() {
             document.querySelector('.empty-car-slider').classList.remove('d-none');
         }
@@ -35,16 +29,25 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
         // Open the database
         await dbController.openDataBase();
         var sessiondata = JSON.parse(localStorage.getItem("clientSession"));
+
         let userId = null;
+
         if (sessiondata) {
             userId = sessiondata.sessionData.id;
         }
 
+        
         globals.cart = await cart.getCartData(userId);
+        console.log("from cart.js",globals.cart);
 
         globals.products = await cart.getCartProducts(globals.cart);
 
         const tables = document.querySelector(".cart-section .cart-tables");
+        await genreal.updateCartPill();
+
+        
+
+
 
         globals.productsDetailsT = tables.children[0];
 
@@ -90,8 +93,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
             let createdImage = document.createElement("img");
             createdImage.src = p['pics'][0];
-            createdImage.setAttribute("width", "75");
-            createdImage.setAttribute("height", "75");
+            createdImage.setAttribute("width", "70");
+            createdImage.setAttribute("height", "70");
 
 
             createdAnchor.appendChild(createdImage);
@@ -148,6 +151,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
+
                 } else {
                     // Prevent invalid input
                     e.preventDefault();
@@ -163,6 +168,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
 
                 }
             })//end of blure
@@ -191,7 +197,10 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
+                    genreal.updateCartPill();
 
+                    // if(newVal==0)
+                    //     window.location.reload(true);
 
                 }
 
@@ -219,7 +228,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     showUpdatedCartSlider();
                     globals.cart = await cart.getCartData(userId);
                     globals.products = await cart.getCartProducts(globals.cart);
-
+                    genreal.updateCartPill();
 
                 }
    
@@ -248,7 +257,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 
 
-        if (globals.cart && globals.products) {
+        if (globals.cart && globals.products.length!=0) {
             globals.products.forEach(function (p, index) {
                 addProductRow(globals.products[index], globals.cart['products'][index]['qty']);
                 subTotalVal += (globals.products[index]['price']) * globals.cart['products'][index]['qty'];
@@ -275,10 +284,12 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
         //preceeding to the next page handling
 
         function nextPageListener(e) {
-            if (!globals.products)
+
+            if (globals.products==null ||  globals.products.length==0)
                 e.preventDefault();
             else
                 window.location.href = "./cart1.html";
+
         }
 
         globals.productsSummaryT.querySelector("input[type='button']").addEventListener('click', nextPageListener);

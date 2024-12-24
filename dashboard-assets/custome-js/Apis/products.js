@@ -29,22 +29,41 @@ export var clientProducts = {
         let isUpdated;
         if (cartData != null) {
             if (cartData.products.length != 0) {
-                for (var i = 0; i < cartData.products; i++) {
+                cartData.products.__proto__=[].__proto__; ///for using splice function of array object.
+                for (var i = 0; i < cartData.products.length; i++) {
+                    
+                    
                     var product = await dbController.getItem('products', cartData.products[i].product_id);
+
                     if (product) {
+
                         cartData.products[i].max_qty = product.qty;
                         cartData.products[i].price = product.price;
+                        console.log("from update");
+                        if(cartData.products[i].qty>product.qty){ // update user reqired quantity if stock is not enought
+
+                            //if product out of stock
+                            if(product.qty==0){    
+                                console.log("out of stock");
+                                console.log( cartData.products.splice(i,1));    //delete only one element from product index
+                            }else{
+                                cartData.products[i].qty=product.qty;
+                            }
+                            
+                        }
+                        
                     }
-                }
 
-                var updateCartinfo = {
-                    user_id: cartData.user_id,
-                    is_finished: 'false',
-                    products: cartData.products
                 }
-
+                
+            }
+            var updateCartinfo = {
+                user_id: cartData.user_id,
+                is_finished: 'false',
+                products: cartData.products
             }
             updatedCart = updateCartinfo;
+
             if (cartData.user_id == null) {
                 localStorage.setItem("user-cart", JSON.stringify(updatedCart));
                 isUpdated = true;
@@ -78,8 +97,7 @@ export var clientProducts = {
             .sort((a, b) => b[1] - a[1])
             .slice(0, 4)
             .map(entry => parseInt(entry[0])); 
-
-
+            
         let allProducts = await dbController.getDataArray('products');
         let topProducts = allProducts.filter(product => topProductIds.includes(product.id));
        return topProducts;
