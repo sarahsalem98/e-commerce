@@ -281,6 +281,12 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
 
 
         /*********************************************************** */
+        function sendProductId(product_id) {
+       
+            const encodedData = encodeURIComponent(product_id); // URL-safe encoding
+            
+            window.location.href = `product_review.html?id=${encodedData}`;
+        }
         //preceeding to the next page handling
 
         function nextPageListener(e) {

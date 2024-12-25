@@ -3,7 +3,7 @@ import { clientProducts } from '../../dashboard-assets/custome-js/Apis/products.
 import { cart } from "../../dashboard-assets/custome-js/Apis/cart.js";
 import { clientReiview } from "../../dashboard-assets/custome-js/Apis/reviews.js";
 import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
-
+import { sellers } from "../../dashboard-assets/custome-js/sellers.js";
 
 (async function () {
   try {
@@ -91,6 +91,14 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
     })//add to cart button
 
     
+
+    //seller name
+    let sellerInfo=await sellers.getUserData(product['seller_id']);
+    let sellerName=sellerInfo['full_name'];
+    //set seller name 
+    document.querySelector('.seller-name').innerHTML+=sellerName;
+
+
      /************************************************************************************ */
      //review section
 
@@ -244,7 +252,7 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
    }
   
    //submit 
-   debugger;
+  
    document.querySelector(".wrapper-form .form input[type='button']").addEventListener('click',async function(e){
       var isSomeThingMissed=false;
 

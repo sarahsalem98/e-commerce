@@ -459,6 +459,7 @@ export var products = {
 
     },
     delete: async function () {
+        
         let id = document.getElementsByClassName("deleted-record-id")[0].value;
         let isDeletedSuccessfully = await dbController.deleteItem('products', id);
         if (isDeletedSuccessfully) {
