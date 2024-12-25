@@ -108,6 +108,17 @@ export var clientProducts = {
             
         let allProducts = await dbController.getDataArray('products');
         let topProducts = allProducts.filter(product => topProductIds.includes(product.id));
+        if (topProducts.length < 4) {
+            let remainingCount = 4 - topProducts.length;
+            let existingProductIds = new Set(topProducts.map(product => product.id));
+            let availableProducts = allProducts.filter(product => !existingProductIds.has(product.id));
+            for (let i = 0; i < remainingCount && availableProducts.length > 0; i++) {
+                let randomIndex = Math.floor(Math.random() * availableProducts.length);
+                topProducts.push(availableProducts[randomIndex]);
+                availableProducts.splice(randomIndex, 1); 
+            }
+        }
+        console.log(topProducts);
        return topProducts;
     }
     ,

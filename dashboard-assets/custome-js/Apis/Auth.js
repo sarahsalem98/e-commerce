@@ -40,6 +40,11 @@ export var clientAuth = {
 
     logout: function () {
         localStorage.removeItem('clientSession');
+        var cart=localStorage.getItem("user-cart");
+        if(cart){
+            localStorage.removeItem("user-cart");
+        }
+        localStorage.removeItem
     },
     register: async function (name, email, password, address, phone, gender, governorate, avatar = "") {
         let isAdded = false;

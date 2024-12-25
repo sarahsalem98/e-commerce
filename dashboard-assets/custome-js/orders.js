@@ -360,11 +360,20 @@ export var orders = {
     },
 
     changeStatus: async function (id, status) {
+        
         var data = await dbController.getItem('orders', id);
         data.status = status;
         data.updated_at=new Date();
+        console.log(data);
+        if(status==5){
+            let orderCart=await dbController.getItem( 'carts' , data.cart_id );
+            let orderProducts=orderCart.products;
+            console.log(orderProducts);
+            orderProducts.forEach(async element => {
+                await this.incrementProductBy( element.product_id , element.qty);
+            });
+        }
         var done = await dbController.updateItem('orders', id, data);
-
         if (done) {
             toastr.success("status changed successfully");
         } else {
@@ -384,8 +393,18 @@ export var orders = {
         document.getElementById("order-phone2").value = '';
 
 
-    }
+    },
+    incrementProductBy:async function(product_id,qty){
+        let isUpdated=false;
+        let product= await dbController.getItem("products",product_id);
+        if(product){
+            product.qty+=qty;
+            isUpdated = await dbController.updateItem('products', product_id, product );
+            return isUpdated;
+        }
 
+        return isUpdated;
+    }
 
 }
 window.orders = orders;

@@ -34,16 +34,16 @@ export var orderHistory = {
             // Order row
             var row = document.createElement('tr');
             row.classList.add('order-row');
-            const cancelButton = (order.status == 4 || order.status == 5) 
-            ? '' 
-            : `
+            const cancelButton = (order.status == 4 || order.status == 5)
+                ? ''
+                : `
                 <a href="#" class="btn btn-outline-danger btn-sm" onclick="cancelOrder(event, '${order.order_id}')">
                     &#10060; Cancel
                 </a>
             `;
             const totalSum = order.products.reduce((sum, product) => {
-                return sum + (product.price * product.qty); 
-            }, 0).toFixed(2); 
+                return sum + (product.price * product.qty);
+            }, 0).toFixed(2);
             row.innerHTML = `
                 <td></td>
                 <td>${order.order_id}</td>
@@ -53,7 +53,7 @@ export var orderHistory = {
                  <td>${cancelButton}</td>
             `;
             tableBody.appendChild(row);
-        
+
             // Products row
             var productsRow = document.createElement('tr');
             productsRow.innerHTML = `
@@ -82,7 +82,7 @@ export var orderHistory = {
             `;
             tableBody.appendChild(productsRow);
         });
-        
+
     },
 
 
@@ -189,8 +189,16 @@ window.showDetails = async function (event, orderId) {
 };
 
 
-window.cancelOrder = function (event, orderId) {
+window.cancelOrder = async function (event, orderId) {
 
     event.preventDefault();
-    console.log(`Cancel order: ${orderId}`);
+    var isCanceled = false;
+    isCanceled = await orderApi.cancel(orderId);
+    if(isCanceled){
+        toastr.success("order cancelled successfully");
+        await orderHistory.showOrderData();
+    }else{
+        toastr.error("something went wrong!");
+    }
+   // console.log(`Cancel order: ${orderId}`);
 };

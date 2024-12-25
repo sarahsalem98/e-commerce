@@ -94,9 +94,9 @@ import { sellers } from "../../dashboard-assets/custome-js/sellers.js";
 
     //seller name
     let sellerInfo=await sellers.getUserData(product['seller_id']);
-    let sellerName=sellerInfo['full_name'];
+    
     //set seller name 
-    document.querySelector('.seller-name').innerHTML+=sellerName;
+    document.querySelector('.seller-name').innerHTML+=sellerInfo?sellerInfo['full_name']: "BLINGG";
 
 
      /************************************************************************************ */

@@ -127,6 +127,7 @@ export var order = {
     
     getUserOrdersHistory: async function (userId) {
         var orders = await dbController.getItemsByUniqueKey('orders', 'user_id', userId);
+        orders.sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
         let returned_data = [];
 
         if (orders.length != 0) {

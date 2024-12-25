@@ -3,6 +3,7 @@ import { reviews } from "./reviews.js";
 import { general } from "./general.js";
 import {seller} from "./AuthDashboard.js";
 import { dbController } from "./indexedDb.js";
+import { order } from "./Apis/orders.js";
 
 export var products = {
     fetchData: async function (seller_id) {
@@ -459,15 +460,33 @@ export var products = {
 
     },
     delete: async function () {
-        
         let id = document.getElementsByClassName("deleted-record-id")[0].value;
-        let isDeletedSuccessfully = await dbController.deleteItem('products', id);
-        if (isDeletedSuccessfully) {
-            toastr.success("products deleted successfully");
-            this.viewProducts(window.globalseller_id);
+    
+        // Fetch all orders
+        let orders = await dbController.getDataArray("orders");
+        if (orders.length > 0) {
+            var activeOrders = orders.filter(order => order.status !== 4 && order.status !== 5);
+         //console.log(activeOrders);
+            if (activeOrders.length > 0) {
+                for (var i = 0; i < activeOrders.length; i++) {
+                    var cart = await dbController.getItem("carts", activeOrders[i].cart_id);
+                    if (cart && cart.products.some(product => product.product_id == id)) {
+                        toastr.error("Cannot delete this product as it is part of an active order.");
+                        return; 
+                    }
+                }
+            }
         }
-
+        let isDeletedSuccessfully = await dbController.deleteItem('products', id);
+    
+        if (isDeletedSuccessfully) {
+            toastr.success("Product deleted successfully");
+            this.viewProducts(window.globalseller_id);
+        } else {
+            toastr.error("Failed to delete the product. Please try again.");
+        }
     },
+    
     validateForm: function () {
         $('.select2').select2();
         var form = $('#add-update-product-form');
