@@ -90,6 +90,11 @@ import { sellers } from "../../dashboard-assets/custome-js/sellers.js";
       
     })//add to cart button
 
+    //out of stock 
+    if(product['qty']==0){
+      document.querySelector(".is-in-stock").style.visibility="visible";
+    }
+    
     
 
     //seller name

@@ -199,8 +199,8 @@ import { genreal,updateUIBasedOnSession, handleLogout } from "./general.js";
                     globals.products = await cart.getCartProducts(globals.cart);
                     genreal.updateCartPill();
 
-                    // if(newVal==0)
-                    //     window.location.reload(true);
+                    if(newVal==0)
+                        window.location.reload(true);
 
                 }
 
