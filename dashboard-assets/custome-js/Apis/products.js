@@ -107,6 +107,7 @@ export var clientProducts = {
             .map(entry => parseInt(entry[0])); 
             
         let allProducts = await dbController.getDataArray('products');
+        allProducts=allProducts.filter(pro=>pro.status==1);
         let topProducts = allProducts.filter(product => topProductIds.includes(product.id));
         if (topProducts.length < 4) {
             let remainingCount = 4 - topProducts.length;

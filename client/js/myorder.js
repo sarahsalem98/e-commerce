@@ -62,7 +62,7 @@ export var orderHistory = {
                         <table class="table table-bordered mb-0">
                             <thead class="bg-light">
                                 <tr>
-                                    <th>#Product ID</th>
+                                    <th>#Product Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>

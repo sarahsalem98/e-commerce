@@ -25,7 +25,7 @@ function displayBestSellingProducts(products) {
         productCard.className = 'col-6 col-sm-4 col-lg-3 mb-4';
 
         productCard.innerHTML = `
-            <div id="addcartbtn" class="box bg-white product-link">
+            <div  class="box bg-white product-link">
                 <div class="image-container position-relative">
                     <a href="/client/product_review.html?id=${product.id}"><img class="img-fluid img position-absolute hover-img1" src="${product.pics[0]}" alt="${product.name}">
                     <img class="img-fluid img" src="${product.pics[1]}" alt="${product.name}">

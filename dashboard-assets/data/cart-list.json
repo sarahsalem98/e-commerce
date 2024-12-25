@@ -94,16 +94,6 @@
             {"product_id": 9, "price": 149.99, "qty": 2, "max_qty": 14}
         ]
     }
-    ,
-    {
-        "id":11,
-        "user_id": "11",
-        "is_finished": "false",
-        "products": [
-            {"product_id": 8, "price":1599.99, "qty": 3, "max_qty": 5},
-            {"product_id": 1, "price": 499.99, "qty": 2, "max_qty": 10}
-        ]
-    }
     
 
     
