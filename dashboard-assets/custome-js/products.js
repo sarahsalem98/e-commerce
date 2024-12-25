@@ -465,13 +465,13 @@ export var products = {
         // Fetch all orders
         let orders = await dbController.getDataArray("orders");
         if (orders.length > 0) {
-            var activeOrders = orders.filter(order => order.status !== 4 && order.status !== 5);
+            var activeOrders =orders;
          //console.log(activeOrders);
             if (activeOrders.length > 0) {
                 for (var i = 0; i < activeOrders.length; i++) {
                     var cart = await dbController.getItem("carts", activeOrders[i].cart_id);
                     if (cart && cart.products.some(product => product.product_id == id)) {
-                        toastr.error("Cannot delete this product as it is part of an active order.");
+                        toastr.error("Cannot delete this product as it is part of an order you can inactive it instead.");
                         return; 
                     }
                 }

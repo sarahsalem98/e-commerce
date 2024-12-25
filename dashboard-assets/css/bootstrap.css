@@ -3115,13 +3115,13 @@ fieldset:disabled .btn {
   border: 0; }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #7367f0;
+  color: rgb(168, 110, 59);
   background-color: rgba(115, 103, 240, 0.12); }
 
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #7367f0; }
+  background-color: rgb(168, 110, 59); }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #b9b9c3;

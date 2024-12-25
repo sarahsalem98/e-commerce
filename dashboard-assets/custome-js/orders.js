@@ -6,6 +6,7 @@ let global_orders=[];
 export var orders = {
 
     fetchData: async function (seller_id) {
+        console.log("ttt777"+seller_id);
         let data = await this.getDataFromStorage(seller_id);
         let alldataorders=await this.getDataFromStorage(null);
         let allDataobj = [];
@@ -20,6 +21,7 @@ export var orders = {
                 allDataobj=data;
             }
         }
+
         return allDataobj;
     },
     getOrderData: async function (id) {
@@ -34,7 +36,7 @@ export var orders = {
 
     },
     getDataFromStorage: async function (seller_id) {
-        console.log("ttt"+seller_id);
+
         let orders = [];
         if (seller_id != null && seller_id != undefined) {
             orders = await dbController.getDataArray('orders');
@@ -64,7 +66,7 @@ export var orders = {
         } else {
             orders = await dbController.getDataArray('orders');
         }
-     
+       
 
         return orders;
     },
@@ -73,6 +75,7 @@ export var orders = {
         var assetPath = "../../dashboard-assets/";
         var userView = 'app-user-view-account.html';
         const userData = await orders.fetchData(seller_id);
+        console.log(userData);
 
         document.getElementById("total-orders-count").innerText = userData.length;
         document.getElementById("placed-orders-count").innerText = userData.filter(user => user.status == 1).length;
