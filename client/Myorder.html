@@ -9,23 +9,40 @@
     <link
         href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    
- 
+
     <link rel="stylesheet" href="./css/all.min.css">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/bootstrap.css">
-     
+
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/cartGlobals.css">
     <link rel="stylesheet" href="./css/Myorder.css">
-
-     
-    <script src="js/cartGlabals.js"></script>
+    <script type="module" src="js/myorder.js"></script>
     <style>
- 
-             
-         
-         
+        .dropdown-toggle {
+            white-space: nowrap;
+            background-color: white;
+            border: none;
+        }
+
+        .table-wrapper {
+            max-height: 600px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* Enable horizontal scrolling if the table overflows */
+            border: 1px solid #ddd;
+            /* Optional: Add a border for aesthetics */
+        }
+
+        .table-bordered thead th {
+            background-color: #ffffff !important;
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .table-bordered tr {
+            background-color: #eaeaea !important;
+        }
     </style>
     <title>myorder</title>
 
@@ -35,24 +52,13 @@
     <!--nav bar-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                BLINGG
-                <span class="brand-subtitle">JEWELRY STORE</span>
-            </a>
+            <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <div class="drawer-icons">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">LOGIN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">CART</a>
-                        </li>
-                    </div>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
@@ -63,210 +69,141 @@
                         <a class="nav-link link2" href="About.html">ABOUT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="contact.html">CONTACT</a>
                     </li>
-                    <div class="icons">
+                    <div class="drawer-icons draw-icons">
                         <li class="nav-item">
-                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <a class="nav-link" href="login.html">LOGIN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cart-icon" href="#"><i class="fas fa-shopping-cart"></i><span
-                                    class="badge badge-pill badge-primary">6</span></a>
+                            <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.html">CART</a>
                         </li>
                     </div>
-
+                    <div class="drawer-icons user-menu d-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="profileUser.html">profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="">log out</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="cart.html">CART</a>
+                        </li>
+                    </div>
+                    
+                    <div class="icons">
+                        <div class="d-flex draw-icons">
+                            <li class="nav-item">
+                                <a class="nav-link text-danger" href="login.html">LOGIN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="register_customer.html">SIGNUP</a>
+                            </li>
+                        </div>
+                        <li class="nav-item user-menu d-none">
+                            <a class="nav-link search-icon" href="#"><i class="fas fa-user"></i></a>
+                            <ul class="dropdown-menu ">
+                                <li><a href="profileUser.html" class="dropdown-item">profile</a></li>
+                                <li><a href="" class="dropdown-item logout">log out</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cart-icon" href="cart.html"><i class="fa-solid fa-basket-shopping"></i><span
+                                    class="badge badge-pill badge-primary text-secondary">0</span></a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>
     </nav>
-        <section  class="cart-section container mt-5">
-            
-            <h2 class="title">My Order</h2>
+    <div class="order mb-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class=" col-12 col-md-3">
+                    <div class="sidebar">
+                        <!-- <h5 class="fw-bold">Order History</h5> -->
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a href="profileUser.html" class="nav-link text-black-50">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="Myorder.html" class="nav-link active fw-bold">My Orders</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="table-container">
+                        <div class="table-wrapper">
+                            <table id="orderTable">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>#ID</th>
+                                        <th>Created At</th>
+                                        <th>Status</th>
+                                        <th>TotalSum</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myorder"></tbody>
+                            </table>
+                        </div>
+
+                        <p id="no-orders" class="d-none">No orders found.</p>
 
 
-            <div class="prgressive-bar" class="row">
+                        <!-- <table id="detailsTable" class="details-table d-none">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#ProductID</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailsBody"></tbody>
+                        </table> -->
+                    </div>
+                </div>
 
-                <a href="cart.html" class="page one active-page">
 
-                    <span class="step-number active-page-step-num">1</span>
-                    <p>My Order </p>
+
 
             </div>
-            <!-- tables -->
+        </div>
+    </div>
 
-            <!-- justify-content-evenly -->
-            <div class="d-flex justify-content-between mt-5 mb-5 cart-tables" style="width:100%;">
+    <p id="no-orders" class="no-orders d-none">No orders found.</p>
 
-                <!-- table for all product detailts that user added it -->
-             <table class="table table-bordered  border border-1 details-tabel">
-                <thead > 
-                    <tr>
-                        <th></th> 
-                        <th></th>   
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>subtotal</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr  >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr >
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td class="">
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly />
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                    <tr>
-                        <td ><a href="" class="delete-icon"><i class="fa-regular fa-circle-xmark " font-mon"></i></td>
-
-                        <td><a href="" ><img src="utilities/imgs/photo-1628926379972-9843ad139a8c.avif" alt="" style="width:75px;height: 75px;"></a></td>
-
-                        <td><a href="" > Product name 1</a></td>
-
-                        <td>$350.00</td>
-                       
-                        <td>
-
-                            <div class=" d-flex controler">
-                                <input type="button"  value="-" >
-                                <input type="text" value="1" readonly/>
-                                <input type="button"    value="+"> 
-                            </div>
-                            
-                        </td>
-
-                        <td>
-                            $1,750.00
-                        </td>
-                        
-                    </tr>
-                </tbody>
-             </table>
-
-             <table class="table table-bordered  summary-table border border-1">
-                <thead>
-                    <tr>
-                        <th colspan="2">Cart Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>$5,750.00</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>$5,750.00</td>
-                    </tr>
-                    
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2">
-                            <input type="button" class="btn btn-block" value="PROCEED TO CHECKOUT"/>
-                        </td>
-                    </tr>
-                </tfoot>
-             </table>
-
-            </div>
-           
-             
-         </section>
+    <pre>
 
 
-        
-        
+  </pre>
 
-     
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-section">
-                <h4>BLINGG</h4>
-                <span class="brand-subtitle">JEWELRY STORE</span>
+                <a href="index.html"><img src="utilities/imgs/logo-regular.png" alt=""></a>
             </div>
             <div class="footer-section">
                 <h5>About Us</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h5>Shop</h5>
                 <ul>
-                    <li><a href="#">Rings</a></li>
-                    <li><a href="#">Bracelets</a></li>
-                    <li><a href="#">Earrings</a></li>
-                    <li><a href="#">Necklaces</a></li>
+                    <li><a href="products.html?category=2">Rings</a></li>
+                    <li><a href="products.html?category=3">Bracelets</a></li>
+                    <li><a href="products.html?category=4">Earrings</a></li>
+                    <li><a href="products.html?category=1">Necklaces</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -283,9 +220,32 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+
+
+
+
+
+    <script type="module">
+        // import { dbController } from '../dashboard-assets/custome-js/indexedDb.js';
+        import { orderHistory } from './js/myorder.js';
+
+    </script>
+
+    <!-- <script type="module">
+            window.addEventListener('load', async function () {
+                //await dbController.openDataBase();
+                await orderhistory.getUserOrdersHistory();
+                 
+            }); -->
+    </script>
 </body>
 
 </html>

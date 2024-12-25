@@ -1,58 +1,54 @@
 
-/* body */
-*{
-    padding: 0;
-    margin: 0;
+
+:root {
+
+  --background-color: rgb(250, 245, 240);
+  --heading-font: 'Cinzel', serif;
+  --text-font: 'Roboto';
+  --text-color: rgba(0, 0, 0, 0.7);
+  --highligted-text-color: rgb(168, 110, 59);
+
 }
-body {
-    background-color:white;
-  font-family: var(--heading-font)
 
-  }
-  .table{
-    margin-left: 10rem;
- width: 50vw;
- height: auto;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-  }
-  
-        .sidebar .nav-link {
-        color: var(--button-color);
-            padding: 5px 10px;
-        }
-  
-  .sidebar .nav-link.active {
-    color:var(--highligted-text-color)
-  }
-  
-  
-  .btn-danger {
-    background-color:var(--highligted-text-color);
-  }
-  
-  .btn-danger:hover {
-   background-color: var(--button-carousel);
-  }
-  
+.sidebar .nav-link.active {
+  color:var(--highligted-text-color)
+}
 
+.ProfileUser form {
+  background-color: #fff;
+  padding: 25px;
+  border: 1px solid #ddd;
 
+}
 
+.ProfileUser h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 
+.ProfileUser input,
+.ProfileUser select {
+  height: 45px;
+}
 
+.ProfileUser .btn-outline-dark {
+  height: 45px;
+  font-size: 16px;
+  font-weight: bold;
+}
 
+.ProfileUser .no-orders {
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 18px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.updateButton{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+.updateButton:hover{
+  background-color: var(--highligted-text-color);
+  color: var(--text-font);
+}

@@ -61,6 +61,7 @@ export var clientAuth = {
         return isAdded;
     },
     updateProfile: async function (userId, name, email, password, address, phone, gender, governorate) {
+
         let isUpdated = false;
         var user = await dbController.getItem("users", userId);
         if (user) {
@@ -77,7 +78,8 @@ export var clientAuth = {
                 //avatar: avatar
             }
 
-            isUpdated = await dbController.updateItem("sellers", userId, userupdated);
+            console.log(userupdated);
+            isUpdated = await dbController.updateItem("users", userId, userupdated);
         }
         return isUpdated;
 

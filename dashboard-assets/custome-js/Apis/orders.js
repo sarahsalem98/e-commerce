@@ -248,11 +248,22 @@ export var order = {
         if (orders.length != 0) {
             let cartPromises = orders.map(async (order) => {
                 let cartData = await dbController.getItem('carts', order.cart_id);
+
+                let productPromises = cartData ? cartData.products.map(async (product) => {
+                    let productData = await dbController.getItem('products', product.product_id); 
+                    return {
+                        product_id: product.product_id,
+                        product_name: productData ? productData.name : 'Unknown Product', 
+                        qty: product.qty,
+                        price: product.price
+                    };
+                }) : [];
+                let products = await Promise.all(productPromises);
                 return {
                     order_id: order.id,
                     created_at: order.created_at,
                     status: order.status,
-                    products: cartData ? cartData.products : []
+                    products: products
                 };
             });
 
