@@ -86,6 +86,8 @@ import { sellers } from "../../dashboard-assets/custome-js/sellers.js";
         genreal.updateCartPill();
          
         this.value="ADDED TO CARD ✓"
+      }else{
+        toastr.error("invalid quantity");
       }
       
     })//add to cart button
