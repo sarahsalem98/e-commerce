@@ -4,8 +4,8 @@
         "user_id": "1",
         "is_finished": "true",
         "products": [
-            {"product_id": 1, "price": 499.99, "qty": 2, "max_qty": 15},
-            {"product_id": 2, "price": 1299.99, "qty": 2, "max_qty": 10}
+            {"product_id": 1, "price": 499.99, "qty": 2, "max_qty": 15,"status":1},
+            {"product_id": 2, "price": 1299.99, "qty": 2, "max_qty": 10,"status":1}
         ]
     },
     {
@@ -13,8 +13,8 @@
         "user_id": "2",
         "is_finished": "true",
         "products": [
-            {"product_id": 3, "price": 199.99, "qty": 2, "max_qty": 25},
-            {"product_id": 4, "price": 299.99, "qty": 2, "max_qty": 30}
+            {"product_id": 3, "price": 199.99, "qty": 2, "max_qty": 25,"status":1},
+            {"product_id": 4, "price": 299.99, "qty": 2, "max_qty": 30,"status":1}
         ]
     },
     {
@@ -22,8 +22,8 @@
         "user_id": "3",
         "is_finished": "true",
         "products": [
-            {"product_id": 5, "price": 799.99, "qty": 1, "max_qty": 5},
-            {"product_id": 6, "price": 999.99, "qty": 1, "max_qty": 8}
+            {"product_id": 5, "price": 799.99, "qty": 1, "max_qty": 5,"status":2},
+            {"product_id": 6, "price": 999.99, "qty": 1, "max_qty": 8,"status":2}
         ]
     },
     {
@@ -31,8 +31,8 @@
         "user_id": null,
         "is_finished": "true",
         "products": [
-            {"product_id": 7, "price": 1199.99, "qty": 2, "max_qty": 12},
-            {"product_id": 8, "price": 1599.99, "qty": 1, "max_qty": 6}
+            {"product_id": 7, "price": 1199.99, "qty": 2, "max_qty": 12,"status":3},
+            {"product_id": 8, "price": 1599.99, "qty": 1, "max_qty": 6,"status":3}
         ]
     },
     {
@@ -40,8 +40,8 @@
         "user_id": "4",
         "is_finished": "true",
         "products": [
-            {"product_id": 9, "price": 149.99, "qty": 3, "max_qty": 20},
-            {"product_id": 10, "price": 349.99, "qty": 2, "max_qty": 18}
+            {"product_id": 9, "price": 149.99, "qty": 3, "max_qty": 20,"status":4},
+            {"product_id": 10, "price": 349.99, "qty": 2, "max_qty": 18,"status":4}
         ]
     }
     ,
@@ -50,8 +50,8 @@
         "user_id": null,
         "is_finished": "true",
         "products": [
-            {"product_id": 1, "price": 499.99, "qty": 3, "max_qty": 13},
-            {"product_id": 9, "price": 149.99, "qty": 2, "max_qty": 16}
+            {"product_id": 1, "price": 499.99, "qty": 3, "max_qty": 13,"status":5},
+            {"product_id": 9, "price": 149.99, "qty": 2, "max_qty": 16,"status":5}
         ]
     }
     ,
@@ -60,8 +60,8 @@
         "user_id": "6",
         "is_finished": "true",
         "products": [
-            {"product_id": 2, "price": 1299.99, "qty": 3, "max_qty": 8},
-            {"product_id": 6, "price": 999.99, "qty": 2, "max_qty": 7}
+            {"product_id": 2, "price": 1299.99, "qty": 3, "max_qty": 8,"status":3},
+            {"product_id": 6, "price": 999.99, "qty": 2, "max_qty": 7,"status":3}
         ]
     }
     ,
@@ -70,8 +70,8 @@
         "user_id": "7",
         "is_finished": "true",
         "products": [
-            {"product_id": 3, "price": 199.99, "qty": 3, "max_qty": 23},
-            {"product_id": 5, "price": 799.99, "qty": 2, "max_qty": 4}
+            {"product_id": 3, "price": 199.99, "qty": 3, "max_qty": 23,"status":2},
+            {"product_id": 5, "price": 799.99, "qty": 2, "max_qty": 4,"status":2}
         ]
     }
     ,
@@ -80,8 +80,8 @@
         "user_id": "8",
         "is_finished": "true",
         "products": [
-            {"product_id": 4, "price": 299.99, "qty": 3, "max_qty": 28},
-            {"product_id": 7, "price":1199.99, "qty": 2, "max_qty": 10}
+            {"product_id": 4, "price": 299.99, "qty": 3, "max_qty": 28,"status":4},
+            {"product_id": 7, "price":1199.99, "qty": 2, "max_qty": 10,"status":4}
         ]
     }
     ,
@@ -90,8 +90,8 @@
         "user_id": null,
         "is_finished": "true",
         "products": [
-            {"product_id": 1, "price":499.99, "qty": 3, "max_qty": 13},
-            {"product_id": 9, "price": 149.99, "qty": 2, "max_qty": 14}
+            {"product_id": 1, "price":499.99, "qty": 3, "max_qty": 13,"status":1},
+            {"product_id": 9, "price": 149.99, "qty": 2, "max_qty": 14,"status":1}
         ]
     }
     

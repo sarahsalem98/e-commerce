@@ -140,7 +140,8 @@ export var order = {
                         product_id: product.product_id,
                         product_name: productData ? productData.name : 'Unknown Product', 
                         qty: product.qty,
-                        price: product.price
+                        price: product.price,
+                        status:product.status
                     };
                 }) : [];
                 let products = await Promise.all(productPromises);
@@ -183,7 +184,6 @@ export var order = {
        // console.log(returnedOrder);
         return returnedOrder;
     }
-    
     ,
     //will return true or false based on cancelation
     cancel: async function(order_id){ 

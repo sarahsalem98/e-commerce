@@ -29,6 +29,7 @@ import { generalClient } from "../../dashboard-assets/custome-js/Apis/general.js
             if(isValidform){
               //  try {
                 const result = await clientAuth.login(email, password);
+                console.log(result);
 
                 if (result === 1) {
                     toastr.success("Login successful!");

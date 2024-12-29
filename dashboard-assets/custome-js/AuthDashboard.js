@@ -165,14 +165,14 @@ export var seller = {
             'seller-register-email': { required: true, email: true },
             'seller-register-password': { required: true },
             'seller-register-name': { required: true },
-            //'seller-register-nationalId': { required: true, regex: /^[2-3]\d{13}$/ },
+            'seller-register-nationalId': { required: true, regex: /^[2-3]\d{13}$/ },
 
         }
         var messages = {
             'seller-register-email': 'please enter valid email',
             'seller-register-password': 'please enter password',
             'seller-register-name': 'please enter name',
-            //'seller-register-nationalId': 'please enter National ID',
+            'seller-register-nationalId': 'please enter National ID',
         }
 
         if (general.validateForm('seller-register-form', rules, messages)) {
@@ -259,14 +259,14 @@ export var seller = {
             'seller-register-email': { required: true, email: true },
             'seller-register-password': { required: true },
             'seller-register-name': { required: true },
-            //'seller-register-nationalId': { required: true, regex: /^[2-3]\d{13}$/ },
+            'seller-register-nationalId': { required: true, regex: /^[2-3]\d{13}$/ },
 
         }
         var messages = {
             'seller-register-email': 'please enter valid email',
             'seller-register-password': 'please enter password',
             'seller-register-name': 'please enter name',
-            //'seller-register-nationalId': 'please enter National ID',
+            'seller-register-nationalId': 'please enter National ID',
         }
 
         if (general.validateForm('seller-edit-form', rules, messages)) {

@@ -118,11 +118,11 @@
                     </header>
                     <form id="updateProfileForm" class="form">
                         <div class="mb-4 d-flex">
-                            <input id="firstName" name="firstName" class="form-control me-1" type="text"
+                            <input id="firstName" name="first-name" class="form-control me-1" type="text"
                                 placeholder="First Name" value="First Name">
 
 
-                            <input id="lastName" name="lastName" class="form-control" type="text"
+                            <input id="lastName" name="last-name" class="form-control" type="text"
                                 placeholder="Last Name" value="Last Name">
                         </div>
                         <div class="mb-3">
@@ -183,14 +183,14 @@
                             </select>
                         </div>
                         <div class="mb-4 d-flex">
-                            <input id="currentPassword" class="form-control me-1" type="password"
-                                placeholder="Current Password" autocomplete="">
+                            <input  name ="password" id="currentPassword11" class="form-control me-1" type="password"  autocomplete="new-password"
+                                placeholder="Current Password" >
 
-                            <input id="newPassword" class="form-control" type="password" placeholder="New Password"
+                            <!-- <input id="newPassword" class="form-control" type="password" placeholder="New Password"
                                 autocomplete="">
 
                             <input id="confirmPassword" class="form-control" type="password"
-                                placeholder="Confirm Password" autocomplete="">
+                                placeholder="Confirm Password" autocomplete=""> -->
                         </div>
                         <div class="mb-4">
                             <input id="updateButton" class="form-control updateButton"
@@ -262,7 +262,7 @@
         import{genreal,updateUIBasedOnSession, handleLogout} from './js/general.js';
         $(window).on('load', async function () {
             await dbController.openDataBase();
-            userProfile.showUserData();
+             await userProfile.showUserData();
             await genreal.updateCartPill();
             await updateUIBasedOnSession();
             await handleLogout();

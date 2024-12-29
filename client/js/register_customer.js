@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             'password': { 
                 required: true, 
-                minlength: 8 
+               // minlength: 8 ,
+                regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
             },
             'first-name': { 
                 required: true, 
@@ -84,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'email': 'Please enter a valid email address.',
             'password': {
                 required: 'Please enter a password.',
-                minlength: 'Password must be at least 8 characters long.'
+               // minlength: 'Password must be at least 8 characters long.',
+                regex:'Minimum eight characters, at least one letter, one number and one special character'
             },
             'first-name': {
                 required: 'Please enter your first name.',

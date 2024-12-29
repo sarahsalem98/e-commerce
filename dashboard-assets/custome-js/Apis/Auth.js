@@ -3,9 +3,9 @@ export var clientAuth = {
     login: async function (email, password) {
         let result =0;
         let data = await dbController.getItemsByUniqueKey('users', 'email', email);
-        console.log(data);
         if (data.length > 0) {
-            if (data[0].password == parseInt(password)) {
+            if (data[0].password == password) {
+                console.log("gfhf");
                 if(data[0].status_user===1){
                     result=1;
                     let sessionData = {

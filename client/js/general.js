@@ -45,10 +45,16 @@ export function updateUIBasedOnSession() {
     if (clientAuth.checkSession()) {
         document.querySelectorAll(".draw-icons").forEach(element => {
             element.classList.add("d-none");
+            
         });
         document.querySelectorAll(".user-menu").forEach(element => {
             element.classList.remove("d-none");
         });
+
+        let userName = JSON.parse(localStorage.getItem('clientSession')).sessionData.name.split(" ");
+        let name=document.getElementById('name');
+        name.textContent=` ${userName[0]}`;
+        console.log(userName);
     } else {
         document.querySelectorAll(".draw-icons").forEach(element => {
             element.classList.remove("d-none");

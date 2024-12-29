@@ -2,23 +2,23 @@
 import { general } from "./general.js";
 import { dbController } from "./indexedDb.js";
 
-let global_orders=[];
+let global_orders = [];
 export var orders = {
 
     fetchData: async function (seller_id) {
-        console.log("ttt777"+seller_id);
+        console.log("ttt777" + seller_id);
         let data = await this.getDataFromStorage(seller_id);
-        let alldataorders=await this.getDataFromStorage(null);
+        let alldataorders = await this.getDataFromStorage(null);
         let allDataobj = [];
         if (alldataorders.length == 0) {
             let res = await fetch('../../dashboard-assets/data/order-list.json');
             let allData = await res.json();
             this.saveDataToStorage(allData);
-            allDataobj=allData;
+            allDataobj = allData;
 
         } else {
-            if(data.length!=0){
-                allDataobj=data;
+            if (data.length != 0) {
+                allDataobj = data;
             }
         }
 
@@ -61,12 +61,12 @@ export var orders = {
                 } else {
                     orders = orders.filter(o => o.id !== order.id);
                 }
-                global_orders=orders;
+                global_orders = orders;
             }
         } else {
             orders = await dbController.getDataArray('orders');
         }
-       
+
 
         return orders;
     },
@@ -91,11 +91,11 @@ export var orders = {
             4: { title: 'deliverd', class: 'badge-light-secondary' },
             5: { title: 'cancelled', class: 'badge-light-danger' },
         };
-        if(seller_id!=null ||seller_id!=undefined){
-            let sellerdata=await dbController.getItem('sellers',seller_id);
-            const seller_name=document.getElementById("seller-name");
-            if(seller_name){
-                seller_name.innerText=`#${seller_id}#-${sellerdata.full_name}`
+        if (seller_id != null || seller_id != undefined) {
+            let sellerdata = await dbController.getItem('sellers', seller_id);
+            const seller_name = document.getElementById("seller-name");
+            if (seller_name) {
+                seller_name.innerText = `#${seller_id}#-${sellerdata.full_name}`
 
             }
 
@@ -311,16 +311,16 @@ export var orders = {
         orders.resetFormFields();
         let data;
         let details;
-        if(global_orders.length==0){
-         data = await this.getOrderData(id);
-         let cart= await dbController.getItem('carts',data.cart_id);
-         details=cart.products ;
+        if (global_orders.length == 0) {
+            data = await this.getOrderData(id);
+            let cart = await dbController.getItem('carts', data.cart_id);
+            details = cart.products;
 
-        }else{
-           data= global_orders.find(o=>o.id==id);
-           details=data.cart.products;
+        } else {
+            data = global_orders.find(o => o.id == id);
+            details = data.cart.products;
+            // console.log(data);
         }
-        console.log(details);
         document.getElementById("order-email").value = data.email;
         document.getElementById("order-first-name").value = data.first_name;
         document.getElementById("order-last-name").value = data.second_name;
@@ -363,17 +363,17 @@ export var orders = {
     },
 
     changeStatus: async function (id, status) {
-        
+ 
         var data = await dbController.getItem('orders', id);
         data.status = status;
-        data.updated_at=new Date();
+        data.updated_at = new Date();
         console.log(data);
-        if(status==5){
-            let orderCart=await dbController.getItem( 'carts' , data.cart_id );
-            let orderProducts=orderCart.products;
+        if (status == 5) {
+            let orderCart = await dbController.getItem('carts', data.cart_id);
+            let orderProducts = orderCart.products;
             console.log(orderProducts);
             orderProducts.forEach(async element => {
-                await this.incrementProductBy( element.product_id , element.qty);
+                await this.incrementProductBy(element.product_id, element.qty);
             });
         }
         var done = await dbController.updateItem('orders', id, data);
@@ -382,7 +382,7 @@ export var orders = {
         } else {
             toastr.error("something went wrong");
         }
-        
+
         this.viewOrders(window.globalseller_id);
     },
 
@@ -397,12 +397,12 @@ export var orders = {
 
 
     },
-    incrementProductBy:async function(product_id,qty){
-        let isUpdated=false;
-        let product= await dbController.getItem("products",product_id);
-        if(product){
-            product.qty+=qty;
-            isUpdated = await dbController.updateItem('products', product_id, product );
+    incrementProductBy: async function (product_id, qty) {
+        let isUpdated = false;
+        let product = await dbController.getItem("products", product_id);
+        if (product) {
+            product.qty += qty;
+            isUpdated = await dbController.updateItem('products', product_id, product);
             return isUpdated;
         }
 

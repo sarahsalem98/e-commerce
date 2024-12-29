@@ -78,6 +78,7 @@ export var cart = {
                                 price:price,
                                 qty: qty,
                                 max_qty:product.qty,
+                                status:1
                             }
                         ]
                     };
@@ -127,7 +128,7 @@ export var cart = {
 
                     } else {
                         if (qty > 0) {
-                            allCartProducts.push({ product_id:productId,price:price,max_qty:product.qty, qty: qty });
+                            allCartProducts.push({ product_id:productId,price:price,max_qty:product.qty, qty: qty ,status:1});
                         }
                     }
 
